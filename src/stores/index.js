@@ -5,6 +5,7 @@ import checkinStore from './checkinStore'
 import detailStore from './detailStore'
 import newStore from './newStore'
 import modifyStore from './modifyStore'
+import personalStore from './personalStore'
 
 export {
     eventStore,
@@ -14,4 +15,5 @@ export {
     detailStore,
     newStore,
     modifyStore,
+    personalStore,
 }

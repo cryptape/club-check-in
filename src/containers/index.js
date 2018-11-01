@@ -5,6 +5,8 @@ import Manage from './Manage'
 import New from './New'
 import Modify from './Modify'
 import Checkin from './Checkin'
+import Personal from './Personal'
+import Home from './Home'
 
 export {
     Event,
@@ -14,4 +16,6 @@ export {
     New,
     Modify,
     Checkin,
+    Personal,
+    Home,
 }
