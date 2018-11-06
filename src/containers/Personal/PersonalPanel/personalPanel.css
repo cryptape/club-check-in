@@ -1,0 +1,49 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.personal-panel {
+    height: 147px;
+    box-shadow: 0 3px 6px 0 rgba(4, 20, 5, 0.05);
+    background-color: #ffffff;
+    /*text-align: center;*/
+}
+
+.am-list-thumb img {
+    /*UI proto is 45px*/
+    width: 60px;
+    height: 60px;
+    border: solid 2px rgba(153, 153, 153, 0.2);
+    border-radius: 50px;
+    background-color: #d8d8d8;
+}
+
+.am-list-body::after {
+    display: none !important;
+}
+
+.am-list-line::after {
+    display: none !important;
+}
+
+.group-button {
+    padding-left: 13vw;
+    padding-right: 13vw;
+}
+
+.group-button .am-button {
+    width: 114px;
+    height: 34px;
+    color: #fff;
+    border-radius: 50px;
+    background-color: #28d890;
+    font-size: 13px;
+}
+
+.group-button img {
+    width: 16px;
+    height: 16px;
+}
+
