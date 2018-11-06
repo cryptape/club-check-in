@@ -1,4 +1,4 @@
-import Event from './Event'
+import Activity from './Activity'
 import Register from './Register'
 import Detail from './Detail'
 import Manage from './Manage'
@@ -9,7 +9,7 @@ import Personal from './Personal'
 import Home from './Home'
 
 export {
-    Event,
+    Activity,
     Register,
     Detail,
     Manage,

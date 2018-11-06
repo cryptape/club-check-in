@@ -8,6 +8,10 @@
     /*border: 1px solid black;*/
 }
 
+.active-nav-item {
+    color: #28d890;
+}
+
 .navbar-item img {
     height: 20px;
     width: 20px;

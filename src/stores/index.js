@@ -1,4 +1,4 @@
-import eventStore from './eventStore'
+import activityStore from './activityStore'
 import manageStore from './manageStore'
 import registerStore from './registerStore'
 import checkinStore from './checkinStore'
@@ -6,9 +6,10 @@ import detailStore from './detailStore'
 import newStore from './newStore'
 import modifyStore from './modifyStore'
 import personalStore from './personalStore'
+import navStore from './navStore'
 
 export {
-    eventStore,
+    activityStore,
     manageStore,
     registerStore,
     checkinStore,
@@ -16,4 +17,5 @@ export {
     newStore,
     modifyStore,
     personalStore,
+    navStore,
 }

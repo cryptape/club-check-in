@@ -1,6 +1,6 @@
 import { observable, action } from 'mobx'
 
-class EventStore {
+class ActivityStore {
     @observable name
 
     constructor() {
@@ -13,7 +13,7 @@ class EventStore {
 
 }
 
-const eventStore = new EventStore()
+const activityStore = new ActivityStore()
 
-export default eventStore
+export default activityStore
 

@@ -1,13 +1,9 @@
 import React from 'react'
 import {observer, inject} from 'mobx-react'
 import {
-    Button,
     Flex,
-    InputItem,
-    ImagePicker,
-    WhiteSpace,
 } from 'antd-mobile'
-import {Header, Footer} from '../../components'
+import {Header, BottomNav} from '../../components'
 import './home.css'
 
 @inject('personalStore') @observer
@@ -23,7 +19,7 @@ class Home extends React.Component {
                 </Flex>
                 <Flex>
                     <Flex.Item>
-                        <Footer/>
+                        <BottomNav/>
                     </Flex.Item>
                 </Flex>
             </div>

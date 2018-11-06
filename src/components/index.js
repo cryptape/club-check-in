@@ -1,7 +1,7 @@
 import Header from './Header'
-import Footer from './Footer'
+import BottomNav from './BottomNav'
 
 export {
     Header,
-    Footer,
+    BottomNav,
 }

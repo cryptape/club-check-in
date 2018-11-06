@@ -2,14 +2,10 @@ import React from 'react'
 import {observer, inject} from 'mobx-react'
 import {Header} from '../../components'
 import {
-    Button,
     Flex,
-    InputItem,
-    ImagePicker,
-    WhiteSpace,
 } from 'antd-mobile'
 import PersonalPanel from './PersonalPanel'
-import BottomNav from './BottomNav'
+import BottomNav from '../../components/BottomNav'
 import './personal.css'
 
 @inject('personalStore') @observer

@@ -3,7 +3,7 @@ import {Route, BrowserRouter, Switch} from 'react-router-dom'
 import React from 'react'
 import * as stores from '../stores'
 import {
-    Event,
+    Activity,
     Register,
     Detail,
     Manage,
@@ -18,7 +18,7 @@ export default (
     <Provider {...stores}>
         <BrowserRouter>
             <Switch>
-                <Route exact path="/event" component={Event}/>
+                <Route exact path="/activity" component={Activity}/>
                 <Route exact path="/" component={Home}/>
                 <Route exact path="/register" component={Register}/>
                 <Route exact path="/detail" component={Detail}/>
