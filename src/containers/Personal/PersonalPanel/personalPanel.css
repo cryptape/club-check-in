@@ -20,6 +20,10 @@
     background-color: #d8d8d8;
 }
 
+.am-list-brief {
+    font-family: monospace;
+}
+
 .am-list-body::after {
     display: none !important;
 }

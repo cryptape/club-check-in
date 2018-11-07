@@ -5,6 +5,7 @@ import {
     Flex,
 } from 'antd-mobile'
 import PersonalPanel from './PersonalPanel'
+import ClubListItem from './ClubListItem'
 import BottomNav from '../../components/BottomNav'
 import './personal.css'
 
@@ -24,6 +25,15 @@ class Personal extends React.Component {
                         <PersonalPanel/>
                     </Flex.Item>
                 </Flex>
+                <Flex>
+                    <div className='personal-panel-club-banner'>已加入社团</div>
+                </Flex>
+                <ClubListItem/>
+                {/*<Flex>*/}
+                {/*<Flex.Item>*/}
+                {/*<PersonalPanel/>*/}
+                {/*</Flex.Item>*/}
+                {/*</Flex>*/}
                 <BottomNav/>
             </div>
         )

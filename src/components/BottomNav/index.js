@@ -5,7 +5,7 @@ import {
 } from 'antd-mobile'
 import './bottomNav.css'
 
-const NavBarItem = ({className = '', src='', itemName='', callback}) => (
+const NavBarItem = ({className = '', src = '', itemName = '', callback}) => (
     <div className={`${className} navbar-item`} onClick={callback}>
         <img src={src} alt=""/>
         <div>{itemName}</div>
@@ -18,34 +18,30 @@ class BottomNav extends React.Component {
     render() {
 
         const {
-            handleActivity,
-            handleCheckin,
-            handlePersonal,
+            toggleActive,
         } = this.props.navStore
 
         return (
-            <div className='footer'>
-                <Flex className='bottom-nav'>
-                    <NavBarItem
-                        className='navbar-item-activity'
-                        src='tabbar_act_normal.png'
-                        itemName='活动'
-                        callback={handleActivity}
-                    />
-                    <NavBarItem
-                        className='navbar-item-checkin'
-                        src='tabbar_sign_normal.png'
-                        itemName='打卡'
-                        callback={handleCheckin}
-                    />
-                    <NavBarItem
-                        className='navbar-item-personal'
-                        src='tabbar_per_normal.png'
-                        itemName='个人'
-                        callback={handlePersonal}
-                    />
-                </Flex>
-            </div>
+            <Flex className='bottom-nav'>
+                <NavBarItem
+                    className='activity active-nav-item'
+                    src='tabbar_act_normal.png'
+                    itemName='活动'
+                    callback={toggleActive}
+                />
+                <NavBarItem
+                    className='checkin'
+                    src='tabbar_sign_normal.png'
+                    itemName='打卡'
+                    callback={toggleActive}
+                />
+                <NavBarItem
+                    className='personal'
+                    src='tabbar_per_normal.png'
+                    itemName='个人'
+                    callback={toggleActive}
+                />
+            </Flex>
         )
     }
 }
