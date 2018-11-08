@@ -1,5 +1,6 @@
 import {observable, action} from 'mobx'
 import React from "react";
+import {Link, Route} from 'react-router-dom'
 
 const log = console.log.bind(console, '### personalStore ')
 
@@ -21,9 +22,6 @@ class PersonalStore {
         log('handleCreate btn')
     }
 
-    @action handleConfig = () => {
-        log('switch to register page')
-    }
 }
 
 const personalStore = new PersonalStore()

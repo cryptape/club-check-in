@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link} from "react-router-dom"
 import {
     Icon,
     NavBar,
@@ -8,7 +9,7 @@ class Header extends React.Component {
 
     render() {
         const titleName = this.props.titleName
-        const icon = this.props.hasBack ? <Icon type="left"/> : ''
+        const icon = this.props.hasBack ? <Link to={this.props.backRoute}><Icon type="left"/></Link> : ''
         const callback = this.props.callback
         return (
             <div className='header'>
