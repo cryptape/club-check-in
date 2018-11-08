@@ -1,0 +1,5 @@
+.club-detail-lists {
+    height: calc(100vh - 220px);
+    margin-top: 20px;
+    overflow-y: scroll;
+}

@@ -11,12 +11,12 @@ class ClubListItem extends React.Component {
     // TODO  if avatar number is less than 6
     render() {
         const {
-            handleClubDetail,
-            dataList,
-            arrowRight,
+                handleClubDetail,
+                clubDataList,
+                arrowRight,
         } = this.props.clublistStore
 
-        const clubList = dataList.map((data, index) => {
+        const clubList = clubDataList.map((data, index) => {
             return (
                 <Flex onClick={handleClubDetail} className='club-list-item'>
                     <div className='club-list-item-left'>

@@ -1,0 +1,64 @@
+.club-detail-pannel {
+    height: 170px;
+    /*border: 1px red solid;*/
+    background-color: #fff;
+}
+
+.club-detail-name {
+    width: 100vw;
+    text-align: center;
+    font-family: PingFangSC, Arial, sans-serif, serif;
+    font-size: 15px;
+    font-weight: 500;
+    color: #242b43;
+}
+
+.club-detail-deposit-panel {
+    margin-top: 16.5px;
+}
+
+.club-detail-deposit {
+    font-family: PingFangSC, Arial, sans-serif, serif;
+    color: #28d890;
+    margin-left: 20%;
+}
+
+.club-detail-id {
+    font-family: PingFangSC, Arial, sans-serif, serif;
+    color: #898fa3;
+    margin-left: 5.3%;
+}
+
+.club-detail-line {
+    display: inline-block;
+    width: 1px;
+    height: 15px;
+    background-color: #898fa3;
+    margin-left: 5.3%;
+}
+
+.club-detail-deposit-infos {
+    margin-bottom: 15px;
+}
+
+.club-detail-rule {
+    width: 341px;
+    margin: 0 auto;
+}
+
+.club-detail-lists {
+    height: calc(100vh - 220px);
+    margin-top: 20px;
+    overflow-y: scroll;
+}
+
+.btn-detail-manage {
+    font-size: 17px;
+    font-weight: 500;
+    font-family: PingFangSC, Arial, sans-serif, serif;
+    color: #fff;
+    background-color: #28d890;
+    position: fixed !important;
+    width: 100%;
+    bottom: 0;
+}

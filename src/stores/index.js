@@ -8,6 +8,7 @@ import modifyStore from './modifyStore'
 import personalStore from './personalStore'
 import navStore from './navStore'
 import clublistStore from './clubListStore'
+import clubmemberStore from './clubMemberStore'
 
 export {
     activityStore,
@@ -20,4 +21,5 @@ export {
     personalStore,
     navStore,
     clublistStore,
+    clubmemberStore,
 }

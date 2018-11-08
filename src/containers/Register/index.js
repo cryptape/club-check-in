@@ -23,10 +23,8 @@ class Register extends React.Component {
         return (
             <div className='register-container'>
                 <Header
-                    hasBack={true}
                     titleName='用户设置'
                     backRoute='/personal'
-                    callback={() => {console.log('callback')}}
                 />
                 <List>
                     <InputItem
