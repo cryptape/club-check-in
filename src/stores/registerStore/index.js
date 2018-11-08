@@ -1,6 +1,7 @@
 import { observable, action } from 'mobx'
 
-// 后台需要给的数据格式
+// data format get from back-end
+
 // const data = [{
 //     url: 'http://ww1.sinaimg.cn/large/d8eb23c4ly1fwsljvzfu2j20sr0srgqb.jpg',
 //     id: '1111',

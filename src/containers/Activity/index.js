@@ -1,8 +1,8 @@
 import React from 'react';
 import {observer, inject} from 'mobx-react';
 
-@inject('eventStore') @observer
-class Event extends React.Component {
+@inject('activityStore') @observer
+class Activity extends React.Component {
 
     handleHi = () => {
         this.props.eventStore.handleHello()
@@ -10,9 +10,9 @@ class Event extends React.Component {
 
     render() {
         return (
-            <div onClick={this.handleHi}>Club Event page</div>
+            <div onClick={this.handleHi}>Club Activity page</div>
         )
     }
 }
 
-export default Event
+export default Activity

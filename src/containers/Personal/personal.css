@@ -1,0 +1,21 @@
+.personal-container {
+    height: 100vh;
+    background-color: #f8fafe;
+    /*border: 1px solid red;*/
+}
+
+.personal-panel-club-banner {
+    padding-left: 15px;
+    padding-top: 20px;
+    /*height: 15px;*/
+    /*width: 75px;*/
+    font-family: PingFangSC, Arial, sans-serif , serif ;
+    font-size: 17px;
+    font-weight: 500;
+    font-style: normal;
+    font-stretch: normal;
+    /*line-height: 1;*/
+    /*letter-spacing: normal;*/
+    /*text-align: center;*/
+    color: #242b43;
+}
