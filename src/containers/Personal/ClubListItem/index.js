@@ -5,50 +5,14 @@ import {
 } from 'antd-mobile'
 import './clublistitem.css'
 
-const arrowRight = <img src="jt_next2.png" alt=""/>
-const avatar = <img src="avatar.png" alt=""/>
-
-// raw data like this
-const dataList = [{
-    clubName: '慢跑俱乐部',
-    avatar: 'avatar.png',
-    clubID: 1001,
-}, {
-    clubName: '吃饭俱乐部',
-    avatar: 'avatar.png',
-    clubID: 1002,
-},{
-    clubName: '睡觉俱乐部',
-    avatar: 'avatar.png',
-    clubID: 1003,
-},{
-    clubName: '摸鱼俱乐部',
-    avatar: 'avatar.png',
-    clubID: 1004,
-},{
-    clubName: '加班俱乐部',
-    avatar: 'avatar.png',
-    clubID: 1006,
-},{
-    clubName: '加班俱乐部',
-    avatar: 'avatar.png',
-    clubID: 1006,
-},{
-    clubName: '加班俱乐部',
-    avatar: 'avatar.png',
-    clubID: 1006,
-},{
-    clubName: '加班俱乐部',
-    avatar: 'avatar.png',
-    clubID: 1006,
-},];
-
 @inject('clublistStore') @observer
 class ClubListItem extends React.Component {
 
     render() {
         const {
             handleClubDetail,
+            dataList,
+            arrowRight,
         } = this.props.clublistStore
 
         const clubList = dataList.map((data, index) => {
@@ -60,11 +24,11 @@ class ClubListItem extends React.Component {
                         </div>
                         <ul>
                             <li>{<img src={data['avatar']} alt=""/>}</li>
-                            <li>{avatar}</li>
-                            <li>{avatar}</li>
-                            <li>{avatar}</li>
-                            <li>{avatar}</li>
-                            <li>{avatar}</li>
+                            <li>{<img src={data['avatar']} alt=""/>}</li>
+                            <li>{<img src={data['avatar']} alt=""/>}</li>
+                            <li>{<img src={data['avatar']} alt=""/>}</li>
+                            <li>{<img src={data['avatar']} alt=""/>}</li>
+                            <li>{<img src={data['avatar']} alt=""/>}</li>
                         </ul>
                     </div>
                     <div className='club-list-item-right'>
