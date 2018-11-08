@@ -1,3 +1,9 @@
+.club-list {
+    height: calc(100vh - 300px);
+    overflow-y: scroll;
+    margin-top: 15px;
+}
+
 .club-list-item {
     /*border: 1px solid red;*/
     width: 92%;
@@ -5,6 +11,10 @@
     background-color: #ffffff;
     margin-left: 4%;
     margin-top: 4%;
+}
+
+.club-list-item:nth-child(1) {
+    margin-top: 0;
 }
 
 .club-list-name {

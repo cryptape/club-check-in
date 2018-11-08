@@ -32,7 +32,7 @@ class PersonalPanel extends React.Component {
                         multipleLine
                         onClick={() => {}}
                     >
-                        刘看山 <Brief>0X291302034049012393Ba0414</Brief>
+                        realwwy <Brief>0X291302034049012393Ba0414</Brief>
                     </Item>
                     <Item className='group-button'>
                         <Flex justify='between'>

@@ -77,7 +77,7 @@ class ClubListItem extends React.Component {
             )
         })
         return (
-            <div>
+            <div className='club-list'>
                 {clubList}
             </div>
         )
