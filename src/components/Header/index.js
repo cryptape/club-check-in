@@ -12,7 +12,7 @@ class Header extends React.Component {
             <div className='header'>
                 <NavBar
                     mode="light"
-                    icon={<Icon type="left"/>}
+                    // icon={<Icon type="left"/>}
                     onLeftClick={() => console.log('onLeftClick')}
                 >{titleName}</NavBar>
             </div>

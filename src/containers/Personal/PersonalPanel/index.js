@@ -36,7 +36,7 @@ class PersonalPanel extends React.Component {
                         realwwy <Brief>0X291302034049012393Ba0414</Brief>
                     </Item>
                     <Item className='group-button'>
-                        <Flex justify='between'>
+                        <Flex justify='center'>
                             <Button icon={joinIcon} onClick={handleJoin}>
                                 加入社团
                             </Button>

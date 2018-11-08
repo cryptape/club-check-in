@@ -32,11 +32,6 @@
     display: none !important;
 }
 
-.group-button {
-    padding-left: 13vw;
-    padding-right: 13vw;
-}
-
 .group-button .am-button {
     width: 114px;
     height: 34px;
@@ -44,6 +39,9 @@
     border-radius: 50px;
     background-color: #28d890;
     font-size: 13px;
+}
+.group-button .am-button:nth-child(1) {
+    margin-right: 48px;
 }
 
 .group-button img {
