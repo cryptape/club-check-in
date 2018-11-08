@@ -3,7 +3,7 @@ import {observer, inject} from 'mobx-react'
 import {
     Flex,
 } from 'antd-mobile'
-import './clublistitem.css'
+import './clubListItem.css'
 
 @inject('clublistStore') @observer
 class ClubListItem extends React.Component {

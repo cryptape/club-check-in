@@ -3,7 +3,7 @@ import {observer, inject} from 'mobx-react'
 import {
     List,
 } from 'antd-mobile'
-import './clubmember.css'
+import './clubMember.css'
 
 const Item = List.Item
 const Brief = Item.Brief
@@ -13,13 +13,13 @@ class ClubMember extends React.Component {
     //TODO add club leader banner
     render() {
         const {
-            handleMemberDetail,
             memberDataList,
         } = this.props.clubmemberStore
 
         const memberList = memberDataList.map((data, index) => {
             return (
                 <Item
+                    className='club-member-item'
                     arrow="empty"
                     thumb={data['avatar']}
                     multipleLine
