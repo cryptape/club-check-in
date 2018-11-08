@@ -18,7 +18,9 @@ class BottomNav extends React.Component {
     render() {
 
         const {
-            toggleActive,
+            handleActivity,
+            handleCheckin,
+            handlePersonal,
             activityIcon,
             checkinIcon,
             personalIcon,
@@ -30,19 +32,19 @@ class BottomNav extends React.Component {
                     className='activity active-nav-item'
                     svg={activityIcon}
                     itemName='活动'
-                    callback={toggleActive}
+                    callback={handleActivity}
                 />
                 <NavBarItem
                     className='checkin'
                     svg={checkinIcon}
                     itemName='打卡'
-                    callback={toggleActive}
+                    callback={handleCheckin}
                 />
                 <NavBarItem
                     className='personal'
                     svg={personalIcon}
                     itemName='个人'
-                    callback={toggleActive}
+                    callback={handlePersonal}
                 />
             </Flex>
         )

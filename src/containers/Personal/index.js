@@ -29,11 +29,6 @@ class Personal extends React.Component {
                     <div className='personal-panel-club-banner'>已加入社团</div>
                 </Flex>
                 <ClubListItem/>
-                {/*<Flex>*/}
-                {/*<Flex.Item>*/}
-                {/*<PersonalPanel/>*/}
-                {/*</Flex.Item>*/}
-                {/*</Flex>*/}
                 <BottomNav/>
             </div>
         )

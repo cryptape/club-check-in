@@ -21,6 +21,7 @@ class PersonalPanel extends React.Component {
         const {
             handleJoin,
             handleCreate,
+            handleConfig,
         } = this.props.personalStore
 
         return (
@@ -30,7 +31,7 @@ class PersonalPanel extends React.Component {
                         arrow="horizontal"
                         thumb={thumbPic}
                         multipleLine
-                        onClick={() => {}}
+                        onClick={handleConfig}
                     >
                         realwwy <Brief>0X291302034049012393Ba0414</Brief>
                     </Item>
