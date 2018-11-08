@@ -4,11 +4,13 @@ import {
     Button,
     Flex,
     List,
+    Modal,
 } from 'antd-mobile'
 import './personalPanel.css'
 
 const Item = List.Item
 const Brief = Item.Brief
+const prompt = Modal.prompt
 
 @inject('personalStore') @observer
 class PersonalPanel extends React.Component {
@@ -36,7 +38,9 @@ class PersonalPanel extends React.Component {
                     </Item>
                     <Item className='group-button'>
                         <Flex justify='center'>
-                            <Button icon={joinIcon} onClick={handleJoin}>
+                            <Button icon={joinIcon} onClick={() => prompt('加入新社团', '社团ID', [
+                            { text: '确定', onPress: value => console.log(`输入的内容:${value}`) },
+                                ], 'default', null, ['输入你想加入的社团ID吧'])}>
                                 加入社团
                             </Button>
                             <Button icon={createIcon} onClick={handleCreate}>
