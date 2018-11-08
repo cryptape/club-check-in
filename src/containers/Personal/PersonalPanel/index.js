@@ -9,10 +9,6 @@ import './personalPanel.css'
 
 const Item = List.Item
 const Brief = Item.Brief
-const thumbPic = 'avatar.png'
-const joinIcon = <img src="per_join.png" alt="" />
-const createIcon = <img src="per_create.png" alt="" />
-
 
 @inject('personalStore') @observer
 class PersonalPanel extends React.Component {
@@ -22,6 +18,9 @@ class PersonalPanel extends React.Component {
             handleJoin,
             handleCreate,
             handleConfig,
+            thumbPic,
+            joinIcon,
+            createIcon,
         } = this.props.personalStore
 
         return (

@@ -1,9 +1,18 @@
 import {observable, action} from 'mobx'
+import React from "react";
 
 const log = console.log.bind(console, '### personalStore ')
 
-class PersonalStore {
+const thumbPic = 'avatar.png'
+const joinIcon = <img src="per_join.png" alt=""/>
+const createIcon = <img src="per_create.png" alt=""/>
 
+class PersonalStore {
+    constructor() {
+        this.thumbPic = thumbPic
+        this.joinIcon = joinIcon
+        this.createIcon = createIcon
+    }
     @action handleJoin = () => {
         log('handleJoin btn')
     }
