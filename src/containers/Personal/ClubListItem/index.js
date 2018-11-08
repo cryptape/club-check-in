@@ -8,6 +8,7 @@ import './clublistitem.css'
 @inject('clublistStore') @observer
 class ClubListItem extends React.Component {
 
+    // TODO  if avatar number is less than 6
     render() {
         const {
             handleClubDetail,
@@ -23,12 +24,12 @@ class ClubListItem extends React.Component {
                             <span>{data['clubName']}</span>
                         </div>
                         <ul>
-                            <li>{<img src={data['avatar']} alt=""/>}</li>
-                            <li>{<img src={data['avatar']} alt=""/>}</li>
-                            <li>{<img src={data['avatar']} alt=""/>}</li>
-                            <li>{<img src={data['avatar']} alt=""/>}</li>
-                            <li>{<img src={data['avatar']} alt=""/>}</li>
-                            <li>{<img src={data['avatar']} alt=""/>}</li>
+                            <li>{<img src={data['avatar'][0]} alt=""/>}</li>
+                            <li>{<img src={data['avatar'][1]} alt=""/>}</li>
+                            <li>{<img src={data['avatar'][2]} alt=""/>}</li>
+                            <li>{<img src={data['avatar'][3]} alt=""/>}</li>
+                            <li>{<img src={data['avatar'][4]} alt=""/>}</li>
+                            <li>{<img src={data['avatar'][5]} alt=""/>}</li>
                         </ul>
                     </div>
                     <div className='club-list-item-right'>
