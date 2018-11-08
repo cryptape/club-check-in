@@ -9,25 +9,11 @@
 }
 
 .input-register-nickname::before {
-    content: '';
-    position: absolute;
-    background-color: #ddd;
-    display: block;
-    z-index: 1;
     top: 0;
-    right: auto;
-    bottom: auto;
-    left: 0;
-    width: 100%;
-    height: 1PX;
-    -webkit-transform-origin: 50% 50%;
-    -ms-transform-origin: 50% 50%;
-    transform-origin: 50% 50%;
-    -webkit-transform: scaleY(0.5);
-    -ms-transform: scaleY(0.5);
-    transform: scaleY(0.5);
 }
 
+/* css to write border-top line*/
+.input-register-nickname::before,
 .register-avatar-title::before {
     content: '';
     position: absolute;
@@ -46,6 +32,10 @@
     -webkit-transform: scaleY(0.5);
     -ms-transform: scaleY(0.5);
     transform: scaleY(0.5);
+}
+
+.input-register-nickname::before {
+    top: 0;
 }
 
 .register-avatar-title {
