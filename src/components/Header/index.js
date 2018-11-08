@@ -7,13 +7,15 @@ import {
 class Header extends React.Component {
 
     render() {
-        let titleName = this.props.titleName
-        return(
+        const titleName = this.props.titleName
+        const icon = this.props.hasBack ? <Icon type="left"/> : ''
+        const callback = this.props.callback
+        return (
             <div className='header'>
                 <NavBar
                     mode="light"
-                    // icon={<Icon type="left"/>}
-                    onLeftClick={() => console.log('onLeftClick')}
+                    icon={icon}
+                    onLeftClick={callback}
                 >{titleName}</NavBar>
             </div>
         )
