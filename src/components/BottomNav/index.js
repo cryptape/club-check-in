@@ -29,7 +29,7 @@ class BottomNav extends React.Component {
         return (
             <Flex className='bottom-nav'>
                 <NavBarItem
-                    className='activity active-nav-item'
+                    className='activity'
                     svg={activityIcon}
                     itemName='活动'
                     callback={handleActivity}
@@ -41,7 +41,7 @@ class BottomNav extends React.Component {
                     callback={handleCheckin}
                 />
                 <NavBarItem
-                    className='personal'
+                    className='personal active-nav-item'
                     svg={personalIcon}
                     itemName='个人'
                     callback={handlePersonal}

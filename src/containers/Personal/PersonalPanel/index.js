@@ -8,8 +8,8 @@ import {
 import { Link } from "react-router-dom"
 import './personalPanel.css'
 
-const Item = List.Item
-const Brief = Item.Brief
+const { Item } = List
+const { Brief } = Item
 
 @inject('personalStore') @observer
 class PersonalPanel extends React.Component {

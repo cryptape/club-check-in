@@ -5,8 +5,8 @@ import {
 } from 'antd-mobile'
 import './clubMember.css'
 
-const Item = List.Item
-const Brief = Item.Brief
+const { Item } = List
+const { Brief } = Item
 
 @inject('clubmemberStore') @observer
 class ClubMember extends React.Component {

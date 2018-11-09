@@ -50,12 +50,6 @@
     margin: 0 auto;
 }
 
-.club-detail-lists {
-    height: calc(100vh - 220px);
-    margin-top: 20px;
-    overflow-y: scroll;
-}
-
 .btn-detail-manage {
     font-size: 17px;
     font-weight: 500;

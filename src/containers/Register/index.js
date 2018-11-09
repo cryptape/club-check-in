@@ -7,7 +7,7 @@ import {
     List,
     ImagePicker,
 } from 'antd-mobile'
-import {Header} from '../../components'
+import { Header } from '../../components'
 import './register.css'
 
 @inject('registerStore') @observer
