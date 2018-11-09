@@ -16,6 +16,8 @@ contract ClubCheckInPlayer {
 
     mapping(address => Player) public players;
 
+    uint256 public size;
+
     function setName(string name) public {
         require(players[msg.sender].playerAddress == msg.sender);
         players[msg.sender].name = name;
@@ -32,6 +34,7 @@ contract ClubCheckInPlayer {
         players[msg.sender].playerAddress = msg.sender;
         players[msg.sender].name = name;
         players[msg.sender].icon = icon;
+        size = size + 1;
     }
 
     function joinClub(address player, address clubAddress) public {
