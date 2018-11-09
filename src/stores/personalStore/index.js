@@ -1,5 +1,5 @@
 import {observable, action} from 'mobx'
-import React from "react";
+import React from "react"
 import {
     Modal,
 } from 'antd-mobile'
@@ -9,7 +9,7 @@ const log = console.log.bind(console, '### personalStore ')
 const thumbPic = 'avatar.png'
 const joinIcon = <img src="per_join.png" alt=""/>
 const createIcon = <img src="per_create.png" alt=""/>
-const prompt = Modal.prompt
+const {prompt} = Modal.prompt
 
 class PersonalStore {
     constructor() {

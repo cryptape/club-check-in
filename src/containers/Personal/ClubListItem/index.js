@@ -18,7 +18,7 @@ class ClubListItem extends React.Component {
 
         const clubList = clubDataList.map((data, index) => {
             return (
-                <Flex onClick={handleClubDetail} className='club-list-item'>
+                <Flex onClick={handleClubDetail} key={index} className='club-list-item'>
                     <div className='club-list-item-left'>
                         <div className='club-list-name'>
                             <span>{data['clubName']}</span>

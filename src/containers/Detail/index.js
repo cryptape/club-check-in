@@ -1,9 +1,9 @@
 import React from 'react'
 import {observer, inject} from 'mobx-react'
-import {Header} from '../../components'
 import {
     Button,
 } from "antd-mobile"
+import {Header} from '../../components'
 import ClubMember from './ClubMember'
 import './detail.css'
 
@@ -22,7 +22,7 @@ class Detail extends React.Component {
                     titleName='社团详情'
                     backRoute='./personal'
                 />
-                <div className='club-detail-pannel'>
+                <div className='club-detail-panel'>
                     <div className='club-detail-name'>
                         Cryptape慢跑俱乐部
                     </div>

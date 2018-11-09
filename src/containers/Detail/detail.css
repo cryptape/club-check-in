@@ -1,4 +1,8 @@
-.club-detail-pannel {
+:root {
+    --font-family: PingFangSC, Arial, sans-serif, serif;
+}
+
+.club-detail-panel {
     height: 170px;
     /*border: 1px red solid;*/
     background-color: #fff;
@@ -7,7 +11,7 @@
 .club-detail-name {
     width: 100vw;
     text-align: center;
-    font-family: PingFangSC, Arial, sans-serif, serif;
+    font-family: var(--font-family);
     font-size: 15px;
     font-weight: 500;
     color: #242b43;
@@ -18,13 +22,13 @@
 }
 
 .club-detail-deposit {
-    font-family: PingFangSC, Arial, sans-serif, serif;
+    font-family: var(--font-family);
     color: #28d890;
     margin-left: 20%;
 }
 
 .club-detail-id {
-    font-family: PingFangSC, Arial, sans-serif, serif;
+    font-family: var(--font-family);
     color: #898fa3;
     margin-left: 5.3%;
 }
@@ -55,7 +59,7 @@
 .btn-detail-manage {
     font-size: 17px;
     font-weight: 500;
-    font-family: PingFangSC, Arial, sans-serif, serif;
+    font-family: var(--font-family);
     color: #fff;
     background-color: #28d890;
     position: fixed !important;

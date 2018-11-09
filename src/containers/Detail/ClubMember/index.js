@@ -19,6 +19,7 @@ class ClubMember extends React.Component {
         const memberList = memberDataList.map((data, index) => {
             return (
                 <Item
+                    key={index}
                     className='club-member-item'
                     arrow="empty"
                     thumb={data['avatar']}

@@ -8,7 +8,7 @@ import {
 class Header extends React.Component {
 
     render() {
-        const titleName = this.props.titleName
+        const {titleName} = this.props.titleName
         const icon = this.props.backRoute ? <Link to={this.props.backRoute}><Icon type="left"/></Link> : ''
         return (
             <div className='header'>

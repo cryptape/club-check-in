@@ -5,7 +5,7 @@ import {
     Flex,
     List,
 } from 'antd-mobile'
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom"
 import './personalPanel.css'
 
 const Item = List.Item

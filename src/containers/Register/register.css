@@ -1,3 +1,7 @@
+:root {
+    --font-family: PingFangSC, Arial, sans-serif, serif;
+}
+
 .register-container {
     height: 100vh;
     background-color: #fff;
@@ -5,7 +9,7 @@
 
 .am-list-item .am-input-label {
     color: #242b43;
-    font-family: PingFangSC, Arial, sans-serif, serif;
+    font-family: var(--font-family);
 }
 
 .input-register-nickname::before {
@@ -39,7 +43,7 @@
 .btn-register-join {
     font-size: 17px;
     font-weight: 500;
-    font-family: PingFangSC, Arial, sans-serif, serif;
+    font-family: var(--font-family);
     color: #fff;
     background-color: #28d890;
     position: fixed !important;
