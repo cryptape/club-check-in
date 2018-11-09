@@ -3,7 +3,7 @@ import {observer, inject} from 'mobx-react'
 import {
     Flex,
 } from 'antd-mobile'
-import './clublistitem.css'
+import './clubListItem.css'
 
 @inject('clublistStore') @observer
 class ClubListItem extends React.Component {
@@ -11,14 +11,14 @@ class ClubListItem extends React.Component {
     // TODO  if avatar number is less than 6
     render() {
         const {
-            handleClubDetail,
-            dataList,
-            arrowRight,
+                handleClubDetail,
+                clubDataList,
+                arrowRight,
         } = this.props.clublistStore
 
-        const clubList = dataList.map((data, index) => {
+        const clubList = clubDataList.map((data, index) => {
             return (
-                <Flex onClick={handleClubDetail} className='club-list-item'>
+                <Flex onClick={handleClubDetail} key={index} className='club-list-item'>
                     <div className='club-list-item-left'>
                         <div className='club-list-name'>
                             <span>{data['clubName']}</span>

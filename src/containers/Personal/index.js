@@ -15,11 +15,7 @@ class Personal extends React.Component {
     render() {
         return (
             <div className='personal-container'>
-                <Flex>
-                    <Flex.Item>
-                        <Header titleName='个人'/>
-                    </Flex.Item>
-                </Flex>
+                <Header titleName='个人'/>
                 <Flex>
                     <Flex.Item>
                         <PersonalPanel/>

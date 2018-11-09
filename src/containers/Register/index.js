@@ -4,15 +4,15 @@ import {
     Button,
     Flex,
     InputItem,
+    List,
     ImagePicker,
-    WhiteSpace,
 } from 'antd-mobile'
 import {Header} from '../../components'
 import './register.css'
 
 @inject('registerStore') @observer
 class Register extends React.Component {
-
+    //TODO should disabled confirm button when there is no nickname or avatar
     render() {
         const {
             files,
@@ -22,29 +22,22 @@ class Register extends React.Component {
 
         return (
             <div className='register-container'>
-                <Flex>
-                    <Flex.Item>
-                        <Header titleName='用户设置'/>
-                    </Flex.Item>
-                </Flex>
-                <Flex className='register-title' justify='center'>
-                    秘猿科技社团 DApp
-                </Flex>
-                <Flex justify='center'>
+                <Header
+                    titleName='用户设置'
+                    backRoute='/personal'
+                />
+                <List>
                     <InputItem
-                        defaultValue='个人钱包地址'
-                        disabled={true}
+                        placeholder="0X291302034049012393Ba0414"
                     >注册账号</InputItem>
-                </Flex>
-                <WhiteSpace size='lg'/>
-                <Flex justify='center'>
                     <InputItem
-                        placeholder="请输入注册昵称"
+                        className='input-register-nickname'
+                        placeholder="取一个n(*≧▽≦*)n昵称"
                     >注册昵称</InputItem>
-                </Flex>
-                <Flex className='register-img-title' justify='center'>
+                </List>
+                <div className='register-avatar-title'>
                     选择头像
-                </Flex>
+                </div>
                 <Flex>
                     <Flex.Item>
                         <div className='register-img'>
@@ -57,10 +50,12 @@ class Register extends React.Component {
                         </div>
                     </Flex.Item>
                 </Flex>
-                <WhiteSpace size='lg'/>
                 <Flex justify='center'>
-                    <Button inline type={"primary"} onClick={handleRegister}>完成</Button>
+                    <img className='club-logo' src="club-logo.png" alt=""/>
                 </Flex>
+                <Button className='btn-register-join' onClick={handleRegister}>
+                    完成
+                </Button>
             </div>
         )
     }

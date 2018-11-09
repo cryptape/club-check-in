@@ -1,14 +1,52 @@
-.register-title {
-    font-size: 23px;
-    padding-top: 19px;
-    padding-bottom: 42px;
+:root {
+    --font-family: PingFangSC, Arial, sans-serif, serif;
 }
 
-.register-img-title {
-    font-size: 20px;
-    padding-top: 19px;
+.register-container {
+    height: 100vh;
+    background-color: #fff;
+}
+
+.am-list-item .am-input-label {
+    color: #242b43;
+    font-family: var(--font-family);
+}
+
+.input-register-nickname::before {
+    top: 0;
+}
+
+.input-register-nickname,
+.register-avatar-title {
+    border-top: 1px solid #ddd;
+}
+
+.register-avatar-title {
+    color: #242b43;
+    font-size: 17px;
+    padding-left: 15px;
+    white-space: nowrap;
+    overflow: hidden;
+    padding-top: 12px;
 }
 
 .register-img {
     padding-left: 33%;
+}
+
+.club-logo {
+    width: 83px;
+    height: 19px;
+    margin-top: 62.9%;
+}
+
+.btn-register-join {
+    font-size: 17px;
+    font-weight: 500;
+    font-family: var(--font-family);
+    color: #fff;
+    background-color: #28d890;
+    position: fixed !important;
+    width: 100%;
+    bottom: 0;
 }

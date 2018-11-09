@@ -5,6 +5,7 @@ import {
     Flex,
     List,
 } from 'antd-mobile'
+import { Link } from "react-router-dom"
 import './personalPanel.css'
 
 const Item = List.Item
@@ -17,7 +18,6 @@ class PersonalPanel extends React.Component {
         const {
             handleJoin,
             handleCreate,
-            handleConfig,
             thumbPic,
             joinIcon,
             createIcon,
@@ -26,14 +26,15 @@ class PersonalPanel extends React.Component {
         return (
             <div className='personal-panel'>
                 <List>
-                    <Item
-                        arrow="horizontal"
-                        thumb={thumbPic}
-                        multipleLine
-                        onClick={handleConfig}
-                    >
-                        realwwy <Brief>0X291302034049012393Ba0414</Brief>
-                    </Item>
+                    <Link to={'/register'}>
+                        <Item
+                            arrow="horizontal"
+                            thumb={thumbPic}
+                            multipleLine
+                        >
+                            realwwy <Brief>0X291302034049012393Ba0414</Brief>
+                        </Item>
+                    </Link>
                     <Item className='group-button'>
                         <Flex justify='center'>
                             <Button icon={joinIcon} onClick={handleJoin}>
