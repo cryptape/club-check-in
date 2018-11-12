@@ -1,4 +1,4 @@
-.personal-panel {
+.personal__container--user-info {
     height: 147px;
     box-shadow: 0 3px 6px 0 rgba(4, 20, 5, 0.05);
     background-color: #ffffff;
@@ -26,7 +26,7 @@
     display: none !important;
 }
 
-.group-button .am-button {
+.personal__container--group-button .am-button {
     width: 114px;
     height: 34px;
     color: #fff;
@@ -35,11 +35,11 @@
     font-size: 13px;
 }
 
-.group-button .am-button:nth-child(1) {
+.personal__container--group-button .am-button:nth-child(1) {
     margin-right: 48px;
 }
 
-.group-button img {
+.personal__container--group-button img {
     width: 16px;
     height: 16px;
 }

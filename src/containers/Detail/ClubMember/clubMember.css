@@ -1,9 +1,9 @@
-.club-detail-lists {
+.clubMember__lists--container {
     height: calc(100vh - 230px);
     margin-top: 20px;
     overflow-y: scroll;
 }
 
-.club-member-item {
+.clubMember__listItem--personal-info {
     border-top: 1px solid #ddd;
 }

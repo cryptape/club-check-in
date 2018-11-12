@@ -19,35 +19,35 @@ class ClubListItem extends React.Component {
 
 		const clubList = clubDataList.map((data, index) => {
 			return (
-					<Link to={'/detail'}>
-						<Flex onClick={handleClubDetail} key={index} className='club-list-item'>
-							<div className='club-list-item-left'>
-								<div className='club-list-name'>
-									<span>{data['clubName']}</span>
-								</div>
-								<ul>
-									<li>{<img src={data['avatar'][0]} alt=""/>}</li>
-									<li>{<img src={data['avatar'][1]} alt=""/>}</li>
-									<li>{<img src={data['avatar'][2]} alt=""/>}</li>
-									<li>{<img src={data['avatar'][3]} alt=""/>}</li>
-									<li>{<img src={data['avatar'][4]} alt=""/>}</li>
-									<li>{<img src={data['avatar'][5]} alt=""/>}</li>
-								</ul>
+				<Link key={index} to={'/detail'}>
+					<Flex onClick={handleClubDetail} className='clubListItem__container--club-item'>
+						<div className='clubListItem__container--left'>
+							<div className='clubListItem__content--name'>
+								<span>{data['clubName']}</span>
 							</div>
-							<div className='club-list-item-right'>
-								<span>{`ID:${data['clubID']}`}</span>
-								<div className='club-list-item-icon'>
-									{arrowRight}
-								</div>
+							<ul>
+								<li>{<img src={data['avatar'][0]} alt=""/>}</li>
+								<li>{<img src={data['avatar'][1]} alt=""/>}</li>
+								<li>{<img src={data['avatar'][2]} alt=""/>}</li>
+								<li>{<img src={data['avatar'][3]} alt=""/>}</li>
+								<li>{<img src={data['avatar'][4]} alt=""/>}</li>
+								<li>{<img src={data['avatar'][5]} alt=""/>}</li>
+							</ul>
+						</div>
+						<div className='clubListItem__container--right'>
+							<span>{`ID:${data['clubID']}`}</span>
+							<div className='clubListItem__icon--arrow-right'>
+								{arrowRight}
 							</div>
-						</Flex>
-					</Link>
+						</div>
+					</Flex>
+				</Link>
 			)
 		})
 		return (
-				<div className='club-list'>
-					{clubList}
-				</div>
+			<div className='clubList__container--content'>
+				{clubList}
+			</div>
 		)
 	}
 }

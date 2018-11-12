@@ -11,7 +11,7 @@ class Home extends React.Component {
 
 	render() {
 		return (
-			<div className='home-container'>
+			<div className='home__container--content'>
 				<Flex>
 					<Flex.Item>
 						<Header titleName='社团圈'/>

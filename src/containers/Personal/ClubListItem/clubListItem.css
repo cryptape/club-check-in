@@ -1,10 +1,10 @@
-.club-list {
+.clubList__container--content {
     height: calc(100vh - 300px);
     overflow-y: scroll;
     margin-top: 15px;
 }
 
-.club-list-item {
+.clubListItem__container--club-item {
     /*border: 1px solid red;*/
     width: 92%;
     height: 82px;
@@ -13,16 +13,16 @@
     margin-top: 4%;
 }
 
-.club-list-item:nth-child(1) {
+.clubListItem__container--club-item:nth-child(1) {
     margin-top: 0;
 }
 
-.club-list-name {
+.clubListItem__content--name {
     padding-top: 15px;
     padding-left: 15px;
 }
 
-.club-list-name span {
+.clubListItem__content--name span {
     width: 105px;
     height: 15px;
     font-family: PingFangSC, Arial, sans-serif, serif;
@@ -35,34 +35,34 @@
     color: #242b43;
 }
 
-.club-list-item ul {
+.clubListItem__container--club-item ul {
     padding-top: 7px;
     padding-left: 5px;
 }
 
-.club-list-item li {
+.clubListItem__container--club-item li {
     display: inline;
 }
 
-.club-list-item li img {
+.clubListItem__container--club-item li img {
     width: 32px;
     height: 32px;
     border: solid 2px rgba(153, 153, 153, 0.2);
     border-radius: 50%;
 }
 
-.club-list-item-left {
+.clubListItem__container--left {
     width: 79.6%;
     height: 82px;
 }
 
-.club-list-item-right {
+.clubListItem__container--right {
     width: 20.8%;
     height: 82px;
     padding-top: 16.5px;
 }
 
-.club-list-item-right span {
+.clubListItem__container--right span {
     width: 39px;
     height: 12px;
     font-family: PingFangSC, Arial, sans-serif, serif;
@@ -75,12 +75,12 @@
     color: #898fa3;
 }
 
-.club-list-item-icon {
+.clubListItem__icon--arrow-right {
     margin-top: 16px;
     padding-left: 40px;
 }
 
-.club-list-item-icon img {
+.clubListItem__icon--arrow-right img {
     width: 10px;
     height: 20px;
 }

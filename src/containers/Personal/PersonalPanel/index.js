@@ -24,7 +24,7 @@ class PersonalPanel extends React.Component {
         } = this.props.personalStore
 
         return (
-            <div className='personal-panel'>
+            <div className='personal__container--user-info'>
                 <List>
                     <Link to={'/register'}>
                         <Item
@@ -35,7 +35,7 @@ class PersonalPanel extends React.Component {
                             realwwy <Brief>0X291302034049012393Ba0414</Brief>
                         </Item>
                     </Link>
-                    <Item className='group-button'>
+                    <Item className='personal__container--group-button'>
                         <Flex justify='center'>
                             <Button icon={joinIcon} onClick={handleJoin}>
                                 加入社团

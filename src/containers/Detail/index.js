@@ -11,7 +11,6 @@ import './detail.css'
 @inject('detailStore') @observer
 class Detail extends React.Component {
 
-	//TODO add club leader banner
 	render() {
 
 		const {
@@ -19,12 +18,12 @@ class Detail extends React.Component {
 		} = this.props.detailStore
 
 		return (
-			<div className='detail-container'>
+			<div className='detail__container--club'>
 				<Header titleName='社团详情' backRoute='./personal'/>
-				<div className='club-detail-panel'>
+				<div className='detail__container--club-info'>
 					<ClubDetail/>
 					<ClubMember/>
-					<Button className='btn-detail-manage' onClick={handleManageMember}>
+					<Button className='detail__button--club-manage' onClick={handleManageMember}>
 						管理
 					</Button>
 				</div>

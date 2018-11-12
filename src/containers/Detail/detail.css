@@ -1,10 +1,10 @@
-.club-detail-panel {
+.detail__container--club-info {
     height: 170px;
     /*border: 1px red solid;*/
     background-color: #fff;
 }
 
-.btn-detail-manage {
+.detail__button--club-manage {
     font-size: 17px;
     font-weight: 500;
     font-family: var(--font-family);

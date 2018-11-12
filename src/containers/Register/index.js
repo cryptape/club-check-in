@@ -21,7 +21,7 @@ class Register extends React.Component {
 		} = this.props.registerStore
 
 		return (
-			<div className='register-container'>
+			<div className='register__container--content'>
 				<Header
 					titleName='用户设置'
 					backRoute='/personal'
@@ -31,16 +31,16 @@ class Register extends React.Component {
 						placeholder="0X291302034049012393Ba0414"
 					>注册账号</InputItem>
 					<InputItem
-						className='input-register-nickname'
+						className='register__input--nickName'
 						placeholder="取一个n(*≧▽≦*)n昵称"
 					>注册昵称</InputItem>
 				</List>
-				<div className='register-avatar-title'>
+				<div className='register__content--avatar-title'>
 					选择头像
 				</div>
 				<Flex>
 					<Flex.Item>
-						<div className='register-img'>
+						<div className='register__img--avatar'>
 							<ImagePicker
 								files={files}
 								length={2}
@@ -51,9 +51,9 @@ class Register extends React.Component {
 					</Flex.Item>
 				</Flex>
 				<Flex justify='center'>
-					<img className='club-logo' src="club-logo.png" alt=""/>
+					<img className='register__img--club-logo' src="club-logo.png" alt=""/>
 				</Flex>
-				<Button className='btn-register-join' onClick={handleRegister}>
+				<Button className='register__button--finish' onClick={handleRegister}>
 					完成
 				</Button>
 			</div>
