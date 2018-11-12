@@ -1,7 +1,7 @@
 import React from 'react'
 import { inject, observer } from 'mobx-react'
 import { Button, Flex, InputItem, TextareaItem, } from "antd-mobile"
-import Header from "../../components/Header"
+import { Header } from '../../components'
 import './new.css'
 
 @inject('newStore') @observer

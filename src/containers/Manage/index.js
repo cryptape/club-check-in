@@ -1,7 +1,7 @@
 import React from 'react'
 import { inject, observer } from 'mobx-react'
 import { Button, Flex, InputItem } from "antd-mobile"
-import Header from '../../components/Header'
+import { Header } from '../../components'
 import ManageClubDetail from './ManageClubDetail'
 import './manage.css'
 
