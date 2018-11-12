@@ -10,6 +10,7 @@ import './detail.css'
 @inject('detailStore') @observer
 class Detail extends React.Component {
 
+
     render() {
 
         const {

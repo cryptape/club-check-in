@@ -43,6 +43,11 @@ class ClubMemberStore {
         this.memberDataList = memberDataList
     }
 
+    // @action.bound
+    // componentDidMount() {
+    //     log('componentDidMount')
+    // }
+
 }
 
 const clubmemberStore = new ClubMemberStore()

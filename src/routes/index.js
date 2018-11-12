@@ -1,5 +1,5 @@
 import {Provider} from 'mobx-react'
-import {Route, BrowserRouter, Switch} from 'react-router-dom'
+import {Route, HashRouter, Switch} from 'react-router-dom'
 import React from 'react'
 import * as stores from '../stores'
 import {
@@ -16,7 +16,7 @@ import {
 
 export default (
     <Provider {...stores}>
-        <BrowserRouter>
+        <HashRouter>
             <Switch>
                 <Route exact path="/activity" component={Activity}/>
                 <Route exact path="/" component={Home}/>
@@ -28,7 +28,7 @@ export default (
                 <Route exact path="/checkin" component={Checkin}/>
                 <Route exact path="/personal" component={Personal}/>
             </Switch>
-        </BrowserRouter>
+        </HashRouter>
     </Provider>
 )
 
