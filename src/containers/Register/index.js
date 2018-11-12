@@ -1,12 +1,6 @@
 import React from 'react'
-import { observer, inject } from 'mobx-react'
-import {
-  Button,
-  Flex,
-  InputItem,
-  List,
-  ImagePicker,
-} from 'antd-mobile'
+import { inject, observer } from 'mobx-react'
+import { Button, Flex, ImagePicker, InputItem, List, } from 'antd-mobile'
 import { Header } from '../../components'
 import './register.css'
 

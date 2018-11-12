@@ -1,10 +1,6 @@
 import React from 'react'
-import { observer, inject } from 'mobx-react'
-import {
-  Button,
-  Flex,
-  List,
-} from 'antd-mobile'
+import { inject, observer } from 'mobx-react'
+import { Button, Flex, List, } from 'antd-mobile'
 import { Link } from "react-router-dom"
 import './personalPanel.css'
 
@@ -37,12 +33,14 @@ class PersonalPanel extends React.Component {
           </Link>
           <Item className='personal__container--group-button'>
             <Flex justify='center'>
-              <Button icon={joinIcon} onClick={handleJoin}>
+              <Button className='personal__button--join-club' icon={joinIcon} onClick={handleJoin}>
                 加入社团
               </Button>
-              <Button icon={createIcon} onClick={handleCreate}>
-                创建社团
-              </Button>
+              <Link to={'/new'}>
+                <Button icon={createIcon} onClick={handleCreate}>
+                  创建社团
+                </Button>
+              </Link>
             </Flex>
           </Item>
         </List>
