@@ -47,4 +47,8 @@
 .clubDetail__content--rule {
   width: 341px;
   margin: 0 auto;
+  font-family: var(--font-family);
+  font-size: 12px;
+  line-height: 1.5;
+  color: #242b43;
 }

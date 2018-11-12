@@ -13,7 +13,6 @@ class PersonalPanel extends React.Component {
   render() {
     const {
       handleJoin,
-      handleCreate,
       thumbPic,
       joinIcon,
       createIcon,
@@ -36,11 +35,9 @@ class PersonalPanel extends React.Component {
               <Button className='personal__button--join-club' icon={joinIcon} onClick={handleJoin}>
                 加入社团
               </Button>
-              <Link to={'/new'}>
-                <Button icon={createIcon} onClick={handleCreate}>
-                  创建社团
-                </Button>
-              </Link>
+              <Button icon={createIcon} href={'#/new'}>
+                创建社团
+              </Button>
             </Flex>
           </Item>
         </List>

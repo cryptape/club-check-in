@@ -1,9 +1,7 @@
 import React from 'react'
-import { observer, inject } from 'mobx-react'
+import { inject, observer } from 'mobx-react'
 import { Link } from 'react-router-dom'
-import {
-  Flex,
-} from 'antd-mobile'
+import { Flex, } from 'antd-mobile'
 import './clubListItem.css'
 
 @inject('clublistStore') @observer

@@ -18,10 +18,6 @@ class PersonalStore {
     this.createIcon = createIcon
   }
 
-  @action handleCreate = () => {
-    log('handleCreate btn')
-  }
-
   @action handleJoin = () => {
     prompt('加入新社团', '社团ID', [
       { text : '确定', onPress : value => console.log(`输入的内容:${value}`) },

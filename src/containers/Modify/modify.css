@@ -2,26 +2,26 @@
   --font-family: PingFangSC, Arial, sans-serif, serif;
 }
 
-.newClub__input--club-deposit,
-.newClub__input--report-threshold,
-.newClub__container--content,
-.newClub__input--club-name,
-.newClub__content--club-rule-title {
+.modifyClub__input--report-threshold,
+.modifyClub__container--content,
+.modifyClub__input--club-name,
+.modifyClub__input--club-id,
+.modifyClub__content--club-rule-title {
   border-top: 1px solid #ddd;
   font-family: var(--font-family);
 }
 
-.newClub__input--report-threshold {
+.modifyClub__input--report-threshold {
   border-bottom: 1px solid #ddd;
 }
 
-.newClub__container--content {
+.modifyClub__container--content {
   height: 100vh;
   background-color: #fff;
   /*border: 1px red solid;*/
 }
 
-.newClub__content--club-rule-title {
+.modifyClub__content--club-rule-title {
   color: #242b43;
   font-size: 17px;
   padding-left: 15px;
@@ -30,7 +30,7 @@
   padding-top: 12px;
 }
 
-.newClub__content--club-rule {
+.modifyClub__content--club-rule {
   width: 92%;
   margin-top: 15px;
   margin-bottom: 15px;
@@ -49,7 +49,7 @@
   text-align: center;
 }
 
-.newClub__button--create-club {
+.modifyClub__button--confirm-modify {
   font-size: 17px;
   font-weight: 500;
   font-family: var(--font-family);

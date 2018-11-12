@@ -9,7 +9,10 @@ import './manage.css'
 class Manage extends React.Component {
 
   render() {
-
+    const {
+      handleSettle,
+      handleMoney,
+    } = this.props.manageStore
     return (
       <div className='manageClubDetail__container--club'>
         <Header titleName='社团管理' backRoute='./detail'/>
@@ -20,12 +23,12 @@ class Manage extends React.Component {
               className='manageClubDetail__input--increase-money'
               placeholder="金额"
             />
-            <Button className='manageClubDetail__button--increase-money'>
+            <Button className='manageClubDetail__button--increase-money' onClick={handleMoney}>
               增加经费
             </Button>
           </Flex>
         </div>
-        <Button className='manageClubDetail__button--manage'>
+        <Button className='manageClubDetail__button--settle' onClick={handleSettle}>
           活动结算
         </Button>
       </div>

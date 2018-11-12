@@ -16,7 +16,7 @@
 
 .manageClubDetail__button--increase-money {
   color: #28d890;
-  margin-left: 12vw;
+  margin-left: 3vw;
   margin-top: 16px;
   border-radius: 50px;
   font-size: 13px;
@@ -31,7 +31,7 @@
   padding-bottom: 5px;
 }
 
-.manageClubDetail__button--manage {
+.manageClubDetail__button--settle {
   font-size: 17px;
   font-weight: 500;
   font-family: var(--font-family);

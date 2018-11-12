@@ -50,4 +50,8 @@
 .manageClubDetail__content--rule {
   margin-left: 15px;
   margin-right: 15px;
+  font-family: var(--font-family);
+  font-size: 12px;
+  line-height: 1.5;
+  color: #242b43;
 }

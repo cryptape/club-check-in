@@ -8,6 +8,9 @@ import './new.css'
 class New extends React.Component {
 
   render() {
+
+    const { handleCreateClub } = this.props.newStore
+
     return (
       <div className='newClub__container--content'>
         <Header titleName='创建社团' backRoute='./personal'/>
@@ -34,7 +37,7 @@ class New extends React.Component {
           className='newClub__input--report-threshold'
           placeholder="看你心情咯"
         >举报阈值</InputItem>
-        <Button className='manageClubDetail__button--manage'>
+        <Button className='newClub__button--create-club' onClick={handleCreateClub}>
           创建社团
         </Button>
       </div>
