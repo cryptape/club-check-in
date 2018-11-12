@@ -23,13 +23,13 @@ class ClubMember extends React.Component {
 					key={index}
 					className='clubMember__listItem--personal-info'
 					arrow="empty"
-					thumb={data['avatar']}
+					thumb={data.avatar}
 					multipleLine
 				>
 					{data['name']}
 					<Brief>
-						<div>{data['address']}</div>
-						<div>{`社团积分:${data['points']}`}</div>
+						<div>{data.address}</div>
+						<div>{`社团积分:${data.points}`}</div>
 					</Brief>
 				</Item>
 			)

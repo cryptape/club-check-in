@@ -1,6 +1,6 @@
 import React from 'react'
 import {observer, inject} from 'mobx-react'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import {
 	Flex,
 } from 'antd-mobile'
@@ -23,19 +23,16 @@ class ClubListItem extends React.Component {
 					<Flex onClick={handleClubDetail} className='clubListItem__container--club-item'>
 						<div className='clubListItem__container--left'>
 							<div className='clubListItem__content--name'>
-								<span>{data['clubName']}</span>
+								<span>{data.clubName}</span>
 							</div>
 							<ul>
-								<li>{<img src={data['avatar'][0]} alt=""/>}</li>
-								<li>{<img src={data['avatar'][1]} alt=""/>}</li>
-								<li>{<img src={data['avatar'][2]} alt=""/>}</li>
-								<li>{<img src={data['avatar'][3]} alt=""/>}</li>
-								<li>{<img src={data['avatar'][4]} alt=""/>}</li>
-								<li>{<img src={data['avatar'][5]} alt=""/>}</li>
+								{data.avatar.map(
+									(avatar, index) => <li key={index}>{<img src={avatar} alt=""/>}</li>
+									)}
 							</ul>
 						</div>
 						<div className='clubListItem__container--right'>
-							<span>{`ID:${data['clubID']}`}</span>
+							<span>{`ID:${data.clubID}`}</span>
 							<div className='clubListItem__icon--arrow-right'>
 								{arrowRight}
 							</div>
