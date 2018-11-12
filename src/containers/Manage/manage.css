@@ -1,0 +1,44 @@
+:root {
+  --font-family: PingFangSC, Arial, sans-serif, serif;
+}
+
+.manageClubDetail__container--club-info {
+  height: 100vh;
+  background-color: #fff;
+  /*border: 1px red solid;*/
+  border-top: 1px solid #ddd;
+}
+
+.manageClubDetail__input--increase-money {
+  /*border: 1px solid red;*/
+  margin-top: 15px;
+}
+
+.manageClubDetail__button--increase-money {
+  color: #28d890;
+  margin-left: 12vw;
+  margin-top: 16px;
+  border-radius: 50px;
+  font-size: 13px;
+  width: 120px;
+  height: 40px;
+  line-height: 40px;
+  border: solid 1px #28d890 !important;
+}
+
+.manageClubDetail__container--increase-money {
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 5px;
+}
+
+.manageClubDetail__button--manage {
+  font-size: 17px;
+  font-weight: 500;
+  font-family: var(--font-family);
+  color: #fff;
+  background-color: #28d890;
+  position: fixed !important;
+  width: 100%;
+  bottom: 0;
+}
+
