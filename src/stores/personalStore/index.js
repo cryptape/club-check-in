@@ -9,7 +9,7 @@ const log = console.log.bind(console, '### personalStore ')
 const thumbPic = 'avatar.png'
 const joinIcon = <img src="per_join.png" alt=""/>
 const createIcon = <img src="per_create.png" alt=""/>
-const {prompt} = Modal
+const { prompt } = Modal
 
 class PersonalStore {
     constructor() {

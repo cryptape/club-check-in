@@ -1,8 +1,8 @@
 import React from 'react'
 import {observer, inject} from 'mobx-react'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import {
-    Flex, Icon,
+    Flex,
 } from 'antd-mobile'
 import './clubListItem.css'
 
