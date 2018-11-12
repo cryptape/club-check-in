@@ -1,27 +1,27 @@
 .navbar-item {
-    background-color: #ffffff;
-    color: #041405;
-    text-align: center;
-    height: 49px;
-    padding-top: 6px;
-    width: 100%;
-    /*border: 1px solid black;*/
+  background-color: #ffffff;
+  color: #041405;
+  text-align: center;
+  height: 49px;
+  padding-top: 6px;
+  width: 100%;
+  /*border: 1px solid black;*/
 }
 
 .active-nav-item {
-    color: #28d890;
+  color: #28d890;
 }
 
 .navbar-item svg {
-    height: 24px;
-    width: 24px;
-    fill: currentColor;
+  height: 24px;
+  width: 24px;
+  fill: currentColor;
 }
 
 .bottom-nav {
-    height: 49px;
-    bottom: 0;
-    position: fixed;
-    width: 100vw;
+  height: 49px;
+  bottom: 0;
+  position: fixed;
+  width: 100vw;
 }
 

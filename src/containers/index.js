@@ -9,13 +9,13 @@ import Personal from './Personal'
 import Home from './Home'
 
 export {
-	Activity,
-	Register,
-	Detail,
-	Manage,
-	New,
-	Modify,
-	Checkin,
-	Personal,
-	Home,
+  Activity,
+  Register,
+  Detail,
+  Manage,
+  New,
+  Modify,
+  Checkin,
+  Personal,
+  Home,
 }

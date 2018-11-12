@@ -1,16 +1,16 @@
 .detail__container--club-info {
-    height: 170px;
-    /*border: 1px red solid;*/
-    background-color: #fff;
+  height: 170px;
+  /*border: 1px red solid;*/
+  background-color: #fff;
 }
 
 .detail__button--club-manage {
-    font-size: 17px;
-    font-weight: 500;
-    font-family: var(--font-family);
-    color: #fff;
-    background-color: #28d890;
-    position: fixed !important;
-    width: 100%;
-    bottom: 0;
+  font-size: 17px;
+  font-weight: 500;
+  font-family: var(--font-family);
+  color: #fff;
+  background-color: #28d890;
+  position: fixed !important;
+  width: 100%;
+  bottom: 0;
 }

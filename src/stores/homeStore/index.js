@@ -1,9 +1,9 @@
-import { observable, action } from 'mobx'
+import {observable, action} from 'mobx'
 
 class HomeStore {
-	componentDidMount = () => {
-		console.log('hello from homepage')
-	}
+  componentDidMount = () => {
+    console.log('hello from homepage')
+  }
 }
 
 const homeStore = new HomeStore()
