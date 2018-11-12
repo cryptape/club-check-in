@@ -1,15 +1,15 @@
 import React from 'react'
-import {observer, inject} from 'mobx-react'
+import { observer, inject } from 'mobx-react'
 import {
   Button,
   Flex,
   List,
 } from 'antd-mobile'
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom"
 import './personalPanel.css'
 
-const {Item} = List
-const {Brief} = Item
+const { Item } = List
+const { Brief } = Item
 
 @inject('personalStore') @observer
 class PersonalPanel extends React.Component {

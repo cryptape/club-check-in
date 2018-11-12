@@ -1,6 +1,6 @@
 import React from 'react'
-import {observer, inject} from 'mobx-react'
-import {Link} from 'react-router-dom'
+import { observer, inject } from 'mobx-react'
+import { Link } from 'react-router-dom'
 import {
   Flex,
 } from 'antd-mobile'

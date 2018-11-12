@@ -1,6 +1,6 @@
 import React from 'react'
-import {observer, inject} from 'mobx-react'
-import {Header} from '../../components'
+import { observer, inject } from 'mobx-react'
+import { Header } from '../../components'
 import {
   Flex,
 } from 'antd-mobile'

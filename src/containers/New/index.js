@@ -1,5 +1,5 @@
-import React from 'react';
-import {observer, inject} from 'mobx-react';
+import React from 'react'
+import { observer, inject } from 'mobx-react'
 
 @inject('newStore') @observer
 class New extends React.Component {

@@ -1,9 +1,9 @@
 import React from 'react'
-import {observer, inject} from 'mobx-react'
+import { observer, inject } from 'mobx-react'
 import {
   Flex,
 } from 'antd-mobile'
-import {Header, BottomNav} from '../../components'
+import { Header, BottomNav } from '../../components'
 import './home.css'
 
 @inject('personalStore') @observer

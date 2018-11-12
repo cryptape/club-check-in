@@ -1,5 +1,5 @@
 import React from 'react'
-import {observer, inject} from 'mobx-react'
+import { observer, inject } from 'mobx-react'
 import './clubDetail.css'
 
 @inject('clubmemberStore') @observer

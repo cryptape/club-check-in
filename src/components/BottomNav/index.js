@@ -1,11 +1,11 @@
 import React from 'react'
-import {observer, inject} from 'mobx-react'
+import { observer, inject } from 'mobx-react'
 import {
   Flex,
 } from 'antd-mobile'
 import './bottomNav.css'
 
-const NavBarItem = ({className = '', svg, itemName = '', callback}) => (
+const NavBarItem = ({ className = '', svg, itemName = '', callback }) => (
   <div className={`${className} navbar-item`} onClick={callback}>
     {svg}
     <div>{itemName}</div>

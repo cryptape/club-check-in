@@ -1,5 +1,5 @@
-import {Provider} from 'mobx-react'
-import {Route, HashRouter, Switch} from 'react-router-dom'
+import { Provider } from 'mobx-react'
+import { Route, HashRouter, Switch } from 'react-router-dom'
 import React from 'react'
 import * as stores from '../stores'
 import {

@@ -1,12 +1,12 @@
 import React from 'react'
-import {observer, inject} from 'mobx-react'
+import { observer, inject } from 'mobx-react'
 import {
   List,
 } from 'antd-mobile'
 import './clubMember.css'
 
-const {Item} = List
-const {Brief} = Item
+const { Item } = List
+const { Brief } = Item
 
 @inject('clubmemberStore') @observer
 class ClubMember extends React.Component {

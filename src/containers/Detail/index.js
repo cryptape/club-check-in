@@ -1,9 +1,9 @@
 import React from 'react'
-import {observer, inject} from 'mobx-react'
+import { observer, inject } from 'mobx-react'
 import {
   Button,
 } from "antd-mobile"
-import {Header} from '../../components'
+import { Header } from '../../components'
 import ClubMember from './ClubMember'
 import ClubDetail from './ClubDetail'
 import './detail.css'

@@ -1,5 +1,5 @@
 import React from 'react'
-import {observer, inject} from 'mobx-react'
+import { observer, inject } from 'mobx-react'
 import {
   Button,
   Flex,
@@ -7,7 +7,7 @@ import {
   List,
   ImagePicker,
 } from 'antd-mobile'
-import {Header} from '../../components'
+import { Header } from '../../components'
 import './register.css'
 
 @inject('registerStore') @observer

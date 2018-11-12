@@ -1,5 +1,5 @@
 import React from 'react'
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom"
 import {
   Icon,
   NavBar,
@@ -8,7 +8,7 @@ import {
 class Header extends React.Component {
 
   render() {
-    const {titleName} = this.props
+    const { titleName } = this.props
     const icon = this.props.backRoute ? <Link to={this.props.backRoute}><Icon type="left"/></Link> : ''
     return (
       <div className='header'>

@@ -1,4 +1,4 @@
-import {observable, action} from 'mobx'
+import { observable, action } from 'mobx'
 
 const log = console.log.bind(console, '### detailStore ')
 
