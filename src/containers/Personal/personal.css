@@ -1,16 +1,16 @@
-.personal-container {
-    height: 100vh;
-    background-color: #f8fafe;
-    /*border: 1px solid red;*/
+.personal__container--content {
+  height: 100vh;
+  background-color: #f8fafe;
+  /*border: 1px solid red;*/
 }
 
-.personal-panel-club-banner {
-    padding-left: 15px;
-    padding-top: 20px;
-    font-family: PingFangSC, Arial, sans-serif , serif ;
-    font-size: 17px;
-    font-weight: 500;
-    font-style: normal;
-    font-stretch: normal;
-    color: #242b43;
+.personal__content--club-banner {
+  padding-left: 15px;
+  padding-top: 20px;
+  font-family: PingFangSC, Arial, sans-serif, serif;
+  font-size: 17px;
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+  color: #242b43;
 }

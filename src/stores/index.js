@@ -11,15 +11,15 @@ import clublistStore from './clubListStore'
 import clubmemberStore from './clubMemberStore'
 
 export {
-    activityStore,
-    manageStore,
-    registerStore,
-    checkinStore,
-    detailStore,
-    newStore,
-    modifyStore,
-    personalStore,
-    navStore,
-    clublistStore,
-    clubmemberStore,
+  activityStore,
+  manageStore,
+  registerStore,
+  checkinStore,
+  detailStore,
+  newStore,
+  modifyStore,
+  personalStore,
+  navStore,
+  clublistStore,
+  clubmemberStore,
 }

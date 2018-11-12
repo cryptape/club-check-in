@@ -1,0 +1,50 @@
+:root {
+  --font-family: PingFangSC, Arial, sans-serif, serif;
+}
+
+.clubDetail__container--content {
+  border-top: 1px solid #ddd;
+}
+
+.clubDetail__content--name {
+  width: 100vw;
+  text-align: center;
+  font-family: var(--font-family);
+  font-size: 15px;
+  font-weight: 500;
+  color: #242b43;
+  padding-top: 5px;
+}
+
+.clubDetail__container--deposit {
+  margin-top: 16.5px;
+}
+
+.clubDetail__content--deposit {
+  font-family: var(--font-family);
+  color: #28d890;
+  margin-left: 20%;
+}
+
+.clubDetail__content--id {
+  font-family: var(--font-family);
+  color: #898fa3;
+  margin-left: 5.3%;
+}
+
+.clubDetail__content--separate-line {
+  display: inline-block;
+  width: 1px;
+  height: 15px;
+  background-color: #898fa3;
+  margin-left: 5.3%;
+}
+
+.clubDetail__container--deposit-info {
+  margin-bottom: 15px;
+}
+
+.clubDetail__content--rule {
+  width: 341px;
+  margin: 0 auto;
+}

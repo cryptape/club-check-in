@@ -8,19 +8,19 @@ import { observable, action } from 'mobx'
 // }, ];
 
 class RegisterStore {
-    @observable files
+  @observable files
 
-    constructor() {
-        this.files = []
-    }
+  constructor() {
+    this.files = []
+  }
 
-    @action onChange = (files) => {
-        this.files = files
-    }
+  @action onChange = (files) => {
+    this.files = files
+  }
 
-    @action handleRegister = () => {
-        console.log('register button clicked')
-    }
+  @action handleRegister = () => {
+    console.log('register button clicked')
+  }
 }
 
 const registerStore = new RegisterStore()

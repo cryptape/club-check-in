@@ -1,52 +1,50 @@
 :root {
-    --font-family: PingFangSC, Arial, sans-serif, serif;
+  --font-family: PingFangSC, Arial, sans-serif, serif;
 }
 
-.register-container {
-    height: 100vh;
-    background-color: #fff;
+.register__container--content {
+  height: 100vh;
+  background-color: #fff;
+  /*border: 1px red solid;*/
 }
 
 .am-list-item .am-input-label {
-    color: #242b43;
-    font-family: var(--font-family);
+  color: #242b43;
+  font-family: var(--font-family);
 }
 
-.input-register-nickname::before {
-    top: 0;
+.register__input--nickName,
+.register__content--avatar-title {
+  border-top: 1px solid #ddd;
+  font-family: var(--font-family);
 }
 
-.input-register-nickname,
-.register-avatar-title {
-    border-top: 1px solid #ddd;
+.register__content--avatar-title {
+  color: #242b43;
+  font-size: 17px;
+  padding-left: 15px;
+  white-space: nowrap;
+  overflow: hidden;
+  padding-top: 12px;
 }
 
-.register-avatar-title {
-    color: #242b43;
-    font-size: 17px;
-    padding-left: 15px;
-    white-space: nowrap;
-    overflow: hidden;
-    padding-top: 12px;
+.register__img--avatar {
+  padding-left: 33%;
 }
 
-.register-img {
-    padding-left: 33%;
+.register__img--club-logo {
+  width: 83px;
+  height: 19px;
+  margin-top: 62.9%;
 }
 
-.club-logo {
-    width: 83px;
-    height: 19px;
-    margin-top: 62.9%;
-}
-
-.btn-register-join {
-    font-size: 17px;
-    font-weight: 500;
-    font-family: var(--font-family);
-    color: #fff;
-    background-color: #28d890;
-    position: fixed !important;
-    width: 100%;
-    bottom: 0;
+.register__button--finish {
+  font-size: 17px;
+  font-weight: 500;
+  font-family: var(--font-family);
+  color: #fff;
+  background-color: #28d890;
+  position: fixed !important;
+  width: 100%;
+  bottom: 0;
 }
