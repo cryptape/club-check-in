@@ -2,10 +2,6 @@
   --font-family: PingFangSC, Arial, sans-serif, serif;
 }
 
-.clubDetail__container--content {
-  border-top: 1px solid #ddd;
-}
-
 .clubDetail__content--name {
   width: 100vw;
   text-align: center;

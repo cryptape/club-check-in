@@ -1,16 +1,16 @@
 import React from 'react';
-import { observer, inject } from 'mobx-react';
+import { inject, observer } from 'mobx-react'
+import { BottomNav, Header } from "../../components"
 
 @inject('activityStore') @observer
 class Activity extends React.Component {
 
-  handleHi = () => {
-    this.props.eventStore.handleHello()
-  }
-
   render() {
     return (
-      <div onClick={this.handleHi}>Club Activity page</div>
+      <div className='activity__container--content'>
+        <Header titleName='社团圈'/>
+        <BottomNav active={'activity'}/>
+      </div>
     )
   }
 }

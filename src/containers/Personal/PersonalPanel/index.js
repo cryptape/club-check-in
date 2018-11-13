@@ -20,7 +20,6 @@ class PersonalPanel extends React.Component {
 
     return (
       <div className='personal__container--user-info'>
-        <List>
           <Link to={'/register'}>
             <Item
               arrow="horizontal"
@@ -40,7 +39,6 @@ class PersonalPanel extends React.Component {
               </Button>
             </Flex>
           </Item>
-        </List>
       </div>
     )
   }
