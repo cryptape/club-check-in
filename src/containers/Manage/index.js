@@ -21,7 +21,7 @@ class Manage extends React.Component {
           <Flex className='manageClubDetail__container--increase-money' justify='center'>
             <InputItem
               className='manageClubDetail__input--increase-money'
-              placeholder="金额"
+              placeholder='金额'
             />
             <Button className='manageClubDetail__button--increase-money' onClick={handleMoney}>
               增加经费

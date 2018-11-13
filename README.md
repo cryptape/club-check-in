@@ -6,13 +6,13 @@ Front-end of club-check-in
 
 ### Instructions
 
-0.Install all dependency
+0.Install all dependencies
 
 ```shell
 yarn install
 ```
 
-1.Use webpack generate production version
+1.Use webpack to generate production version
 
 ```shell
 yarn build

@@ -30,7 +30,7 @@ class ClubListItem extends React.Component {
               </ul>
             </div>
             <div className='clubListItem__container--right'>
-              <span>{`ID:${data.clubID}`}</span>
+              <span>{`ID: ${data.clubID}`}</span>
               <div className='clubListItem__icon--arrow-right'>
                 {arrowRight}
               </div>

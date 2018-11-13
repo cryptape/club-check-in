@@ -18,7 +18,7 @@ class ManageClubDetail extends React.Component {
               <div className='manageClubDetail__container--deposit-info'>
                 <span className='manageClubDetail__content--deposit'>社团经费：2000.00</span>
                 <div className='manageClubDetail__content--separate-line'></div>
-                <span className='manageClubDetail__content--id'>ID:1001</span>
+                <span className='manageClubDetail__content--id'>ID: 1001</span>
               </div>
               <div className='manageClubDetail__content--rule'>
                 进入本慢跑俱乐部者，每周最少跑1公里，否则给大家发红包，以

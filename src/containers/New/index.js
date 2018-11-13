@@ -31,11 +31,11 @@ class New extends React.Component {
         </Flex>
         <InputItem
           className='newClub__input--club-deposit'
-          placeholder="写了你就别后悔"
+          placeholder='写了你就别后悔'
         >社团经费</InputItem>
         <InputItem
           className='newClub__input--report-threshold'
-          placeholder="看你心情咯"
+          placeholder='看你心情咯'
         >举报阈值</InputItem>
         <Button className='newClub__button--create-club' onClick={handleCreateClub}>
           创建社团

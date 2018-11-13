@@ -1,5 +1,5 @@
 import React from 'react'
-import { observable, action } from 'mobx'
+import { action } from 'mobx'
 import { Modal } from "antd-mobile"
 
 const log = console.log.bind(console, '### manageStore ')
