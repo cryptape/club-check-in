@@ -25,13 +25,17 @@ contract ClubCheckInControl {
     ClubCPlayer ClubPlayer;
     Clubs clubs;
 
+    address public myDataAddress;
+
     constructor (address clubsAddress, address dataAddress, address playAddress)
     public
     {
+        myDataAddress=dataAddress;
+
         ClubPlayer = ClubCPlayer(playAddress);
 
         clubs = Clubs(clubsAddress);
-        clubs.add();
+        clubs.add(dataAddress);
 
         ClubData = ClubCheckInData(dataAddress);
     }

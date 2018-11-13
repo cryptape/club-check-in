@@ -9,10 +9,10 @@ contract ClubCheckInClubs {
         number = 10000;
     }
 
-    function add() public {
-        require(clubs[msg.sender] == 0);
+    function add(address _club) public {
+        require(clubs[_club] == 0);
         number = number + 1;
-        clubs[msg.sender] = number;
+        clubs[_club] = number;
     }
 
 }
