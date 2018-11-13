@@ -4,6 +4,7 @@ import {
   Icon,
   NavBar,
 } from 'antd-mobile'
+import './header.css'
 
 class Header extends React.Component {
 

@@ -18,13 +18,13 @@
   font-family: monospace;
 }
 
-.am-list-body::after {
-  display: none !important;
-}
+/*.am-list-body::after {*/
+  /*display: none !important;*/
+/*}*/
 
-.am-list-line::after {
-  display: none !important;
-}
+/*.am-list-line::after {*/
+  /*display: none !important;*/
+/*}*/
 
 .personal__container--group-button .am-button {
   width: 114px;
