@@ -1,9 +1,7 @@
 import React from 'react'
-import { observer, inject } from 'mobx-react'
+import { inject, observer } from 'mobx-react'
 import { Link } from 'react-router-dom'
-import {
-  Flex,
-} from 'antd-mobile'
+import { Flex, } from 'antd-mobile'
 import './clubListItem.css'
 
 @inject('clublistStore') @observer
@@ -19,7 +17,7 @@ class ClubListItem extends React.Component {
 
     const clubList = clubDataList.map((data, index) => {
       return (
-        <Link key={index} to={'/detail'}>
+        <Link key={index} to={'/detail'} className='clubListItem__container--club-item-link'>
           <Flex onClick={handleClubDetail} className='clubListItem__container--club-item'>
             <div className='clubListItem__container--left'>
               <div className='clubListItem__content--name'>
@@ -32,7 +30,7 @@ class ClubListItem extends React.Component {
               </ul>
             </div>
             <div className='clubListItem__container--right'>
-              <span>{`ID:${data.clubID}`}</span>
+              <span>{`ID: ${data.clubID}`}</span>
               <div className='clubListItem__icon--arrow-right'>
                 {arrowRight}
               </div>

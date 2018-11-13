@@ -2,37 +2,40 @@
   --font-family: PingFangSC, Arial, sans-serif, serif;
 }
 
-.clubDetail__container--content {
-  border-top: 1px solid #ddd;
+.manageClubDetail__container--content {
+  width: 92vw;
+  height: 160px;
+  box-shadow: 0 3px 6px 0 rgba(4, 20, 5, 0.07);
+  margin-top: 15px;
 }
 
-.clubDetail__content--name {
+.manageClubDetail__content--name {
   width: 100vw;
   text-align: center;
   font-family: var(--font-family);
   font-size: 15px;
   font-weight: 500;
   color: #242b43;
-  padding-top: 5px;
+  padding-top: 15px;
 }
 
-.clubDetail__container--deposit {
+.manageClubDetail__container--deposit {
   margin-top: 16.5px;
 }
 
-.clubDetail__content--deposit {
+.manageClubDetail__content--deposit {
   font-family: var(--font-family);
   color: #28d890;
   margin-left: 20%;
 }
 
-.clubDetail__content--id {
+.manageClubDetail__content--id {
   font-family: var(--font-family);
   color: #898fa3;
   margin-left: 5.3%;
 }
 
-.clubDetail__content--separate-line {
+.manageClubDetail__content--separate-line {
   display: inline-block;
   width: 1px;
   height: 15px;
@@ -40,13 +43,13 @@
   margin-left: 5.3%;
 }
 
-.clubDetail__container--deposit-info {
+.manageClubDetail__container--deposit-info {
   margin-bottom: 15px;
 }
 
-.clubDetail__content--rule {
-  width: 341px;
-  margin: 0 auto;
+.manageClubDetail__content--rule {
+  margin-left: 15px;
+  margin-right: 15px;
   font-family: var(--font-family);
   font-size: 12px;
   line-height: 1.5;

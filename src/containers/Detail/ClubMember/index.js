@@ -1,8 +1,6 @@
 import React from 'react'
-import { observer, inject } from 'mobx-react'
-import {
-  List,
-} from 'antd-mobile'
+import { inject, observer } from 'mobx-react'
+import { List, } from 'antd-mobile'
 import './clubMember.css'
 
 const { Item } = List
@@ -29,7 +27,7 @@ class ClubMember extends React.Component {
           {data['name']}
           <Brief>
             <div>{data.address}</div>
-            <div>{`社团积分:${data.points}`}</div>
+            <div>{`社团积分: ${data.points}`}</div>
           </Brief>
         </Item>
       )
