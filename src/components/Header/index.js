@@ -11,7 +11,7 @@ class Header extends React.Component {
     const { titleName } = this.props
     const icon = this.props.backRoute ? <Link to={this.props.backRoute}><Icon type="left"/></Link> : ''
     return (
-      <div className='header'>
+      <div className='header__container--content'>
         <NavBar
           mode="light"
           icon={icon}

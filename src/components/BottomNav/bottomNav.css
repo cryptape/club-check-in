@@ -1,4 +1,4 @@
-.navbar-item {
+.bottomNav__container--nav-item {
   background-color: #ffffff;
   color: #041405;
   text-align: center;
@@ -8,17 +8,17 @@
   /*border: 1px solid black;*/
 }
 
-.active-nav-item {
+.bottomNav__container--nav-item-active {
   color: #28d890;
 }
 
-.navbar-item svg {
+.bottomNav__container--nav-item svg {
   height: 24px;
   width: 24px;
   fill: currentColor;
 }
 
-.bottom-nav {
+.bottomNav__container--content {
   height: 49px;
   bottom: 0;
   position: fixed;

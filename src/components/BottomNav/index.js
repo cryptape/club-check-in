@@ -1,54 +1,30 @@
 import React from 'react'
-import { observer, inject } from 'mobx-react'
-import {
-  Flex,
-} from 'antd-mobile'
+import { Link } from 'react-router-dom'
+import { Flex, } from 'antd-mobile'
+import { activityIcon, checkinIcon, personalIcon, } from './svg'
 import './bottomNav.css'
 
-const NavBarItem = ({ className = '', svg, itemName = '', callback }) => (
-  <div className={`${className} navbar-item`} onClick={callback}>
-    {svg}
-    <div>{itemName}</div>
-  </div>
+const BottomNav = ({ active }) => (
+  <Flex className='bottomNav__container--content'>
+    <Link className='bottomNav__container--nav-item' to={'./activity'}>
+      <div className={active === 'activity' ? 'bottomNav__container--nav-item-active ' : ''}>
+        {activityIcon}
+        <div>活动</div>
+      </div>
+    </Link>
+    <Link className='bottomNav__container--nav-item' to={'./checkin'}>
+      <div className={active === 'checkin' ? 'bottomNav__container--nav-item-active ' : ''}>
+        {checkinIcon}
+        <div>打卡</div>
+      </div>
+    </Link>
+    <Link className='bottomNav__container--nav-item' to={'./personal'}>
+      <div className={active === 'personal' ? 'bottomNav__container--nav-item-active ' : ''}>
+        {personalIcon}
+        <div>个人</div>
+      </div>
+    </Link>
+  </Flex>
 )
-
-@inject('navStore') @observer
-class BottomNav extends React.Component {
-
-  render() {
-
-    const {
-      handleActivity,
-      handleCheckin,
-      handlePersonal,
-      activityIcon,
-      checkinIcon,
-      personalIcon,
-    } = this.props.navStore
-
-    return (
-      <Flex className='bottom-nav'>
-        <NavBarItem
-          className='activity'
-          svg={activityIcon}
-          itemName='活动'
-          callback={handleActivity}
-        />
-        <NavBarItem
-          className='checkin'
-          svg={checkinIcon}
-          itemName='打卡'
-          callback={handleCheckin}
-        />
-        <NavBarItem
-          className='personal active-nav-item'
-          svg={personalIcon}
-          itemName='个人'
-          callback={handlePersonal}
-        />
-      </Flex>
-    )
-  }
-}
 
 export default BottomNav

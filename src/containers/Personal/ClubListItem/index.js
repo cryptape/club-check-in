@@ -7,7 +7,7 @@ import './clubListItem.css'
 @inject('clublistStore') @observer
 class ClubListItem extends React.Component {
 
-  // TODO  if avatar number is less than 6
+  // TODO  Need define a max number of avatar
   render() {
     const {
       handleClubDetail,

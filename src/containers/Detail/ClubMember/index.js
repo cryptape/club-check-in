@@ -27,7 +27,7 @@ class ClubMember extends React.Component {
           {data['name']}
           <Brief>
             <div>{data.address}</div>
-            <div>{`社团积分: ${data.points}`}</div>
+            <div className='clubMember__listItem--personal-points'>{`社团积分: ${data.points}`}</div>
           </Brief>
         </Item>
       )

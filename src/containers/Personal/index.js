@@ -25,7 +25,7 @@ class Personal extends React.Component {
           <div className='personal__content--club-banner'>已加入社团</div>
         </Flex>
         <ClubListItem/>
-        <BottomNav/>
+        <BottomNav active={'personal'}/>
       </div>
     )
   }
