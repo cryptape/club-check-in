@@ -2,7 +2,8 @@ import { action, observable } from 'mobx'
 import { Modal } from "antd-mobile"
 
 const { alert } = Modal
-// data format get from back-end
+
+// data format get from pic server
 
 // const data = [{
 //     url: 'http://ww1.sinaimg.cn/large/d8eb23c4ly1fwsljvzfu2j20sr0srgqb.jpg',
