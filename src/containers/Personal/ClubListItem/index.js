@@ -7,7 +7,6 @@ import './clubListItem.css'
 @inject('clublistStore') @observer
 class ClubListItem extends React.Component {
 
-  // TODO  Need define a max number of avatar
   render() {
     const {
       handleClubDetail,
@@ -25,7 +24,11 @@ class ClubListItem extends React.Component {
               </div>
               <ul>
                 {data.avatar.map(
-                  (avatar, index) => <li key={index}><img src={avatar} alt=""/></li>
+                  (avatar, index) => {
+                    if(index <= 7){
+                      return <li key={index}><img src={avatar} alt=""/></li>
+                    }
+                  }
                 )}
               </ul>
             </div>

@@ -18,3 +18,8 @@
   letter-spacing: normal;
   color: #28d890;
 }
+
+.am-badge-text {
+  margin-left: 10px;
+  margin-bottom: 1px;
+}
