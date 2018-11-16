@@ -8,45 +8,45 @@ const memberDataList = [{
   name : 'realwwy',
   avatar : 'avatar.png',
   address : '0X291302034049012393Ba0414',
-  points : '10'
+  points : '100'
 }, {
-  name : '一个已经结婚的人',
+  name : '梁高宁',
   avatar : 'avatar1.png',
-  address : '0X291302034049012393Ba0414',
-  points : '20'
+  address : '0X291302034049012393Ba0415',
+  points : '2018'
 }, {
   name : '可',
   avatar : 'avatar3.png',
   address : '0X291302034049012393Ba0414',
-  points : '99'
+  points : '990'
 }, {
   name : '南木修思',
   avatar : 'avatar4.png',
   address : '0X291302034049012393Ba0414',
-  points : '45'
+  points : '415'
 }, {
   name : '泉下月出',
   avatar : 'avatar5.png',
   address : '0X291302034049012393Ba0414',
-  points : '34'
+  points : '334'
 }, {
   name : 'Trust you',
   avatar : 'avatar6.png',
   address : '0X291302034049012393Ba0414',
-  points : '79'
+  points : '719'
 },]
 
 class ClubMemberStore {
   @observable memberDataList
 
   constructor() {
-    this.memberDataList = memberDataList
+    this.memberDataList = memberDataList.sort((a,b) => b.points - a.points)
   }
 
-  // @action.bound
-  // componentDidMount() {
-  //     log('componentDidMount')
-  // }
+  // check leaded according to member address
+  @action checkLeader = (address) => {
+    return '0X291302034049012393Ba0415' === address
+  }
 
 }
 

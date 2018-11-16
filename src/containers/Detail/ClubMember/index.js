@@ -1,6 +1,6 @@
 import React from 'react'
 import { inject, observer } from 'mobx-react'
-import { List, Badge, } from 'antd-mobile'
+import { Badge, List, } from 'antd-mobile'
 import './clubMember.css'
 
 const { Item } = List
@@ -12,6 +12,7 @@ class ClubMember extends React.Component {
   render() {
     const {
       memberDataList,
+      checkLeader,
     } = this.props.clubmemberStore
 
     const memberList = memberDataList.map((data, index) => {
@@ -24,7 +25,7 @@ class ClubMember extends React.Component {
           multipleLine
         >
           {data.name}
-          {index === 0 ? <Badge text={'团长'}/> : ''}
+          {checkLeader(data.address) ? <Badge text={'团长'}/> : ''}
           <Brief>
             <div>{data.address}</div>
             <div className='clubMember__listItem--personal-points'>{`社团积分: ${data.points}`}</div>

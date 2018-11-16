@@ -51,6 +51,7 @@ class ClubListStore {
   @action handleClubDetail = () => {
     log('hello')
   }
+
 }
 
 const clublistStore = new ClubListStore()
