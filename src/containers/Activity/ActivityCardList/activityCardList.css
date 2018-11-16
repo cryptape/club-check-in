@@ -1,0 +1,97 @@
+:root {
+  --font-family: PingFangSC, Arial, sans-serif, serif;
+}
+
+.activityCardList__container-content {
+
+}
+
+.activityCard__container-content {
+  border: 1px red solid !important;
+}
+
+.am-card-header-content img {
+  width: 44px;
+  height: 44px;
+  border: solid 1px rgba(153, 153, 153, 0.2);
+  background-color: #d8d8d8;
+  border-radius: 50px;
+  margin-right: 10px;
+}
+
+.activeCard__content-user-name {
+  width: 45px;
+  height: 15px;
+  font-family: var(--font-family);
+  font-size: 15px;
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1;
+  letter-spacing: normal;
+  text-align: center;
+  color: #242b43;
+}
+
+.activeCard__content-club-name {
+  width: 111px;
+  height: 12px;
+  font-family: var(--font-family);
+  font-size: 12px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1;
+  letter-spacing: normal;
+  text-align: center;
+  color: #898fa3;
+  margin-top: 3.5px;
+}
+
+.am-card-body {
+  padding-left: 69px;
+  padding-top: 0;
+}
+
+.am-card-body::before {
+  display: none !important;
+}
+
+.activeCard__container-checkin-content {
+  border: 1px solid red;
+  /*width: 68%;*/
+}
+
+.activeCard__content-checkin-content {
+  font-family: var(--font-family);
+  font-size: 12px;
+  color: #242b43;
+  /*border: 1px solid gold;*/
+}
+
+.activeCard__content-checkin-time {
+  font-family: var(--font-family);
+  font-size: 12px;
+  text-align: left;
+  color: #898fa3;
+  /*border: 1px solid greenyellow;*/
+  margin-top: 10px;
+}
+.activeCard__container--club-item {
+  padding-left: 52px;
+}
+.activeCard__container--club-item li {
+  display: inline;
+}
+
+.activeCard__container--club-item li img {
+  width: 22px;
+  height: 22px;
+  border: solid 1px rgba(153, 153, 153, 0.2);
+  border-radius: 50%;
+}
+
+.am-card-footer-extra img {
+  width: 15px;
+  height: 15px;
+}

@@ -6,12 +6,14 @@ import './register.css'
 
 @inject('registerStore') @observer
 class Register extends React.Component {
-  //TODO should disabled confirm button when there is no nickname or avatar
+  // TODO should disabled confirm button when there is no nickname or avatar
+  // TODO how to detect both nickname and avatar filled
   render() {
     const {
       files,
       onChange,
       handleRegister,
+      isInfoCompleted,
     } = this.props.registerStore
 
     return (
@@ -21,7 +23,8 @@ class Register extends React.Component {
           backRoute='/personal'
         />
         <InputItem
-          placeholder="0X291302034049012393Ba0414"
+          defaultValue='0X291302034049012393Ba0414'
+          disabled={true}
         >注册账号</InputItem>
         <InputItem
           className='register__input--nickName'
@@ -43,7 +46,7 @@ class Register extends React.Component {
         <Flex justify='center'>
           <img className='register__img--club-logo' src="club-logo.png" alt=""/>
         </Flex>
-        <Button className='register__button--finish' onClick={handleRegister}>
+        <Button disabled={!isInfoCompleted} className='register__button--finish' onClick={handleRegister}>
           完成
         </Button>
       </div>

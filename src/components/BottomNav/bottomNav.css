@@ -1,3 +1,7 @@
+.bottomNav__container--content {
+  border-top: 1px solid #ddd;
+}
+
 .bottomNav__container--nav-item {
   background-color: #ffffff;
   color: #041405;

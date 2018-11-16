@@ -1,6 +1,5 @@
 import React from 'react'
 import { inject, observer } from 'mobx-react'
-import { Link } from 'react-router-dom'
 import { Button, } from "antd-mobile"
 import { Header } from '../../components'
 import ClubMember from './ClubMember'
@@ -14,6 +13,8 @@ class Detail extends React.Component {
 
     const {
       handleManageMember,
+      handleQuitClub,
+      isLeader,
     } = this.props.detailStore
 
     return (
@@ -22,11 +23,11 @@ class Detail extends React.Component {
         <div className='detail__container--club-info'>
           <ClubDetail/>
           <ClubMember/>
-          <Link to={'./manage'}>
-            <Button className='detail__button--club-manage' onClick={handleManageMember}>
-              管理
-            </Button>
-          </Link>
+          {isLeader ? <Button href='#/manage' className='detail__button--club-manage' onClick={handleManageMember}>
+            管理
+          </Button> : <Button className='detail__button--club-manage' onClick={handleQuitClub}>
+            退出
+          </Button>}
         </div>
       </div>
     )
