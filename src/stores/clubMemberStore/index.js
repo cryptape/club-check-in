@@ -43,7 +43,7 @@ class ClubMemberStore {
     this.memberDataList = memberDataList.sort((a,b) => b.points - a.points)
   }
 
-  // check leaded according to member address
+  // check leader according to member address
   @action checkLeader = (address) => {
     return '0X291302034049012393Ba0415' === address
   }
