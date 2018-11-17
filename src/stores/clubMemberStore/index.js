@@ -1,5 +1,5 @@
 import React from "react"
-import { observable, action } from 'mobx'
+import { action, observable } from 'mobx'
 
 const log = console.log.bind(console, '### clubMemberStore ')
 
@@ -40,7 +40,7 @@ class ClubMemberStore {
   @observable memberDataList
 
   constructor() {
-    this.memberDataList = memberDataList.sort((a,b) => b.points - a.points)
+    this.memberDataList = memberDataList.sort((a, b) => b.points - a.points)
   }
 
   // check leader according to member address

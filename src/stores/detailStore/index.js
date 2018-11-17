@@ -9,6 +9,7 @@ class DetailStore {
   constructor() {
     this.isLeader = true
   }
+
   // TODO: how to forbid club member enter #/mange url directly go to the manage page?
   @action handleManageMember = () => {
     log('manage club member')

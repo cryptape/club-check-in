@@ -1,8 +1,6 @@
-import { observable, action } from 'mobx'
+import { action } from 'mobx'
 import React from "react"
-import {
-  Modal,
-} from 'antd-mobile'
+import { Modal, } from 'antd-mobile'
 
 const log = console.log.bind(console, '### personalStore ')
 

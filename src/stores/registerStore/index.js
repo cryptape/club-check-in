@@ -1,4 +1,4 @@
-import { observable, action, autorun } from 'mobx'
+import { action, observable } from 'mobx'
 
 // data format get from back-end
 
@@ -8,13 +8,17 @@ import { observable, action, autorun } from 'mobx'
 // }, ];
 const log = console.log.bind(console, '### registerStore ')
 
+const registerAddress = '0X291302034049012393Ba0414'
+
 class RegisterStore {
   @observable files
   @observable isInfoCompleted
+  @observable registerAddress
 
   constructor() {
     this.files = []
     this.isInfoCompleted = false
+    this.registerAddress = registerAddress
   }
 
   @action onChange = (files) => {

@@ -1,18 +1,8 @@
 import { Provider } from 'mobx-react'
-import { Route, HashRouter, Switch } from 'react-router-dom'
+import { HashRouter, Route, Switch } from 'react-router-dom'
 import React from 'react'
 import * as stores from '../stores'
-import {
-  Activity,
-  Register,
-  Detail,
-  Manage,
-  New,
-  Modify,
-  Checkin,
-  Personal,
-  Home,
-} from "../containers"
+import { Activity, Checkin, Detail, Home, Manage, Modify, New, Personal, Register, } from "../containers"
 
 export default (
   <Provider {...stores}>

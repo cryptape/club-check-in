@@ -24,7 +24,7 @@ class ClubListItem extends React.Component {
               </div>
               <ul>
                 {data.avatar.map((avatar, index) => {
-                  if(index <= 7) {
+                  if (index <= 7) {
                     return <li key={index}><img src={avatar} alt=""/></li>
                   }
                 })}
@@ -41,8 +41,13 @@ class ClubListItem extends React.Component {
       )
     })
     return (
-      <div className='clubList__container--content'>
-        {clubList}
+      <div>
+        <Flex>
+          <div className='personal__content--club-banner'>已加入社团</div>
+        </Flex>
+        <div className='clubList__container--content'>
+          {clubList}
+        </div>
       </div>
     )
   }

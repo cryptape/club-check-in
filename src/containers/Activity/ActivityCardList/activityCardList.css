@@ -77,9 +77,11 @@
   /*border: 1px solid greenyellow;*/
   margin-top: 10px;
 }
+
 .activeCard__container--club-item {
   padding-left: 52px;
 }
+
 .activeCard__container--club-item li {
   display: inline;
 }

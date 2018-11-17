@@ -1,4 +1,4 @@
-import { observable, action } from 'mobx'
+import { action, observable } from 'mobx'
 import React from "react";
 
 const log = console.log.bind(console, '### clubListStore ')
@@ -18,7 +18,7 @@ const clubDataList = [{
   clubID : 1003,
 }, {
   clubName : 'Cryptape篮球社',
-  avatar : ['avatar.png', 'avatar1.png', 'avatar6.png', 'avatar3.png', 'avatar4.png', 'avatar5.png','avatar.png', 'avatar1.png',],
+  avatar : ['avatar.png', 'avatar1.png', 'avatar6.png', 'avatar3.png', 'avatar4.png', 'avatar5.png', 'avatar.png', 'avatar1.png',],
   clubID : 1004,
 }, {
   clubName : '小黑裙俱乐部',

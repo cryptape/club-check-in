@@ -10,13 +10,13 @@ class ManageClubDetail extends React.Component {
     return (
       <Flex justify='center'>
         <Link to={'./modify'}>
-          <div className='manageClubDetail__container--content'>
+          <div className='manageClubDetail__content--container'>
             <div className='manageClubDetail__content--name'>
               Cryptape慢跑俱乐部
             </div>
-            <div className='manageClubDetail__container--deposit'>
-              <div className='manageClubDetail__container--deposit-info'>
-                <span className='manageClubDetail__content--deposit'>社团经费：2000.00</span>
+            <div className='manageClubDetail__container--funding'>
+              <div className='manageClubDetail__container--funding-info'>
+                <span className='manageClubDetail__content--funding'>社团经费：2000.00</span>
                 <div className='manageClubDetail__content--separate-line'></div>
                 <span className='manageClubDetail__content--id'>ID: 1001</span>
               </div>

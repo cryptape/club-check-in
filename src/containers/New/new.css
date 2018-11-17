@@ -6,15 +6,11 @@
   display: none !important;
 }
 
-.newClub__input--club-deposit,
+.newClub__input--club-funding,
 .newClub__input--report-threshold,
 .newClub__content--club-rule-title {
   border-top: 1px solid #ddd;
   font-family: var(--font-family);
-}
-
-.newClub__input--report-threshold {
-  border-bottom: 1px solid #ddd;
 }
 
 .newClub__container--content {
@@ -22,34 +18,6 @@
   background-color: #fff;
   font-family: var(--font-family);
   /*border: 1px red solid;*/
-}
-
-.newClub__content--club-rule-title {
-  color: #242b43;
-  font-size: 17px;
-  padding-left: 15px;
-  white-space: nowrap;
-  overflow: hidden;
-  padding-top: 12px;
-}
-
-.newClub__content--club-rule {
-  width: 92%;
-  margin-top: 15px;
-  margin-bottom: 15px;
-  border: solid 1px #e8ebf3;
-  border-radius: 10px;
-}
-
-.am-textarea-control textarea {
-  font-size: 12px;
-}
-
-.am-textarea-count {
-  border: 1px solid #ddd;
-  border-radius: 50px;
-  width: 65px;
-  text-align: center;
 }
 
 .newClub__button--create-club {

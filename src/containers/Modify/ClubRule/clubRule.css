@@ -1,0 +1,28 @@
+.modifyClub__content--club-rule-title {
+  color: #242b43;
+  font-size: 17px;
+  padding-left: 15px;
+  white-space: nowrap;
+  overflow: hidden;
+  padding-top: 12px;
+}
+
+.modifyClub__content--club-rule {
+  width: 92%;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  border: solid 1px #e8ebf3;
+  border-radius: 10px;
+}
+
+.am-textarea-control textarea {
+  font-size: 12px;
+  color: #898fa3;
+}
+
+.am-textarea-count {
+  border: 1px solid #ddd;
+  border-radius: 50px;
+  width: 65px;
+  text-align: center;
+}
