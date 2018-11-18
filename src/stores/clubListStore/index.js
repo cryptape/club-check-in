@@ -46,6 +46,7 @@ class ClubListStore {
   constructor() {
     this.clubDataList = clubDataList
     this.arrowRight = arrowRight
+    this.maxAvatars = 7
   }
 
   @action handleClubDetail = () => {

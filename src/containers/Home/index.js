@@ -4,7 +4,7 @@ import { Flex, } from 'antd-mobile'
 import { BottomNav, Header } from '../../components'
 import './home.css'
 
-@inject('personalStore') @observer
+
 class Home extends React.Component {
 
   render() {

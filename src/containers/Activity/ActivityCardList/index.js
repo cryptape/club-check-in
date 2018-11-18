@@ -10,14 +10,17 @@ import './activityCardList.css'
 class ActivityCardList extends React.Component {
 
   render() {
-    const { activityDataList } = this.props.activityStore
+    const {
+      activityDataList,
+      maxAvatars,
+    } = this.props.activityStore
 
     const activityCardList = activityDataList.map((card, index) => {
       return (
         <Card key={index} className='activityCard__container-content'>
           <CardHeader memberName={card.name} clubName={card.clubName} avatar={card.avatar}/>
           <CardBody checkinContent={card.checkinContent} checkinTime={card.checkinTime}/>
-          <CardFooter thumbsUpMembers={card.thumbsUpMembers}/>
+          <CardFooter thumbsUpMembers={card.thumbsUpMembers} maxAvatars={maxAvatars}/>
         </Card>
       )
     })

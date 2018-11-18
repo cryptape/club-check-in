@@ -12,6 +12,7 @@ class ClubListItem extends React.Component {
       handleClubDetail,
       clubDataList,
       arrowRight,
+      maxAvatars,
     } = this.props.clublistStore
 
     const clubList = clubDataList.map((data, index) => {
@@ -24,7 +25,7 @@ class ClubListItem extends React.Component {
               </div>
               <ul>
                 {data.avatar.map((avatar, index) => {
-                  if (index <= 7) {
+                  if (index <= maxAvatars) {
                     return <li key={index}><img src={avatar} alt=""/></li>
                   }
                 })}

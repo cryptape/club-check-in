@@ -13,7 +13,7 @@ const RegisterAvatar = ({ files, onChange }) => {
             files={files}
             length={2}
             onChange={onChange}
-            selectable={files.length === 0}
+            selectable={!files.length}
           />
         </div>
       </Flex.Item>

@@ -25,6 +25,7 @@ class ActivityStore {
 
   constructor() {
     this.activityDataList = activityDataList
+    this.maxAvatars = 7
   }
 
   @action handleHello = () => {

@@ -2,14 +2,14 @@ import React from "react"
 import { Card } from "antd-mobile"
 import './cardFooter.css'
 
-const CardFooter = ({ thumbsUpMembers }) => {
+const CardFooter = ({ thumbsUpMembers, maxAvatars }) => {
 
   return (
     <Card.Footer
       content={
         <ul className='activityCard__container--club-item'>
           {thumbsUpMembers.map((avatar, index) => {
-            if (index <= 7) {
+            if (index <= maxAvatars) {
               return <li key={index}><img src={avatar} alt=""/></li>
             }
           })}
