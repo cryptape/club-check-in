@@ -1,5 +1,6 @@
 import React from 'react'
 import { Flex, List, Picker } from 'antd-mobile'
+import './clubSelect.css'
 
 const ClubSelect = ({ clubName, handleSelectClub }) => {
   return (

@@ -1,5 +1,6 @@
 import React from "react"
 import { Flex, ImagePicker } from "antd-mobile"
+import './checkinPic.css'
 
 const CheckinPic = ({ files, onChange }) => {
   return (

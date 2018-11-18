@@ -1,0 +1,12 @@
+.checkin__container--club-select {
+  margin-top: 15px;
+  border: solid 1px #e8ebf3;
+  width: 92%;
+}
+
+/*content of club name*/
+.checkin__container--club-select .am-list-extra {
+  font-size: 12px !important;
+  flex-basis: 90% !important;
+  text-align: left !important;
+}
