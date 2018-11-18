@@ -30,3 +30,8 @@
   width: 100%;
   bottom: 0;
 }
+
+.inactive {
+  color: #fff !important;
+  background-color: #bdc1ce;
+}

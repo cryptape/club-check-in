@@ -8,16 +8,17 @@ import { action, computed, observable } from 'mobx'
 // }, ];
 const log = console.log.bind(console, '### registerStore ')
 
+// address must get from Neuron-Web
 const registerAddress = '0X291302034049012393Ba0414'
 
 class RegisterStore {
   @observable files
-  @observable name
+  @observable registerName
   @observable registerAddress
 
   constructor() {
     this.files = []
-    this.name = ''
+    this.registerName = ''
     this.registerAddress = registerAddress
   }
 
@@ -25,10 +26,11 @@ class RegisterStore {
   @action onRegisterAvatarChange = (files) => {
     // log('files', files)
     this.files = files
+    log(this.files.length)
   }
 
   @action onRegisterAddressChange = (value) => {
-    this.name = value
+    this.registerName = value
   }
 
   @action handleRegister = () => {
@@ -37,7 +39,7 @@ class RegisterStore {
 
   // to check all info blanks are filled
   @computed get isInfoCompleted() {
-    return this.name && this.files.length === 1
+    return this.registerName && this.files.length === 1
   }
 
 }

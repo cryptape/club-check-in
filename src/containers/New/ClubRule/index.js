@@ -2,7 +2,7 @@ import React from "react"
 import { Flex, TextareaItem } from "antd-mobile"
 import './clubRule.css'
 
-const ClubRule = () => {
+const ClubRule = ({ onChange }) => {
   return (
     <div>
       <div className='newClub__content--club-rule-title'>
@@ -14,6 +14,9 @@ const ClubRule = () => {
           placeholder='有什么要嘱咐团员的都写在这里吧'
           rows={8}
           count={180}
+          onChange={(val) => {
+            onChange(val, 'clubRule')
+          }}
         />
       </Flex>
     </div>

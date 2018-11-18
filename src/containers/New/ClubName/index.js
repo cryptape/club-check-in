@@ -1,11 +1,14 @@
 import React from "react"
 import { InputItem } from "antd-mobile"
 
-const ClubName = () => {
+const ClubName = ({ onChange }) => {
   return (
     <InputItem
       className='newClub__input--club-name'
       placeholder='取一个个性的昵称吧n(*≧▽≦*)n'
+      onChange={(val) => {
+        onChange(val, 'clubName')
+      }}
     >社团名称</InputItem>
   )
 }

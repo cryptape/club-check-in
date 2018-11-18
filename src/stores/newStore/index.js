@@ -1,5 +1,5 @@
 import React from "react"
-import { action } from 'mobx'
+import { action, computed, observable } from 'mobx'
 import { Modal } from "antd-mobile"
 
 const log = console.log.bind(console, '### newStore ')
@@ -7,6 +7,17 @@ const log = console.log.bind(console, '### newStore ')
 const { alert } = Modal
 
 class NewStore {
+  @observable clubName
+  @observable clubRule
+  @observable clubFunding
+  @observable reportThreshold
+
+  constructor() {
+    this.clubName = ''
+    this.clubRule = ''
+    this.clubFunding = ''
+    this.reportThreshold = ''
+  }
 
   handleOK = () => {
     log('点击了是')
@@ -21,6 +32,14 @@ class NewStore {
       { text : '否', onPress : this.handleCancel },
       { text : '是', onPress : this.handleOK },
     ])
+  }
+
+  @action onInfoChange = (value, infoType) => {
+    this[infoType] = value
+  }
+
+  @computed get isInfoCompleted() {
+    return this.clubName && this.clubRule && this.clubFunding && this.reportThreshold
   }
 }
 

@@ -1,7 +1,7 @@
 import React from "react";
 import { Flex, ImagePicker } from "antd-mobile"
 
-const RegisterAvatar = ({files, onChange}) => {
+const RegisterAvatar = ({ files, onChange }) => {
   return (
     <div>
       <div className='register__content--avatar-title'>

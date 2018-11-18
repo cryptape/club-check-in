@@ -1,6 +1,5 @@
 import React from 'react'
 import { inject, observer } from 'mobx-react'
-import { Button, } from "antd-mobile"
 import { Header } from '../../components'
 import ClubMember from './ClubMember'
 import ClubDetail from './ClubDetail'

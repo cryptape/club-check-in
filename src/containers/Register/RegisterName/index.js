@@ -1,8 +1,8 @@
 import React from "react"
 import { InputItem } from "antd-mobile"
 
-const RegisterName = ({onChange}) => {
-  return(
+const RegisterName = ({ onChange }) => {
+  return (
     <InputItem
       className='register__input--nickName'
       placeholder="取一个n(*≧▽≦*)n昵称"
