@@ -9,7 +9,7 @@ const joinIcon = <img src="per_join.png" alt=""/>
 const createIcon = <img src="per_create.png" alt=""/>
 const { prompt } = Modal
 
-class PersonalStore {
+class UserStore {
   constructor() {
     this.thumbPic = thumbPic
     this.joinIcon = joinIcon
@@ -24,7 +24,7 @@ class PersonalStore {
 
 }
 
-const personalStore = new PersonalStore()
+const userStore = new UserStore()
 
-export default personalStore
+export default userStore
 

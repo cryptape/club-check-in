@@ -9,10 +9,6 @@ import './checkin.css'
 
 @inject('checkinStore') @observer
 class Checkin extends React.Component {
-  constructor() {
-    super()
-
-  }
 
   render() {
 

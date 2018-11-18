@@ -1,10 +1,10 @@
-.personal__container--content {
+.user__container--content {
   height: 100vh;
   background-color: #f8fafe;
   /*border: 1px solid red;*/
 }
 
-.personal__content--club-banner {
+.user__content--club-banner {
   padding-left: 15px;
   padding-top: 20px;
   font-family: PingFangSC, Arial, sans-serif, serif;

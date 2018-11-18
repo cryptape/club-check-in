@@ -43,7 +43,7 @@ class ClubListItem extends React.Component {
     return (
       <div>
         <Flex>
-          <div className='personal__content--club-banner'>已加入社团</div>
+          <div className='user__content--club-banner'>已加入社团</div>
         </Flex>
         <div className='clubList__container--content'>
           {clubList}

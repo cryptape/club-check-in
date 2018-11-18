@@ -21,7 +21,7 @@ class New extends React.Component {
 
     return (
       <div className='newClub__container--content'>
-        <Header titleName='创建社团' backRoute='./personal'/>
+        <Header titleName='创建社团' backRoute='./user'/>
         <ClubName onChange={onInfoChange}/>
         <ClubRule onChange={onInfoChange}/>
         <ClubFunding onChange={onInfoChange}/>

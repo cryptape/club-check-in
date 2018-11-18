@@ -1,0 +1,12 @@
+:root {
+  --font-family: PingFangSC, Arial, sans-serif, serif;
+}
+
+.user__container--user-info {
+  height: 147px;
+  box-shadow: 0 3px 6px 0 rgba(4, 20, 5, 0.05);
+  background-color: #ffffff;
+  /*text-align: center;*/
+}
+
+

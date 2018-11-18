@@ -16,7 +16,7 @@ const checkinIcon = <svg xmlns="http://www.w3.org/2000/svg" width="40" height="4
   </g>
 </svg>
 
-const personalIcon = <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40">
+const userIcon = <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40">
   <g>
     <path fill="#FFF" fillOpacity=".01" d="M0 0h40v40H0z"/>
     <path
@@ -27,6 +27,6 @@ const personalIcon = <svg xmlns="http://www.w3.org/2000/svg" width="40" height="
 export {
   activityIcon,
   checkinIcon,
-  personalIcon,
+  userIcon,
 }
 

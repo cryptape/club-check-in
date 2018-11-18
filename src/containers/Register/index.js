@@ -22,7 +22,7 @@ class Register extends React.Component {
 
     return (
       <div className='register__container--content'>
-        <Header titleName='用户设置' backRoute='/personal'/>
+        <Header titleName='用户设置' backRoute='/user'/>
         <RegisterAddress registerAddress={registerAddress}/>
         <RegisterName onChange={onRegisterAddressChange}/>
         <RegisterAvatar files={files} onChange={onRegisterAvatarChange}/>
