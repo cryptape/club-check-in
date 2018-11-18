@@ -12,13 +12,13 @@ class Manage extends React.Component {
   render() {
     const {
       handleSettle,
-      handleMoney,
+      handleFunding,
     } = this.props.manageStore
     return (
       <div className='manageClubDetail__container--content'>
         <Header titleName='社团管理' backRoute='./detail'/>
         <ManageClubDetail/>
-        <IncreaseFunding handleMoney={handleMoney}/>
+        <IncreaseFunding handleMoney={handleFunding}/>
         <Button className='manageClubDetail__button--settle' onClick={handleSettle}>
           活动结算
         </Button>

@@ -29,7 +29,7 @@ class ManageStore {
     ])
   }
 
-  @action handleMoney = () => {
+  @action handleFunding = () => {
     alert('通知', `社长你真有钱！`, [
       { text : '确定', onPress : this.handleIncrease },
     ])

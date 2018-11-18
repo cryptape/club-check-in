@@ -1,4 +1,4 @@
-import { action, observable } from 'mobx'
+import { action, computed, observable } from 'mobx'
 
 // data format get from back-end
 
@@ -12,22 +12,34 @@ const registerAddress = '0X291302034049012393Ba0414'
 
 class RegisterStore {
   @observable files
-  @observable isInfoCompleted
+  @observable name
   @observable registerAddress
 
   constructor() {
     this.files = []
-    this.isInfoCompleted = false
+    this.name = ''
     this.registerAddress = registerAddress
   }
 
-  @action onChange = (files) => {
+
+  @action onRegisterAvatarChange = (files) => {
+    // log('files', files)
     this.files = files
+  }
+
+  @action onRegisterAddressChange = (value) => {
+    this.name = value
   }
 
   @action handleRegister = () => {
     console.log('register button clicked')
   }
+
+  // to check all info blanks are filled
+  @computed get isInfoCompleted() {
+    return this.name && this.files.length === 1
+  }
+
 }
 
 const registerStore = new RegisterStore()

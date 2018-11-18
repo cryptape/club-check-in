@@ -10,23 +10,22 @@ import './register.css'
 
 @inject('registerStore') @observer
 class Register extends React.Component {
-  // TODO should disabled confirm button when there is no nickname or avatar
   // TODO how to detect both nickname and avatar filled
   render() {
     const {
       files,
       registerAddress,
-      onChange,
+      onRegisterAvatarChange,
+      onRegisterAddressChange,
       handleRegister,
       isInfoCompleted,
     } = this.props.registerStore
-
     return (
       <div className='register__container--content'>
         <Header titleName='用户设置' backRoute='/personal'/>
         <RegisterAddress registerAddress={registerAddress}/>
-        <RegisterName/>
-        <RegisterAvatar files={files} onChange={onChange}/>
+        <RegisterName onChange={onRegisterAddressChange}/>
+        <RegisterAvatar files={files} onChange={onRegisterAvatarChange}/>
         <ClubLogo/>
         <Button disabled={!isInfoCompleted} className='register__button--finish' onClick={handleRegister}>
           完成
