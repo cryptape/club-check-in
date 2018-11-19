@@ -19,7 +19,11 @@ class ActivityCardList extends React.Component {
       return (
         <Card key={index} className='activityCard__container-content'>
           <CardHeader memberName={card.name} clubName={card.clubName} avatar={card.avatar}/>
-          <CardBody checkinContent={card.checkinContent} checkinTime={card.checkinTime}/>
+          <CardBody
+            checkinContent={card.checkinContent}
+            checkinTime={card.checkinTime}
+            postPic={card.postPic}
+          />
           <CardFooter thumbsUpMembers={card.thumbsUpMembers} maxAvatars={maxAvatars}/>
         </Card>
       )

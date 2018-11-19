@@ -17,7 +17,7 @@ const CardFooter = ({ thumbsUpMembers, maxAvatars }) => {
       }
       extra={
         <div>
-          <img src={'report_highlight.png'} alt=""/>
+          {/*<img src={'report_highlight.png'} alt=""/>*/}
           <div>被举报次数过多，已扣分</div>
         </div>}
     />
