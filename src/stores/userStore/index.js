@@ -1,12 +1,11 @@
-import { action } from 'mobx'
 import React from "react"
+import { action } from 'mobx'
 import { Modal, } from 'antd-mobile'
+import {createIcon, joinIcon} from "./svg"
 
 const log = console.log.bind(console, '### personalStore ')
 
 const thumbPic = 'avatar.png'
-const joinIcon = <img src="per_join.png" alt=""/>
-const createIcon = <img src="per_create.png" alt=""/>
 const { prompt } = Modal
 
 class UserStore {
