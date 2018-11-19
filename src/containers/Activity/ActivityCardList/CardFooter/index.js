@@ -1,9 +1,9 @@
 import React from "react"
-import { Card } from "antd-mobile"
-import { reportIcon, thumbUpIcon } from './svg'
+import { Card, } from "antd-mobile"
+import FooterExtra from './FooterExtra'
 import './cardFooter.css'
 
-const CardFooter = ({ thumbsUpMembers, maxAvatars }) => {
+const CardFooter = ({ thumbsUpMembers, maxAvatars, thumbsUpTimes, hasReported, hasforbiddened }) => {
 
   return (
     <Card.Footer
@@ -17,11 +17,12 @@ const CardFooter = ({ thumbsUpMembers, maxAvatars }) => {
         </ul>
       }
       extra={
-        <div>
-          {reportIcon}
-          {thumbUpIcon}
-        </div>
-        }
+        <FooterExtra
+          thumbsUpTimes={thumbsUpTimes}
+          hasReported={hasReported}
+          hasforbiddened={hasforbiddened}
+        />
+      }
     />
   )
 }

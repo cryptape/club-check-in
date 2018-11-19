@@ -24,7 +24,13 @@ class ActivityCardList extends React.Component {
             checkinTime={card.checkinTime}
             postPic={card.postPic}
           />
-          <CardFooter thumbsUpMembers={card.thumbsUpMembers} maxAvatars={maxAvatars}/>
+          <CardFooter
+            thumbsUpMembers={card.thumbsUpMembers}
+            maxAvatars={maxAvatars}
+            thumbsUpTimes={card.thumbsUpTimes}
+            hasReported={card.hasReported}
+            hasforbiddened={card.hasforbiddened}
+          />
         </Card>
       )
     })

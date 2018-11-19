@@ -11,7 +11,7 @@ class ClubListItem extends React.Component {
     const {
       handleClubDetail,
       clubDataList,
-      arrowRight,
+      clubListArrow,
       maxAvatars,
     } = this.props.clublistStore
 
@@ -34,7 +34,7 @@ class ClubListItem extends React.Component {
             <div className='clubListItem__container--right'>
               <span>{`ID: ${data.clubID}`}</span>
               <div className='clubListItem__icon--arrow-right'>
-                {arrowRight}
+                {clubListArrow}
               </div>
             </div>
           </Flex>

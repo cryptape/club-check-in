@@ -83,7 +83,7 @@
   padding-left: 40px;
 }
 
-.clubListItem__icon--arrow-right img {
+.clubListItem__icon--arrow-right svg {
   width: 10px;
   height: 20px;
 }

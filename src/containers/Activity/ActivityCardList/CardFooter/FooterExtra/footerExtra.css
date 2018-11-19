@@ -1,0 +1,21 @@
+.activityCard__container--extra-info {
+
+}
+
+.activityCard__container-thumb-up {
+  color: #0fd991;
+}
+
+.activityCard__container-report {
+
+}
+
+.activityCard__container-forbiddened {
+  color: #de4239;
+}
+
+.am-card-footer-extra svg {
+  width: 22px;
+  height: 22px;
+  fill: currentColor;
+}

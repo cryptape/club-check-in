@@ -5,9 +5,6 @@ import UserInfo from './UserInfo'
 import ClubButton from './ClubButton'
 import './userPanel.css'
 
-const { Item } = List
-const { Brief } = Item
-
 @inject('userStore') @observer
 class UserlPanel extends React.Component {
 
