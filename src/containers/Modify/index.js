@@ -16,6 +16,8 @@ class Modify extends React.Component {
     const {
       handleConfirmModify,
       clubInfo,
+      onInfoChange,
+      hasContentChange,
     } = this.props.modifyStore
 
     return (
@@ -24,9 +26,13 @@ class Modify extends React.Component {
         <div className='modifyClub__container--content'>
           <ClubName clubName={clubInfo.clubName}/>
           <ClubID clubID={clubInfo.clubID}/>
-          <ClubRule clubRule={clubInfo.clubRule}/>
-          <ReportThreshold reportThreshold={clubInfo.reportThreshold}/>
-          <Button className='modifyClub__button--confirm-modify' onClick={handleConfirmModify}>
+          <ClubRule onChange={onInfoChange} clubRule={clubInfo.clubRule}/>
+          <ReportThreshold onChange={onInfoChange} reportThreshold={clubInfo.reportThreshold}/>
+          <Button
+            disabled={!hasContentChange}
+            className={`modifyClub__button--confirm-modify ${!hasContentChange ? 'inactive' : ''}`}
+            onClick={handleConfirmModify}
+          >
             确认修改
           </Button>
         </div>

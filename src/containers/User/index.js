@@ -1,6 +1,6 @@
 import React from 'react'
 import { inject, observer } from 'mobx-react'
-import { Header, BottomNav } from '../../components'
+import { BottomNav, Header } from '../../components'
 import UserPanel from './UserPanel'
 import ClubListItem from './ClubListItem'
 import './user.css'

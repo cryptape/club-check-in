@@ -1,6 +1,4 @@
 import React from 'react'
-import { inject, observer } from 'mobx-react'
-import { Flex, } from 'antd-mobile'
 import { BottomNav, Header } from '../../components'
 import './home.css'
 

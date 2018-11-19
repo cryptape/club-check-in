@@ -1,6 +1,6 @@
 import { action, observable } from 'mobx'
 import React from "react"
-import {clubDataList} from "../../mockData"
+import { clubDataList } from "../../mockData"
 
 const log = console.log.bind(console, '### clubListStore ')
 
