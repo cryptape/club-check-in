@@ -3,10 +3,10 @@ import { Flex } from "antd-mobile"
 import { reportIcon, thumbUpIcon } from "../svg"
 import './footerExtra.css'
 
-const FooterExtra = ({ thumbsUpTimes, hasReported, hasforbiddened }) => {
+const FooterExtra = ({ thumbUpTimes, hasReported, hasThumbUp, hasforbiddened }) => {
   return (
     <div className='activityCard__container--extra-info'>
-      {!hasforbiddened ?
+      {hasforbiddened ?
         <Flex justify='center'>
           <div className='activityCard__container-forbiddened'>
             {reportIcon} 被举报次数过多，已扣分
@@ -14,8 +14,8 @@ const FooterExtra = ({ thumbsUpTimes, hasReported, hasforbiddened }) => {
         </Flex>
         :
         <Flex justify='center'>
-          <div className='activityCard__container-thumb-up'>
-            {thumbUpIcon} {thumbsUpTimes}
+          <div className={`activityCard__container-thumb-up ${hasThumbUp ? 'thumbUpActive' : ''}`}>
+            {thumbUpIcon} {thumbUpTimes}
           </div>
           {hasReported ?
             <div className='activityCard__container-report'>

@@ -6,7 +6,7 @@ const CardBody = ({ checkinContent, checkinTime, postPic }) => {
 
   return (
     <Card.Body>
-      <Flex justify='center'>
+      <Flex justify={checkinContent ? 'center':''}>
         <div className='activityCard__container-checkin-content'>
           {checkinContent ? <div className='activityCard__content-checkin-content'>
             {checkinContent}
