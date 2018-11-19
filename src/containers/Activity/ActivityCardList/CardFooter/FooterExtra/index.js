@@ -6,10 +6,10 @@ import './footerExtra.css'
 const FooterExtra = ({ thumbsUpTimes, hasReported, hasforbiddened }) => {
   return (
     <div className='activityCard__container--extra-info'>
-      {hasforbiddened ?
+      {!hasforbiddened ?
         <Flex justify='center'>
           <div className='activityCard__container-forbiddened'>
-            {reportIcon} 被举报次数过多，以扣分
+            {reportIcon} 被举报次数过多，已扣分
           </div>
         </Flex>
         :

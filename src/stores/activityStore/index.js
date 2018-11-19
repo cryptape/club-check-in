@@ -7,7 +7,7 @@ class ActivityStore {
 
   constructor() {
     this.activityDataList = activityDataList
-    this.maxAvatars = 7
+    this.maxAvatars = 5
   }
 
   @action handleHello = () => {

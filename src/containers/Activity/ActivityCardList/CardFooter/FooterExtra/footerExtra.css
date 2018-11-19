@@ -1,5 +1,4 @@
 .activityCard__container--extra-info {
-
 }
 
 .activityCard__container-thumb-up {
@@ -7,7 +6,8 @@
 }
 
 .activityCard__container-report {
-
+  color: #242b43;
+  margin-left: 50px;
 }
 
 .activityCard__container-forbiddened {
