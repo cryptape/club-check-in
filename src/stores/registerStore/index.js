@@ -1,26 +1,39 @@
-import { observable, action } from 'mobx'
+import { action, computed, observable } from 'mobx'
 
-// data format get from back-end
+const log = console.log.bind(console, '### registerStore ')
 
-// const data = [{
-//     url: 'http://ww1.sinaimg.cn/large/d8eb23c4ly1fwsljvzfu2j20sr0srgqb.jpg',
-//     id: '1111',
-// }, ];
+// address must get from Neuron-Web
+const registerAddress = '0X291302034049012393Ba0414'
 
 class RegisterStore {
   @observable files
+  @observable registerName
+  @observable registerAddress
 
   constructor() {
     this.files = []
+    this.registerName = ''
+    this.registerAddress = registerAddress
   }
 
-  @action onChange = (files) => {
+
+  @action onRegisterAvatarChange = (files) => {
     this.files = files
+  }
+
+  @action onRegisterAddressChange = (value) => {
+    this.registerName = value
   }
 
   @action handleRegister = () => {
     console.log('register button clicked')
   }
+
+  // to check all info blanks are filled
+  @computed get isInfoCompleted() {
+    return this.registerName && this.files.length
+  }
+
 }
 
 const registerStore = new RegisterStore()

@@ -1,0 +1,31 @@
+.am-card-body {
+  padding-left: 69px;
+  padding-top: 0;
+}
+
+.am-card-body::before {
+  display: none !important;
+}
+
+.activityCard__content-checkin-content {
+  font-family: var(--font-family);
+  font-size: 12px;
+  color: #242b43;
+  margin-bottom: 10px;
+  /*border: 1px solid gold;*/
+}
+
+.activityCard__content-post-pic {
+  width: 220px;
+  height: 220px;
+  /*background-image: url("./avatar.png");*/
+}
+
+.activityCard__content-checkin-time {
+  font-family: var(--font-family);
+  font-size: 12px;
+  text-align: left;
+  color: #898fa3;
+  /*border: 1px solid greenyellow;*/
+  margin-top: 10px;
+}

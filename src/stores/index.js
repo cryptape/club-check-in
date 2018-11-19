@@ -5,7 +5,7 @@ import checkinStore from './checkinStore'
 import detailStore from './detailStore'
 import newStore from './newStore'
 import modifyStore from './modifyStore'
-import personalStore from './personalStore'
+import userStore from './userStore'
 import clublistStore from './clubListStore'
 import clubmemberStore from './clubMemberStore'
 
@@ -17,7 +17,7 @@ export {
   detailStore,
   newStore,
   modifyStore,
-  personalStore,
+  userStore,
   clublistStore,
   clubmemberStore,
 }

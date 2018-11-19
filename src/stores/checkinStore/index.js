@@ -1,43 +1,9 @@
 import { action, observable } from 'mobx'
 import { Modal } from "antd-mobile"
+import { clubName } from "../../mockData"
 
 const { alert } = Modal
 
-// data format get from pic server
-
-// const data = [{
-//     url: 'http://ww1.sinaimg.cn/large/d8eb23c4ly1fwsljvzfu2j20sr0srgqb.jpg',
-//     id: '1111',
-// }, ];
-
-// raw data like this
-const clubName = [
-  {
-    "value" : "Cryptape慢跑俱乐部 (#1001)",
-    "label" : "Cryptape慢跑俱乐部 (#1001)",
-  }, {
-    "value" : "宇宙无敌撸猫社 (#1002)",
-    "label" : "宇宙无敌撸猫社 (#1002)",
-  }, {
-    "value" : "Cryptape篮球社 (#1003)",
-    "label" : "Cryptape篮球社 (#1003)",
-  }, {
-    "value" : "小黑裙俱乐部 (#1004)",
-    "label" : "小黑裙俱乐部 (#1004)",
-  }, {
-    "value" : "腹肌马甲线俱乐部 (#1005)",
-    "label" : "腹肌马甲线俱乐部 (#1005)",
-  }, {
-    "value" : "偶尔加班俱乐部 (#1006)",
-    "label" : "偶尔加班俱乐部 (#1006)",
-  }, {
-    "value" : "每天加班俱乐部 (#1007)",
-    "label" : "每天加班俱乐部 (#1007)",
-  }, {
-    "value" : "Cryptape羽毛球社 (#1008)",
-    "label" : "Cryptape羽毛球社 (#1008)",
-  },
-]
 
 const log = console.log.bind(console, '### checkinStore')
 

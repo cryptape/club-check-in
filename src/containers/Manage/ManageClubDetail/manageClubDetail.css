@@ -2,7 +2,7 @@
   --font-family: PingFangSC, Arial, sans-serif, serif;
 }
 
-.manageClubDetail__container--content {
+.manageClubDetail__content--container {
   width: 92vw;
   height: 160px;
   box-shadow: 0 3px 6px 0 rgba(4, 20, 5, 0.07);
@@ -19,11 +19,11 @@
   padding-top: 15px;
 }
 
-.manageClubDetail__container--deposit {
+.manageClubDetail__container--funding {
   margin-top: 16.5px;
 }
 
-.manageClubDetail__content--deposit {
+.manageClubDetail__content--funding {
   font-family: var(--font-family);
   color: #28d890;
   margin-left: 20%;
@@ -43,7 +43,7 @@
   margin-left: 5.3%;
 }
 
-.manageClubDetail__container--deposit-info {
+.manageClubDetail__container--funding-info {
   margin-bottom: 15px;
 }
 

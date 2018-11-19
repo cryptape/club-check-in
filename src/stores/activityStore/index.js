@@ -1,10 +1,13 @@
-import { observable, action } from 'mobx'
+import { action, observable } from 'mobx'
+import { activityDataList } from "../../mockData"
 
+// TODO: antd mobile PullToRefresh
 class ActivityStore {
-  @observable name
+  @observable activityDataList
 
   constructor() {
-    this.name = 'club check-in'
+    this.activityDataList = activityDataList
+    this.maxAvatars = 7
   }
 
   @action handleHello = () => {

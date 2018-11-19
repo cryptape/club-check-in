@@ -1,8 +1,6 @@
-import { observable, action } from 'mobx'
+import { action } from 'mobx'
 import React from "react"
-import {
-  Modal,
-} from 'antd-mobile'
+import { Modal, } from 'antd-mobile'
 
 const log = console.log.bind(console, '### personalStore ')
 
@@ -11,7 +9,7 @@ const joinIcon = <img src="per_join.png" alt=""/>
 const createIcon = <img src="per_create.png" alt=""/>
 const { prompt } = Modal
 
-class PersonalStore {
+class UserStore {
   constructor() {
     this.thumbPic = thumbPic
     this.joinIcon = joinIcon
@@ -26,7 +24,7 @@ class PersonalStore {
 
 }
 
-const personalStore = new PersonalStore()
+const userStore = new UserStore()
 
-export default personalStore
+export default userStore
 

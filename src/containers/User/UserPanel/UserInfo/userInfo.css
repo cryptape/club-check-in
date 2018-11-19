@@ -1,0 +1,12 @@
+.am-list-thumb img {
+  /*UI proto is 45px*/
+  width: 60px;
+  height: 60px;
+  border: solid 2px rgba(153, 153, 153, 0.2);
+  border-radius: 50px;
+  background-color: #d8d8d8;
+}
+
+.am-list-brief {
+  font-family: var(--font-family);
+}

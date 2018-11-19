@@ -5,7 +5,7 @@ import Manage from './Manage'
 import New from './New'
 import Modify from './Modify'
 import Checkin from './Checkin'
-import Personal from './Personal'
+import User from './User'
 import Home from './Home'
 
 export {
@@ -16,6 +16,6 @@ export {
   New,
   Modify,
   Checkin,
-  Personal,
+  User,
   Home,
 }

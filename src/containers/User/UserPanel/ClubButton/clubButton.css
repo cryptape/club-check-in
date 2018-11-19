@@ -1,0 +1,17 @@
+.user__container--group-button .am-button {
+  width: 114px;
+  height: 34px;
+  color: #fff;
+  border-radius: 50px;
+  background-color: #28d890;
+  font-size: 13px;
+}
+
+.user__button--join-club {
+  margin-right: 48px;
+}
+
+.user__container--group-button img {
+  width: 16px;
+  height: 16px;
+}

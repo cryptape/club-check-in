@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { Flex, } from 'antd-mobile'
-import { activityIcon, checkinIcon, personalIcon, } from './svg'
+import { activityIcon, checkinIcon, userIcon, } from './svg'
 import './bottomNav.css'
 
 const BottomNav = ({ active }) => (
@@ -18,9 +18,9 @@ const BottomNav = ({ active }) => (
         <div>打卡</div>
       </div>
     </Link>
-    <Link className='bottomNav__container--nav-item' to={'./personal'}>
-      <div className={active === 'personal' ? 'bottomNav__container--nav-item-active ' : ''}>
-        {personalIcon}
+    <Link className='bottomNav__container--nav-item' to={'./user'}>
+      <div className={active === 'user' ? 'bottomNav__container--nav-item-active ' : ''}>
+        {userIcon}
         <div>个人</div>
       </div>
     </Link>
