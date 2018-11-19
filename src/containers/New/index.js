@@ -20,18 +20,20 @@ class New extends React.Component {
     } = this.props.newStore
 
     return (
-      <div className='newClub__container--content'>
+      <div className='newClub__container'>
         <Header titleName='创建社团' backRoute='./user'/>
-        <ClubName onChange={onInfoChange}/>
-        <ClubRule onChange={onInfoChange}/>
-        <ClubFunding onChange={onInfoChange}/>
-        <ReportThreshold onChange={onInfoChange}/>
-        <Button
-          disabled={!isInfoCompleted}
-          className={`newClub__button--create-club ${!isInfoCompleted ? 'inactive' : ''}`}
-          onClick={handleCreateClub}>
-          创建社团
-        </Button>
+        <div className='newClub__container--content'>
+          <ClubName onChange={onInfoChange}/>
+          <ClubRule onChange={onInfoChange}/>
+          <ClubFunding onChange={onInfoChange}/>
+          <ReportThreshold onChange={onInfoChange}/>
+          <Button
+            disabled={!isInfoCompleted}
+            className={`newClub__button--create-club ${!isInfoCompleted ? 'inactive' : ''}`}
+            onClick={handleCreateClub}>
+            创建社团
+          </Button>
+        </div>
       </div>
     )
   }

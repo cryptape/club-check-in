@@ -21,17 +21,19 @@ class Checkin extends React.Component {
     } = this.props.checkinStore
 
     return (
-      <div className='checkin__container--content'>
+      <div className='checkin__container'>
         <Header titleName='打卡'/>
-        <ClubSelect handleSelectClub={handleSelectClub} clubName={clubName}/>
-        <ClubRule/>
-        <CheckinPic files={files} onChange={onChange}/>
-        <Flex justify='center'>
-          <Button className='checkin__button--checkin' onClick={handleCheckin}>
-            打卡
-          </Button>
-        </Flex>
-        <BottomNav active={'checkin'}/>
+        <div className='checkin__container--content'>
+          <ClubSelect handleSelectClub={handleSelectClub} clubName={clubName}/>
+          <ClubRule/>
+          <CheckinPic files={files} onChange={onChange}/>
+          <Flex justify='center'>
+            <Button className='checkin__button--checkin' onClick={handleCheckin}>
+              打卡
+            </Button>
+          </Flex>
+          <BottomNav active={'checkin'}/>
+        </div>
       </div>
     )
   }

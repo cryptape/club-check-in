@@ -3,7 +3,9 @@
 }
 
 .activityCardList__container-content {
-
+  height: calc(100vh - 100px);
+  overflow-y: scroll;
+  /*border: 1px red solid !important;*/
 }
 
 .activityCard__container-content {

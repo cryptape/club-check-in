@@ -8,10 +8,10 @@ const CardBody = ({ checkinContent, checkinTime, postPic }) => {
     <Card.Body>
       <Flex justify='center'>
         <div className='activityCard__container-checkin-content'>
-          <div className='activityCard__content-checkin-content'>
+          {checkinContent?<div className='activityCard__content-checkin-content'>
             {checkinContent}
-          </div>
-          <img className='activityCard__content-post-pic' src={postPic} alt=""/>
+          </div>:''}
+          {postPic?<img className='activityCard__content-post-pic' src={postPic} alt=""/>:''}
           <div className='activityCard__content-checkin-time'>
             {checkinTime}
           </div>

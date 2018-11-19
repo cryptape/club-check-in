@@ -11,12 +11,14 @@ class Detail extends React.Component {
 
   render() {
     return (
-      <div className='detail__container--club'>
+      <div className='detail__container'>
         <Header titleName='社团详情' backRoute='./user'/>
-        <div className='detail__container--club-info'>
-          <ClubDetail/>
-          <ClubMember/>
-          <BottomButton props={this.props.detailStore}/>
+        <div className='detail__container--content'>
+          <div className='detail__container--club-info'>
+            <ClubDetail/>
+            <ClubMember/>
+            <BottomButton props={this.props.detailStore}/>
+          </div>
         </div>
       </div>
     )

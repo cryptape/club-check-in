@@ -9,10 +9,20 @@
   font-family: var(--font-family);
 }
 
-.modifyClub__container--content {
-  height: 100vh;
+.modifyClub__container {
   background-color: #fff;
-  /*border: 1px red solid;*/
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+.modifyClub__container--content {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 45px;
 }
 
 .modifyClub__button--confirm-modify {

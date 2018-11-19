@@ -9,10 +9,12 @@ class Activity extends React.Component {
 
   render() {
     return (
-      <div className='activity__container--content'>
+      <div className='activity__container'>
         <Header titleName='社团圈'/>
-        <ActivityCardList/>
-        <BottomNav active={'activity'}/>
+        <div className='activity__container--content'>
+          <ActivityCardList/>
+          <BottomNav active={'activity'}/>
+        </div>
       </div>
     )
   }

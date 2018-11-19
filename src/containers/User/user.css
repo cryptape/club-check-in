@@ -1,7 +1,18 @@
-.user__container--content {
-  height: 100vh;
+.user__container {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
   background-color: #f8fafe;
-  /*border: 1px solid red;*/
+}
+
+.user__container--content {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 45px;
+  background-color: #f8fafe;
 }
 
 .user__content--club-banner {

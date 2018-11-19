@@ -10,11 +10,13 @@ class User extends React.Component {
 
   render() {
     return (
-      <div className='user__container--content'>
+      <div className='user__container'>
         <Header titleName='个人'/>
-        <UserPanel/>
-        <ClubListItem/>
-        <BottomNav active={'user'}/>
+        <div className='user__container--content'>
+          <UserPanel/>
+          <ClubListItem/>
+          <BottomNav active={'user'}/>
+        </div>
       </div>
     )
   }
