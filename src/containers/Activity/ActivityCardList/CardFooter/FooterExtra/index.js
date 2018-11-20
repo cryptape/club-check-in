@@ -3,7 +3,7 @@ import { Flex } from "antd-mobile"
 import { reportIcon, thumbUpIcon } from "../svg"
 import './footerExtra.css'
 
-const FooterExtra = ({ thumbUpTimes, hasReported, hasThumbUp, hasforbiddened }) => {
+const FooterExtra = ({ thumbUpTimes, hasReported, hasThumbUp, hasforbiddened, handleReport, handleThumbUp }) => {
   return (
     <div className='activityCard__container--extra-info'>
       {hasforbiddened ?
@@ -14,7 +14,10 @@ const FooterExtra = ({ thumbUpTimes, hasReported, hasThumbUp, hasforbiddened }) 
         </Flex>
         :
         <Flex justify='center'>
-          <div className={`activityCard__container-thumb-up ${hasThumbUp ? 'thumbUpActive' : ''}`}>
+          <div
+            className={`activityCard__container-thumb-up ${hasThumbUp ? 'thumbUpActive' : ''}`}
+            onClick={handleThumbUp}
+          >
             {thumbUpIcon} {thumbUpTimes}
           </div>
           {hasReported ?
@@ -22,7 +25,7 @@ const FooterExtra = ({ thumbUpTimes, hasReported, hasThumbUp, hasforbiddened }) 
               {reportIcon} 已举报
             </div>
             :
-            <div className='activityCard__container-report'>
+            <div className='activityCard__container-report' onClick={handleReport}>
               {reportIcon} 举报
             </div>
           }

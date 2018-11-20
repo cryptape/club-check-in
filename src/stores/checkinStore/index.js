@@ -26,13 +26,13 @@ class CheckinStore {
     extra.innerHTML = value
   }
 
-  handleOK = () => {
-    log('handleOK function')
+  handleConfirmCheckin = () => {
+    log('handleConfirmCheckin')
   }
 
   @action handleCheckin = () => {
     alert('打卡成功', '您已成功打卡，并获得系统奖励的10个积分，请勿重复或虚假打卡，否则会被判罚积分。', [
-      { text : '确定', onPress : this.handleOK },
+      { text : '确定', onPress : this.handleConfirmCheckin },
     ])
   }
 }

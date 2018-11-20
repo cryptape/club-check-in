@@ -8,7 +8,7 @@
 .activityCard__container--extra-info div {
   display: flex;
   align-items: center;
-  border: 1px red solid;
+  /*border: 1px red solid;*/
 }
 
 .activityCard__container-thumb-up {

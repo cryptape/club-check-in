@@ -1,4 +1,5 @@
 import React from "react"
+import { Redirect } from 'react-router-dom'
 import { action, computed, observable } from 'mobx'
 import { Modal } from "antd-mobile"
 
@@ -19,18 +20,14 @@ class NewStore {
     this.reportThreshold = ''
   }
 
-  handleOK = () => {
-    log('点击了是')
-  }
-
-  handleCancel = () => {
-    log('点击了否')
+  handleConfirmCreateClub = () => {
+    log('点击了确定')
   }
 
   @action handleCreateClub = () => {
+    // TODO after click confirm button, need jump to user page
     alert('社团创建成功', '您的社团ID是：#1024，快去通知社员加入吧！', [
-      { text : '否', onPress : this.handleCancel },
-      { text : '是', onPress : this.handleOK },
+      { text : '确定', onPress : this.handleConfirmCreateClub },
     ])
   }
 

@@ -13,6 +13,8 @@ class ActivityCardList extends React.Component {
     const {
       activityDataList,
       maxAvatars,
+      handleReport,
+      handleThumbUp,
     } = this.props.activityStore
 
     const activityCardList = activityDataList.map((card, index) => {
@@ -32,6 +34,8 @@ class ActivityCardList extends React.Component {
               hasReported={card.hasReported}
               hasThumbUp={card.hasThumbUp}
               hasforbiddened={card.hasforbiddened}
+              handleReport={handleReport}
+              handleThumbUp={handleThumbUp}
             />
           </Card>
         </Flex>
