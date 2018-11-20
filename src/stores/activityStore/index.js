@@ -6,7 +6,6 @@ const { alert } = Modal
 const log = console.log.bind(this, '### activityStore')
 
 class ActivityStore {
-  // TODO: antd mobile PullToRefresh
   @observable activityDataList
 
   constructor() {

@@ -33,7 +33,8 @@ class ModifyStore {
   }
 
   @computed get hasContentChange() {
-    return this.newClubRule !== this.clubInfo.clubRule || this.newReportThreshold != this.clubInfo.reportThreshold
+    return this.newClubRule && this.newReportThreshold &&
+      (this.newClubRule !== this.clubInfo.clubRule || this.newReportThreshold != this.clubInfo.reportThreshold)
   }
 }
 

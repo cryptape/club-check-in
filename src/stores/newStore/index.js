@@ -25,7 +25,6 @@ class NewStore {
   }
 
   @action handleCreateClub = (history) => {
-    // TODO after click confirm button, need jump to user page
     alert('社团创建成功', '您的社团ID是：#1024，快去通知社员加入吧！', [
       { text : '确定', onPress : () => this.handleConfirmCreateClub(history) },
     ])

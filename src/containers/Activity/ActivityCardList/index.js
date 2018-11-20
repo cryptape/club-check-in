@@ -1,6 +1,6 @@
 import React from 'react'
 import { inject, observer } from 'mobx-react'
-import { Card, Flex } from 'antd-mobile'
+import { Card, Flex, PullToRefresh } from 'antd-mobile'
 import CardHeader from './CardHeader'
 import CardBody from './CardBody'
 import CardFooter from './CardFooter'
@@ -8,6 +8,20 @@ import './activityCardList.css'
 
 @inject('activityStore') @observer
 class ActivityCardList extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = props.activityStore
+    this.state.refreshing = false
+
+  }
+
+  onRefresh = () => {
+    this.setState({ refreshing : true })
+    setTimeout(() => {
+      this.setState({ refreshing : false })
+    }, 1000)
+    console.log('hello')
+  }
 
   render() {
     const {
@@ -43,9 +57,15 @@ class ActivityCardList extends React.Component {
     })
 
     return (
-      <div className='activityCardList__container-content'>
+      <PullToRefresh
+        className='activityCardList__container-content'
+        damping={60}
+        direction='down'
+        refreshing={this.state.refreshing}
+        onRefresh={this.onRefresh}
+      >
         {activityCardList}
-      </div>
+      </PullToRefresh>
     )
   }
 }
