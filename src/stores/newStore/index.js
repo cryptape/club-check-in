@@ -85,9 +85,6 @@ class NewStore {
             throw new Error(receipt.errroMessage)
           }
         })
-        .catch(err => {
-          log('Transaction failed', err)
-        })
     }).catch(err => {
       log('Someting wrong in proxy contract deployment', err)
     })
