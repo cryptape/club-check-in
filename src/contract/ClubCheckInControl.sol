@@ -16,7 +16,7 @@ contract ClubCPlayer {
 }
 
 contract Clubs {
-    function add() public;
+    function add(address _club) public;
 }
 
 contract ClubCheckInControl {
@@ -28,9 +28,9 @@ contract ClubCheckInControl {
     address public myDataAddress;
 
     constructor (address clubsAddress, address dataAddress, address playAddress)
-    public
+        public
     {
-        myDataAddress=dataAddress;
+        myDataAddress = dataAddress;
 
         ClubPlayer = ClubCPlayer(playAddress);
 

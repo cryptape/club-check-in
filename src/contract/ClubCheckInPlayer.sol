@@ -18,17 +18,23 @@ contract ClubCheckInPlayer {
 
     uint256 public size;
 
-    function setName(string name) public {
+    function setName(string name) 
+        public 
+    {
         require(players[msg.sender].playerAddress == msg.sender);
         players[msg.sender].name = name;
     }
 
-    function setIcon(string icon) public {
+    function setIcon(string icon) 
+        public 
+    {
         require(players[msg.sender].playerAddress == msg.sender);
         players[msg.sender].icon = icon;
     }
 
-    function signIn(string name, string icon) public {
+    function signIn(string name, string icon) 
+        public 
+    {
         require(players[msg.sender].playerAddress != msg.sender);
         require(bytes(name).length > 0 && bytes(name).length <= 30);
         players[msg.sender].playerAddress = msg.sender;
@@ -37,7 +43,9 @@ contract ClubCheckInPlayer {
         size = size + 1;
     }
 
-    function joinClub(address player, address clubAddress) public {
+    function joinClub(address player, address clubAddress) 
+        public 
+    {
         ClubData data = ClubData(clubAddress);
         require(bytes(data.clubName()).length > 0);
         require(!players[player].isJoin[clubAddress]);
@@ -51,12 +59,18 @@ contract ClubCheckInPlayer {
         players[player].isJoin[clubAddress] = true;
     }
 
-    function exitClub(address clubAddress) private {
+    function exitClub(address clubAddress) 
+        private 
+    {
         require(players[msg.sender].isJoin[clubAddress]);
         players[msg.sender].isJoin[clubAddress] = false;
     }
 
-    function getPlayerAddress(address _address) view public returns (address){
+    function getPlayerAddress(address _address) 
+        view 
+        public 
+        returns (address)
+    {
         return players[_address].playerAddress;
     }
 }
