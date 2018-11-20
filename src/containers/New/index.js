@@ -10,14 +10,21 @@ import './new.css'
 
 @inject('newStore') @observer
 class New extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = props.newStore
+  }
+
+  handleCreate = () => {
+    this.state.handleCreateClub(this.props.history)
+  }
 
   render() {
 
     const {
-      handleCreateClub,
       isInfoCompleted,
       onInfoChange,
-    } = this.props.newStore
+    } = this.state
 
     return (
       <div className='newClub__container'>
@@ -30,7 +37,7 @@ class New extends React.Component {
           <Button
             disabled={!isInfoCompleted}
             className={`newClub__button--create-club ${!isInfoCompleted ? 'inactive' : ''}`}
-            onClick={handleCreateClub}>
+            onClick={this.handleCreate}>
             创建社团
           </Button>
         </div>
@@ -40,3 +47,4 @@ class New extends React.Component {
 }
 
 export default New
+

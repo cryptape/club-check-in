@@ -2,7 +2,7 @@ import React from "react"
 import { Flex, TextareaItem } from "antd-mobile"
 import './clubRule.css'
 
-const ClubRule = () => {
+const ClubRule = ({onChange}) => {
   return (
     <div>
       <div className='checkin__content--word'>
@@ -13,6 +13,7 @@ const ClubRule = () => {
           className='checkin__content--club-rule'
           rows={5}
           count={180}
+          onChange={onChange}
         />
       </Flex>
     </div>
