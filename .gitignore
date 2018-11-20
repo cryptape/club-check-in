@@ -24,3 +24,7 @@ yarn-error.log*
 .idea
 mockData.js
 
+*.bin
+*.abi
+*.sh
+config.js

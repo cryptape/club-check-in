@@ -1,0 +1,11 @@
+const config = {
+    chain: '',  //your chain address
+    userContract: '', //player contract address
+    tokenContract: '', //token contract address
+    clubContract: '', //club contrac address
+}
+
+
+module.exports = {
+    config
+}
