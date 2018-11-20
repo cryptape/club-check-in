@@ -19,3 +19,9 @@
   padding-bottom: 5px;
   margin-top: 16px;
 }
+
+.inactive {
+  color: #fff !important;
+  background-color: #bdc1ce;
+  border: #bdc1ce !important;
+}

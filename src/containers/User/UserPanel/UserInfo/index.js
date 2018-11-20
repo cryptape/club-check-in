@@ -7,7 +7,6 @@ const { Item } = List
 const { Brief } = Item
 
 const UserInfo = ({ thumbPic }) => {
-  //TODO member name should be read from chain, address should be read from wallet
   return (
     <Link to={'/register'}>
       <Item

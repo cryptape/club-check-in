@@ -1,3 +1,19 @@
+.detail__container {
+  background-color: #fff;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+.detail__container--content {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 45px;
+}
+
 .detail__container--club-info {
   height: 170px;
   /*border: 1px red solid;*/
@@ -14,3 +30,4 @@
   width: 100%;
   bottom: 0;
 }
+

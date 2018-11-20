@@ -12,16 +12,24 @@ class Manage extends React.Component {
   render() {
     const {
       handleSettle,
+      handleIncreaseChange,
+      hasInputFunding,
       handleFunding,
     } = this.props.manageStore
     return (
-      <div className='manageClubDetail__container--content'>
+      <div className='manageClubDetail__container'>
         <Header titleName='社团管理' backRoute='./detail'/>
-        <ManageClubDetail/>
-        <IncreaseFunding handleMoney={handleFunding}/>
-        <Button className='manageClubDetail__button--settle' onClick={handleSettle}>
-          活动结算
-        </Button>
+        <div className='manageClubDetail__container--content'>
+          <ManageClubDetail/>
+          <IncreaseFunding
+            handleIncreaseChange={handleIncreaseChange}
+            hasInputFunding={hasInputFunding}
+            handleFunding={handleFunding}
+          />
+          <Button className='manageClubDetail__button--settle' onClick={handleSettle}>
+            活动结算
+          </Button>
+        </div>
       </div>
     )
   }

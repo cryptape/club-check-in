@@ -13,11 +13,21 @@
   font-family: var(--font-family);
 }
 
-.newClub__container--content {
-  height: 100vh;
+.newClub__container {
   background-color: #fff;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+.newClub__container--content {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 45px;
   font-family: var(--font-family);
-  /*border: 1px red solid;*/
 }
 
 .newClub__button--create-club {

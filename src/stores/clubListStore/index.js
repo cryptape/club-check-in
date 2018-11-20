@@ -1,18 +1,16 @@
-import { action, observable } from 'mobx'
 import React from "react"
-import {clubDataList} from "../../mockData"
+import { action, observable } from 'mobx'
+import { clubDataList } from "../../mockData"
+import {clubListArrow} from "./svg"
 
 const log = console.log.bind(console, '### clubListStore ')
-
-
-const arrowRight = <img src="jt_next2.png" alt=""/>
 
 class ClubListStore {
   @observable clubDataList
 
   constructor() {
     this.clubDataList = clubDataList
-    this.arrowRight = arrowRight
+    this.clubListArrow = clubListArrow
     this.maxAvatars = 7
   }
 

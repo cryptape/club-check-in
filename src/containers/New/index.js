@@ -10,31 +10,41 @@ import './new.css'
 
 @inject('newStore') @observer
 class New extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = props.newStore
+  }
+
+  handleCreate = () => {
+    this.state.handleCreateClub(this.props.history)
+  }
 
   render() {
 
     const {
-      handleCreateClub,
       isInfoCompleted,
       onInfoChange,
-    } = this.props.newStore
+    } = this.state
 
     return (
-      <div className='newClub__container--content'>
+      <div className='newClub__container'>
         <Header titleName='创建社团' backRoute='./user'/>
-        <ClubName onChange={onInfoChange}/>
-        <ClubRule onChange={onInfoChange}/>
-        <ClubFunding onChange={onInfoChange}/>
-        <ReportThreshold onChange={onInfoChange}/>
-        <Button
-          disabled={!isInfoCompleted}
-          className={`newClub__button--create-club ${!isInfoCompleted ? 'inactive' : ''}`}
-          onClick={handleCreateClub}>
-          创建社团
-        </Button>
+        <div className='newClub__container--content'>
+          <ClubName onChange={onInfoChange}/>
+          <ClubRule onChange={onInfoChange}/>
+          <ClubFunding onChange={onInfoChange}/>
+          <ReportThreshold onChange={onInfoChange}/>
+          <Button
+            disabled={!isInfoCompleted}
+            className={`newClub__button--create-club ${!isInfoCompleted ? 'inactive' : ''}`}
+            onClick={this.handleCreate}>
+            创建社团
+          </Button>
+        </div>
       </div>
     )
   }
 }
 
 export default New
+

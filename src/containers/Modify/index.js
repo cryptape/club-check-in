@@ -16,18 +16,26 @@ class Modify extends React.Component {
     const {
       handleConfirmModify,
       clubInfo,
+      onInfoChange,
+      hasContentChange,
     } = this.props.modifyStore
 
     return (
-      <div className='modifyClub__container--content'>
+      <div className='modifyClub__container'>
         <Header titleName='社团信息修改' backRoute='./detail'/>
-        <ClubName clubName={clubInfo.clubName}/>
-        <ClubID clubID={clubInfo.clubID}/>
-        <ClubRule clubRule={clubInfo.clubRule}/>
-        <ReportThreshold reportThreshold={clubInfo.reportThreshold}/>
-        <Button className='modifyClub__button--confirm-modify' onClick={handleConfirmModify}>
-          确认修改
-        </Button>
+        <div className='modifyClub__container--content'>
+          <ClubName clubName={clubInfo.clubName}/>
+          <ClubID clubID={clubInfo.clubID}/>
+          <ClubRule onChange={onInfoChange} clubRule={clubInfo.clubRule}/>
+          <ReportThreshold onChange={onInfoChange} reportThreshold={clubInfo.reportThreshold}/>
+          <Button
+            disabled={!hasContentChange}
+            className={`modifyClub__button--confirm-modify ${!hasContentChange ? 'inactive' : ''}`}
+            onClick={handleConfirmModify}
+          >
+            确认修改
+          </Button>
+        </div>
       </div>
     )
   }

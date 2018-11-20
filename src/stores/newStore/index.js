@@ -1,4 +1,4 @@
-import React from "react"
+import React from 'react'
 import { action, computed, observable } from 'mobx'
 import { Modal } from "antd-mobile"
 
@@ -19,18 +19,14 @@ class NewStore {
     this.reportThreshold = ''
   }
 
-  handleOK = () => {
-    log('点击了是')
+  handleConfirmCreateClub = (history) => {
+    log('点击了确定')
+    history.push('./user')
   }
 
-  handleCancel = () => {
-    log('点击了否')
-  }
-
-  @action handleCreateClub = () => {
+  @action handleCreateClub = (history) => {
     alert('社团创建成功', '您的社团ID是：#1024，快去通知社员加入吧！', [
-      { text : '否', onPress : this.handleCancel },
-      { text : '是', onPress : this.handleOK },
+      { text : '确定', onPress : () => this.handleConfirmCreateClub(history) },
     ])
   }
 

@@ -2,10 +2,20 @@
   --font-family: PingFangSC, Arial, sans-serif, serif;
 }
 
-.checkin__container--content {
-  height: 83vh;
+.checkin__container {
   background-color: #fff;
-  /*border: 1px solid red;*/
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+.checkin__container--content {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 45px;
 }
 
 .checkin__content--club-select-title,
@@ -39,3 +49,7 @@
   color: #28d890;
 }
 
+.inactive {
+  color: #fff !important;
+  background-color: #bdc1ce;
+}

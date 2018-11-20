@@ -35,7 +35,7 @@ scp club-check-in.tar.gz user@remote:/tmp  //use your own server address
 ssh user@remote //use your own server address
 ```
 
-5.Unpack ether-bridge
+5.Unpack club-check-in
 
 ```shell
 cd /tmp

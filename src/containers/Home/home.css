@@ -1,0 +1,15 @@
+.home__container {
+  background-color: #fff;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+.home__container--content {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 45px;
+}

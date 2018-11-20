@@ -1,5 +1,5 @@
 import React from 'react'
-import { action } from 'mobx'
+import { action, computed, observable } from 'mobx'
 import { Modal } from "antd-mobile"
 
 const log = console.log.bind(console, '### manageStore ')
@@ -7,6 +7,11 @@ const log = console.log.bind(console, '### manageStore ')
 const { alert } = Modal
 
 class ManageStore {
+  @observable increaseFunding
+
+  constructor() {
+    this.increaseFunding = ''
+  }
 
   handleOK = () => {
     log('点击了是')
@@ -18,6 +23,10 @@ class ManageStore {
 
   handleIncrease = () => {
     log('有钱了')
+  }
+
+  @action handleIncreaseChange = (value) => {
+    this.increaseFunding = value
   }
 
   @action handleSettle = () => {
@@ -34,6 +43,11 @@ class ManageStore {
       { text : '确定', onPress : this.handleIncrease },
     ])
   }
+
+  @computed get hasInputFunding() {
+    return this.increaseFunding
+  }
+
 }
 
 const manageStore = new ManageStore()

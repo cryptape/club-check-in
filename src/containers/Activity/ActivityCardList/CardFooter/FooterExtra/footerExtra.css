@@ -1,0 +1,36 @@
+.activityCard__container--extra-info {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  height: 100%;
+}
+
+.activityCard__container--extra-info div {
+  display: flex;
+  align-items: center;
+  /*border: 1px red solid;*/
+}
+
+.activityCard__container-thumb-up {
+  color: #242b43;
+}
+
+.thumbUpActive {
+  color: #0fd991;
+}
+
+.activityCard__container-report {
+  color: #242b43;
+  margin-left: 50px;
+}
+
+.activityCard__container-forbiddened {
+  color: #de4239;
+}
+
+.am-card-footer-extra svg {
+  width: 22px;
+  height: 22px;
+  margin-right: 5px;
+  fill: currentColor;
+}

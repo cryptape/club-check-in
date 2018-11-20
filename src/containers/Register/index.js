@@ -21,17 +21,19 @@ class Register extends React.Component {
     } = this.props.registerStore
 
     return (
-      <div className='register__container--content'>
+      <div className='register__container'>
         <Header titleName='用户设置' backRoute='/user'/>
-        <RegisterAddress registerAddress={registerAddress}/>
-        <RegisterName onChange={onRegisterAddressChange}/>
-        <RegisterAvatar files={files} onChange={onRegisterAvatarChange}/>
-        <ClubLogo/>
-        <Button
-          disabled={!isInfoCompleted}
-          className={`register__button--finish ${!isInfoCompleted ? 'inactive' : ''}`} onClick={handleRegister}>
-          完成
-        </Button>
+        <div className='register__container--content'>
+          <RegisterAddress registerAddress={registerAddress}/>
+          <RegisterName onChange={onRegisterAddressChange}/>
+          <RegisterAvatar files={files} onChange={onRegisterAvatarChange}/>
+          <ClubLogo/>
+          <Button
+            disabled={!isInfoCompleted}
+            className={`register__button--finish ${!isInfoCompleted ? 'inactive' : ''}`} onClick={handleRegister}>
+            完成
+          </Button>
+        </div>
       </div>
     )
   }
