@@ -1,17 +1,17 @@
 import React from "react"
 import { Button } from "antd-mobile"
 
-const BottomButton = ({ props }) => {
+const BottomButton = ({ isLeader, handleManageMember, handleQuitClub }) => {
   return (
-    props.isLeader ?
+    isLeader ?
       <Button href='#/manage'
               className='detail__button--club-manage'
-              onClick={props.handleManageMember}
+              onClick={handleManageMember}
       >
         管理
       </Button>
       :
-      <Button className='detail__button--club-manage' onClick={props.handleQuitClub}>
+      <Button className='detail__button--club-manage' onClick={handleQuitClub}>
         退出
       </Button>
   )

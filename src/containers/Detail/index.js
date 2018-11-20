@@ -8,8 +8,18 @@ import './detail.css'
 
 @inject('detailStore') @observer
 class Detail extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = props.detailStore
+  }
 
   render() {
+    const {
+      isLeader,
+      handleManageMember,
+      handleQuitClub,
+    } = this.state
+
     return (
       <div className='detail__container'>
         <Header titleName='社团详情' backRoute='./user'/>
@@ -17,7 +27,11 @@ class Detail extends React.Component {
           <div className='detail__container--club-info'>
             <ClubDetail/>
             <ClubMember/>
-            <BottomButton props={this.props.detailStore}/>
+            <BottomButton
+              isLeader={isLeader}
+              handleManageMember={handleManageMember}
+              handleQuitClub={handleQuitClub}
+            />
           </div>
         </div>
       </div>
