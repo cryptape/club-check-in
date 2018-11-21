@@ -3,9 +3,9 @@ const config = {
   userContract : '',
   tokenContract : '',
   clubContract : '',
-  qiniuAccessKey : '_Fo2fuu6cBA4NJWBjkOBLXhkoU9uKrbKyDBe5jP0',
-  qiniuSecretKey : 'oZCYsHO1IsvyDbCeyHn77mZd34tUpL2HtOS2ge43',
-  qiniuBucket: 'club-check-in',
+  qiniuAccessKey : '',
+  qiniuSecretKey : '',
+  qiniuBucket: '',
 }
 
 export {
