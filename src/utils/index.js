@@ -28,7 +28,7 @@ const generateUpToken = () => {
   const hash = CryptoJS.HmacSHA1(encoded, secretKey)
   const encodedSigned = hash.toString(CryptoJS.enc.Base64)
   // return uploadToken
-  return accessKey + ":" + safe64(encodedSigned) + ":" + encoded
+  return `${accessKey}:${safe64(encodedSigned)}:${encoded}`
 }
 
 const upload = (file, name) => {
@@ -47,8 +47,7 @@ const upload = (file, name) => {
       log('next', res)
     },
     error(err) {
-      // log('err', err)
-      return err
+      log('err', err)
     },
     complete(res) {
       log('done', res)
