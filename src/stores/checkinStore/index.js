@@ -1,9 +1,9 @@
 import { action, computed, observable } from 'mobx'
-import { Modal } from "antd-mobile"
-import { clubName } from "../../mockData"
+import { Modal } from 'antd-mobile'
+import { clubName } from '../../mockData'
+import { handleUploadImage } from '../../utils'
 
 const { alert } = Modal
-
 
 const log = console.log.bind(console, '### checkinStore')
 
@@ -38,22 +38,27 @@ class CheckinStore {
 
   handleConfirmCheckin = (history) => {
     log('handleConfirmCheckin')
+    this.files = []
     history.push('./activity')
   }
 
   @action handleCheckin = (history) => {
-    alert('打卡成功', '您已成功打卡，并获得系统奖励的10个积分，请勿重复或虚假打卡，否则会被判罚积分。', [
-      { text : '确定', onPress : () => this.handleConfirmCheckin(history) },
-    ])
+    if (this.files.length) {
+      log('有图')
+      handleUploadImage(this.files)
+    }
+    alert('打卡成功', '您已成功打卡，并获得系统奖励的10个积分，请勿重复或虚假打卡，否则会被判罚积分。', [{
+      text : '确定',
+      onPress : () => this.handleConfirmCheckin(history)
+    }])
   }
 
+  // TODO there is a bug, when you go to the checkin page and didn't check
   @computed get isInfoCompleted() {
     return this.selectedClubName && (this.checkinContent || this.files.length)
   }
-
 }
 
 const checkinStore = new CheckinStore()
 
 export default checkinStore
-
