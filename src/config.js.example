@@ -1,10 +1,13 @@
 const config = {
-    chain: '',  //your chain address
-    userContract: '', //player contract address
-    tokenContract: '', //token contract address
-    clubContract: '', //club contrac address
+  chain: '',  // your chain address
+  userContract: '', // player contract address
+  tokenContract: '', // token contract address
+  clubContract: '', // club contrac address
+  qiniuAccessKey : '', // your qiniu AK
+  qiniuSecretKey : '', // your qiniu SK
+  qiniuBucket: '', // your image bucket
 }
 
-module.exports = {
-    config
+exports {
+  config
 }
