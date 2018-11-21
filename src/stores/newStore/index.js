@@ -28,18 +28,7 @@ class NewStore {
     history.push('./user')
   }
 
-
-  handleCancel = () => {
-    log('点击了否')
-  }
-
-  constructDeploymentTx = () => {
-    appchain.base
-      .getDefaultAccount()
-      .then(x => console.log)
-  }
-
-  @action handleCreateClub = () => {
+  @action handleCreateClub = (history) => {
     
     const currentAddr = appchain.base.getDefaultAccount()
     const currentBlockNumber = appchain.base.getBlockNumber()
@@ -79,7 +68,7 @@ class NewStore {
         .then(receipt => {
           if (receipt.errorMessage === null) {
             alert('社团创建成功', '优秀', [
-              { text : '是', onPress : this.handleOK },
+              { text : '是', onPress : () => this.handleConfirmCreateClub(history) },
             ])
           } else {
             throw new Error(receipt.errroMessage)
