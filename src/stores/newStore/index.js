@@ -13,13 +13,11 @@ const { alert } = Modal
 class NewStore {
   @observable clubName
   @observable clubRule
-  @observable clubFunding
   @observable reportThreshold
 
   constructor() {
     this.clubName = ''
     this.clubRule = ''
-    this.clubFunding = ''
     this.reportThreshold = ''
   }
 
@@ -29,37 +27,37 @@ class NewStore {
   }
 
   @action handleCreateClub = (history) => {
-    
+
     const currentAddr = appchain.base.getDefaultAccount()
     const currentBlockNumber = appchain.base.getBlockNumber()
-    
+
     Promise.all([currentAddr, currentBlockNumber]).then(([currentAddress, blockNumber]) => {
 
-        const tx = {
-          ...transaction,
-          from: currentAddress,
-          validUntilBlock: blockNumber + 88,
-        }
+      const tx = {
+        ...transaction,
+        from : currentAddress,
+        validUntilBlock : blockNumber + 88,
+      }
 
-        const proxyContract = new appchain.base.Contract(proxyAbi)
+      const proxyContract = new appchain.base.Contract(proxyAbi)
 
-        proxyContract.deploy({
-          data: proxyBin, 
-          arguments: [
-            config.clubContract, 
-            config.tokenContract,
-            config.userContract,  
-            this.clubName, 
-            this.clubRule, 
-            this.reportThreshold, 
-            //single bonus
-            10, 
-            //punishment
-            15,
-            //support bonus
-            1,
-          ]
-        })
+      proxyContract.deploy({
+        data : proxyBin,
+        arguments : [
+          config.clubContract,
+          config.tokenContract,
+          config.userContract,
+          this.clubName,
+          this.clubRule,
+          this.reportThreshold,
+          //single bonus
+          10,
+          //punishment
+          15,
+          //support bonus
+          1,
+        ]
+      })
         .send(tx)
         .then(res => {
           log('transaction valid: ', res.hash)
@@ -84,7 +82,7 @@ class NewStore {
   }
 
   @computed get isInfoCompleted() {
-    return this.clubName && this.clubRule && this.clubFunding && this.reportThreshold
+    return this.clubName && this.clubRule && this.reportThreshold
   }
 }
 
