@@ -52,6 +52,7 @@ class CheckinStore {
       onPress : () => this.handleConfirmCheckin(history)
     }])
   }
+
   // TODO there is a bug, when you go to the checkin page and didn't check
   @computed get isInfoCompleted() {
     return this.selectedClubName && (this.checkinContent || this.files.length)
