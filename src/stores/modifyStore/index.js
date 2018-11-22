@@ -1,7 +1,7 @@
 import React from 'react'
 import { action, computed, observable } from 'mobx'
-import { Modal } from "antd-mobile"
-import { clubInfo } from "../../mockData"
+import { Modal } from 'antd-mobile'
+import { clubInfo } from '../../mockData'
 
 const { alert } = Modal
 
@@ -28,7 +28,7 @@ class ModifyStore {
 
   @action handleConfirmModify = () => {
     alert('通知', '修改成功', [
-      { text : '确定', onPress : this.handleOK },
+      { text: '确定', onPress: this.handleOK },
     ])
   }
 

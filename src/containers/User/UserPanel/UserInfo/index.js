@@ -1,6 +1,6 @@
-import React from "react"
-import { Link } from "react-router-dom"
-import { List } from "antd-mobile"
+import React from 'react'
+import { Link } from 'react-router-dom'
+import { List } from 'antd-mobile'
 import './userInfo.css'
 
 const { Item } = List

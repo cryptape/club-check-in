@@ -1,6 +1,6 @@
-import React from 'react';
+import React from 'react'
 import { inject, observer } from 'mobx-react'
-import { BottomNav, Header } from "../../components"
+import { BottomNav, Header } from '../../components'
 import ActivityCardList from './ActivityCardList'
 import './activity.css'
 

@@ -1,5 +1,5 @@
-import React from "react"
-import { Card, } from "antd-mobile"
+import React from 'react'
+import { Card, } from 'antd-mobile'
 import FooterExtra from './FooterExtra'
 import './cardFooter.css'
 

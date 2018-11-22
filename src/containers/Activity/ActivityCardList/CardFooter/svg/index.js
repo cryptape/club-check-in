@@ -1,10 +1,9 @@
-import React from "react"
+import React from 'react'
 
 const reportIcon = <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30">
   <path fillRule="evenodd"
         d="M16.436 21.702a1.437 1.437 0 1 0-2.873.001 1.437 1.437 0 0 0 2.873-.001M15 18.351a1.437 1.437 0 0 1-1.436-1.436V8.298a1.437 1.437 0 0 1 2.872 0v8.617c0 .793-.643 1.436-1.436 1.436M15 0C6.716 0 0 6.716 0 15c0 8.284 6.716 15 15 15 8.284 0 15-6.716 15-15 0-8.284-6.716-15-15-15m0 1.915c7.215 0 13.085 5.87 13.085 13.085 0 7.215-5.87 13.085-13.085 13.085-7.215 0-13.085-5.87-13.085-13.085C1.915 7.785 7.785 1.915 15 1.915"/>
 </svg>
-
 
 const thumbUpIcon = <svg xmlns="http://www.w3.org/2000/svg" width="30" height="32" viewBox="0 0 30 32">
   <path fillRule="evenodd"

@@ -1,5 +1,5 @@
 import { action } from 'mobx'
-import { Modal } from "antd-mobile"
+import { Modal } from 'antd-mobile'
 
 const { alert } = Modal
 
@@ -25,8 +25,8 @@ class DetailStore {
 
   @action handleQuitClub = () => {
     alert('提示', '退出社团您的积分将无法找回。', [
-      { text : '否', onPress : this.notQuit },
-      { text : '是', onPress : this.confirmQuit },
+      { text: '否', onPress: this.notQuit },
+      { text: '是', onPress: this.confirmQuit },
     ])
   }
 }

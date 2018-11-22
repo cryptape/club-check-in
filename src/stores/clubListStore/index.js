@@ -1,7 +1,7 @@
-import React from "react"
+import React from 'react'
 import { action, observable } from 'mobx'
-import { clubDataList } from "../../mockData"
-import {clubListArrow} from "./svg"
+import { clubDataList } from '../../mockData'
+import { clubListArrow } from './svg'
 
 const log = console.log.bind(console, '### clubListStore ')
 

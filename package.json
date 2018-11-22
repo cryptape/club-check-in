@@ -3,15 +3,17 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@appchain/base": "^0.20.1",
     "antd-mobile": "^2.2.6",
+    "crypto-js": "^3.1.9-1",
     "mobx": "^5.5.2",
     "mobx-react": "^5.3.6",
+    "qiniu-js": "^2.5.3",
     "react": "^16.6.0",
     "react-app-rewired": "^1.6.2",
     "react-dom": "^16.6.0",
     "react-router-dom": "^4.3.1",
-    "react-scripts": "^2.1.1",
-    "@appchain/base": "^0.20.1"
+    "react-scripts": "^2.1.1"
   },
   "scripts": {
     "start": "react-app-rewired start",

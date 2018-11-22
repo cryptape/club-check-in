@@ -1,5 +1,5 @@
-import React from "react"
-import { InputItem } from "antd-mobile"
+import React from 'react'
+import { InputItem } from 'antd-mobile'
 
 const RegisterName = ({ onChange }) => {
   return (

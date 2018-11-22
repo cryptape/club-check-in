@@ -1,5 +1,5 @@
-import React from "react"
-import { Flex } from "antd-mobile"
+import React from 'react'
+import { Flex } from 'antd-mobile'
 
 const ClubLogo = () => {
   return (

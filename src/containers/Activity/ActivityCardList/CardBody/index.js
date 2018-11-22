@@ -1,12 +1,12 @@
-import React from "react"
-import { Card, Flex } from "antd-mobile"
+import React from 'react'
+import { Card, Flex } from 'antd-mobile'
 import './cardBody.css'
 
 const CardBody = ({ checkinContent, checkinTime, postPic }) => {
 
   return (
     <Card.Body>
-      <Flex justify={checkinContent ? 'center':''}>
+      <Flex>
         <div className='activityCard__container-checkin-content'>
           {checkinContent ? <div className='activityCard__content-checkin-content'>
             {checkinContent}

@@ -16,7 +16,6 @@ class RegisterStore {
     this.registerAddress = registerAddress
   }
 
-
   @action onRegisterAvatarChange = (files) => {
     this.files = files
   }
