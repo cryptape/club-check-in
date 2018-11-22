@@ -1,6 +1,6 @@
-import React from "react"
-import { Flex } from "antd-mobile"
-import { reportIcon, thumbUpIcon } from "../svg"
+import React from 'react'
+import { Flex } from 'antd-mobile'
+import { reportIcon, thumbUpIcon } from '../svg'
 import './footerExtra.css'
 
 const FooterExtra = ({ thumbUpTimes, hasReported, hasThumbUp, hasforbiddened, handleReport, handleThumbUp }) => {

@@ -7,5 +7,5 @@ const appchain = Appchain(config.chain)
 window.appchain = appchain
 
 module.exports = {
-    appchain
+  appchain
 }

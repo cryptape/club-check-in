@@ -30,9 +30,9 @@ contract Proxy {
     //@param playAddress The address of player contract.
     //@param _ClubName The name for club user attempt to create
     //@param _ClubDescribe The description for club user attempts to create
-    constructor 
-        (address clubsAddress, address tokenAddress, address playAddress, string _ClubName, string _ClubDescribe, uint256 _reportLimit, uint256 _singleBonus, uint256 _punishBonus, uint256 _supportBonus) 
-        public
+    constructor
+    (address clubsAddress, address tokenAddress, address playAddress, string _ClubName, string _ClubDescribe, uint256 _reportLimit, uint256 _singleBonus, uint256 _punishBonus, uint256 _supportBonus)
+    public
     {
         require(bytes(_ClubName).length > 0 && bytes(_ClubName).length <= 30);
         require(bytes(_ClubDescribe).length > 0 && bytes(_ClubDescribe).length <= 540);

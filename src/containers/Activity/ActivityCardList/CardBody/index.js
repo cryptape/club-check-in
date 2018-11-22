@@ -1,5 +1,5 @@
-import React from "react"
-import { Card, Flex } from "antd-mobile"
+import React from 'react'
+import { Card, Flex } from 'antd-mobile'
 import './cardBody.css'
 
 const CardBody = ({ checkinContent, checkinTime, postPic }) => {

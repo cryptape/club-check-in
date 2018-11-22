@@ -1,6 +1,6 @@
 import React from 'react'
 import { inject, observer } from 'mobx-react'
-import { Flex, List, } from 'antd-mobile'
+import { Flex, } from 'antd-mobile'
 import UserInfo from './UserInfo'
 import ClubButton from './ClubButton'
 import './userPanel.css'
@@ -8,7 +8,7 @@ import './userPanel.css'
 @inject('userStore') @observer
 class UserlPanel extends React.Component {
 
-  render() {
+  render () {
     const {
       handleJoin,
       thumbPic,

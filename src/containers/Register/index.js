@@ -10,7 +10,7 @@ import './register.css'
 
 @inject('registerStore') @observer
 class Register extends React.Component {
-  render() {
+  render () {
     const {
       files,
       registerAddress,

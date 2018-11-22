@@ -1,5 +1,5 @@
-import React from "react"
-import { Button, Flex, List } from "antd-mobile"
+import React from 'react'
+import { Button, Flex, List } from 'antd-mobile'
 import './clubButton.css'
 
 const { Item } = List

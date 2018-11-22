@@ -8,12 +8,12 @@ import './detail.css'
 
 @inject('detailStore') @observer
 class Detail extends React.Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
     this.state = props.detailStore
   }
 
-  render() {
+  render () {
     const {
       isLeader,
       handleManageMember,

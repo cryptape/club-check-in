@@ -1,5 +1,5 @@
-import React from "react"
-import { Card } from "antd-mobile"
+import React from 'react'
+import { Card } from 'antd-mobile'
 import './cardHeader.css'
 
 const CardHeader = ({ memberName, clubName, avatar }) => {

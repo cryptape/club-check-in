@@ -4,7 +4,7 @@ import { Modal } from 'antd-mobile'
 import { appchain } from '../../appchain'
 import transaction from '../../contract/transaction'
 import { proxyAbi, proxyBin } from '../../contract/compiled'
-import { config } from "../../config"
+import { config } from '../../config'
 
 const log = console.log.bind(console, '### newStore ')
 
@@ -15,7 +15,7 @@ class NewStore {
   @observable clubRule
   @observable reportThreshold
 
-  constructor() {
+  constructor () {
     this.clubName = ''
     this.clubRule = ''
     this.reportThreshold = ''
@@ -35,15 +35,15 @@ class NewStore {
 
       const tx = {
         ...transaction,
-        from : currentAddress,
-        validUntilBlock : blockNumber + 88,
+        from: currentAddress,
+        validUntilBlock: blockNumber + 88,
       }
 
       const proxyContract = new appchain.base.Contract(proxyAbi)
 
       proxyContract.deploy({
-        data : proxyBin,
-        arguments : [
+        data: proxyBin,
+        arguments: [
           config.clubContract,
           config.tokenContract,
           config.userContract,
@@ -66,7 +66,7 @@ class NewStore {
         .then(receipt => {
           if (receipt.errorMessage === null) {
             alert('社团创建成功', '优秀', [
-              { text : '是', onPress : () => this.handleConfirmCreateClub(history) },
+              { text: '是', onPress: () => this.handleConfirmCreateClub(history) },
             ])
           } else {
             throw new Error(receipt.errroMessage)
@@ -81,7 +81,7 @@ class NewStore {
     this[infoType] = value
   }
 
-  @computed get isInfoCompleted() {
+  @computed get isInfoCompleted () {
     return this.clubName && this.clubRule && this.reportThreshold
   }
 }

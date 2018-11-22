@@ -1,6 +1,6 @@
 import React from 'react'
 import { inject, observer } from 'mobx-react'
-import { Button } from "antd-mobile"
+import { Button } from 'antd-mobile'
 import { Header } from '../../components'
 import ClubName from './ClubName'
 import ClubRule from './ClubRule'
@@ -9,7 +9,7 @@ import './new.css'
 
 @inject('newStore') @observer
 class New extends React.Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
     this.state = props.newStore
   }
@@ -18,7 +18,7 @@ class New extends React.Component {
     this.state.handleCreateClub(this.props.history)
   }
 
-  render() {
+  render () {
 
     const {
       isInfoCompleted,

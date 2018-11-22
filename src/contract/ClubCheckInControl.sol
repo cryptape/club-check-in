@@ -28,7 +28,7 @@ contract ClubCheckInControl {
     address public myDataAddress;
 
     constructor (address clubsAddress, address dataAddress, address playAddress)
-        public
+    public
     {
         myDataAddress = dataAddress;
 

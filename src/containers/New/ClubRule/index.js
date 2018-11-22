@@ -1,5 +1,5 @@
-import React from "react"
-import { Flex, TextareaItem } from "antd-mobile"
+import React from 'react'
+import { Flex, TextareaItem } from 'antd-mobile'
 import './clubRule.css'
 
 const ClubRule = ({ onChange }) => {

@@ -8,7 +8,7 @@ import './user.css'
 @inject('userStore') @observer
 class User extends React.Component {
 
-  render() {
+  render () {
     return (
       <div className='user__container'>
         <Header titleName='个人'/>

@@ -8,7 +8,7 @@ import './activityCardList.css'
 
 @inject('activityStore') @observer
 class ActivityCardList extends React.Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
     this.state = props.activityStore
     this.state.refreshing = false
@@ -16,14 +16,14 @@ class ActivityCardList extends React.Component {
   }
 
   onRefresh = () => {
-    this.setState({ refreshing : true })
+    this.setState({ refreshing: true })
     setTimeout(() => {
-      this.setState({ refreshing : false })
+      this.setState({ refreshing: false })
     }, 1000)
     console.log('hello')
   }
 
-  render() {
+  render () {
     const {
       activityDataList,
       maxAvatars,

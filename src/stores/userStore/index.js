@@ -1,7 +1,7 @@
-import React from "react"
+import React from 'react'
 import { action } from 'mobx'
 import { Modal, } from 'antd-mobile'
-import {createIcon, joinIcon} from "./svg"
+import { createIcon, joinIcon } from './svg'
 
 const log = console.log.bind(console, '### personalStore ')
 
@@ -9,7 +9,7 @@ const thumbPic = 'avatar.png'
 const { prompt } = Modal
 
 class UserStore {
-  constructor() {
+  constructor () {
     this.thumbPic = thumbPic
     this.joinIcon = joinIcon
     this.createIcon = createIcon
@@ -17,7 +17,7 @@ class UserStore {
 
   @action handleJoin = () => {
     prompt('加入新社团', '社团ID', [
-      { text : '确定', onPress : value => log(`输入的内容:${value}`) },
+      { text: '确定', onPress: value => log(`输入的内容:${value}`) },
     ], 'default', null, ['输入你想加入的社团ID吧'])
   }
 

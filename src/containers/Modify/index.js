@@ -1,6 +1,6 @@
 import React from 'react'
 import { inject, observer } from 'mobx-react'
-import { Button } from "antd-mobile"
+import { Button } from 'antd-mobile'
 import { Header } from '../../components'
 import ClubID from './ClubID'
 import ClubName from './ClubName'
@@ -11,7 +11,7 @@ import './modify.css'
 @inject('modifyStore') @observer
 class Modify extends React.Component {
 
-  render() {
+  render () {
 
     const {
       handleConfirmModify,

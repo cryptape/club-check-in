@@ -1,6 +1,6 @@
 const utf16to8 = str => {
   let out, i, len, c
-  out = ""
+  out = ''
   len = str.length
   for (let i = 0; i < len; i++) {
     c = str.charCodeAt(i)
@@ -18,20 +18,20 @@ const utf16to8 = str => {
   return out
 }
 
-const base64EncodeChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_"
+const base64EncodeChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_'
 
 const base64encode = str => {
   let out, i, len
   let c1, c2, c3
   len = str.length
   i = 0
-  out = ""
+  out = ''
   while (i < len) {
     c1 = str.charCodeAt(i++) & 0xff
     if (i === len) {
       out += base64EncodeChars.charAt(c1 >> 2)
       out += base64EncodeChars.charAt((c1 & 0x3) << 4)
-      out += "=="
+      out += '=='
       break
     }
     c2 = str.charCodeAt(i++)
@@ -39,8 +39,8 @@ const base64encode = str => {
       out += base64EncodeChars.charAt(c1 >> 2)
       out += base64EncodeChars.charAt(((c1 & 0x3) << 4) | ((c2 & 0xF0) >> 4))
       out += base64EncodeChars.charAt((c2 & 0xF) << 2)
-      out += "="
-      break;
+      out += '='
+      break
     }
     c3 = str.charCodeAt(i++)
     out += base64EncodeChars.charAt(c1 >> 2)
@@ -52,8 +52,8 @@ const base64encode = str => {
 }
 
 const safe64 = (base64) => {
-  base64 = base64.replace(/\+/g, "-")
-  base64 = base64.replace(/\//g, "_")
+  base64 = base64.replace(/\+/g, '-')
+  base64 = base64.replace(/\//g, '_')
   return base64
 }
 

@@ -1,7 +1,7 @@
 import React from 'react'
 import { action, computed, observable } from 'mobx'
-import { Modal } from "antd-mobile"
-import { clubInfo } from "../../mockData"
+import { Modal } from 'antd-mobile'
+import { clubInfo } from '../../mockData'
 
 const { alert } = Modal
 
@@ -12,7 +12,7 @@ class ModifyStore {
   @observable newClubRule
   @observable newReportThreshold
 
-  constructor() {
+  constructor () {
     this.clubInfo = clubInfo
     this.newClubRule = this.clubInfo.clubRule
     this.newReportThreshold = this.clubInfo.reportThreshold
@@ -28,11 +28,11 @@ class ModifyStore {
 
   @action handleConfirmModify = () => {
     alert('通知', '修改成功', [
-      { text : '确定', onPress : this.handleOK },
+      { text: '确定', onPress: this.handleOK },
     ])
   }
 
-  @computed get hasContentChange() {
+  @computed get hasContentChange () {
     return this.newClubRule && this.newReportThreshold &&
       (this.newClubRule !== this.clubInfo.clubRule || this.newReportThreshold != this.clubInfo.reportThreshold)
   }

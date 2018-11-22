@@ -1,5 +1,5 @@
-import React from "react"
-import { Button, Flex, InputItem } from "antd-mobile"
+import React from 'react'
+import { Button, Flex, InputItem } from 'antd-mobile'
 import './increaseFunding.css'
 
 const IncreaseFunding = ({ handleIncreaseChange, hasInputFunding, handleFunding }) => {

@@ -10,12 +10,11 @@ class RegisterStore {
   @observable registerName
   @observable registerAddress
 
-  constructor() {
+  constructor () {
     this.files = []
     this.registerName = ''
     this.registerAddress = registerAddress
   }
-
 
   @action onRegisterAvatarChange = (files) => {
     this.files = files
@@ -30,7 +29,7 @@ class RegisterStore {
   }
 
   // to check all info blanks are filled
-  @computed get isInfoCompleted() {
+  @computed get isInfoCompleted () {
     return this.registerName && this.files.length
   }
 

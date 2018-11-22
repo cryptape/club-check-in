@@ -1,14 +1,13 @@
-import React from "react"
+import React from 'react'
 import { action, observable } from 'mobx'
-import { memberDataList } from "../../mockData"
+import { memberDataList } from '../../mockData'
 
 const log = console.log.bind(console, '### clubMemberStore ')
-
 
 class ClubMemberStore {
   @observable memberDataList
 
-  constructor() {
+  constructor () {
     this.memberDataList = memberDataList.sort((a, b) => b.points - a.points)
   }
 

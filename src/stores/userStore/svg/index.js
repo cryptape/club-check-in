@@ -1,10 +1,9 @@
-import React from "react"
+import React from 'react'
 
 const joinIcon = <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28">
   <path fill="#FFF" fillRule="evenodd"
         d="M26.6 12.6H15.4V1.4a1.4 1.4 0 0 0-2.8 0v11.2H1.4a1.4 1.4 0 1 0 0 2.8h11.2v11.2a1.4 1.4 0 1 0 2.8 0V15.4h11.2a1.4 1.4 0 1 0 0-2.8"/>
 </svg>
-
 
 const createIcon = <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
   <g fill="#FFF" fillRule="evenodd">

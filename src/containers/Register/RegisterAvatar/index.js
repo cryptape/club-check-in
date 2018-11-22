@@ -1,5 +1,5 @@
-import React from "react";
-import { Flex, ImagePicker } from "antd-mobile"
+import React from 'react'
+import { Flex, ImagePicker } from 'antd-mobile'
 
 const RegisterAvatar = ({ files, onChange }) => {
   return (

@@ -4,7 +4,7 @@ import './clubDetail.css'
 
 @inject('clubmemberStore') @observer
 class ClubDetail extends React.Component {
-  render() {
+  render () {
     return (
       <div className='clubDetail__container--content'>
         <div className='clubDetail__content--name'>

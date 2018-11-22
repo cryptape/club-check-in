@@ -2,10 +2,9 @@ import React from 'react'
 import { BottomNav, Header } from '../../components'
 import './home.css'
 
-
 class Home extends React.Component {
 
-  render() {
+  render () {
     return (
       <div className='home__container'>
         <Header titleName='社团圈'/>
