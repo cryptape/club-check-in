@@ -6,11 +6,16 @@ import ClubDetail from './ClubDetail'
 import BottomButton from './BottomButton'
 import './detail.css'
 
-@inject('detailStore') @observer
+@inject('detailStore', 'clubListStore') @observer
 class Detail extends React.Component {
   constructor(props) {
     super(props)
     this.state = props.detailStore
+  }
+
+  componentDidMount() {
+    const {clubID} = this.props.match.params
+    console.log('clubID in detail page', clubID)
   }
 
   render() {
