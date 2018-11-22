@@ -7,7 +7,7 @@ import './clubListItem.css'
 @inject('clublistStore') @observer
 class ClubListItem extends React.Component {
 
-  render () {
+  render() {
     const {
       handleClubDetail,
       clubDataList,

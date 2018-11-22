@@ -6,7 +6,7 @@ import './manageClubDetail.css'
 
 @inject('clubmemberStore') @observer
 class ManageClubDetail extends React.Component {
-  render () {
+  render() {
     return (
       <Flex justify='center'>
         <Link to={'./modify'}>

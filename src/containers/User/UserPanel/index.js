@@ -8,7 +8,7 @@ import './userPanel.css'
 @inject('userStore') @observer
 class UserlPanel extends React.Component {
 
-  render () {
+  render() {
     const {
       handleJoin,
       thumbPic,

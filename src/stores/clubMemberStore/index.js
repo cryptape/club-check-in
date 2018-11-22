@@ -7,7 +7,7 @@ const log = console.log.bind(console, '### clubMemberStore ')
 class ClubMemberStore {
   @observable memberDataList
 
-  constructor () {
+  constructor() {
     this.memberDataList = memberDataList.sort((a, b) => b.points - a.points)
   }
 

@@ -13,7 +13,7 @@ class CheckinStore {
   @observable selectedClubName
   @observable checkinContent
 
-  constructor () {
+  constructor() {
     this.files = []
     this.clubName = clubName
     this.selectedClubName = ''
@@ -83,7 +83,7 @@ class CheckinStore {
   }
 
   // TODO there is a bug, when you go to the checkin page and didn't check
-  @computed get isInfoCompleted () {
+  @computed get isInfoCompleted() {
     return this.selectedClubName && (this.checkinContent || this.files.length)
   }
 }

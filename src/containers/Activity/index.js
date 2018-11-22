@@ -7,7 +7,7 @@ import './activity.css'
 @inject('activityStore') @observer
 class Activity extends React.Component {
 
-  render () {
+  render() {
     return (
       <div className='activity__container'>
         <Header titleName='社团圈'/>

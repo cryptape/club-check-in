@@ -47,14 +47,14 @@ const upload = (file, name) => {
   const observable = qiniu.upload(file, name, token, putExtra, config)
   return new Promise((resolve, reject) => {
     observable.subscribe({
-      next (res) {
+      next(res) {
         log('next', res)
       },
-      error (err) {
+      error(err) {
         // log('err', err)
         reject(err)
       },
-      complete (res) {
+      complete(res) {
         log('done', res)
         resolve(res)
       },

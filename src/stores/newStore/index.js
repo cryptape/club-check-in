@@ -15,7 +15,7 @@ class NewStore {
   @observable clubRule
   @observable reportThreshold
 
-  constructor () {
+  constructor() {
     this.clubName = ''
     this.clubRule = ''
     this.reportThreshold = ''
@@ -81,7 +81,7 @@ class NewStore {
     this[infoType] = value
   }
 
-  @computed get isInfoCompleted () {
+  @computed get isInfoCompleted() {
     return this.clubName && this.clubRule && this.reportThreshold
   }
 }

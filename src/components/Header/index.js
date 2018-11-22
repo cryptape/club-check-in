@@ -5,7 +5,7 @@ import './header.css'
 
 class Header extends React.Component {
 
-  render () {
+  render() {
     const { titleName } = this.props
     const icon = this.props.backRoute ? <Link to={this.props.backRoute}><Icon type="left"/></Link> : ''
     return (

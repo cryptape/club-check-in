@@ -12,7 +12,7 @@ class ModifyStore {
   @observable newClubRule
   @observable newReportThreshold
 
-  constructor () {
+  constructor() {
     this.clubInfo = clubInfo
     this.newClubRule = this.clubInfo.clubRule
     this.newReportThreshold = this.clubInfo.reportThreshold
@@ -32,7 +32,7 @@ class ModifyStore {
     ])
   }
 
-  @computed get hasContentChange () {
+  @computed get hasContentChange() {
     return this.newClubRule && this.newReportThreshold &&
       (this.newClubRule !== this.clubInfo.clubRule || this.newReportThreshold != this.clubInfo.reportThreshold)
   }

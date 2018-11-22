@@ -6,7 +6,7 @@ const { alert } = Modal
 const log = console.log.bind(console, '### detailStore ')
 
 class DetailStore {
-  constructor () {
+  constructor() {
     this.isLeader = true
   }
 

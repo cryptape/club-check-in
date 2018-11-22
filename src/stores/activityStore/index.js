@@ -8,7 +8,7 @@ const log = console.log.bind(this, '### activityStore')
 class ActivityStore {
   @observable activityDataList
 
-  constructor () {
+  constructor() {
     this.activityDataList = activityDataList
     this.maxAvatars = 5
   }

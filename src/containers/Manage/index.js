@@ -9,7 +9,7 @@ import './manage.css'
 @inject('manageStore') @observer
 class Manage extends React.Component {
 
-  render () {
+  render() {
     const {
       handleSettle,
       handleIncreaseChange,

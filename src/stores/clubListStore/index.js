@@ -8,7 +8,7 @@ const log = console.log.bind(console, '### clubListStore ')
 class ClubListStore {
   @observable clubDataList
 
-  constructor () {
+  constructor() {
     this.clubDataList = clubDataList
     this.clubListArrow = clubListArrow
     this.maxAvatars = 7

@@ -9,7 +9,7 @@ import './checkin.css'
 
 @inject('checkinStore') @observer
 class Checkin extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
     this.state = props.checkinStore
   }
@@ -18,7 +18,7 @@ class Checkin extends React.Component {
     this.state.handleCheckin(this.props.history)
   }
 
-  render () {
+  render() {
 
     const {
       files,

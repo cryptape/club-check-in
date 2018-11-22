@@ -8,7 +8,7 @@ import './activityCardList.css'
 
 @inject('activityStore') @observer
 class ActivityCardList extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
     this.state = props.activityStore
     this.state.refreshing = false
@@ -23,7 +23,7 @@ class ActivityCardList extends React.Component {
     console.log('hello')
   }
 
-  render () {
+  render() {
     const {
       activityDataList,
       maxAvatars,

@@ -9,7 +9,7 @@ const thumbPic = 'avatar.png'
 const { prompt } = Modal
 
 class UserStore {
-  constructor () {
+  constructor() {
     this.thumbPic = thumbPic
     this.joinIcon = joinIcon
     this.createIcon = createIcon

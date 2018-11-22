@@ -9,7 +9,7 @@ const { Brief } = Item
 @inject('clubmemberStore') @observer
 class ClubMember extends React.Component {
 
-  render () {
+  render() {
     const {
       memberDataList,
       checkLeader,

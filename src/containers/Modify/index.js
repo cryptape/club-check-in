@@ -11,7 +11,7 @@ import './modify.css'
 @inject('modifyStore') @observer
 class Modify extends React.Component {
 
-  render () {
+  render() {
 
     const {
       handleConfirmModify,

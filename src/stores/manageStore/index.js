@@ -10,7 +10,7 @@ class ManageStore {
   @observable increaseFunding
   //TODO cause increase funding and init funding combine to one function, so we need to know which club was selected.
   //TODO need /#/manage --> /#/manage/1001
-  constructor () {
+  constructor() {
     this.increaseFunding = ''
   }
 
@@ -45,7 +45,7 @@ class ManageStore {
     ])
   }
 
-  @computed get hasInputFunding () {
+  @computed get hasInputFunding() {
     return this.increaseFunding
   }
 
