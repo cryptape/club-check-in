@@ -1,5 +1,5 @@
 import React from 'react'
-
+// TODO need replace this svg
 const star = <svg xmlns="http://www.w3.org/2000/svg" width="17" height="28" viewBox="0 0 17 28">
   <g fill="none" fillRule="evenodd">
     <path fill="#FFF" fillOpacity=".01" d="M0 0h16v28H0z"/>

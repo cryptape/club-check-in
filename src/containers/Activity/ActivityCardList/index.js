@@ -55,6 +55,7 @@ class ActivityCardList extends React.Component {
               hasforbiddened={card.hasforbiddened}
               handleReport={handleReport}
               handleThumbUp={handleThumbUp}
+              isMember={card.isMember}
             />
           </Card>
         </Flex>

@@ -3,7 +3,12 @@ import { Card, } from 'antd-mobile'
 import FooterExtra from './FooterExtra'
 import './cardFooter.css'
 
-const CardFooter = ({ thumbUpMembers, maxAvatars, thumbUpTimes, hasReported, hasThumbUp, hasforbiddened, handleReport, handleThumbUp }) => {
+const CardFooter = ({
+                      thumbUpMembers, maxAvatars,
+                      thumbUpTimes, hasReported,
+                      hasThumbUp, hasforbiddened,
+                      handleReport, handleThumbUp,
+                      isMember, }) => {
 
   return (
     <Card.Footer
@@ -24,6 +29,7 @@ const CardFooter = ({ thumbUpMembers, maxAvatars, thumbUpTimes, hasReported, has
           hasThumbUp={hasThumbUp}
           handleReport={handleReport}
           handleThumbUp={handleThumbUp}
+          isMember={isMember}
         />
       }
     />
