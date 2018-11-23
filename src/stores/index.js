@@ -6,7 +6,7 @@ import detailStore from './detailStore'
 import newStore from './newStore'
 import modifyStore from './modifyStore'
 import userStore from './userStore'
-import clublistStore from './clubListStore'
+import clubListStore from './clubListStore'
 import clubmemberStore from './clubMemberStore'
 
 export {
@@ -18,6 +18,6 @@ export {
   newStore,
   modifyStore,
   userStore,
-  clublistStore,
+  clubListStore,
   clubmemberStore,
 }

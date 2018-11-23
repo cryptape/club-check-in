@@ -22,7 +22,7 @@ const generateUpToken = () => {
     'scope': config.qiniuBucket,
     'deadline': calcDeadLine(),
     // max pic size 512kb
-    'fsizeLimit': 512000,
+    // 'fsizeLimit': 512000,
     // can only upload image
     'mimeLimit': 'image/\*',
   }
@@ -66,7 +66,9 @@ const handleUploadImage = (files) => {
   const timestamp = new Date().getTime()
   if (files[0]) {
     const imgData = files[0].url
-    const name = files[0].file.name + timestamp
+    const name = `${files[0].file.name}${timestamp}`
+    const picNameOnChain = `${config.prefixUrl}${name}${config.imgSlim}`
+    log(picNameOnChain)
     return fetch(imgData)
       .then(img => img.blob())
       .then(data => upload(data, name))

@@ -4,34 +4,33 @@ import { Link } from 'react-router-dom'
 import { Flex, } from 'antd-mobile'
 import './clubListItem.css'
 
-@inject('clublistStore') @observer
+@inject('clubListStore') @observer
 class ClubListItem extends React.Component {
 
   render() {
     const {
-      handleClubDetail,
       clubDataList,
       clubListArrow,
       maxAvatars,
-    } = this.props.clublistStore
+    } = this.props.clubListStore
 
     const clubList = clubDataList.map((data, index) => {
       return (
-        <Link key={index} to={'/detail'} className='clubListItem__container--club-item-link'>
-          <Flex onClick={handleClubDetail} className='clubListItem__container--club-item'>
+        <Link key={index} to={`/detail/clubID=${data.clubID}`} className='clubListItem__container--club-item-link'>
+          <Flex className='clubListItem__container--club-item'>
             <div className='clubListItem__container--left'>
               <div className='clubListItem__content--name'>
                 <span>{data.clubName}</span>
               </div>
-              <ul>
+              {data.avatar.length ? <ul>
                 {data.avatar.map((avatar, index) => {
                   if (index <= maxAvatars) {
                     return <li key={index}><img src={avatar} alt=""/></li>
                   }
                 })}
-              </ul>
+              </ul> : ''}
             </div>
-            <div className='clubListItem__container--right'>
+            <div id={data.clubID} className='clubListItem__container--right'>
               <span>{`ID: ${data.clubID}`}</span>
               <div className='clubListItem__icon--arrow-right'>
                 {clubListArrow}
@@ -39,6 +38,7 @@ class ClubListItem extends React.Component {
             </div>
           </Flex>
         </Link>
+
       )
     })
     return (

@@ -3,9 +3,11 @@ const config = {
   userContract: '', // player contract address
   tokenContract: '', // token contract address
   clubContract: '', // club contrac address
-  qiniuAccessKey : '', // your qiniu AK
-  qiniuSecretKey : '', // your qiniu SK
+  qiniuAccessKey: '', // your qiniu AK
+  qiniuSecretKey: '', // your qiniu SK
   qiniuBucket: '', // your image bucket
+  prefixUrl: '',
+  imgSlim: '',
 }
 
 exports {

@@ -7,7 +7,7 @@ const CardHeader = ({ memberName, clubName, avatar }) => {
   return (
     <Card.Header
       title={
-        <div>
+        <div className='activityCard__container-header'>
           <div className='activityCard__content-member-name'>
             {memberName}
           </div>
