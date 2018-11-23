@@ -18,6 +18,8 @@ class Register extends React.Component {
       onRegisterAddressChange,
       handleRegister,
       isInfoCompleted,
+      checkIfRegistered,
+      accountSignUp,
     } = this.props.registerStore
 
     return (
@@ -30,7 +32,7 @@ class Register extends React.Component {
           <ClubLogo/>
           <Button
             disabled={!isInfoCompleted}
-            className={`register__button--finish ${!isInfoCompleted ? 'inactive' : ''}`} onClick={handleRegister}>
+            className={`register__button--finish ${!isInfoCompleted ? 'inactive' : ''}`} onClick={accountSignUp}>
             完成
           </Button>
         </div>
