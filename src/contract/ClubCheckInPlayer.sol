@@ -25,8 +25,25 @@ contract ClubCheckInPlayer {
         players[msg.sender].name = name;
     }
 
-    function setIcon(string icon)
-    public
+
+    function getUserClubs(address userAddr, uint256 index) 
+        view 
+        public 
+        returns (address)
+    {
+        return players[userAddr].clubs[index];
+    }
+
+    function getUserClubsSize(address userAddr) 
+        view 
+        public 
+        returns (uint256) 
+    {
+        return players[userAddr].clubs.length;
+    }
+
+    function setIcon(string icon) 
+        public 
     {
         require(players[msg.sender].playerAddress == msg.sender);
         players[msg.sender].icon = icon;
@@ -49,13 +66,18 @@ contract ClubCheckInPlayer {
         ClubData data = ClubData(clubAddress);
         require(bytes(data.clubName()).length > 0);
         require(!players[player].isJoin[clubAddress]);
-        bool isJoined = false;
+
+        bool isAdded = false;
         for (uint256 i = 0; i < players[player].clubs.length; i++) {
-            if (players[player].isJoin[players[player].clubs[i]])
-                isJoined = true;
+            if (clubAddress == players[player].clubs[i]) {
+                isAdded = true;
+            }
         }
-        if (!isJoined)
+        
+        if (!isAdded) {
             players[player].clubs.push(clubAddress);
+        }
+
         players[player].isJoin[clubAddress] = true;
     }
 
