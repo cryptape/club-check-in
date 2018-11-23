@@ -21,6 +21,10 @@ class UserStore {
     ], 'default', null, ['输入你想加入的社团ID吧'])
   }
 
+  @action joinClub = () => {
+    
+  }
+
 }
 
 const userStore = new UserStore()
