@@ -1,6 +1,5 @@
 import React from 'react'
 import { inject, observer } from 'mobx-react'
-import { observe } from 'mobx'
 import { Link } from 'react-router-dom'
 import { Flex, } from 'antd-mobile'
 import './clubListItem.css'
@@ -10,11 +9,11 @@ class ClubListItem extends React.Component {
 
   constructor(props) {
     super(props)
-    this.state = this.props.clubListStore
+    this.store = this.props.clubListStore
   }
 
   componentDidMount() {
-    this.state.getUserClubs(10)
+    this.store.getUserClubs(this.store.defaultClubNum)
   }
 
   render() {
@@ -27,7 +26,7 @@ class ClubListItem extends React.Component {
       clubIdList,
       clubUsers,
       clubUserAvatars,
-    } = this.state
+    } = this.store
 
     let clubData = []
     if (clubIdList.length === clubNameList.length) {
@@ -41,7 +40,8 @@ class ClubListItem extends React.Component {
     }
 
 
-    const clubList = clubData.length === 0 ? clubData : clubData.map((data, index) => {
+
+    const clubList = !clubData ? clubData : clubData.map((data, index) => {
       return (
         <Link key={index} to={`/detail/clubID=${data.clubID}`} className='clubListItem__container--club-item-link'>
           <Flex className='clubListItem__container--club-item'>
@@ -49,18 +49,16 @@ class ClubListItem extends React.Component {
               <div className='clubListItem__content--name'>
                 <span>{data.clubName}</span>
               </div>
-              {
-                data.avatar ? 
-                  <ul>
-                    {
-                      data.avatar.map((avatar, index) => {
-                      if (index <= maxAvatars) {
-                        return <li key={index}><img src={avatar.icon} alt=""/></li>
-                      }
-                    })}
-                  </ul> : ''
-              }
-            </div>
+                <ul>
+                  {
+                  data.avatar.slice(0, maxAvatars + 1).map((avatar, index) => {
+                    if (index <= maxAvatars) {
+                      return <li key={index}><img src={avatar.icon} alt=""/></li>
+                    }
+                  })
+                }
+                </ul>
+            </div> 
             <div id={data.clubID} className='clubListItem__container--right'>
               <span>{`ID: ${data.clubID}`}</span>
               <div className='clubListItem__icon--arrow-right'>

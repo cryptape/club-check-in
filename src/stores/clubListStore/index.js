@@ -28,6 +28,7 @@ class ClubListStore {
     this.clubIdList = []
     this.clubUsers = []
     this.clubUserAvatars = []
+    this.defaultClubNum = 10
   }
 
   // @action getClubID = (e) => {
@@ -48,8 +49,7 @@ class ClubListStore {
 
     const size = await userContract.methods.getUserClubsSize(sender).call()
     
-    let max = size != 0? size : size
-    max = i < max ? i : max
+    const max = i < size ? i : size
 
     const clubDataAddrs = await Promise.all(Array.from({length: max}).map((_, index) => {
       return userContract.methods.getUserClubs(sender, index).call()
