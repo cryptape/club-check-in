@@ -11,11 +11,14 @@ class Detail extends React.Component {
   constructor(props) {
     super(props)
     this.store = props.detailStore
+    const { clubID } = this.props.match.params
+    // console.log('ccccID', clubID)
+    this.store.clubID = clubID
   }
 
   componentDidMount() {
-    const {clubID} = this.props.match.params
-    console.log('clubID in detail page', clubID)
+    // const { clubID } = this.props.match.params
+    // console.log('clubID in detail page', clubID)
   }
 
   render() {
@@ -23,8 +26,8 @@ class Detail extends React.Component {
       isLeader,
       handleManageMember,
       handleQuitClub,
+      clubID,
     } = this.store
-
     return (
       <div className='detail__container'>
         <Header titleName='社团详情' backRoute='/user'/>
@@ -36,6 +39,7 @@ class Detail extends React.Component {
               isLeader={isLeader}
               handleManageMember={handleManageMember}
               handleQuitClub={handleQuitClub}
+              clubID={clubID}
             />
           </div>
         </div>

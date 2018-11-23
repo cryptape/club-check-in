@@ -4,12 +4,12 @@ import { Flex, } from 'antd-mobile'
 import { Link } from 'react-router-dom'
 import './manageClubDetail.css'
 
-@inject('clubmemberStore') @observer
+@inject('clubMemberStore') @observer
 class ManageClubDetail extends React.Component {
   render() {
     return (
       <Flex justify='center'>
-        <Link to={'./modify'}>
+        <Link to={`/modify/${this.props.clubID}`}>
           <div className='manageClubDetail__content--container'>
             <div className='manageClubDetail__content--name'>
               Cryptape慢跑俱乐部

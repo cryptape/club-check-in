@@ -13,13 +13,14 @@ const CardFooter = ({
   return (
     <Card.Footer
       content={
+        !hasforbiddened ?
         <ul className='activityCard__container--club-thumbup-member'>
           {thumbUpMembers.map((avatar, index) => {
             if (index <= maxAvatars) {
               return <li key={index}><img src={avatar} alt=""/></li>
             }
           })}
-        </ul>
+        </ul> : ''
       }
       extra={
         <FooterExtra

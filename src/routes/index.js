@@ -17,7 +17,7 @@ export default (
         <Route exact path="/detail/:clubID" component={Detail}/>
         <Route exact path="/manage/:clubID" component={Manage}/>
         <Route exact path="/new" component={New}/>
-        <Route exact path="/modify" component={Modify}/>
+        <Route exact path="/modify/:clubID" component={Modify}/>
         <Route exact path="/checkin" component={Checkin}/>
         <Route exact path="/user" component={User}/>
       </Switch>

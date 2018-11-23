@@ -1,10 +1,10 @@
 import React from 'react'
 import { Button } from 'antd-mobile'
 
-const BottomButton = ({ isLeader, handleManageMember, handleQuitClub }) => {
+const BottomButton = ({ isLeader, handleManageMember, handleQuitClub, clubID }) => {
   return (
     isLeader ?
-      <Button href='#/manage'
+      <Button href={`#/manage/${clubID}`}
               className='detail__button--club-manage'
               onClick={handleManageMember}
       >

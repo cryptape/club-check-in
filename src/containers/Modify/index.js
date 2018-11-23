@@ -10,6 +10,12 @@ import './modify.css'
 
 @inject('modifyStore') @observer
 class Modify extends React.Component {
+  constructor(props) {
+    super(props)
+    this.store = props.modifyStore
+    const { clubID } = this.props.match.params
+    this.store.clubID = clubID
+  }
 
   render() {
 
@@ -18,11 +24,12 @@ class Modify extends React.Component {
       clubInfo,
       onInfoChange,
       hasContentChange,
-    } = this.props.modifyStore
+      clubID
+    } = this.store
 
     return (
       <div className='modifyClub__container'>
-        <Header titleName='社团信息修改' backRoute='./detail'/>
+        <Header titleName='社团信息修改' backRoute={`/detail/${clubID}`}/>
         <div className='modifyClub__container--content'>
           <ClubName clubName={clubInfo.clubName}/>
           <ClubID clubID={clubInfo.clubID}/>
