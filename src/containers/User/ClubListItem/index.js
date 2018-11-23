@@ -22,13 +22,13 @@ class ClubListItem extends React.Component {
               <div className='clubListItem__content--name'>
                 <span>{data.clubName}</span>
               </div>
-              <ul>
+              {data.avatar.length ? <ul>
                 {data.avatar.map((avatar, index) => {
                   if (index <= maxAvatars) {
                     return <li key={index}><img src={avatar} alt=""/></li>
                   }
                 })}
-              </ul>
+              </ul> : ''}
             </div>
             <div id={data.clubID} className='clubListItem__container--right'>
               <span>{`ID: ${data.clubID}`}</span>

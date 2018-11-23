@@ -15,7 +15,7 @@ export default (
         <Route exact path="/" component={flag ? Activity : Register}/>
         <Route exact path="/register" component={Register}/>
         <Route exact path="/detail/:clubID" component={Detail}/>
-        <Route exact path="/manage" component={Manage}/>
+        <Route exact path="/manage/:clubID" component={Manage}/>
         <Route exact path="/new" component={New}/>
         <Route exact path="/modify" component={Modify}/>
         <Route exact path="/checkin" component={Checkin}/>

@@ -28,7 +28,10 @@ class ClubMember extends React.Component {
           {checkLeader(data.address) ? <Badge text={'团长'}/> : ''}
           <Brief>
             <div>{data.address}</div>
-            <div className='clubMember__listItem--personal-points'>{`社团积分: ${data.points}`}</div>
+            <div className='clubMember__listItem--personal-points'>
+              {`社团积分: ${data.points}`}
+              <span className='clubMember__listItem--personal-bonus'>预计奖励：{data.bonus ? data.bonus : '--'} CCT</span>
+            </div>
           </Brief>
         </Item>
       )

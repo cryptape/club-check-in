@@ -8,18 +8,22 @@
 .clubMember__listItem--personal-info {
   border-top: 1px solid #ddd;
 }
-
+.clubMember__listItem--personal-bonus,
 .clubMember__listItem--personal-points {
   font-size: 12px;
-  font-weight: normal;
-  font-style: normal;
-  font-stretch: normal;
-  line-height: 1;
-  letter-spacing: normal;
+}
+
+.clubMember__listItem--personal-points {
   color: #28d890;
+}
+
+.clubMember__listItem--personal-bonus {
+  color: #242b43;
+  margin-left: 80px;
 }
 
 .am-badge-text {
   margin-left: 10px;
   margin-bottom: 1px;
 }
+

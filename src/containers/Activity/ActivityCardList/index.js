@@ -35,7 +35,12 @@ class ActivityCardList extends React.Component {
       return (
         <Flex key={index} justify='center'>
           <Card className='activityCard__container-content'>
-            <CardHeader memberName={card.name} clubName={card.clubName} avatar={card.avatar}/>
+            <CardHeader
+              memberName={card.name}
+              clubName={card.clubName}
+              avatar={card.avatar}
+              isMember={card.isMember}
+            />
             <CardBody
               checkinContent={card.checkinContent}
               checkinTime={card.checkinTime}

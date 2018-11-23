@@ -6,6 +6,7 @@ const config = {
   qiniuAccessKey: '', // your qiniu AK
   qiniuSecretKey: '', // your qiniu SK
   qiniuBucket: '', // your image bucket
+  prefixUrl: '',
 }
 
 exports {
