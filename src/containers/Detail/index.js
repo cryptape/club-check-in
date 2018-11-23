@@ -10,7 +10,7 @@ import './detail.css'
 class Detail extends React.Component {
   constructor(props) {
     super(props)
-    this.state = props.detailStore
+    this.store = props.detailStore
   }
 
   componentDidMount() {
@@ -23,7 +23,7 @@ class Detail extends React.Component {
       isLeader,
       handleManageMember,
       handleQuitClub,
-    } = this.state
+    } = this.store
 
     return (
       <div className='detail__container'>

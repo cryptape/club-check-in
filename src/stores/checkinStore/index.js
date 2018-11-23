@@ -69,8 +69,9 @@ class CheckinStore {
         .then(res => {
           log('ok, ', res)
           if (res.hash) {
+            log('pic name', res.key)
             this.handleCheckinSuccess(history)
-            // TODO interact with chain
+            //TODO interact with chain
           }
         })
         .catch((err) => {

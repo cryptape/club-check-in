@@ -6,14 +6,14 @@ import './clubMember.css'
 const { Item } = List
 const { Brief } = Item
 
-@inject('clubmemberStore') @observer
+@inject('clubMemberStore') @observer
 class ClubMember extends React.Component {
 
   render() {
     const {
       memberDataList,
       checkLeader,
-    } = this.props.clubmemberStore
+    } = this.props.clubMemberStore
 
     const memberList = memberDataList.map((data, index) => {
       return (
