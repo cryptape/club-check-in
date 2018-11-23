@@ -5,7 +5,6 @@ import { config } from '../config'
 
 const log = console.log.bind(console, '### utils')
 
-const imgSlim = '?imageMogr2/auto-orient/thumbnail/!50p/blur/1x0/quality/51|imageslim'
 // token valid for next 1 hour
 const calcDeadLine = () => {
   return Math.round(new Date().getTime() / 1000) + 3600
@@ -68,7 +67,7 @@ const handleUploadImage = (files) => {
   if (files[0]) {
     const imgData = files[0].url
     const name = `${files[0].file.name}${timestamp}`
-    const picNameOnChain = `${config.prefixUrl}${name}${imgSlim}`
+    const picNameOnChain = `${config.prefixUrl}${name}${config.imgSlim}`
     log(picNameOnChain)
     return fetch(imgData)
       .then(img => img.blob())
