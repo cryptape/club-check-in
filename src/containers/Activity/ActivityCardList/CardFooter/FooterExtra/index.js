@@ -24,10 +24,8 @@ const FooterExtra = ({
       /> :
       <NotMember
         thumbUpTimes={thumbUpTimes}
-        hasReported={hasReported}
         hasforbiddened={hasforbiddened}
         hasThumbUp={hasThumbUp}
-        handleReport={handleReport}
         handleThumbUp={handleThumbUp}
       />
   )

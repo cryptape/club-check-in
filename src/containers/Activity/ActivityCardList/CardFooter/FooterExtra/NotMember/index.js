@@ -4,10 +4,8 @@ import { reportIcon, thumbUpIcon } from '../svg'
 
 const NotMember = ({
                     thumbUpTimes,
-                    hasReported,
                     hasThumbUp,
                     hasforbiddened,
-                    handleReport,
                     handleThumbUp,
                   }) => {
   return (
