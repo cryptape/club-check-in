@@ -16,6 +16,9 @@ class ActivityStore {
 
   @action handleThumbUp = () => {
     log('click thumb up')
+    alert('成功', '点赞成功了，快去让Ta请你吃点什么吧', [
+      { text: '吼啊！', onPress: () => {log('吼啊！')} },
+    ])
   }
 
   handleConfirmReport = (e) => {

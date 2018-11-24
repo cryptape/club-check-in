@@ -5,7 +5,7 @@
  *
  */
 
-  // activity page
+// activity page
 const activityDataList = [
     {
       name: '梁高宁',
@@ -73,6 +73,7 @@ const activityDataList = [
       isMember: true,
       hasforbiddened: false,
     },]
+
 //checkin page
 const clubName = [
   {
