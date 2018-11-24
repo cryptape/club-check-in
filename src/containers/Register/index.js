@@ -45,7 +45,7 @@ class Register extends React.Component {
           <Button
             disabled={!isInfoCompleted}
             className={`register__button--finish ${!isInfoCompleted ? 'inactive' : ''}`} onClick={handleSubmit}>
-            更新
+            完成
           </Button>
         </div>
       </div>
