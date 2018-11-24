@@ -6,7 +6,7 @@ import transaction from '../../contract/transaction'
 
 const log = console.log.bind(console, '### registerStore ')
 
-// address must get from Neuron-Web
+// TODO address must get from Neuron-Web
 const registerAddress = '0X291302034049012393Ba0414'
 
 class RegisterStore {
