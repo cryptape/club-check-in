@@ -18,6 +18,7 @@ class RegisterStore {
     this.registerName = ''
     this.registerAddress = ''
     this.ifRegistered = false
+    this.fetchedName = undefined
   }
 
   @action onRegisterAvatarChange = (files) => {
@@ -40,6 +41,7 @@ class RegisterStore {
       this.registerAddress = sender
       userContract.methods.players(sender).call()
         .then(res => {
+          this.fetchedName = res.name
           this.registerName = res.name
           this.files = [{
             file: {
@@ -48,11 +50,13 @@ class RegisterStore {
             url: config.prefixUrl + res.icon + config.imgSlim,
           }]
         })
-        .then(this.ifRegistered = (this.registerName !== undefined))
+        .then(this.ifRegistered = (this.fetchedName !== undefined))
+        .then(() => {console.log()})
     })
   }
 
   @action handleSubmit =() => {
+    log('ifregister', this.ifRegistered)
     if (this.ifRegistered) {
       console.log('account update')
       this.accountUpdate()
@@ -75,19 +79,34 @@ class RegisterStore {
         validUntilBlock: blockNumber + 88,
       }
       const userContract = new appchain.base.Contract(playerAbi, config.userContract)
-      return userContract.methods.signIn('sampleName', 'sampleUrl').send(tx)
-    }).then(result => {
-      log('waiting for transaction result')
-      return appchain.listeners.listenToTransactionReceipt(result.hash)
-    }).then(recepit => {
-      if (recepit.errorMessage === null) {
-        log('sign up success')
-      } else {
-        log('sign up failed, ', recepit.errorMessage)
-        throw new Error(recepit.errorMessage)
-      }
-    }).catch(err => {
-      log('error', err)
+      
+      handleUploadImage(this.files)
+        .then(res => {
+          log('ok, ', res)
+          if (res.hash) {
+            log('res key', res.key)
+            appchain.base.getBlockNumber().then(blockNum => {
+              const tx = {
+                ...transaction,
+                from: this.registerAddress,
+                validUntilBlock: blockNum + 88
+              }
+              return userContract.methods.signIn(this.registerName, res.key).send(tx)
+            }).then((setIconTx) => {
+              log('waiting for signup tx')
+              return appchain.listeners.listenToTransactionReceipt(setIconTx.hash)
+            }).then((receipt) => {
+              if (receipt.errorMessage === null) {
+                log('user sign up success')
+              } else {
+                log('user sign up failed', receipt.errorMessage)
+              }
+            })
+          }
+        })
+        .catch((err) => {
+          log('err', err)
+        })
     })
   }
 
