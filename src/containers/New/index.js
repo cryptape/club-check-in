@@ -16,6 +16,7 @@ class New extends React.Component {
 
   handleCreate = () => {
     this.state.handleCreateClub(this.props.history)
+    // console.log('history1', this.props.history)
   }
 
   render() {
