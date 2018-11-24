@@ -18,11 +18,24 @@ contract ClubCheckInPlayer {
 
     uint256 public size;
 
+    function setNameIcon(string name, string icon) public {
+        require(players[msg.sender].playerAddress == msg.sender);
+        players[msg.sender].name = name;
+        players[msg.sender].icon = icon;
+    }
+
     function setName(string name)
-    public
+        public
     {
         require(players[msg.sender].playerAddress == msg.sender);
         players[msg.sender].name = name;
+    }
+
+    function setIcon(string icon) 
+        public 
+    {
+        require(players[msg.sender].playerAddress == msg.sender);
+        players[msg.sender].icon = icon;
     }
 
 
@@ -40,13 +53,6 @@ contract ClubCheckInPlayer {
         returns (uint256) 
     {
         return players[userAddr].clubs.length;
-    }
-
-    function setIcon(string icon) 
-        public 
-    {
-        require(players[msg.sender].playerAddress == msg.sender);
-        players[msg.sender].icon = icon;
     }
 
     function signIn(string name, string icon)
