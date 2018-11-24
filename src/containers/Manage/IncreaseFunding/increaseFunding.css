@@ -1,6 +1,6 @@
 .manageClubDetail__input--increase-funding {
   /*border: 1px solid red;*/
-  margin-top: 15px;
+  margin-top: 2.24vh;
 }
 
 .manageClubDetail__button--increase-funding {
@@ -8,16 +8,16 @@
   margin-left: 3vw;
   border-radius: 50px;
   font-size: 13px;
-  width: 120px;
-  height: 40px;
-  line-height: 40px;
+  width: 32vw;
+  height: 5.99vh;
+  line-height: 5.99vh;
   border: solid 1px #28d890 !important;
 }
 
 .manageClubDetail__container--increase-funding {
   border-bottom: 1px solid #ddd;
-  padding-bottom: 5px;
-  margin-top: 16px;
+  padding-bottom: 0.75vh;
+  margin-top: 2.4vh;
 }
 
 .inactive {

@@ -1,6 +1,6 @@
 .clubMember__lists--container {
-  height: calc(100vh - 260px);
-  margin-top: 20px;
+  height: 61vh;
+  margin-top: 2.99vh;
   overflow-y: scroll;
   font-family: PingFangSC, Arial, sans-serif, serif;
 }
@@ -19,11 +19,11 @@
 
 .clubMember__listItem--personal-bonus {
   color: #242b43;
-  margin-left: 80px;
+  margin-left: 12.5vw;
 }
 
 .am-badge-text {
-  margin-left: 10px;
-  margin-bottom: 1px;
+  margin-left: 2.67vw;
+  margin-bottom: 0.15vh;
 }
 

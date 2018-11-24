@@ -1,7 +1,7 @@
 .checkin__content--club-rule {
-  width: 92%;
-  margin-top: 15px;
-  margin-bottom: 15px;
+  width: 92vw;
+  margin-top: 2.25vh;
+  margin-bottom: 2.25vh;
   border: solid 1px #e8ebf3;
   border-radius: 10px;
 }
@@ -14,6 +14,6 @@
 .am-textarea-count {
   border: 1px solid #ddd;
   border-radius: 50px;
-  width: 65px;
+  width: 17.33vw;
   text-align: center;
 }

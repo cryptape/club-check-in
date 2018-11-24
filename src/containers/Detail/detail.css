@@ -15,7 +15,7 @@
 }
 
 .detail__container--club-info {
-  height: 170px;
+  height: 25.48vh;
   /*border: 1px red solid;*/
   background-color: #fff;
 }
@@ -27,7 +27,7 @@
   color: #fff;
   background-color: #28d890;
   position: fixed !important;
-  width: 100%;
+  width: 100vw;
   bottom: 0;
 }
 

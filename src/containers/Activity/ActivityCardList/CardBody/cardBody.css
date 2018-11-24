@@ -1,5 +1,5 @@
 .am-card-body {
-  padding-left: 69px;
+  padding-left: 18.4vw;
   padding-top: 0;
 }
 
@@ -11,14 +11,12 @@
   font-family: var(--font-family);
   font-size: 16px;
   color: #242b43;
-  margin-bottom: 10px;
+  margin-bottom: 1.5vh;
   /*border: 1px solid gold;*/
 }
 
 .activityCard__content-post-pic {
-  width: 220px;
-  /*height: 220px;*/
-  /*background-image: url("./avatar.png");*/
+  width: 58.67vw;
 }
 
 .activityCard__content-checkin-time {
@@ -27,5 +25,5 @@
   text-align: left;
   color: #898fa3;
   /*border: 1px solid greenyellow;*/
-  margin-top: 10px;
+  margin-top: 1.5vh;
 }
