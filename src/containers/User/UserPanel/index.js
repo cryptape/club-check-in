@@ -12,7 +12,6 @@ class UserlPanel extends React.Component {
   render() {
     const {
       handleJoin,
-      thumbPic,
       joinIcon,
       createIcon,
       userAddr,

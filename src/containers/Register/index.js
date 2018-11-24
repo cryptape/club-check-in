@@ -32,9 +32,6 @@ class Register extends React.Component {
       isInfoCompleted,
       checkIfRegistered,
       handleSubmit,
-      // accountSignUp,
-      // accountUpdate,
-      // accountNameUpdate,
     } = this.store
 
     return (
@@ -45,11 +42,6 @@ class Register extends React.Component {
           <RegisterName onChange={onRegisterAddressChange} registerName={registerName}/>
           <RegisterAvatar files={files} onChange={onRegisterAvatarChange}/>
           <ClubLogo/>
-          {/* <Button
-            disabled={false}
-            className={`register__button--finish ${!isInfoCompleted ? 'inactive' : ''}`} onClick={accountSignUp}>
-            完成
-          </Button> */}
           <Button
             disabled={!isInfoCompleted}
             className={`register__button--finish ${!isInfoCompleted ? 'inactive' : ''}`} onClick={handleSubmit}>
