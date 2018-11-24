@@ -18,6 +18,7 @@ class Register extends React.Component {
 
   componentDidMount() {
     this.store.checkIfRegistered()
+    console.log(this.store.ifRegistered)
   }
 
   render() {
