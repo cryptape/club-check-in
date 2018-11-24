@@ -11,11 +11,11 @@ import './new.css'
 class New extends React.Component {
   constructor(props) {
     super(props)
-    this.state = props.newStore
+    this.store = props.newStore
   }
 
   handleCreate = () => {
-    this.state.handleCreateClub(this.props.history)
+    this.store.handleCreateClub(this.props.history)
     // console.log('history1', this.props.history)
   }
 
@@ -24,7 +24,7 @@ class New extends React.Component {
     const {
       isInfoCompleted,
       onInfoChange,
-    } = this.state
+    } = this.store
 
     return (
       <div className='newClub__container'>
