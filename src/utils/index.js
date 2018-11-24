@@ -63,6 +63,7 @@ const upload = (file, name) => {
 const handleUploadImage = (files) => {
   const timestamp = Math.round(new Date().getTime() / 1000)
   if (files[0]) {
+    log(files[0])
     const imgData = files[0].url
     const name = `${files[0].file.name}${timestamp}`
     log(name, timestamp)
@@ -71,6 +72,7 @@ const handleUploadImage = (files) => {
       .then(data => upload(data, name))
   }
 }
+
 
 const timeConverter = (UNIX_timestamp) => {
   const a = new Date(UNIX_timestamp * 1000)
@@ -83,8 +85,13 @@ const timeConverter = (UNIX_timestamp) => {
   return `${year}.${month}.${date} ${hour}:${min}:${sec} `
 }
 
+const constructPicUrl = (name) => {
+  return `${config.prefixUrl}${name}${config.imgSlim}`
+}
+
 export {
   handleUploadImage,
   errorCode,
   timeConverter,
+  constructPicUrl,
 }

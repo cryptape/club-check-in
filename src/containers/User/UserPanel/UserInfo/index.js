@@ -6,15 +6,15 @@ import './userInfo.css'
 const { Item } = List
 const { Brief } = Item
 
-const UserInfo = ({ thumbPic }) => {
+const UserInfo = ({ userAddr, userThumbPic, userName }) => {
   return (
     <Link to={'/register'}>
       <Item
         arrow="horizontal"
-        thumb={thumbPic}
+        thumb={userThumbPic}
         multipleLine
       >
-        realwwy <Brief>0X291302034049012393Ba0414</Brief>
+        {userName} <Brief>{userAddr}</Brief>
       </Item>
     </Link>
   )

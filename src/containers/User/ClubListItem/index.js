@@ -25,12 +25,14 @@ class ClubListItem extends React.Component {
       clubUserAvatars,
     } = this.store
 
+    console.log('avatar', clubUserAvatars.slice().map(proxy => proxy.slice()))
+
     let clubData = []
     if (clubIdList.length === clubNameList.length) {
       for (let i = 0; i < clubIdList.length; i++) {
         clubData.push({
           clubName: clubNameList[i],
-          avatar: clubUserAvatars.slice().map(proxy => proxy.slice()),
+          avatar: clubUserAvatars.slice().map(proxy => proxy.slice())[i],
           clubID: clubIdList[i],
         })
       }
@@ -44,13 +46,14 @@ class ClubListItem extends React.Component {
               <div className='clubListItem__content--name'>
                 <span>{data.clubName}</span>
               </div>
-              <ul>
+                <ul> 
                 {
+                  data.avatar ? 
                   data.avatar.slice(0, maxAvatars + 1).map((avatar, index) => {
                     if (index <= maxAvatars) {
-                      return <li key={index}><img src={avatar.icon} alt=""/></li>
+                      return <li key={index}><img src={avatar} alt=""/></li>
                     }
-                  })
+                  }) : ''
                 }
               </ul>
             </div>

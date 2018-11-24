@@ -60,9 +60,10 @@ class ClubListStore {
     this.clubUserAvatars = []
     for (let i = 0; i < this.clubUsers.length; i++) {
       log('user address', this.clubUsers[i].slice())
-      const singleClubAvatars = await Promise.all(this.clubUsers[i].map(addr => addr.slice()).map(addr => {
+      let singleClubAvatars = await Promise.all(this.clubUsers[i].map(addr => addr.slice()).map(addr => {
         return userContract.methods.players(addr).call()
       }))
+      singleClubAvatars = singleClubAvatars.map(x => config.prefixUrl + x.icon + config.imgSlim)
       this.clubUserAvatars.push(singleClubAvatars)
     }
   }
