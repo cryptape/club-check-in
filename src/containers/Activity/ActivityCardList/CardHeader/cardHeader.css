@@ -1,6 +1,6 @@
 .activityCard__content-member-name {
-  width: 45px;
-  height: 15px;
+  width: 12vw;
+  height: 2.25vh;
   font-family: var(--font-family);
   font-size: 15px;
   font-weight: 500;
@@ -13,8 +13,8 @@
 }
 
 .activityCard__content-club-name {
-  width: 111px;
-  height: 12px;
+  width: 29.6vw;
+  height: 1.8vh;
   font-family: var(--font-family);
   font-size: 12px;
   font-weight: normal;
@@ -24,7 +24,7 @@
   letter-spacing: normal;
   text-align: center;
   color: #898fa3;
-  margin-top: 3.5px;
+  margin-top: 0.52vh;
 }
 
 .am-card-header-content img {
@@ -33,5 +33,5 @@
   border: solid 1px rgba(153, 153, 153, 0.2);
   background-color: #d8d8d8;
   border-radius: 50px;
-  margin-right: 10px;
+  margin-right: 2.67vw;
 }

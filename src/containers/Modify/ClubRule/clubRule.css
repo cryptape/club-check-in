@@ -1,16 +1,16 @@
 .modifyClub__content--club-rule-title {
   color: #242b43;
   font-size: 17px;
-  padding-left: 15px;
+  padding-left: 4vw;
   white-space: nowrap;
   overflow: hidden;
-  padding-top: 12px;
+  padding-top: 1.79vh;
 }
 
 .modifyClub__content--club-rule {
-  width: 92%;
-  margin-top: 15px;
-  margin-bottom: 15px;
+  width: 92vw;
+  margin-top: 2.25vh;
+  margin-bottom: 2.25vh;
   border: solid 1px #e8ebf3;
   border-radius: 10px;
 }
@@ -23,6 +23,6 @@
 .am-textarea-count {
   border: 1px solid #ddd;
   border-radius: 50px;
-  width: 65px;
+  width: 17.33vw;
   text-align: center;
 }

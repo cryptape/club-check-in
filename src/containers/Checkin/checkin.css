@@ -24,10 +24,10 @@
   color: #242b43;
   font-size: 17px;
   font-family: var(--font-family);
-  padding-left: 15px;
+  padding-left: 4vw;
   white-space: nowrap;
   overflow: hidden;
-  padding-top: 12px;
+  padding-top: 1.8vh;
 }
 
 .checkin__button--checkin {
@@ -37,7 +37,8 @@
   color: #fff;
   background-color: #28d890;
   border-radius: 50px;
-  width: 50%;
+  margin-top: 2.25vh;
+  width: 50vw;
 }
 
 .am-picker-popup-header-left {
