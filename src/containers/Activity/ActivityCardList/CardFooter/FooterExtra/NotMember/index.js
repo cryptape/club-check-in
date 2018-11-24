@@ -20,7 +20,7 @@ const NotMember = ({
         <Flex justify='center'>
           <div
             className={`activityCard__container-thumb-up ${hasThumbUp ? 'thumbUpActive' : ''}`}
-            onClick={handleThumbUp}
+            onClick={hasThumbUp ? () => console.log('already thumb up') : handleThumbUp}
           >
             {thumbUpIcon} {thumbUpTimes}
           </div>

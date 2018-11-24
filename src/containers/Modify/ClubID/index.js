@@ -5,8 +5,8 @@ const ClubID = ({ clubID }) => {
   return (
     <InputItem
       className='modifyClub__input--club-id'
-      placeholder={clubID}
-      disabled={true}
+      value={clubID}
+      editable={false}
     >社团ID</InputItem>
   )
 }

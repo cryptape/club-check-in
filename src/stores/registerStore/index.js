@@ -3,7 +3,7 @@ import { playerAbi } from '../../contract/compiled'
 import { appchain } from '../../appchain'
 import { config } from '../../config'
 import transaction from '../../contract/transaction'
-import { errorCode, handleUploadImage } from '../../utils'
+import { handleUploadImage } from '../../utils'
 
 const log = console.log.bind(console, '### registerStore ')
 
@@ -11,7 +11,6 @@ class RegisterStore {
   @observable files
   @observable registerName
   @observable registerAddress
-  @observable ifRegistered
 
   constructor() {
     this.files = []
@@ -29,10 +28,6 @@ class RegisterStore {
     this.registerName = value
   }
 
-  @action handleRegister = () => {
-    console.log('register button clicked')
-  }
-
   //check if the current address is signed up
   //get the registerName and avatarName
   @action checkIfRegistered = () => {
@@ -45,7 +40,7 @@ class RegisterStore {
           this.registerName = res.name
           this.files = [{
             file: {
-              name: res.icon, 
+              name: res.icon,
             },
             url: config.prefixUrl + res.icon + config.imgSlim,
           }]
@@ -55,8 +50,7 @@ class RegisterStore {
     })
   }
 
-  @action handleSubmit =() => {
-    log('ifregister', this.ifRegistered)
+  @action handleSubmit = () => {
     if (this.ifRegistered) {
       console.log('account update')
       this.accountUpdate()
@@ -79,7 +73,7 @@ class RegisterStore {
         validUntilBlock: blockNumber + 88,
       }
       const userContract = new appchain.base.Contract(playerAbi, config.userContract)
-      
+
       handleUploadImage(this.files)
         .then(res => {
           log('ok, ', res)
@@ -109,7 +103,6 @@ class RegisterStore {
         })
     })
   }
-
 
   accountUpdate = () => {
     const userContract = new appchain.base.Contract(playerAbi, config.userContract)

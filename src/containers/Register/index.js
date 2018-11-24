@@ -18,7 +18,6 @@ class Register extends React.Component {
 
   componentDidMount() {
     this.store.checkIfRegistered()
-    console.log(this.store.ifRegistered)
   }
 
   render() {
@@ -26,12 +25,9 @@ class Register extends React.Component {
       files,
       registerAddress,
       registerName,
-      ifRegistered,
       onRegisterAvatarChange,
       onRegisterAddressChange,
-      handleRegister,
       isInfoCompleted,
-      checkIfRegistered,
       handleSubmit,
     } = this.store
 

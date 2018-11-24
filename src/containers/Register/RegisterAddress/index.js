@@ -4,7 +4,7 @@ import { InputItem } from 'antd-mobile'
 const RegisterAddress = ({ registerAddress }) => {
   return (
     <InputItem
-      disabled={true}
+      editable={false}
       value={registerAddress}
     >注册账号</InputItem>
   )
