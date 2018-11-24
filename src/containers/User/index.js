@@ -7,8 +7,22 @@ import './user.css'
 
 @inject('userStore') @observer
 class User extends React.Component {
+  
+  constructor(props) {
+    super(props)
+    this.store = this.props.userStore
+  }
+
+  componentDidMount() {
+    this.store.getUserInfo()
+  }
 
   render() {
+    
+    const {
+      userAddr
+    } = this.store
+
     return (
       <div className='user__container'>
         <Header titleName='个人'/>

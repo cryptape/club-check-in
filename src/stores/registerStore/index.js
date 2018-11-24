@@ -3,21 +3,21 @@ import { playerAbi } from '../../contract/compiled'
 import { appchain } from '../../appchain'
 import { config } from '../../config'
 import transaction from '../../contract/transaction'
+import { errorCode, handleUploadImage } from '../../utils'
 
 const log = console.log.bind(console, '### registerStore ')
-
-// address must get from Neuron-Web
-const registerAddress = '0X291302034049012393Ba0414'
 
 class RegisterStore {
   @observable files
   @observable registerName
   @observable registerAddress
+  @observable ifRegistered
 
   constructor() {
     this.files = []
     this.registerName = ''
-    this.registerAddress = registerAddress
+    this.registerAddress = ''
+    this.ifRegistered = false
   }
 
   @action onRegisterAvatarChange = (files) => {
@@ -33,16 +33,38 @@ class RegisterStore {
   }
 
   //check if the current address is signed up
+  //get the registerName and avatarName
   @action checkIfRegistered = () => {
     const userContract = new appchain.base.Contract(playerAbi, config.userContract)
     appchain.base.getDefaultAccount().then(sender => {
-      userContract.methods.players(sender).call().then(res => console.log(res))  
+      this.registerAddress = sender
+      userContract.methods.players(sender).call()
+        .then(res => {
+          this.registerName = res.name
+          this.files = [{
+            file: {
+              name: res.icon, 
+            },
+            url: config.prefixUrl + res.icon + config.imgSlim,
+          }]
+        })
+        .then(this.ifRegistered = (this.registerName !== undefined))
     })
   }
 
+  @action handleSubmit =() => {
+    if (this.ifRegistered) {
+      console.log('account update')
+      this.accountUpdate()
+    } else {
+      console.log('account sign up')
+      this.accountSignUp()
+    }
+  }
+
   //sign up the current address
-  @action accountSignUp = () => {
-    const userContract= new appchain.base.Contract(playerAbi, config.userContract)
+  accountSignUp = () => {
+    const userContract = new appchain.base.Contract(playerAbi, config.userContract)
     const currentAddr = appchain.base.getDefaultAccount()
     const currentBlockNumber = appchain.base.getBlockNumber()
 
@@ -69,17 +91,45 @@ class RegisterStore {
     })
   }
 
-  @action getUserInfo = () => {
-    const userContract = new appchain.base.Contract(playerAbi, config.userContract)
-    appchain.base.getDefaultAccount().then(sender => {
-      userContract.methods.players(sender).call().then((res) => {
-        return res
-      }).then((res) => {
-        log(res)
-      })
-    })
-  }
 
+  accountUpdate = () => {
+    const userContract = new appchain.base.Contract(playerAbi, config.userContract)
+    if (this.files.length) {
+      log('pic detected')
+      log('files', this.files)
+      handleUploadImage(this.files)
+        .then(res => {
+          log('ok, ', res)
+          if (res.hash) {
+            log('res key', res.key)
+            appchain.base.getBlockNumber().then(blockNum => {
+              const tx = {
+                ...transaction,
+                from: this.registerAddress,
+                validUntilBlock: blockNum + 88
+              }
+              return userContract.methods.setNameIcon(this.registerName, res.key).send(tx)
+            }).then((setIconTx) => {
+              log('waiting for set icon tx')
+              return appchain.listeners.listenToTransactionReceipt(setIconTx.hash)
+            }).then((receipt) => {
+              if (receipt.errorMessage === null) {
+                log('user info update success')
+              } else {
+                log('user info update failed', receipt.errorMessage)
+              }
+            }).catch(err => {
+              log('error', err)
+            })
+          }
+        })
+        .catch((err) => {
+          log('err', err)
+        })
+    } else {
+      log('no pic')
+    }
+  }
 
   // to check all info blanks are filled
   @computed get isInfoCompleted() {
