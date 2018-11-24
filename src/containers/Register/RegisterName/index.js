@@ -7,6 +7,7 @@ const RegisterName = ({ onChange }) => {
       className='register__input--nickName'
       placeholder="取一个n(*≧▽≦*)n昵称"
       onChange={onChange}
+      maxLength={10}
     >注册昵称</InputItem>
   )
 }

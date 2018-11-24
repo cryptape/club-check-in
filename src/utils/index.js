@@ -61,17 +61,30 @@ const upload = (file, name) => {
 }
 
 const handleUploadImage = (files) => {
-  const timestamp = new Date().getTime()
+  const timestamp = Math.round(new Date().getTime() / 1000)
   if (files[0]) {
     const imgData = files[0].url
     const name = `${files[0].file.name}${timestamp}`
+    log(name, timestamp)
     return fetch(imgData)
       .then(img => img.blob())
       .then(data => upload(data, name))
   }
 }
 
+const timeConverter = (UNIX_timestamp) => {
+  const a = new Date(UNIX_timestamp * 1000)
+  const year = a.getFullYear()
+  const month = a.getMonth() + 1
+  const date = a.getDate()
+  const hour = a.getHours()
+  const min = a.getMinutes()
+  const sec = a.getSeconds()
+  return `${year}.${month}.${date} ${hour}:${min}:${sec} `
+}
+
 export {
   handleUploadImage,
   errorCode,
+  timeConverter,
 }
