@@ -10,29 +10,41 @@ import './register.css'
 
 @inject('registerStore') @observer
 class Register extends React.Component {
+
+  constructor(props) {
+    super(props)
+    this.store = this.props.registerStore
+  }
+
+  componentDidMount() {
+    this.store.checkIfRegistered()
+  }
+
   render() {
     const {
       files,
       registerAddress,
+      registerName,
+      ifRegistered,
       onRegisterAvatarChange,
       onRegisterAddressChange,
       handleRegister,
       isInfoCompleted,
       checkIfRegistered,
-      accountSignUp,
-    } = this.props.registerStore
+      handleSubmit,
+    } = this.store
 
     return (
       <div className='register__container'>
         <Header titleName='用户设置' backRoute='/user'/>
         <div className='register__container--content'>
           <RegisterAddress registerAddress={registerAddress}/>
-          <RegisterName onChange={onRegisterAddressChange}/>
+          <RegisterName onChange={onRegisterAddressChange} registerName={registerName}/>
           <RegisterAvatar files={files} onChange={onRegisterAvatarChange}/>
           <ClubLogo/>
           <Button
             disabled={!isInfoCompleted}
-            className={`register__button--finish ${!isInfoCompleted ? 'inactive' : ''}`} onClick={accountSignUp}>
+            className={`register__button--finish ${!isInfoCompleted ? 'inactive' : ''}`} onClick={handleSubmit}>
             完成
           </Button>
         </div>

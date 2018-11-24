@@ -65,6 +65,7 @@ const upload = (file, name) => {
 const handleUploadImage = (files) => {
   const timestamp = new Date().getTime()
   if (files[0]) {
+    log(files[0])
     const imgData = files[0].url
     const name = `${files[0].file.name}${timestamp}`
     const picNameOnChain = `${config.prefixUrl}${name}${config.imgSlim}`
@@ -75,7 +76,12 @@ const handleUploadImage = (files) => {
   }
 }
 
+const constructPicUrl = (name) => {
+  return `${config.prefixUrl}${name}${config.imgSlim}`
+}
+
 export {
   handleUploadImage,
   errorCode,
+  constructPicUrl
 }
