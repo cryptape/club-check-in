@@ -31,16 +31,6 @@ class ClubListStore {
     this.defaultClubNum = 10
   }
 
-  // @action getClubID = (e) => {
-  //   log('hello')
-  //   const item = e.target
-  //   log('item', item)
-  //   const par = item.closest('.clubListItem__container--club-item-link')
-  //   log('par', par)
-  //   this.selectedClubID = par.querySelector('.clubListItem__container--right').id
-  //   log('clubID', this.selectedClubID)
-  // }
-
   @action async getUserClubs(i) {
     const userContract = new appchain.base.Contract(playerAbi, config.userContract)
     const clubContract = new appchain.base.Contract(clubAbi, config.clubContract)

@@ -1,17 +1,24 @@
 import React from 'react'
-import { BottomNav, Header } from '../../components'
 import './home.css'
+import { inject, observer } from 'mobx-react'
+import { Activity, Register } from '../index'
 
+@inject('homeStore') @observer
 class Home extends React.Component {
 
+  constructor(props) {
+    super(props)
+    this.store = props.homeStore
+  }
+
+  componentDidMount() {
+    this.store.hasRegister()
+  }
+
   render() {
+    const { isUser } = this.store
     return (
-      <div className='home__container'>
-        <Header titleName='社团圈'/>
-        <div className='home__container--content'>
-          <BottomNav/>
-        </div>
-      </div>
+      isUser ? <Activity/> : <Register/>
     )
   }
 }

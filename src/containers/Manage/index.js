@@ -8,6 +8,12 @@ import './manage.css'
 
 @inject('manageStore') @observer
 class Manage extends React.Component {
+  constructor(props) {
+    super(props)
+    this.store = props.manageStore
+    const { clubID } = this.props.match.params
+    this.store.clubID = clubID
+  }
 
   render() {
     const {
@@ -15,12 +21,14 @@ class Manage extends React.Component {
       handleIncreaseChange,
       hasInputFunding,
       handleFunding,
-    } = this.props.manageStore
+      clubID
+    } = this.store
+
     return (
       <div className='manageClubDetail__container'>
-        <Header titleName='社团管理' backRoute='./detail'/>
+        <Header titleName='社团管理' backRoute={`/detail/${clubID}`}/>
         <div className='manageClubDetail__container--content'>
-          <ManageClubDetail/>
+          <ManageClubDetail clubID={clubID}/>
           <IncreaseFunding
             handleIncreaseChange={handleIncreaseChange}
             hasInputFunding={hasInputFunding}

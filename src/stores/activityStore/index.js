@@ -7,10 +7,11 @@ const log = console.log.bind(this, '### activityStore')
 
 class ActivityStore {
   @observable activityDataList
-
+  @observable refreshing
   constructor() {
     this.activityDataList = activityDataList
     this.maxAvatars = 5
+    this.refreshing = false
   }
 
   @action handleThumbUp = () => {
@@ -23,6 +24,15 @@ class ActivityStore {
 
   handleCancelReport = () => {
     log('handleCancelReport')
+  }
+
+  @action onRefresh = () => {
+    this.refreshing = true
+    log('refreshing')
+    setTimeout(() => {
+      this.refreshing = false
+      log('end refreshing')
+    }, 1000)
   }
 
   @action handleReport = () => {

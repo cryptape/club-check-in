@@ -1,7 +1,7 @@
 import { action, computed, observable } from 'mobx'
 import { Modal } from 'antd-mobile'
 import { clubName } from '../../mockData'
-import { errorCode, handleUploadImage } from '../../utils'
+import { errorCode, handleUploadImage, timeConverter } from '../../utils'
 
 const { alert } = Modal
 
@@ -69,8 +69,9 @@ class CheckinStore {
         .then(res => {
           log('ok, ', res)
           if (res.hash) {
-            this.handleCheckinSuccess(history)
-            // TODO interact with chain
+            log('pic name', res.key)
+            log(timeConverter(Math.round(new Date().getTime() / 1000)))
+            //TODO interact with chain
           }
         })
         .catch((err) => {
@@ -78,6 +79,7 @@ class CheckinStore {
         })
     } else {
       log('no pic')
+      log(timeConverter(Math.round(new Date().getTime() / 1000)))
       this.handleCheckinSuccess(history)
     }
   }

@@ -8,6 +8,7 @@ const RegisterName = ({ onChange, registerName }) => {
       placeholder="取一个n(*≧▽≦*)n昵称"
       value={registerName}
       onChange={onChange}
+      maxLength={10}
     >注册昵称</InputItem>
   )
 }

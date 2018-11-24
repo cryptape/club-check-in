@@ -1,14 +1,16 @@
 import React from 'react'
 import { action, observable } from 'mobx'
-import { memberDataList } from '../../mockData'
+import { memberDataList, detailPageClubInfo } from '../../mockData'
 
 const log = console.log.bind(console, '### clubMemberStore ')
 
 class ClubMemberStore {
   @observable memberDataList
+  @observable detailPageClubInfo
 
   constructor() {
     this.memberDataList = memberDataList.sort((a, b) => b.points - a.points)
+    this.detailPageClubInfo = detailPageClubInfo
   }
 
   // check leader according to member address
@@ -18,7 +20,7 @@ class ClubMemberStore {
 
 }
 
-const clubmemberStore = new ClubMemberStore()
+const clubMemberStore = new ClubMemberStore()
 
-export default clubmemberStore
+export default clubMemberStore
 

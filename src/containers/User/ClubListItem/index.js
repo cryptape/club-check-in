@@ -18,13 +18,10 @@ class ClubListItem extends React.Component {
 
   render() {
     const {
-      clubDataList,
       clubListArrow,
       maxAvatars,
-      userClubList,
       clubNameList,
       clubIdList,
-      clubUsers,
       clubUserAvatars,
     } = this.store
 
@@ -41,11 +38,9 @@ class ClubListItem extends React.Component {
       }
     }
 
-
-
     const clubList = !clubData ? clubData : clubData.map((data, index) => {
       return (
-        <Link key={index} to={`/detail/clubID=${data.clubID}`} className='clubListItem__container--club-item-link'>
+        <Link key={index} to={`/detail/${data.clubID}`} className='clubListItem__container--club-item-link'>
           <Flex className='clubListItem__container--club-item'>
             <div className='clubListItem__container--left'>
               <div className='clubListItem__content--name'>
@@ -60,8 +55,8 @@ class ClubListItem extends React.Component {
                     }
                   }) : ''
                 }
-                </ul>
-            </div> 
+              </ul>
+            </div>
             <div id={data.clubID} className='clubListItem__container--right'>
               <span>{`ID: ${data.clubID}`}</span>
               <div className='clubListItem__icon--arrow-right'>

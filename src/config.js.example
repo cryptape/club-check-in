@@ -1,13 +1,13 @@
 const config = {
-  chain: '',  // your chain address
+  chain: '',  // chain address
   userContract: '', // player contract address
   tokenContract: '', // token contract address
-  clubContract: '', // club contrac address
-  qiniuAccessKey: '', // your qiniu AK
-  qiniuSecretKey: '', // your qiniu SK
-  qiniuBucket: '', // your image bucket
-  prefixUrl: '',
-  imgSlim: '',
+  clubContract: '', // club contract address
+  qiniuAccessKey: '', // qiniu AK
+  qiniuSecretKey: '', // qiniu SK
+  qiniuBucket: '', // image bucket name
+  prefixUrl: '', // qiniu bucket url
+  imgSlim: '', // qiniu image slim url
 }
 
 exports {

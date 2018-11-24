@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 import './index.css'
 import * as serviceWorker from './serviceWorker'
 import { appchain } from './appchain'
-import Routes from './routes/index'
+import Routes from './routes'
 
 window.addEventListener('neuronWebReady', () => {
 

@@ -10,17 +10,7 @@ import './activityCardList.css'
 class ActivityCardList extends React.Component {
   constructor(props) {
     super(props)
-    this.state = props.activityStore
-    this.state.refreshing = false
-
-  }
-
-  onRefresh = () => {
-    this.setState({ refreshing: true })
-    setTimeout(() => {
-      this.setState({ refreshing: false })
-    }, 1000)
-    console.log('hello')
+    this.store = props.activityStore
   }
 
   render() {
@@ -29,7 +19,9 @@ class ActivityCardList extends React.Component {
       maxAvatars,
       handleReport,
       handleThumbUp,
-    } = this.props.activityStore
+      onRefresh,
+      refreshing,
+    } = this.store
 
     const activityCardList = activityDataList.map((card, index) => {
       return (
@@ -55,6 +47,7 @@ class ActivityCardList extends React.Component {
               hasforbiddened={card.hasforbiddened}
               handleReport={handleReport}
               handleThumbUp={handleThumbUp}
+              isMember={card.isMember}
             />
           </Card>
         </Flex>
@@ -66,8 +59,8 @@ class ActivityCardList extends React.Component {
         className='activityCardList__container-content'
         damping={60}
         direction='down'
-        refreshing={this.state.refreshing}
-        onRefresh={this.onRefresh}
+        refreshing={refreshing}
+        onRefresh={onRefresh}
       >
         {activityCardList}
       </PullToRefresh>

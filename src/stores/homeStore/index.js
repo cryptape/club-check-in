@@ -1,6 +1,17 @@
+import { action, observable } from 'mobx'
+
+const log = console.log.bind(console, '### homeStore')
+
 class HomeStore {
-  componentDidMount = () => {
-    console.log('hello from homepage')
+  @observable isUser
+
+  constructor() {
+    this.isUser = false
+  }
+
+  @action hasRegister = () => {
+    // interact with chain to decide isUser value
+    this.isUser = true
   }
 }
 

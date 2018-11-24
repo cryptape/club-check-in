@@ -11,11 +11,11 @@ import './checkin.css'
 class Checkin extends React.Component {
   constructor(props) {
     super(props)
-    this.state = props.checkinStore
+    this.store = props.checkinStore
   }
 
   handleCheck = () => {
-    this.state.handleCheckin(this.props.history)
+    this.store.handleCheckin(this.props.history)
   }
 
   render() {
@@ -27,7 +27,7 @@ class Checkin extends React.Component {
       handleSelectClub,
       clubName,
       isInfoCompleted,
-    } = this.state
+    } = this.store
 
     return (
       <div className='checkin__container'>
