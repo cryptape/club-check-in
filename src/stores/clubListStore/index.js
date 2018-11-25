@@ -51,9 +51,6 @@ class ClubListStore {
 
     console.log('clubNameList', clubDataAddrs)
 
-    const id = await clubContract.methods.clubsIds('0x70BEE0BC144f8e33545Aa682B2C4549c713466E7').call()
-    console.log('id', id)
-
     this.clubIdList = await Promise.all(clubDataAddrs.map(addr => {
       return clubContract.methods.clubsIds(addr).call()
     }))

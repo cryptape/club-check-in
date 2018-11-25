@@ -77,8 +77,7 @@ class CheckinStore {
     const extra = document.querySelector('.am-list-extra')
     extra.innerHTML = value
     this.selectedClubName = value
-    this.selectedClubAddr = this.clubData.filter(function(x){
-      console.log('x', x);
+    this.selectedClubAddr = this.clubData.filter((x) => {
        return x['clubName'] === value[0] 
       })
       .map(x => x['clubAddr'])
@@ -150,27 +149,11 @@ class CheckinStore {
 
     if (receipt.errorMessage === null) {
       log('checkin success')
+      this.handleCheckinSuccess(history)
     } else {
-      log('checkin failed', receipt)
+      this.log('checkin failed', receipt)
+      this.handleCheckinFailed()
     }
-
-    
-    // //get current round number
-    // const round = await clubDataContract.methods.round().call()
-    // console.log('round', round)
-
-    // //get events id for current round
-    // const currentEvents = await clubDataContract.methods.getCurrentEventByRound(round).call()
-    // console.log('currentEvents', currentEvents)
-
-    // //get events size for current round
-    // const eventSize = await clubDataContract.methods.eventSize().call()
-    // console.log('event size', eventSize)
-    
-    // //get event info by event id
-    // const eventEvent = await clubDataContract.methods.checkinEvents(round, 1543060535192).call()
-    // console.log('event event', eventEvent)
-    
   }
 
   // TODO there is a bug, when you go to the checkin page and didn't check
