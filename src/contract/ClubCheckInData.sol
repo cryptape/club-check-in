@@ -38,7 +38,7 @@ contract ClubCheckInData {
     uint256 public eventSize;
 
     //(round => roundInfo)
-    mapping(uint256 => Rounds) history;
+    mapping(uint256 => Rounds) public history;
 
     //(round => Ids checkin events)
     mapping(uint256 => uint256[]) public checkinEventIds;
