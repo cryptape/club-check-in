@@ -35,6 +35,8 @@ contract ClubCheckInData {
     //round number auto-increment
     uint256 public round;
 
+    uint256 public eventSize;
+
     //(round => roundInfo)
     mapping(uint256 => Rounds) history;
 
@@ -60,6 +62,7 @@ contract ClubCheckInData {
         controlAddress = msg.sender;
         owner = msg.sender;
         tokenAddress = _tokenAddress;
+        eventSize = 0;
     }
 
     modifier platform() {
@@ -110,6 +113,13 @@ contract ClubCheckInData {
         round = _round;
     }
 
+    function setEventSize(uint _eventSize) 
+        public 
+        platform
+    {
+        eventSize = _eventSize;
+    }
+
     function setSingleBonus(uint256 bonus)
     public
     platform
@@ -136,6 +146,14 @@ contract ClubCheckInData {
     platform
     {
         memberBonus[round][_address] = bonus;
+    }
+
+    function getCurrentEventByRound(uint256 roundToSearch) 
+        public 
+        view 
+        returns (uint256[])
+    {
+        return checkinEventIds[roundToSearch];
     }
 
     //funcs to manipulate members
@@ -166,6 +184,7 @@ contract ClubCheckInData {
     platform
     {
         checkinEventIds[round].push(id);
+        eventSize = eventSize + 1;
     }
 
     function addCheckinEvent(address author, string text, string imgUrl, uint256 time)

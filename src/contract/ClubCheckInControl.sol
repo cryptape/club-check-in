@@ -239,6 +239,7 @@ contract ClubCheckInControl {
         ClubData.addHistory(totalBonus, token);
         //start next round
         ClubData.setRound(SafeMath.add(ClubData.round(), 1));
+        ClubData.setEventSize(0);
     }
 
     function returnContractAddress()
