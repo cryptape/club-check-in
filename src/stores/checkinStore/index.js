@@ -2,6 +2,10 @@ import { action, computed, observable } from 'mobx'
 import { Modal } from 'antd-mobile'
 import { clubName } from '../../mockData'
 import { errorCode, handleUploadImage, timeConverter } from '../../utils'
+import { playerAbi, clubAbi, dataAbi, controlAbi } from '../../contract/compiled'
+import { appchain } from '../../appchain'
+import { config } from '../../config'
+import transaction from '../../contract/transaction'
 
 const { alert } = Modal
 
@@ -12,12 +16,51 @@ class CheckinStore {
   @observable clubName
   @observable selectedClubName
   @observable checkinContent
+  @observable clubAddrList
+  @observable clubNameList
+  @observable clubIdList
 
   constructor() {
     this.files = []
     this.clubName = clubName
     this.selectedClubName = ''
     this.checkinContent = ''
+    this.clubAddrList = []
+    this.clubNameList = []
+    this.clubIdList = []
+    this.clubData = []
+    this.selectedClubAddr = ''
+  }
+
+  @action async getRegisteredClubs(){
+    const userContract = new appchain.base.Contract(playerAbi, config.userContract)
+    const clubContract = new appchain.base.Contract(clubAbi, config.clubContract)
+    
+    const sender = await appchain.base.getDefaultAccount()
+    
+    const size = await userContract.methods.getUserClubsSize(sender).call()
+
+    this.clubAddrList = await Promise.all(Array.from({length: size}).map((_, index) => {
+      return userContract.methods.getUserClubs(sender, index).call()
+    }))
+
+    this.clubNameList = await Promise.all(this.clubAddrList.map(addr => {
+      return new appchain.base.Contract(dataAbi, addr).methods.clubName().call()
+    }))
+
+    this.clubIdList = await Promise.all(this.clubAddrList.map(addr => {
+      return clubContract.methods.clubsIds(addr).call()
+    }))
+
+    for (let i = 0; i < this.clubAddrList.length; i++) {
+      this.clubData.push({
+        clubName: this.clubNameList[i],
+        clubAddr: this.clubAddrList[i]
+      })
+    }
+
+    console.log('clubData', this.clubData)
+
   }
 
   @action onFilesChange = (files) => {
@@ -34,6 +77,13 @@ class CheckinStore {
     const extra = document.querySelector('.am-list-extra')
     extra.innerHTML = value
     this.selectedClubName = value
+    this.selectedClubAddr = this.clubData.filter(function(x){
+      console.log('x', x);
+       return x['clubName'] === value[0] 
+      })
+      .map(x => x['clubAddr'])
+
+    console.log('selected club addr: '+ this.selectedClubAddr)
   }
 
   handleConfirmCheckin = (history) => {
@@ -62,26 +112,65 @@ class CheckinStore {
     )
   }
 
-  @action handleCheckin = (history) => {
-    if (this.files.length) {
-      log('有图')
-      handleUploadImage(this.files)
-        .then(res => {
-          log('ok, ', res)
-          if (res.hash) {
-            log('pic name', res.key)
-            log(timeConverter(Math.round(new Date().getTime() / 1000)))
-            //TODO interact with chain
-          }
-        })
-        .catch((err) => {
-          this.handleCheckinFailed(err.code)
-        })
-    } else {
-      log('no pic')
-      log(timeConverter(Math.round(new Date().getTime() / 1000)))
-      this.handleCheckinSuccess(history)
+
+  @action async handleCheckin(history) {
+    console.log(history)
+
+    //get current block number and default address
+    const blockNumber = await appchain.base.getBlockNumber()
+    const defaultAccount = await appchain.base.getDefaultAccount()
+
+    //get control contract addr
+    const clubAddr = this.selectedClubAddr[0]
+    const clubDataContract = new appchain.base.Contract(dataAbi, clubAddr)
+    const clubControlAddr = await clubDataContract.methods.controlAddress().call()
+
+    //get current text
+    const checkInText = this.checkinContent
+    let checkInImg = 'NA'
+    
+    //construct transaction
+    const tx = {
+      ...transaction,
+      from: defaultAccount,
+      validUntilBlock: blockNumber + 88,
     }
+
+    if (this.files.length) {
+      checkInImg = await handleUploadImage(this.files)
+      checkInImg = checkInImg['key']
+      console.log('checkinimg',checkInImg)
+    }
+
+    const clubControlContract = new appchain.base.Contract(controlAbi, clubControlAddr)
+    const txHash = await clubControlContract.methods.checkin(checkInImg, checkInText).send(tx)            
+    const receipt = await appchain.listeners.listenToTransactionReceipt(txHash.hash)
+
+    console.log('receipt', receipt)
+
+    if (receipt.errorMessage === null) {
+      log('checkin success')
+    } else {
+      log('checkin failed', receipt)
+    }
+
+    
+    // //get current round number
+    // const round = await clubDataContract.methods.round().call()
+    // console.log('round', round)
+
+    // //get events id for current round
+    // const currentEvents = await clubDataContract.methods.getCurrentEventByRound(round).call()
+    // console.log('currentEvents', currentEvents)
+
+    // //get events size for current round
+    // const eventSize = await clubDataContract.methods.eventSize().call()
+    // console.log('event size', eventSize)
+    
+    // //get event info by event id
+    // const eventEvent = await clubDataContract.methods.checkinEvents(round, 1543060535192).call()
+    // console.log('event event', eventEvent)
+    
   }
 
   // TODO there is a bug, when you go to the checkin page and didn't check
