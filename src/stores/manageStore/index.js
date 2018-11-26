@@ -25,10 +25,6 @@ class ManageStore {
     log('有钱了')
   }
 
-  @action handleIncreaseChange = (value) => {
-    this.increaseFunding = value
-  }
-
   @action handleInput = (e) => {
     let inputValue = e.target.value
 
@@ -55,8 +51,9 @@ class ManageStore {
 
     // set InputValue
     if (inputValue.length > 0 || inputValue === '') {
-      log('inputValue in handleInput', inputValue)
-      // set increaseFunding here
+      e.target.value = inputValue
+      this.increaseFunding = e.target.value
+      log('increaseFunding', this.increaseFunding)
     }
   }
 
