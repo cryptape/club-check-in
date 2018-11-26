@@ -1,6 +1,6 @@
 import {handleUploadImage} from './UploadImage'
 import { convertTsToDate } from './ConvertTsToDate'
-import {constructPicUrl} from './constructPicUrl'
+import {constructPicUrl} from './ConstructPicUrl'
 import { errorCode } from './ErrorCode'
 
 export {
