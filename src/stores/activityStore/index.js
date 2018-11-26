@@ -1,6 +1,5 @@
 import { action, observable, toJS } from 'mobx'
 import { Modal } from 'antd-mobile'
-import { activityDataList } from '../../mockData'
 import { playerAbi, clubAbi, dataAbi, controlAbi } from '../../contract/compiled'
 import { appchain } from '../../appchain'
 import { config } from '../../config'
@@ -16,7 +15,6 @@ class ActivityStore {
   @observable checkInEventsToShow
 
   constructor() {
-    this.activityDataList = activityDataList
     this.maxAvatars = 5
     this.refreshing = false
     this.checkInEventsToShow = []
