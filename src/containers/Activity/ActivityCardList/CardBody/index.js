@@ -11,7 +11,7 @@ const CardBody = ({ checkinContent, checkinTime, postPic }) => {
           {checkinContent ? <div className='activityCard__content-checkin-content'>
             {checkinContent}
           </div> : ''}
-          {postPic ? <img className='activityCard__content-post-pic' src={postPic} alt=""/> : ''}
+          {postPic !== 'NA' ? <img className='activityCard__content-post-pic' src={postPic} alt=""/> : ''}
           <div className='activityCard__content-checkin-time'>
             {checkinTime}
           </div>

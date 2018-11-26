@@ -1,5 +1,4 @@
 .activityCard__content-member-name {
-  width: 12vw;
   height: 2.25vh;
   font-family: var(--font-family);
   font-size: 15px;
@@ -8,7 +7,6 @@
   font-stretch: normal;
   line-height: 1;
   letter-spacing: normal;
-  text-align: center;
   color: #242b43;
 }
 
