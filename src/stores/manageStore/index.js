@@ -23,7 +23,7 @@ class ManageStore {
     log('点击了是')
 
     console.log('clubId', this.currentClubId)
-    const userAddress = appchain.base.getDefaultAccount()
+    const userAddress = window.neuron.getAccount()
     const blockNumber = appchain.base.getBlockNumber()
     const clubContract = new appchain.base.Contract(clubAbi, config.clubContract)
 
@@ -68,12 +68,10 @@ class ManageStore {
     let defaultAddr = ''
     let dataAddr = ''
     let controlAddr = ''
+    const currentAccount = window.neuron.getAccount();
 
-    appchain.base.getDefaultAccount().then((accountAddr) => {
-      console.log(accountAddr)
-      defaultAddr = accountAddr
-      return this.tokenContract.methods.balanceOf(accountAddr).call()
-    }).then((tokens) => {
+
+    this.tokenContract.methods.balanceOf(currentAccount).call().then((tokens) => {
       console.log('number of tokens', tokens)
       if (tokens < fundingToIncrease) {
         throw Error('not enough balance.')

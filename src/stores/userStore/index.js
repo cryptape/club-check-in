@@ -28,7 +28,7 @@ class UserStore {
 
   @action async getUserInfo() {
     const userContract = new appchain.base.Contract(playerAbi, config.userContract)
-    const sender = await appchain.base.getDefaultAccount()
+    const sender = await window.neuron.getAccount()
     const userInfo = await userContract.methods.players(sender).call()
     this.userAddr = sender
     this.userName = userInfo['name']
@@ -52,7 +52,7 @@ class UserStore {
                 console.log('control addr', controlAddr)
                 const clubControlContract = new appchain.base.Contract(controlAbi, controlAddr)
                 
-                const currentAddr = appchain.base.getDefaultAccount()
+                const currentAddr = window.neuron.getAccount()
                 const currentBlockNumber = appchain.base.getBlockNumber()
 
                 Promise.all([currentAddr, currentBlockNumber]).then(([currentAddress, blockNumber]) => {

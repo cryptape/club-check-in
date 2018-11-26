@@ -40,7 +40,7 @@ class DetailStore {
     const clubAddr = await clubContract.methods.clubsInfo(clubId).call();
     const dataContract = new appchain.base.Contract(dataAbi, clubAddr)
     const owner = await dataContract.methods.owner().call()
-    const currentAddr = await appchain.base.getDefaultAccount()
+    const currentAddr = await window.neuron.getAccount()
     this.isLeader = (owner === currentAddr)
   }
 }

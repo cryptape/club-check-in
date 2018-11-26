@@ -32,22 +32,24 @@ class RegisterStore {
   //get the registerName and avatarName
   @action checkIfRegistered = () => {
     const userContract = new appchain.base.Contract(playerAbi, config.userContract)
-    appchain.base.getDefaultAccount().then(sender => {
-      this.registerAddress = sender
-      userContract.methods.players(sender).call()
-        .then(res => {
-          this.fetchedName = res.name
-          this.registerName = res.name
-          this.files = [{
-            file: {
-              name: res.icon,
-            },
-            url: config.prefixUrl + res.icon + config.imgSlim,
-          }]
-        })
-        .then(this.ifRegistered = (this.fetchedName !== undefined))
-        .then(() => {console.log()})
-    })
+
+
+    this.registerAddress = window.neuron.getAccount()
+
+    userContract.methods.players(this.registerAddress).call()
+      .then(res => {
+        console.log('res', res)
+        this.fetchedName = res.name
+        this.registerName = res.name
+        this.files = [{
+          file: {
+            name: res.icon,
+          },
+          url: config.prefixUrl + res.icon + config.imgSlim,
+        }]
+      })
+      .then(this.ifRegistered = (this.fetchedName !== undefined && this.fetchedName !== ''))
+      .then(() => {console.log()})
   }
 
   @action handleSubmit = () => {
@@ -63,7 +65,7 @@ class RegisterStore {
   //sign up the current address
   accountSignUp = () => {
     const userContract = new appchain.base.Contract(playerAbi, config.userContract)
-    const currentAddr = appchain.base.getDefaultAccount()
+    const currentAddr = window.neuron.getAccount()
     const currentBlockNumber = appchain.base.getBlockNumber()
 
     Promise.all([currentAddr, currentBlockNumber]).then(([currentAddress, blockNumber]) => {
@@ -80,6 +82,7 @@ class RegisterStore {
           if (res.hash) {
             log('res key', res.key)
             appchain.base.getBlockNumber().then(blockNum => {
+              console.log('blockNumber', blockNum)
               const tx = {
                 ...transaction,
                 from: this.registerAddress,

@@ -41,7 +41,7 @@ class NewStore {
 
   createClub = (history) => {
 
-    const currentAddr = appchain.base.getDefaultAccount()
+    const currentAddr = window.neuron.getAccount()
     const currentBlockNumber = appchain.base.getBlockNumber()
 
     Promise.all([currentAddr, currentBlockNumber]).then(([currentAddress, blockNumber]) => {

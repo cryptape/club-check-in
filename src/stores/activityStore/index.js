@@ -99,7 +99,7 @@ class ActivityStore {
           onPress: () => {
             const eventId = parseInt(card['eventId'])
             const clubDataAddr = card['clubAddr']
-            const defaultAddr = appchain.base.getDefaultAccount()
+            const defaultAddr = window.neuron.getAccount()
             const blockNum = appchain.base.getBlockNumber()
 
             Promise.all([defaultAddr, blockNum]).then(([currentAddr, blockNumber]) => {
@@ -134,7 +134,7 @@ class ActivityStore {
     log('card', toJS(card))
     const eventId = parseInt(card.eventId)
     const clubDataAddr = card.clubAddr
-    const defaultAddr = appchain.base.getDefaultAccount()
+    const defaultAddr = window.neuron.getAccount()
     const blockNum = appchain.base.getBlockNumber()
     Promise.all([defaultAddr, blockNum]).then(([currentAddr, blockNumber]) => {
       const clubDataContract = new appchain.base.Contract(dataAbi, clubDataAddr)

@@ -41,7 +41,7 @@ class CheckinStore {
     const userContract = new appchain.base.Contract(playerAbi, config.userContract)
     const clubContract = new appchain.base.Contract(clubAbi, config.clubContract)
     
-    const sender = await appchain.base.getDefaultAccount()
+    const sender = await window.neuron.getAccount
     
     const size = await userContract.methods.getUserClubsSize(sender).call()
 
@@ -121,7 +121,7 @@ class CheckinStore {
 
     //get current block number and default address
     const blockNumber = await appchain.base.getBlockNumber()
-    const defaultAccount = await appchain.base.getDefaultAccount()
+    const defaultAccount = await window.neuron.getAccount()
 
     //get control contract addr
     const clubAddr = this.selectedClubAddr[0]
