@@ -36,7 +36,9 @@ class RegisterStore {
       this.registerAddress = sender
       userContract.methods.players(sender).call()
         .then(res => {
+          console.log('Fetched name', this.fetchedName)
           this.fetchedName = res.name
+          console.log('Fetched name', this.fetchedName)
           this.registerName = res.name
           this.files = [{
             file: {
@@ -45,7 +47,9 @@ class RegisterStore {
             url: config.prefixUrl + res.icon + config.imgSlim,
           }]
         })
-        .then(this.ifRegistered = (this.fetchedName !== undefined))
+        .then(() => {
+          this.ifRegistered = (this.fetchedName !== undefined && this.fetchedName !== '')
+        })
         .then(() => {console.log()})
     })
   }
