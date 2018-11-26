@@ -25,6 +25,42 @@ class ManageStore {
 
   handleOK = () => {
     log('点击了是')
+
+    console.log('clubId', this.currentClubId)
+    const userAddress = appchain.base.getDefaultAccount()
+    const blockNumber = appchain.base.getBlockNumber()
+    const clubContract = new appchain.base.Contract(clubAbi, config.clubContract)
+
+    let currentAddr = ''
+    let blockNum = ''
+
+    Promise.all([userAddress, blockNumber]).then(([fetchedUserAddr, fetchedBlockNum]) => {
+      currentAddr = fetchedUserAddr
+      blockNum = fetchedBlockNum
+      return clubContract.methods.clubsInfo(this.currentClubId).call()
+    }).then((clubDataAddr) => {
+      console.log('clubDataAddr', clubDataAddr)
+      const dataContract = new appchain.base.Contract(dataAbi, clubDataAddr)
+      return dataContract.methods.controlAddress().call()
+    }).then((controlAddr) => {
+      console.log('controlAddr', controlAddr)
+      const controlContract = new appchain.base.Contract(controlAbi, controlAddr)
+      const tx = {
+        ...transaction,
+        from: currentAddr,
+        validUntilBlock: blockNum + 88,
+      }
+      return controlContract.methods.clear().send(tx)
+    }).then((txHash) => {
+      return appchain.listeners.listenToTransactionReceipt(txHash.hash)
+    }).then((receipt) => {
+      if (receipt.errorMessage === null) {
+        console.log('Clear successfully')
+      } else {
+        console.log('Clear failed')
+        throw Error(receipt.errorMessage)
+      }
+    })
   }
 
   handleCancel = () => {
@@ -35,6 +71,7 @@ class ManageStore {
     const fundingToIncrease = parseInt(this.increaseFunding)
     let defaultAddr = ''
     let dataAddr = ''
+    let controlAddr = ''
 
     appchain.base.getDefaultAccount().then((accountAddr) => {
       console.log(accountAddr)
@@ -47,7 +84,10 @@ class ManageStore {
       }
       return this.clubContract.methods.clubsInfo(this.currentClubId).call()
     }).then((dataContractAddr) => {
-      dataAddr = dataContractAddr
+      const dataConrtact = new appchain.base.Contract(dataAbi, dataContractAddr)
+      return dataConrtact.methods.controlAddress().call()
+    }).then((controlContractAddr) => {
+      controlAddr = controlContractAddr
       return appchain.base.getBlockNumber()
     }).then((blockNum) => {
       console.log('funding', fundingToIncrease)
@@ -58,7 +98,7 @@ class ManageStore {
         from: defaultAddr,
         validUntilBlock: blockNum + 88,
       }
-      return this.tokenContract.methods.transfer(dataAddr, this.increaseFunding).send(tx)
+      return this.tokenContract.methods.transfer(controlAddr, this.increaseFunding).send(tx)
     }).then((txHash) => {
       return appchain.listeners.listenToTransactionReceipt(txHash.hash)
     }).then((receipt) => {

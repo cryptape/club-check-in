@@ -27,10 +27,11 @@ class ClubMemberStore {
     const clubAddr = await clubContract.methods.clubsInfo(this.currentClubId).call()
     const dataContract = new appchain.base.Contract(dataAbi, clubAddr)
     this.clubOwner = await dataContract.methods.owner().call()
+    const controlAddr = await dataContract.methods.controlAddress().call()
 
     const clubName = await dataContract.methods.clubName().call()
     const clubDesc = await dataContract.methods.clubDesc().call()
-    const clubTotal = await tokenContract.methods.balanceOf(clubAddr).call()
+    const clubTotal = await tokenContract.methods.balanceOf(controlAddr).call()
 
     this.detailPageClubInfo = {
       clubName: clubName,
@@ -42,7 +43,8 @@ class ClubMemberStore {
     const members = await dataContract.methods.getMembers().call()
     const round = await dataContract.methods.round().call()
     const roundInfo = await dataContract.methods.history(round).call()
-    console.log('roundInfo', roundInfo)
+    const currentTotalBonus = await dataContract.methods.bonusHistory(round).call()
+    console.log('roundInfo', currentTotalBonus)
 
     let userData = []
     for (let i = 0; i < members.length; i++) {
@@ -51,7 +53,11 @@ class ClubMemberStore {
       const playerName = playerInfo['name']
       const avatar = constructPicUrl(playerInfo['icon'])
       const points = await dataContract.methods.memberBonus(round, playerAddr).call()
-      const bonus = 1
+      
+      const bonus = 
+      parseInt(currentTotalBonus) === 0 || parseInt(points) === 0 ?
+      0 : (points / currentTotalBonus) * clubTotal 
+
       if (!this.memberDataList.some(e => e.name === playerName)) {
         this.memberDataList.push({
           name: playerName,
