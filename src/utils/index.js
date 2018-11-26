@@ -89,9 +89,23 @@ const constructPicUrl = (name) => {
   return `${config.prefixUrl}${name}${config.imgSlim}`
 }
 
+const convertTsToDate = (timestamp) => {
+  console.log('convert ts', timestamp)
+  const date1 = new Date(timestamp)
+  console.log('converted date', date1)
+  const year = date1.getFullYear()
+  const month = date1.getMonth()
+  const day = date1.getDate()
+  const hour = date1.getHours()
+  const minute = date1.getMinutes()
+  const second = date1.getSeconds()
+  return `${year}.${month}.${day} ${hour}.${minute}.${second}`
+}
+
 export {
   handleUploadImage,
   errorCode,
   timeConverter,
   constructPicUrl,
+  convertTsToDate,
 }

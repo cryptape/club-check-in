@@ -49,6 +49,8 @@ class ClubListStore {
       return new appchain.base.Contract(dataAbi, addr).methods.clubName().call()
     }))
 
+    console.log('clubNameList', clubDataAddrs)
+
     this.clubIdList = await Promise.all(clubDataAddrs.map(addr => {
       return clubContract.methods.clubsIds(addr).call()
     }))

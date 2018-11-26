@@ -21,9 +21,10 @@ class ActivityCardList extends React.Component {
       handleThumbUp,
       onRefresh,
       refreshing,
+      checkInEventsToShow,
     } = this.store
 
-    const activityCardList = activityDataList.map((card, index) => {
+    const activityCardList = checkInEventsToShow.map((card, index) => {
       return (
         <Flex key={index} justify='center'>
           <Card className='activityCard__container-content'>
