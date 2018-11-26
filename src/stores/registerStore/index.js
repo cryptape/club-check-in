@@ -48,7 +48,7 @@ class RegisterStore {
           url: config.prefixUrl + res.icon + config.imgSlim,
         }]
       })
-      .then(this.ifRegistered = (this.fetchedName !== undefined && this.fetchedName !== ''))
+      .then(() => {this.ifRegistered = (this.fetchedName !== undefined && this.fetchedName !== '')})
       .then(() => {console.log()})
   }
 
