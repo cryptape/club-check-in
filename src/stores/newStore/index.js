@@ -1,4 +1,3 @@
-import React from 'react'
 import { action, computed, observable } from 'mobx'
 import { Modal } from 'antd-mobile'
 import { appchain } from '../../appchain'

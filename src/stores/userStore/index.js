@@ -1,4 +1,3 @@
-import React from 'react'
 import { action, observable } from 'mobx'
 import { Modal, } from 'antd-mobile'
 import { createIcon, joinIcon } from './svg'
@@ -6,7 +5,6 @@ import { playerAbi, clubAbi, dataAbi, controlAbi } from '../../contract/compiled
 import { appchain } from '../../appchain'
 import { config } from '../../config'
 import transaction from '../../contract/transaction'
-import { constructPicUrl, convertTsToDate } from '../../utils'
 
 const log = console.log.bind(console, '### personalStore ')
 

@@ -30,7 +30,6 @@ class Checkin extends React.Component {
       onFilesChange,
       onCheckinContentChange,
       handleSelectClub,
-      clubName,
       isInfoCompleted,
       clubNameList,
     } = this.store

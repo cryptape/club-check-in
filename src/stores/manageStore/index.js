@@ -1,12 +1,9 @@
-import React from 'react'
 import { action, computed, observable } from 'mobx'
 import { Modal } from 'antd-mobile'
-import { playerAbi, clubAbi, dataAbi, controlAbi, tokenAbi } from '../../contract/compiled'
+import { clubAbi, dataAbi, controlAbi, tokenAbi } from '../../contract/compiled'
 import { appchain } from '../../appchain'
 import { config } from '../../config'
 import transaction from '../../contract/transaction'
-import { constructPicUrl, convertTsToDate } from '../../utils'
-// import {} from 
 
 const log = console.log.bind(console, '### manageStore ')
 
@@ -15,8 +12,7 @@ const { alert } = Modal
 class ManageStore {
   @observable increaseFunding
   @observable currentClubId
-  //TODO cause increase funding and init funding combine to one function, so we need to know which club was selected.
-  //TODO need /#/manage --> /#/manage/1001
+
   constructor() {
     this.increaseFunding = ''
     this.tokenContract = new appchain.base.Contract(tokenAbi, config.tokenContract)
@@ -109,8 +105,6 @@ class ManageStore {
         throw Error(receipt.errorMessage)
       }
     })
-
-    // this.tokenContract.methods.balanceOf()
   }
 
   @action handleIncreaseChange = (value) => {

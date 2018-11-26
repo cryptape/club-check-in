@@ -1,5 +1,5 @@
 import { action, observable, toJS } from 'mobx'
-import Card, { Modal } from 'antd-mobile'
+import { Modal } from 'antd-mobile'
 import { activityDataList } from '../../mockData'
 import { playerAbi, clubAbi, dataAbi, controlAbi } from '../../contract/compiled'
 import { appchain } from '../../appchain'
@@ -29,7 +29,6 @@ class ActivityStore {
     const clubContract = new appchain.base.Contract(clubAbi, config.clubContract)
 
     const maxClubNumber = await clubContract.methods.number().call()
-    log('maxClubMember', maxClubNumber)
 
     let currentClubs = []
     for (let i = config.originalClubId; i <= maxClubNumber; i++) {
@@ -67,12 +66,8 @@ class ActivityStore {
       
       const reportLimit = await dataContract.methods.reportLimit().call()
       const reports = await dataContract.methods.getEventReports(sortedClubEvents[i]['round'], sortedClubEvents[i]['event']).call()
-      console.log('reportLimits', reportLimit)
-      console.log('reports', reports)
       const reported = reports.length > 0
       const forbidden = reports.length >= parseInt(reportLimit)
-
-      console.log('eventSupports', eventSupports)
 
       checkinEvents.push({
         eventId: eventInfo['id'],
@@ -92,7 +87,6 @@ class ActivityStore {
       })
     }
 
-    console.log(checkinEvents)  
     this.checkInEventsToShow = checkinEvents  
   }
 
@@ -140,8 +134,8 @@ class ActivityStore {
   handleConfirmReport = (card) => {
     log('handleConfirmReport')
     log('card', toJS(card))
-    const eventId = parseInt(card['eventId'])
-    const clubDataAddr = card['clubAddr']
+    const eventId = parseInt(card.eventId)
+    const clubDataAddr = card.clubAddr
     const defaultAddr = appchain.base.getDefaultAccount()
     const blockNum = appchain.base.getBlockNumber()
     Promise.all([defaultAddr, blockNum]).then(([currentAddr, blockNumber]) => {

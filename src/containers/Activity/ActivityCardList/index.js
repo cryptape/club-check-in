@@ -15,7 +15,6 @@ class ActivityCardList extends React.Component {
 
   render() {
     const {
-      activityDataList,
       maxAvatars,
       handleReport,
       handleThumbUp,

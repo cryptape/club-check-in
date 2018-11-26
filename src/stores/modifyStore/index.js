@@ -1,4 +1,3 @@
-import React from 'react'
 import { action, computed, observable } from 'mobx'
 import { Modal } from 'antd-mobile'
 import { clubInfo } from '../../mockData'
@@ -34,7 +33,7 @@ class ModifyStore {
 
   @computed get hasContentChange() {
     return this.newClubRule && this.newReportThreshold &&
-      (this.newClubRule !== this.clubInfo.clubRule || this.newReportThreshold != this.clubInfo.reportThreshold)
+      (this.newClubRule !== this.clubInfo.clubRule || this.newReportThreshold !== this.clubInfo.reportThreshold)
   }
 }
 

@@ -1,10 +1,8 @@
-import React from 'react'
 import { action, observable } from 'mobx'
-import { playerAbi, clubAbi, dataAbi, controlAbi, tokenAbi } from '../../contract/compiled'
+import { playerAbi, clubAbi, dataAbi, tokenAbi } from '../../contract/compiled'
 import { appchain } from '../../appchain'
 import { config } from '../../config'
-import transaction from '../../contract/transaction'
-import { constructPicUrl, convertTsToDate } from '../../utils'
+import { constructPicUrl } from '../../utils'
 
 const log = console.log.bind(console, '### clubMemberStore ')
 
@@ -42,9 +40,7 @@ class ClubMemberStore {
 
     const members = await dataContract.methods.getMembers().call()
     const round = await dataContract.methods.round().call()
-    const roundInfo = await dataContract.methods.history(round).call()
     const currentTotalBonus = await dataContract.methods.bonusHistory(round).call()
-    console.log('roundInfo', currentTotalBonus)
 
     let userData = []
     for (let i = 0; i < members.length; i++) {
