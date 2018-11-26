@@ -15,6 +15,7 @@ class Manage extends React.Component {
       handleIncreaseChange,
       hasInputFunding,
       handleFunding,
+      handleInput,
     } = this.props.manageStore
     return (
       <div className='manageClubDetail__container'>
@@ -25,6 +26,7 @@ class Manage extends React.Component {
             handleIncreaseChange={handleIncreaseChange}
             hasInputFunding={hasInputFunding}
             handleFunding={handleFunding}
+            onInput={handleInput}
           />
           <Button className='manageClubDetail__button--settle' onClick={handleSettle}>
             活动结算

@@ -29,6 +29,37 @@ class ManageStore {
     this.increaseFunding = value
   }
 
+  @action handleInput = (e) => {
+    let inputValue = e.target.value
+
+    // first round filter
+    let s = ''
+    for (let i = 0; i < inputValue.length; i++) {
+      if('1234567890.'.includes(inputValue[i])) {
+        s += inputValue[i]
+      }
+    }
+    inputValue = s
+
+    // second round filter
+    if (! /^\d+\.?\d{0,2}$/.test(inputValue)) {
+      inputValue = inputValue.substring(0, inputValue.length - 1)
+    }
+
+    // git rid of the first 0
+    if(inputValue.length > 1 && inputValue.indexOf('.') === -1) {
+      if(inputValue[0] === '0') {
+        inputValue = inputValue.slice(1)
+      }
+    }
+
+    // set InputValue
+    if (inputValue.length > 0 || inputValue === '') {
+      log('inputValue in handleInput', inputValue)
+      // set increaseFunding here
+    }
+  }
+
   @action handleSettle = () => {
     alert('活动结算', `活动结算发起后：
     1.您的社团经费将按照积分等比例分配给团员 
