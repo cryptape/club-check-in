@@ -22,7 +22,7 @@ class ManageStore {
   handleOK = () => {
     log('点击了是')
 
-    console.log('clubId', this.currentClubId)
+    log('clubId', this.currentClubId)
     const userAddress = appchain.base.getDefaultAccount()
     const blockNumber = appchain.base.getBlockNumber()
     const clubContract = new appchain.base.Contract(clubAbi, config.clubContract)
@@ -35,11 +35,11 @@ class ManageStore {
       blockNum = fetchedBlockNum
       return clubContract.methods.clubsInfo(this.currentClubId).call()
     }).then((clubDataAddr) => {
-      console.log('clubDataAddr', clubDataAddr)
+      log('clubDataAddr', clubDataAddr)
       const dataContract = new appchain.base.Contract(dataAbi, clubDataAddr)
       return dataContract.methods.controlAddress().call()
     }).then((controlAddr) => {
-      console.log('controlAddr', controlAddr)
+      log('controlAddr', controlAddr)
       const controlContract = new appchain.base.Contract(controlAbi, controlAddr)
       const tx = {
         ...transaction,
@@ -51,9 +51,9 @@ class ManageStore {
       return appchain.listeners.listenToTransactionReceipt(txHash.hash)
     }).then((receipt) => {
       if (receipt.errorMessage === null) {
-        console.log('Clear successfully')
+        log('Clear successfully')
       } else {
-        console.log('Clear failed')
+        log('Clear failed')
         throw Error(receipt.errorMessage)
       }
     })
@@ -64,18 +64,21 @@ class ManageStore {
   }
 
   handleIncrease = () => {
-    const fundingToIncrease = parseInt(this.increaseFunding)
+    const fundingToIncrease = this.increaseFunding * 100
     let defaultAddr = ''
     let dataAddr = ''
     let controlAddr = ''
 
     appchain.base.getDefaultAccount().then((accountAddr) => {
-      console.log(accountAddr)
+      log(accountAddr)
       defaultAddr = accountAddr
       return this.tokenContract.methods.balanceOf(accountAddr).call()
     }).then((tokens) => {
       console.log('number of tokens', tokens)
       if (tokens < fundingToIncrease) {
+        alert('通知', `请确认余额充足！`, [
+          { text: '好的', onPress: () => {log('余额不足，点击确认')} },
+        ])
         throw Error('not enough balance.')
       }
       return this.clubContract.methods.clubsInfo(this.currentClubId).call()
@@ -86,24 +89,26 @@ class ManageStore {
       controlAddr = controlContractAddr
       return appchain.base.getBlockNumber()
     }).then((blockNum) => {
-      console.log('funding', fundingToIncrease)
-      console.log('defaultAddr', defaultAddr)
-      console.log('datacontract', dataAddr)
+      log('funding', fundingToIncrease)
+      log('defaultAddr', defaultAddr)
+      log('datacontract', dataAddr)
       const tx = {
         ...transaction,
         from: defaultAddr,
         validUntilBlock: blockNum + 88,
       }
-      return this.tokenContract.methods.transfer(controlAddr, this.increaseFunding).send(tx)
+      return this.tokenContract.methods.transfer(controlAddr, fundingToIncrease).send(tx)
     }).then((txHash) => {
       return appchain.listeners.listenToTransactionReceipt(txHash.hash)
     }).then((receipt) => {
       if (receipt.errorMessage === null) {
-        console.log('Funding increased successfully')
+        log('Funding increased successfully')
       } else {
-        console.log('failed to increase funding')
+        log('failed to increase funding')
         throw Error(receipt.errorMessage)
       }
+    }).catch((err) => {
+      log(err)
     })
   }
 
@@ -139,7 +144,6 @@ class ManageStore {
     if (inputValue.length > 0 || inputValue === '') {
       e.target.value = inputValue
       this.increaseFunding = e.target.value
-      // log('increaseFunding', this.increaseFunding)
     }
   }
 
@@ -153,8 +157,8 @@ class ManageStore {
   }
 
   @action handleFunding = () => {
-    alert('通知', `社长你真有钱！`, [
-      { text: '确定', onPress: this.handleIncrease },
+    alert('通知', `是否充值？`, [
+      { text: '充还是要充的', onPress: this.handleIncrease },
     ])
   }
 
