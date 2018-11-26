@@ -18,7 +18,6 @@ class Manage extends React.Component {
   render() {
     const {
       handleSettle,
-      handleIncreaseChange,
       hasInputFunding,
       handleInput,
       handleFunding,
@@ -31,7 +30,6 @@ class Manage extends React.Component {
         <div className='manageClubDetail__container--content'>
           <ManageClubDetail clubID={clubID}/>
           <IncreaseFunding
-            handleIncreaseChange={handleIncreaseChange}
             hasInputFunding={hasInputFunding}
             handleFunding={handleFunding}
             onInput={handleInput}
