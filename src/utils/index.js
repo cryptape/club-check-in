@@ -73,24 +73,36 @@ const handleUploadImage = (files) => {
   }
 }
 
+const timeConverter = (UNIX_timestamp) => {
+  const a = new Date(UNIX_timestamp * 1000)
+  const year = a.getFullYear()
+  const month = a.getMonth() + 1
+  const date = a.getDate()
+  const hour = a.getHours()
+  const min = a.getMinutes()
+  const sec = a.getSeconds()
+  return `${year}.${month}.${date} ${hour}:${min}:${sec} `
+}
+
 const constructPicUrl = (name) => {
   return `${config.prefixUrl}${name}${config.imgSlim}`
 }
 
 const convertTsToDate = (timestamp) => {
-  const date = new Date(timestamp)
-  const year = date.getFullYear()
-  const month = date.getMonth() + 1
-  const day = date.getDate()
-  const hour = date.getHours()
-  const minute = date.getMinutes()
-  const second = date.getSeconds()
-  return `${year}.${month}.${day} ${hour}:${minute}:${second}`
+  const date1 = new Date(timestamp)
+  const year = date1.getFullYear()
+  const month = date1.getMonth()
+  const day = date1.getDate()
+  const hour = date1.getHours()
+  const minute = date1.getMinutes()
+  const second = date1.getSeconds()
+  return `${year}.${month}.${day} ${hour}.${minute}.${second}`
 }
 
 export {
   handleUploadImage,
   errorCode,
+  timeConverter,
   constructPicUrl,
   convertTsToDate,
 }

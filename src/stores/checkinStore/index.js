@@ -1,8 +1,8 @@
 import { action, computed, observable } from 'mobx'
 import { Modal } from 'antd-mobile'
 import { clubName } from '../../mockData'
-import { errorCode, handleUploadImage } from '../../utils'
-import { clubAbi, controlAbi, dataAbi, playerAbi } from '../../contract/compiled'
+import { errorCode, handleUploadImage, timeConverter } from '../../utils'
+import { playerAbi, clubAbi, dataAbi, controlAbi } from '../../contract/compiled'
 import { appchain } from '../../appchain'
 import { config } from '../../config'
 import transaction from '../../contract/transaction'
@@ -92,14 +92,8 @@ class CheckinStore {
 
   @action clearPageInfo = () => {
     this.files = []
-    this.clubName = clubName
     this.selectedClubName = ''
     this.checkinContent = ''
-    this.clubAddrList = []
-    this.clubNameList = []
-    this.clubIdList = []
-    this.clubData = []
-    this.selectedClubAddr = ''
   }
 
   handleCheckinSuccess = (history) => {

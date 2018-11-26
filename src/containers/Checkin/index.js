@@ -16,8 +16,8 @@ class Checkin extends React.Component {
   }
 
   componentDidMount() {
-    this.store.getRegisteredClubs()
     this.store.clearPageInfo()
+    this.store.getRegisteredClubs()
   }
 
   handleCheck = () => {
