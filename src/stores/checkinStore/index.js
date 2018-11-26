@@ -1,7 +1,5 @@
 import { action, computed, observable } from 'mobx'
 import { Modal } from 'antd-mobile'
-// TODO why clubName from mock data
-import { clubName } from '../../mockData'
 import { errorCode, handleUploadImage, timeConverter } from '../../utils'
 import { playerAbi, clubAbi, dataAbi, controlAbi } from '../../contract/compiled'
 import { appchain } from '../../appchain'
@@ -23,7 +21,7 @@ class CheckinStore {
 
   constructor() {
     this.files = []
-    this.clubName = clubName
+    this.clubName = ''
     this.selectedClubName = ''
     this.checkinContent = ''
     this.clubAddrList = []
