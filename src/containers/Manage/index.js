@@ -15,6 +15,10 @@ class Manage extends React.Component {
     this.store.clubID = clubID
   }
 
+  componentDidMount() {
+    this.store.clearPageInfo()
+  }
+
   render() {
     const {
       handleSettle,

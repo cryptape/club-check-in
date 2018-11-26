@@ -42,6 +42,12 @@ class CheckinStore {
     history.push('./activity')
   }
 
+  @action clearPageInfo = () => {
+    this.files = []
+    this.selectedClubName = ''
+    this.checkinContent = ''
+  }
+
   handleCheckinSuccess = (history) => {
     log('success')
     return (

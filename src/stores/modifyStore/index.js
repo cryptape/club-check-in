@@ -18,6 +18,12 @@ class ModifyStore {
     this.newReportThreshold = this.clubInfo.reportThreshold
   }
 
+  @action clearPageInfo = () => {
+    this.clubInfo = clubInfo
+    this.newClubRule = this.clubInfo.clubRule
+    this.newReportThreshold = this.clubInfo.reportThreshold
+  }
+
   handleOK = () => {
     log('点击了确定')
   }

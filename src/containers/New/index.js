@@ -14,9 +14,12 @@ class New extends React.Component {
     this.store = props.newStore
   }
 
+  componentDidMount() {
+    this.store.clearPageInfo()
+  }
+
   handleCreate = () => {
     this.store.handleCreateClub(this.props.history)
-    // console.log('history1', this.props.history)
   }
 
   render() {

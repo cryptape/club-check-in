@@ -14,6 +14,10 @@ class Checkin extends React.Component {
     this.store = props.checkinStore
   }
 
+  componentDidMount() {
+    this.store.clearPageInfo()
+  }
+
   handleCheck = () => {
     this.store.handleCheckin(this.props.history)
   }
