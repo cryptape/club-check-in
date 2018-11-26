@@ -38,7 +38,6 @@ class CheckinStore {
 
   handleConfirmCheckin = (history) => {
     log('handleConfirmCheckin')
-    this.files = []
     history.push('./activity')
   }
 
