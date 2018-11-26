@@ -15,7 +15,7 @@ const IsMember = ({
       {hasforbiddened ?
         <Flex justify='center'>
           <div className='activityCard__container-forbiddened'>
-            {reportIcon} 被举报次数过多，已扣分
+            {reportIcon} 举报过多，已扣分
           </div>
         </Flex>
         :

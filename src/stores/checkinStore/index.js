@@ -1,5 +1,6 @@
 import { action, computed, observable } from 'mobx'
 import { Modal } from 'antd-mobile'
+// TODO why clubName from mock data
 import { clubName } from '../../mockData'
 import { errorCode, handleUploadImage, timeConverter } from '../../utils'
 import { playerAbi, clubAbi, dataAbi, controlAbi } from '../../contract/compiled'
@@ -30,6 +31,12 @@ class CheckinStore {
     this.clubIdList = []
     this.clubData = []
     this.selectedClubAddr = ''
+  }
+
+  @action clearPageInfo = () => {
+    this.files = []
+    this.selectedClubName = ''
+    this.checkinContent = ''
   }
 
   @action async getRegisteredClubs(){
@@ -88,12 +95,6 @@ class CheckinStore {
   handleConfirmCheckin = (history) => {
     log('handleConfirmCheckin')
     history.push('./activity')
-  }
-
-  @action clearPageInfo = () => {
-    this.files = []
-    this.selectedClubName = ''
-    this.checkinContent = ''
   }
 
   handleCheckinSuccess = (history) => {
