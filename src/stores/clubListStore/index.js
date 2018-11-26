@@ -1,6 +1,4 @@
-
 import { action, observable } from 'mobx'
-import { clubDataList } from "../../mockData"
 import { clubListArrow } from "./svg"
 import { playerAbi, clubAbi, dataAbi } from '../../contract/compiled'
 import { appchain } from '../../appchain'
@@ -17,9 +15,8 @@ class ClubListStore {
   @observable clubUserAvatars
 
   constructor() {
-    this.clubDataList = clubDataList
+    this.clubDataList = ''
     this.clubListArrow = clubListArrow
-    // this.selectedClubID = ''
     this.maxAvatars = 7
     this.userClubList = []
     this.clubNameList = []

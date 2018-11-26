@@ -20,6 +20,12 @@ class NewStore {
     this.reportThreshold = ''
   }
 
+  @action clearPageInfo = () => {
+    this.clubName = ''
+    this.clubRule = ''
+    this.reportThreshold = ''
+  }
+
   handleConfirmCreateClub = (history) => {
     log('点击了确定')
     history.push('./user')
@@ -31,12 +37,6 @@ class NewStore {
       { text: '否', onPress: () => history.push('./user') },
       { text: '是', onPress: () => this.createClub(history) },
     ])
-  }
-
-  @action clearPageInfo = () => {
-    this.clubName = ''
-    this.clubRule = ''
-    this.reportThreshold = ''
   }
 
   createClub = (history) => {
