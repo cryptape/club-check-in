@@ -43,6 +43,7 @@ class ClubMemberStore {
     const currentTotalBonus = await dataContract.methods.bonusHistory(round).call()
 
     let userData = []
+    this.memberDataList = []
     for (let i = 0; i < members.length; i++) {
       const playerAddr = members[i]
       const playerInfo = await userContract.methods.players(playerAddr).call()
@@ -54,15 +55,13 @@ class ClubMemberStore {
       parseInt(currentTotalBonus) === 0 || parseInt(points) === 0 ?
       0 : (points / currentTotalBonus) * clubTotal 
 
-      if (!this.memberDataList.some(e => e.name === playerName)) {
-        this.memberDataList.push({
-          name: playerName,
-          avatar: avatar,
-          address: playerAddr,
-          points: points,
-          bonus: bonus,
-        })        
-      }
+      this.memberDataList.push({
+        name: playerName,
+        avatar: avatar,
+        address: playerAddr,
+        points: points,
+        bonus: bonus,
+      })
     }
   }
 
