@@ -26,8 +26,8 @@ class Register extends React.Component {
       registerAddress,
       registerName,
       onRegisterAvatarChange,
-      onRegisterAddressChange,
       isInfoCompleted,
+      handleInput,
       handleSubmit,
     } = this.store
 
@@ -36,7 +36,10 @@ class Register extends React.Component {
         <Header titleName='用户设置' backRoute='/user'/>
         <div className='register__container--content'>
           <RegisterAddress registerAddress={registerAddress}/>
-          <RegisterName onChange={onRegisterAddressChange} registerName={registerName}/>
+          <RegisterName
+            onInput={handleInput}
+            registerName={registerName}
+          />
           <RegisterAvatar files={files} onChange={onRegisterAvatarChange}/>
           <ClubLogo/>
           <Button
