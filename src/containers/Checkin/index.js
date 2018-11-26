@@ -16,15 +16,12 @@ class Checkin extends React.Component {
   }
 
   componentDidMount() {
+    this.store.getRegisteredClubs()
     this.store.clearPageInfo()
   }
 
   handleCheck = () => {
     this.store.handleCheckin(this.props.history)
-  }
-
-  componentDidMount() {
-    this.store.getRegisteredClubs()
   }
 
   render() {

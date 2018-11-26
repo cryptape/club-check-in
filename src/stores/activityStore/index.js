@@ -1,7 +1,7 @@
 import { action, observable, toJS } from 'mobx'
 import { Modal } from 'antd-mobile'
 import { activityDataList } from '../../mockData'
-import { playerAbi, clubAbi, dataAbi, controlAbi } from '../../contract/compiled'
+import { clubAbi, controlAbi, dataAbi, playerAbi } from '../../contract/compiled'
 import { appchain } from '../../appchain'
 import { config } from '../../config'
 import transaction from '../../contract/transaction'
@@ -21,8 +21,6 @@ class ActivityStore {
     this.refreshing = false
     this.checkInEventsToShow = []
   }
-
-
 
   @action async getActivities() {
     const userContract = new appchain.base.Contract(playerAbi, config.userContract)
@@ -44,9 +42,9 @@ class ActivityStore {
     }
 
     //get all event ids and sort them
-    const sortedClubEvents = currentClubs.reduce((acc, {addr, round, events}) => {
-      return acc.concat(events.map(event => ({addr, round, event: event})))
-    }, []).sort((a,b) => b.event - a.event)
+    const sortedClubEvents = currentClubs.reduce((acc, { addr, round, events }) => {
+      return acc.concat(events.map(event => ({ addr, round, event: event })))
+    }, []).sort((a, b) => b.event - a.event)
 
     let checkinEvents = []
     for (let i = 0; i < sortedClubEvents.length; i++) {
@@ -63,7 +61,7 @@ class ActivityStore {
         const singlePlayer = await userContract.methods.players(eventSupports[j]).call()
         supportersAvatar.push(constructPicUrl(singlePlayer['icon']))
       }
-      
+
       const reportLimit = await dataContract.methods.reportLimit().call()
       const reports = await dataContract.methods.getEventReports(sortedClubEvents[i]['round'], sortedClubEvents[i]['event']).call()
       const reported = reports.length > 0
@@ -87,17 +85,17 @@ class ActivityStore {
       })
     }
 
-    this.checkInEventsToShow = checkinEvents  
+    this.checkInEventsToShow = checkinEvents
   }
 
   @action handleThumbUp = (card) => {
     log('click thumb up', toJS(card))
     alert(
-      '成功', 
-      '点赞成功了，快去让Ta请你吃点什么吧', 
+      '成功',
+      '点赞成功了，快去让Ta请你吃点什么吧',
       [
-        { 
-          text: '吼啊！', 
+        {
+          text: '吼啊！',
           onPress: () => {
             const eventId = parseInt(card['eventId'])
             const clubDataAddr = card['clubAddr']
@@ -126,7 +124,7 @@ class ActivityStore {
               })
             })
             log('吼啊！')
-          } 
+          }
         },
       ])
   }
