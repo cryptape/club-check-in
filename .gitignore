@@ -28,3 +28,4 @@ mockData.js
 *.abi
 *.sh
 config.js
+manifest.json

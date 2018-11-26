@@ -2,7 +2,7 @@
   "short_name": "club check in",
   "name": "club check in",
   "chainSet" :{
-    "1": "http://47.94.105.230:2337"
+    "1": "{ your chainSet addr}"
   },
   "icons": [
     {
