@@ -107,8 +107,40 @@ class ManageStore {
     })
   }
 
-  @action handleIncreaseChange = (value) => {
-    this.increaseFunding = value
+  @action clearPageInfo = () => {
+    this.increaseFunding = ''
+  }
+
+  @action handleInput = (e) => {
+    let inputValue = e.target.value
+
+    // first round filter
+    let s = ''
+    for (let i = 0; i < inputValue.length; i++) {
+      if ('1234567890.'.includes(inputValue[i])) {
+        s += inputValue[i]
+      }
+    }
+    inputValue = s
+
+    // second round filter
+    if (!/^\d+\.?\d{0,2}$/.test(inputValue)) {
+      inputValue = inputValue.substring(0, inputValue.length - 1)
+    }
+
+    // git rid of the first 0
+    if (inputValue.length > 1 && inputValue.indexOf('.') === -1) {
+      if (inputValue[0] === '0') {
+        inputValue = inputValue.slice(1)
+      }
+    }
+
+    // set InputValue
+    if (inputValue.length > 0 || inputValue === '') {
+      e.target.value = inputValue
+      this.increaseFunding = e.target.value
+      // log('increaseFunding', this.increaseFunding)
+    }
   }
 
   @action handleSettle = () => {

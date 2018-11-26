@@ -15,11 +15,15 @@ class Manage extends React.Component {
     this.store.clubID = clubID
   }
 
+  componentDidMount() {
+    this.store.clearPageInfo()
+  }
+
   render() {
     const {
       handleSettle,
-      handleIncreaseChange,
       hasInputFunding,
+      handleInput,
       handleFunding,
       clubID
     } = this.store
@@ -30,9 +34,9 @@ class Manage extends React.Component {
         <div className='manageClubDetail__container--content'>
           <ManageClubDetail clubID={clubID}/>
           <IncreaseFunding
-            handleIncreaseChange={handleIncreaseChange}
             hasInputFunding={hasInputFunding}
             handleFunding={handleFunding}
+            onInput={handleInput}
           />
           <Button className='manageClubDetail__button--settle' onClick={handleSettle}>
             活动结算
