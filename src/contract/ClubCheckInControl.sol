@@ -83,7 +83,7 @@ contract ClubCheckInControl {
     {
         require(ClubPlayer.getPlayerAddress(msg.sender) == msg.sender);
         require(!ClubData.signUps(msg.sender));
-        ClubPlayer.joinClub(msg.sender, returnContractAddress());
+        ClubPlayer.joinClub(msg.sender, myDataAddress);
         ClubData.addMember(msg.sender);
     }
 

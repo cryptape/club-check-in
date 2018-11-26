@@ -15,7 +15,6 @@ class ActivityCardList extends React.Component {
 
   render() {
     const {
-      activityDataList,
       maxAvatars,
       handleReport,
       handleThumbUp,
@@ -46,8 +45,8 @@ class ActivityCardList extends React.Component {
               hasReported={card.hasReported}
               hasThumbUp={card.hasThumbUp}
               hasforbiddened={card.hasforbiddened}
-              handleReport={handleReport}
-              handleThumbUp={handleThumbUp}
+              handleReport={() => handleReport(card)}
+              handleThumbUp={() => handleThumbUp(card)}
               isMember={card.isMember}
             />
           </Card>

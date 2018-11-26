@@ -90,9 +90,7 @@ const constructPicUrl = (name) => {
 }
 
 const convertTsToDate = (timestamp) => {
-  console.log('convert ts', timestamp)
   const date1 = new Date(timestamp)
-  console.log('converted date', date1)
   const year = date1.getFullYear()
   const month = date1.getMonth()
   const day = date1.getDate()

@@ -18,11 +18,6 @@ class User extends React.Component {
   }
 
   render() {
-    
-    const {
-      userAddr
-    } = this.store
-
     return (
       <div className='user__container'>
         <Header titleName='个人'/>

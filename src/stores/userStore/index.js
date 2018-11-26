@@ -1,10 +1,10 @@
-import React from 'react'
 import { action, observable } from 'mobx'
 import { Modal, } from 'antd-mobile'
 import { createIcon, joinIcon } from './svg'
+import { playerAbi, clubAbi, dataAbi, controlAbi } from '../../contract/compiled'
 import { appchain } from '../../appchain'
 import { config } from '../../config'
-import { playerAbi, clubAbi, dataAbi } from '../../contract/compiled'
+import transaction from '../../contract/transaction'
 
 const log = console.log.bind(console, '### personalStore ')
 
@@ -36,9 +36,57 @@ class UserStore {
   }
 
   @action handleJoin = () => {
-    prompt('加入新社团', '社团ID', [
-      { text: '确定', onPress: value => log(`输入的内容:${value}`) },
-    ], 'default', null, ['输入你想加入的社团ID吧'])
+    prompt(
+      '加入新社团', 
+      '社团ID', 
+      [
+        { 
+          text: '确定', 
+          onPress: value => {
+            log(`输入的内容:${value}`)
+            const clubContract = new appchain.base.Contract(clubAbi, config.clubContract)
+            clubContract.methods.clubsInfo(value).call().then((clubDataAddr) => {
+              console.log('addr', clubDataAddr)
+              const clubDataContract = new appchain.base.Contract(dataAbi, clubDataAddr)
+              clubDataContract.methods.controlAddress().call().then((controlAddr) => {
+                console.log('control addr', controlAddr)
+                const clubControlContract = new appchain.base.Contract(controlAbi, controlAddr)
+                
+                const currentAddr = appchain.base.getDefaultAccount()
+                const currentBlockNumber = appchain.base.getBlockNumber()
+
+                Promise.all([currentAddr, currentBlockNumber]).then(([currentAddress, blockNumber]) => {
+                  const tx = {
+                    ...transaction,
+                    from: currentAddress,
+                    validUntilBlock: blockNumber + 88,
+                  }
+
+                  clubControlContract.methods.join().send(tx).then((res) => {
+                    log('transaction valid: ', res)
+                    if (res.message !== undefined) {
+                      throw new Error(res.message)
+                    }
+                    return appchain.listeners.listenToTransactionReceipt(res.hash)
+                  }).then((receipt) => {
+                    if (receipt.errorMessage === null) {
+                      console.log('join success!')
+                    } else {
+                      throw new Error(receipt.errorMessage)
+                    }
+                  })
+                }).catch((err) => {
+                  console.log('join failed, error: ', err)
+                })
+              })
+            })
+          } 
+        },
+      ], 
+      'default', 
+      null, 
+      ['输入你想加入的社团ID吧']
+    )
   }
 
   @action joinClub = () => {

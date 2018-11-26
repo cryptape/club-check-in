@@ -4,6 +4,16 @@ import './clubDetail.css'
 
 @inject('clubMemberStore') @observer
 class ClubDetail extends React.Component {
+
+  constructor(props) {
+    super(props)
+    this.store = props.clubMemberStore
+  }
+
+  componentDidMount() {
+    this.store.getMemberDataList()
+  }
+
   render() {
     const { detailPageClubInfo } = this.props.clubMemberStore
 

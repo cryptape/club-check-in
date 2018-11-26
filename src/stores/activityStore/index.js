@@ -1,4 +1,4 @@
-import { action, observable } from 'mobx'
+import { action, observable, toJS } from 'mobx'
 import { Modal } from 'antd-mobile'
 import { activityDataList } from '../../mockData'
 import { playerAbi, clubAbi, dataAbi, controlAbi } from '../../contract/compiled'
@@ -22,12 +22,13 @@ class ActivityStore {
     this.checkInEventsToShow = []
   }
 
+
+
   @action async getActivities() {
     const userContract = new appchain.base.Contract(playerAbi, config.userContract)
     const clubContract = new appchain.base.Contract(clubAbi, config.clubContract)
 
     const maxClubNumber = await clubContract.methods.number().call()
-    log('maxClubMember', maxClubNumber)
 
     let currentClubs = []
     for (let i = config.originalClubId; i <= maxClubNumber; i++) {
@@ -55,15 +56,22 @@ class ActivityStore {
       const authorAvatar = constructPicUrl(player['icon'])
       const authorName = player['name']
       const clubName = await dataContract.methods.clubName().call()
+
       const eventSupports = await dataContract.methods.getEventSupports(sortedClubEvents[i]['round'], sortedClubEvents[i]['event']).call()
       let supportersAvatar = []
       for (let j = 0; j < eventSupports.length; j++) {
-        const singlePlayer = await userContract.methods.players(eventInfo['author']).call()
-        supportersAvatar.push(singlePlayer['icon'])
+        const singlePlayer = await userContract.methods.players(eventSupports[j]).call()
+        supportersAvatar.push(constructPicUrl(singlePlayer['icon']))
       }
-      console.log('eventSupports', eventSupports)
+      
+      const reportLimit = await dataContract.methods.reportLimit().call()
+      const reports = await dataContract.methods.getEventReports(sortedClubEvents[i]['round'], sortedClubEvents[i]['event']).call()
+      const reported = reports.length > 0
+      const forbidden = reports.length >= parseInt(reportLimit)
 
       checkinEvents.push({
+        eventId: eventInfo['id'],
+        clubAddr: sortedClubEvents[i]['addr'],
         name: authorName,
         avatar: authorAvatar,
         clubName: clubName,
@@ -73,25 +81,85 @@ class ActivityStore {
         thumbUpMembers: supportersAvatar,
         thumbUpTimes: eventSupports.length,
         hasThumbUp: false,
-        hasReported: false,
+        hasReported: reported,
         isMember: true,
-        hasforbiddened: false,
+        hasforbiddened: forbidden,
       })
     }
 
-    console.log(checkinEvents)  
     this.checkInEventsToShow = checkinEvents  
   }
 
-  @action handleThumbUp = () => {
-    log('click thumb up')
-    alert('成功', '点赞成功了，快去让Ta请你吃点什么吧', [
-      { text: '吼啊！', onPress: () => {log('吼啊！')} },
-    ])
+  @action handleThumbUp = (card) => {
+    log('click thumb up', toJS(card))
+    alert(
+      '成功', 
+      '点赞成功了，快去让Ta请你吃点什么吧', 
+      [
+        { 
+          text: '吼啊！', 
+          onPress: () => {
+            const eventId = parseInt(card['eventId'])
+            const clubDataAddr = card['clubAddr']
+            const defaultAddr = appchain.base.getDefaultAccount()
+            const blockNum = appchain.base.getBlockNumber()
+
+            Promise.all([defaultAddr, blockNum]).then(([currentAddr, blockNumber]) => {
+              const clubDataContract = new appchain.base.Contract(dataAbi, clubDataAddr)
+              clubDataContract.methods.controlAddress().call().then((controlAddr) => {
+                const contorlContract = new appchain.base.Contract(controlAbi, controlAddr)
+                const tx = {
+                  ...transaction,
+                  from: currentAddr,
+                  validUntilBlock: blockNumber + 88,
+                }
+                return contorlContract.methods.support(eventId).send(tx)
+              }).then((txHash) => {
+                return appchain.listeners.listenToTransactionReceipt(txHash.hash)
+              }).then((receipt) => {
+                if (receipt.errorMessage === null) {
+                  console.log('Support successfully')
+                } else {
+                  console.log('Support failed')
+                  throw Error(receipt.errorMessage)
+                }
+              })
+            })
+            log('吼啊！')
+          } 
+        },
+      ])
   }
 
-  handleConfirmReport = (e) => {
+  handleConfirmReport = (card) => {
     log('handleConfirmReport')
+    log('card', toJS(card))
+    const eventId = parseInt(card.eventId)
+    const clubDataAddr = card.clubAddr
+    const defaultAddr = appchain.base.getDefaultAccount()
+    const blockNum = appchain.base.getBlockNumber()
+    Promise.all([defaultAddr, blockNum]).then(([currentAddr, blockNumber]) => {
+      const clubDataContract = new appchain.base.Contract(dataAbi, clubDataAddr)
+      clubDataContract.methods.controlAddress().call().then((controlAddr) => {
+        const contorlContract = new appchain.base.Contract(controlAbi, controlAddr)
+        const tx = {
+          ...transaction,
+          from: currentAddr,
+          validUntilBlock: blockNumber + 88,
+        }
+        return contorlContract.methods.report(eventId).send(tx)
+      }).then((txHash) => {
+        return appchain.listeners.listenToTransactionReceipt(txHash.hash)
+      }).then((receipt) => {
+        if (receipt.errorMessage === null) {
+          console.log('Report successfully')
+        } else {
+          console.log('Report failed')
+          throw Error(receipt.errorMessage)
+        }
+      })
+    })
+
   }
 
   handleCancelReport = () => {
@@ -107,11 +175,11 @@ class ActivityStore {
     }, 1000)
   }
 
-  @action handleReport = () => {
+  @action handleReport = (card) => {
     log('click report')
     alert('举报', '举报该用户打卡记录有问题，超过一定举报数后，该打卡记录将不予分配积分并做相应惩罚.', [
       { text: '否', onPress: this.handleCancelReport },
-      { text: '是', onPress: this.handleConfirmReport },
+      { text: '是', onPress: () => this.handleConfirmReport(card) },
     ])
   }
 

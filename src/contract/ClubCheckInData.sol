@@ -38,7 +38,12 @@ contract ClubCheckInData {
     uint256 public eventSize;
 
     //(round => roundInfo)
-    mapping(uint256 => Rounds) history;
+    mapping(uint256 => Rounds) public history;
+
+    //(round => totalBonus)
+    //history is modified when clear
+    //bonus info is modified on change, this is to reduce number of requests from front-end
+    mapping(uint256 => uint256) public bonusHistory;
 
     //(round => Ids checkin events)
     mapping(uint256 => uint256[]) public checkinEventIds;
@@ -146,6 +151,7 @@ contract ClubCheckInData {
     platform
     {
         memberBonus[round][_address] = bonus;
+        bonusHistory[round] = bonusHistory[round] + bonus;
     }
 
     function getCurrentEventByRound(uint256 roundToSearch) 

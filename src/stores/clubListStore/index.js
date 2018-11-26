@@ -1,12 +1,10 @@
 
-import React from "react"
-import { action, observable, observe } from 'mobx'
+import { action, observable } from 'mobx'
 import { clubDataList } from "../../mockData"
 import { clubListArrow } from "./svg"
 import { playerAbi, clubAbi, dataAbi } from '../../contract/compiled'
 import { appchain } from '../../appchain'
 import { config } from '../../config'
-import transaction from '../../contract/transaction'
 
 const log = console.log.bind(console, '### clubListStore ')
 
