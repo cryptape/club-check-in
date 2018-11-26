@@ -20,6 +20,7 @@ class Manage extends React.Component {
       handleSettle,
       handleIncreaseChange,
       hasInputFunding,
+      handleInput,
       handleFunding,
       clubID
     } = this.store
@@ -33,6 +34,7 @@ class Manage extends React.Component {
             handleIncreaseChange={handleIncreaseChange}
             hasInputFunding={hasInputFunding}
             handleFunding={handleFunding}
+            onInput={handleInput}
           />
           <Button className='manageClubDetail__button--settle' onClick={handleSettle}>
             活动结算

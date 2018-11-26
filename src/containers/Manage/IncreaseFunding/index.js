@@ -2,14 +2,15 @@ import React from 'react'
 import { Button, Flex, InputItem } from 'antd-mobile'
 import './increaseFunding.css'
 
-const IncreaseFunding = ({ handleIncreaseChange, hasInputFunding, handleFunding }) => {
+const IncreaseFunding = ({ handleIncreaseChange, hasInputFunding, handleFunding, onInput }) => {
   return (
     <Flex className='manageClubDetail__container--increase-funding' justify='center'>
       <InputItem
         className='manageClubDetail__input--increase-money'
         placeholder='金额'
-        type='digit'
+        type='text'
         onChange={handleIncreaseChange}
+        onInput={onInput}
       />
       <Button
         disabled={!hasInputFunding}
