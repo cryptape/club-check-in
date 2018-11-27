@@ -169,7 +169,6 @@ class RegisterStore {
     }
   }
 
-  // to check all info blanks are filled
   @computed get isInfoCompleted() {
     return this.registerName && this.files.length
   }

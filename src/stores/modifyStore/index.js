@@ -1,8 +1,7 @@
 import { action, computed, observable } from 'mobx'
 import { Modal } from 'antd-mobile'
-import { clubInfo } from '../../mockData'
 import { appchain } from '../../appchain'
-import { clubAbi, dataAbi, controlAbi } from '../../contract/compiled'
+import { clubAbi, controlAbi, dataAbi } from '../../contract/compiled'
 import { config } from '../../config'
 import transaction from '../../contract/transaction'
 
@@ -22,7 +21,8 @@ class ModifyStore {
     this.newReportThreshold = ''
   }
 
-  @action async clearPageInfo() {
+  @action
+  async clearPageInfo() {
     this.clubInfo = {}
     const clubContract = new appchain.base.Contract(clubAbi, config.clubContract)
     const clubAddr = await clubContract.methods.clubsInfo(this.clubID).call()
@@ -43,43 +43,56 @@ class ModifyStore {
     this.newReportThreshold = fetchedClubReportLimit
   }
 
-  handleOK = () => {
-    log('点击了确定')
+  @action handleConfirmModify = () => {
     log('club Id', this.clubID)
     const defaultAccount = window.neuron.getAccount()
     const blockNumber = appchain.base.getBlockNumber()
-     Promise.all([defaultAccount, blockNumber]).then(([currentAddr, blockNum]) => {
+    Promise.all([defaultAccount, blockNumber]).then(([currentAddr, blockNum]) => {
       const clubContract = new appchain.base.Contract(clubAbi, config.clubContract)
       clubContract.methods.clubsInfo(this.clubID).call().then((clubAddr) => {
         const dataContract = new appchain.base.Contract(dataAbi, clubAddr)
         return dataContract.methods.controlAddress().call()
-      }).then((controlAddr) => {
-        console.log('controlAddr', controlAddr)
+      }).then(controlAddr => {
+        log('controlAddr', controlAddr)
         const controlContract = new appchain.base.Contract(controlAbi, controlAddr)
-         const tx = {
+        const tx = {
           ...transaction,
           from: currentAddr,
           validUntilBlock: blockNum + 88,
         }
         const reportLlimitToUpdate = parseInt(this.newReportThreshold)
-         // return controlContract.methods.setClubDescribe(this.newClubRule).send(tx)
+        // return controlContract.methods.setClubDescribe(this.newClubRule).send(tx)
         return controlContract.methods.setClubDescAndReportLimit(this.newClubRule, reportLlimitToUpdate).send(tx)
-      }).then((txHash) => {
-        console.log(txHash)
+      }).then(modifyTx => {
+        log('waiting for set icon tx')
+        return appchain.listeners.listenToTransactionReceipt(modifyTx.hash)
+      }).then(receipt => {
+        if (receipt.errorMessage === null) {
+          alert('通知', '修改社团信息成功', [
+            {
+              text: '确定', onPress: () => log('club info update success')
+            },
+          ])
+        } else {
+          alert('通知', '修改社团信息失败', [
+            { text: '确定', onPress: () => log('user info update failed', receipt.errorMessage) },
+          ])
+        }
       })
-    }).catch((err) => {
-      console.log('err', err)
+    }).catch(err => {
+      log('err', err)
     })
   }
 
   @action onInfoChange = (value, infoType) => {
-    this[infoType] = value
-  }
-
-  @action handleConfirmModify = () => {
-    alert('通知', '修改成功', [
-      { text: '确定', onPress: this.handleOK },
-    ])
+    if(infoType === 'newReportThreshold' && value === '0') {
+      alert('通知', '举报阈值不能为0', [
+        { text: '确定', onPress: () => log("newReportThreshold can't be zero") },
+      ])
+      this.newReportThreshold =  this.clubInfo.reportThreshold
+    } else {
+      this[infoType] = value
+    }
   }
 
   @computed get hasContentChange() {
