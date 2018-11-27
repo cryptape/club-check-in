@@ -1,10 +1,10 @@
 import React from 'react'
 import { inject, observer } from 'mobx-react'
 import { Button } from 'antd-mobile'
-import { Header } from '../../components'
 import ClubName from './ClubName'
 import ClubRule from './ClubRule'
 import ReportThreshold from './ReportThreshold'
+import { ChangeTitle } from '../../utils'
 import './new.css'
 
 @inject('newStore') @observer
@@ -15,6 +15,7 @@ class New extends React.Component {
   }
 
   componentDidMount() {
+    ChangeTitle('创建社团', "back")
     this.store.clearPageInfo()
   }
 
@@ -31,7 +32,6 @@ class New extends React.Component {
 
     return (
       <div className='newClub__container'>
-        <Header titleName='创建社团' backRoute='./user'/>
         <div className='newClub__container--content'>
           <ClubName onChange={onInfoChange}/>
           <ClubRule onChange={onInfoChange}/>

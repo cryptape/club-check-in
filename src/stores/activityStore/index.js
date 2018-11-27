@@ -177,8 +177,8 @@ class ActivityStore {
       { text: '是', onPress: () => this.handleConfirmReport(card) },
     ])
   }
-
 }
+
 
 const activityStore = new ActivityStore()
 

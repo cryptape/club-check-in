@@ -85,7 +85,7 @@ class ModifyStore {
   }
 
   @action onInfoChange = (value, infoType) => {
-    if(infoType == 'newReportThreshold' && value === '0') {
+    if(infoType === 'newReportThreshold' && value === '0') {
       alert('通知', '举报阈值不能为0', [
         { text: '确定', onPress: () => log("newReportThreshold can't be zero") },
       ])

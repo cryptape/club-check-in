@@ -77,10 +77,13 @@ class NewStore {
         })
         .then(receipt => {
           if (receipt.errorMessage === null) {
-            alert('社团创建成功', '优秀', [
-              { text: '是', onPress: () => this.handleConfirmCreateClub(history) },
+            alert('通知', '社团创建成功', [
+              { text: '好的', onPress: () => this.handleConfirmCreateClub(history) },
             ])
           } else {
+            alert('通知', '社团创建失败', [
+              { text: '好的', onPress: () => log('社团创建失败') },
+            ])
             throw new Error(receipt.errroMessage)
           }
         })
@@ -90,7 +93,7 @@ class NewStore {
   }
 
   @action onInfoChange = (value, infoType) => {
-    if(infoType == 'reportThreshold' && value === '0') {
+    if(infoType === 'reportThreshold' && value === '0') {
       alert('通知', '举报阈值不能设置为0!', [
         { text: '确定', onPress: () => log("reportThreshold can't be zero") },
       ])
