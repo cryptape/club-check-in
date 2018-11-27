@@ -41,7 +41,7 @@ class CheckinStore {
     const userContract = new appchain.base.Contract(playerAbi, config.userContract)
     const clubContract = new appchain.base.Contract(clubAbi, config.clubContract)
     
-    const sender = await window.neuron.getAccount
+    const sender = await window.neuron.getAccount()
     
     const size = await userContract.methods.getUserClubsSize(sender).call()
 
