@@ -2,11 +2,11 @@ import React from 'react'
 import { InputItem } from 'antd-mobile'
 import './reportThreshold.css'
 
-const ReportThreshold = ({ reportThreshold, onChange }) => {
+const ReportThreshold = ({ newReportThreshold, onChange }) => {
   return (
     <InputItem
       className='modifyClub__input--report-threshold'
-      defaultValue={reportThreshold}
+      value={newReportThreshold}
       type='number'
       onChange={(value) => {
         onChange(value, 'newReportThreshold')
