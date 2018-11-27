@@ -40,23 +40,45 @@ class ClubListStore {
       return userContract.methods.getUserClubs(sender, index).call()
     }))
 
-    this.clubNameList = await Promise.all(clubDataAddrs.map(addr => {
+    //because user won't delete from array in contract, I need to check the flag signup
+    let clubJoined = []
+    for (let i = 0; i < clubDataAddrs.length; i++) {
+      const dataContract = new appchain.base.Contract(dataAbi, clubDataAddrs[i])
+      const isSignup = await dataContract.methods.signUps(sender).call()
+      if (isSignup) {
+        clubJoined.push(clubDataAddrs[i])
+      }
+    }
+
+    this.clubNameList = await Promise.all(clubJoined.map(addr => {
       return new appchain.base.Contract(dataAbi, addr).methods.clubName().call()
     }))
 
-    console.log('clubNameList', clubDataAddrs)
-
-    this.clubIdList = await Promise.all(clubDataAddrs.map(addr => {
+    this.clubIdList = await Promise.all(clubJoined.map(addr => {
       return clubContract.methods.clubsIds(addr).call()
     }))
 
-    this.clubUsers = await Promise.all(clubDataAddrs.map(addr => {
+    this.clubUsers = await Promise.all(clubJoined.map(addr => {
       return new appchain.base.Contract(dataAbi, addr).methods.getMembers().call()
     }))
 
     this.clubUserAvatars = []
     for (let i = 0; i < this.clubUsers.length; i++) {
-      log('user address', this.clubUsers[i].slice())
+      const dataContract = new appchain.base.Contract(dataAbi, clubJoined[i])
+      
+      //club users is an array of arrays, I have to check if the user exited
+      //because user only marked as exited for every club but not deleted
+      //the performance is lowered for the reason
+      let signedUserForSingleClub = []
+      for (let j = 0; j < this.clubUsers[i].length; j++) {
+        const ifSignUp = await dataContract.methods.signUps(this.clubUsers[i][j]).call()
+        if(ifSignUp) {
+          signedUserForSingleClub.push(this.clubUsers[i][j])  
+        }
+      }
+
+      this.clubUsers[i] = signedUserForSingleClub
+
       let singleClubAvatars = await Promise.all(this.clubUsers[i].map(addr => addr.slice()).map(addr => {
         return userContract.methods.players(addr).call()
       }))
