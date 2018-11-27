@@ -64,16 +64,10 @@ class RegisterStore {
 
   //sign up the current address
   accountSignUp = () => {
-    const userContract = new appchain.base.Contract(playerAbi, config.userContract)
     const currentAddr = window.neuron.getAccount()
     const currentBlockNumber = appchain.base.getBlockNumber()
 
     Promise.all([currentAddr, currentBlockNumber]).then(([currentAddress, blockNumber]) => {
-      const tx = {
-        ...transaction,
-        from: currentAddress,
-        validUntilBlock: blockNumber + 88,
-      }
       const userContract = new appchain.base.Contract(playerAbi, config.userContract)
 
       handleUploadImage(this.files)
@@ -88,9 +82,10 @@ class RegisterStore {
                 from: this.registerAddress,
                 validUntilBlock: blockNum + 88
               }
+              console.log(tx)
               return userContract.methods.signIn(this.registerName, res.key).send(tx)
             }).then((setIconTx) => {
-              log('waiting for signup tx')
+              log('waiting for signup tx ' + setIconTx.hash)
               return appchain.listeners.listenToTransactionReceipt(setIconTx.hash)
             }).then((receipt) => {
               if (receipt.errorMessage === null) {
