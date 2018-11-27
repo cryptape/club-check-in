@@ -3,11 +3,11 @@ const { config } = require('./config')
 const Appchain = require('@appchain/base').default
 
 
-if (typeof window.nervos !== 'undefined') {
-  window.appchain = Appchain(window.nervos.currentProvider);
+if (typeof window.appchain !== 'undefined') {
+  window.appchain = Appchain(window.appchain.currentProvider);
   window.appchain.currentProvider.setHost(config.chain);  // set CITA node IP address and port
 } else {
-  console.log('No nervos? You should consider trying Neuron!')
+  console.log('No appchain? You should consider trying Neuron!')
   window.appchain = Appchain(config.chain);
 }
 
