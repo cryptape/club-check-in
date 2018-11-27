@@ -41,7 +41,7 @@ class CheckinStore {
     const userContract = new appchain.base.Contract(playerAbi, config.userContract)
     const clubContract = new appchain.base.Contract(clubAbi, config.clubContract)
     
-    const sender = await window.neuron.getAccount
+    const sender = await window.neuron.getAccount()
     
     const size = await userContract.methods.getUserClubsSize(sender).call()
 
@@ -64,7 +64,7 @@ class CheckinStore {
       })
     }
 
-    console.log('clubData', this.clubData)
+    log('clubData', this.clubData)
 
   }
 
@@ -87,7 +87,7 @@ class CheckinStore {
       })
       .map(x => x['clubAddr'])
 
-    console.log('selected club addr: '+ this.selectedClubAddr)
+    log('selected club addr: '+ this.selectedClubAddr)
   }
 
   handleConfirmCheckin = (history) => {
@@ -117,7 +117,7 @@ class CheckinStore {
 
 
   @action async handleCheckin(history) {
-    console.log(history)
+    log(history)
 
     //get current block number and default address
     const blockNumber = await appchain.base.getBlockNumber()
@@ -142,20 +142,20 @@ class CheckinStore {
     if (this.files.length) {
       checkInImg = await handleUploadImage(this.files)
       checkInImg = checkInImg['key']
-      console.log('checkinimg',checkInImg)
+      log('checkinimg',checkInImg)
     }
 
     const clubControlContract = new appchain.base.Contract(controlAbi, clubControlAddr)
     const txHash = await clubControlContract.methods.checkin(checkInImg, checkInText).send(tx)            
     const receipt = await appchain.listeners.listenToTransactionReceipt(txHash.hash)
 
-    console.log('receipt', receipt)
+    log('receipt', receipt)
 
     if (receipt.errorMessage === null) {
       log('checkin success')
       this.handleCheckinSuccess(history)
     } else {
-      this.log('checkin failed', receipt)
+      log('checkin failed', receipt)
       this.handleCheckinFailed()
     }
   }

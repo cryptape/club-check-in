@@ -14,6 +14,7 @@ class RegisterStore {
   @observable files
   @observable registerName
   @observable registerAddress
+  @observable ifRegistered
 
   constructor() {
     this.files = []
@@ -50,16 +51,21 @@ class RegisterStore {
           url: `${config.prefixUrl}${res.icon}${config.imgSlim}`,
         }]
       })
-      .then(() => this.ifRegistered = !! this.fetchedName)
-      .catch((err) => log(err))
+      .then(() => this.ifRegistered = !!this.fetchedName)
+      .catch(err => log(err))
   }
 
-  @action handleSubmit = () => {
-    this.ifRegistered ? this.accountUpdate() : this.accountSignUp()
+  @action handleSubmit = (history) => {
+    this.ifRegistered ? this.accountUpdate(history) : this.accountSignUp(history)
+  }
+
+  handleJumpPage = (history) => {
+    log('handleJumpPage')
+    history.push('./user')
   }
 
   //sign up the current address
-  accountSignUp = () => {
+  accountSignUp = (history) => {
     const currentAddr = window.neuron.getAccount()
     const currentBlockNumber = appchain.base.getBlockNumber()
 
@@ -87,7 +93,12 @@ class RegisterStore {
             }).then(receipt => {
               if (receipt.errorMessage === null) {
                 alert('通知', '注册成功', [
-                  { text: '确定', onPress: () => log('user sign up success') },
+                  {
+                    text: '确定', onPress: () => {
+                      log('user sign up success')
+                      this.handleJumpPage(history)
+                    }
+                  },
                 ])
               } else {
                 alert('通知', '注册失败', [
@@ -103,7 +114,7 @@ class RegisterStore {
     })
   }
 
-  accountUpdate = () => {
+  accountUpdate = (history) => {
     const userContract = new appchain.base.Contract(playerAbi, config.userContract)
     if (this.files.length) {
       log('pic detected')
@@ -126,7 +137,12 @@ class RegisterStore {
             }).then(receipt => {
               if (receipt.errorMessage === null) {
                 alert('通知', '更新成功', [
-                  { text: '确定', onPress: () => log('user info update success') },
+                  {
+                    text: '确定', onPress: () => {
+                      log('user info update success')
+                      this.handleJumpPage(history)
+                    }
+                  },
                 ])
               } else {
                 alert('通知', '更新失败', [
