@@ -78,6 +78,15 @@ contract ClubCheckInControl {
         ClubData.setClubDescribe(desc);
     }
 
+    function setClubDescAndReportLimit(string desc, uint256 reportLimit) 
+    public 
+    onlyOwner() 
+    {
+        require(bytes(desc).length > 0 && bytes(desc).length <= 540);
+        ClubData.setClubDescribe(desc);
+        ClubData.setReportLimit(reportLimit);
+    }
+
     function join()
     public
     {
