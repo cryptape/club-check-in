@@ -35,7 +35,7 @@ class ClubMemberStore {
       clubName: clubName,
       clubID: this.currentClubId,
       clubRule: clubDesc,
-      clubFunding: clubTotal,
+      clubFunding: clubTotal / 100,
     }
 
     const members = await dataContract.methods.getMembers().call()

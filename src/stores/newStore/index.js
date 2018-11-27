@@ -32,7 +32,6 @@ class NewStore {
   }
 
   @action handleCreateClub = (history) => {
-    // log('history2', history)
     alert('创建社团', '确定创建社团吗？社团一旦创建无法解散。', [
       { text: '否', onPress: () => history.push('./user') },
       { text: '是', onPress: () => this.createClub(history) },
