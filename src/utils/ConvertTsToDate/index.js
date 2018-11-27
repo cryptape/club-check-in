@@ -6,7 +6,7 @@ const convertTsToDate = timestamp => {
   const date = new Date(timestamp)
   const year = date.getFullYear()
   const month = date.getMonth() + 1
-  const day = compareToTen(date.getDay())
+  const day = compareToTen(date.getDate())
   const hour = compareToTen(date.getHours())
   const minute = compareToTen(date.getMinutes())
   const second = compareToTen(date.getSeconds())
