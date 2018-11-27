@@ -16,6 +16,8 @@ class Manage extends React.Component {
   }
 
   componentDidMount() {
+    var title = { title: { name: '社团管理', }, left: { type: "back" }, }
+    window.webTitleBar.getTitleBar(JSON.stringify(title))
     this.store.clearPageInfo()
   }
 
@@ -30,7 +32,7 @@ class Manage extends React.Component {
 
     return (
       <div className='manageClubDetail__container'>
-        <Header titleName='社团管理' backRoute={`/detail/${clubID}`}/>
+        {/* <Header titleName='社团管理' backRoute={`/detail/${clubID}`}/> */}
         <div className='manageClubDetail__container--content'>
           <ManageClubDetail clubID={clubID}/>
           <IncreaseFunding

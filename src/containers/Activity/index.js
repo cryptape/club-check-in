@@ -13,6 +13,8 @@ class Activity extends React.Component {
   }
 
   componentDidMount() {
+    var title = { title: { name: '社团圈', }, left: { type: "close" }, }
+    window.webTitleBar.getTitleBar(JSON.stringify(title))
     this.store.getActivities()
     console.log('checkInEventsToShow', this.store.checkInEventsToShow)
   }
@@ -23,7 +25,7 @@ class Activity extends React.Component {
 
     return (
       <div className='activity__container'>
-        <Header titleName='社团圈'/>
+        {/* <Header titleName='社团圈'/> */}
         <div className='activity__container--content'>
           <ActivityCardList/>
           <BottomNav active={'activity'}/>

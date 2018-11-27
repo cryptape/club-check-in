@@ -14,13 +14,15 @@ class User extends React.Component {
   }
 
   componentDidMount() {
+    var title = { title: { name: '个人', }, left: { type: "close" }, }
+    window.webTitleBar.getTitleBar(JSON.stringify(title))
     this.store.getUserInfo()
   }
 
   render() {
     return (
       <div className='user__container'>
-        <Header titleName='个人'/>
+        {/* <Header titleName='个人'/> */}
         <div className='user__container--content'>
           <UserPanel/>
           <ClubListItem/>
