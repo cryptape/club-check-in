@@ -45,7 +45,7 @@ class ActivityStore {
       return acc.concat(events.map(event => ({ addr, round, event: event })))
     }, []).sort((a, b) => b.event - a.event)
 
-    const sender = await appchain.base.getDefaultAccount()
+    const sender = window.neuron.getAccount()
     let checkinEvents = []
     for (let i = 0; i < sortedClubEvents.length; i++) {
       const dataContract = new appchain.base.Contract(dataAbi, sortedClubEvents[i]['addr'])
