@@ -1,10 +1,11 @@
 import React from 'react'
 import { inject, observer } from 'mobx-react'
 import { Button, Flex } from 'antd-mobile'
-import { BottomNav, Header } from '../../components'
+import { BottomNav, } from '../../components'
 import ClubSelect from './ClubSelect'
 import ClubRule from './ClubRule'
 import CheckinPic from './CheckinPic'
+import { ChangeTitle } from '../../utils'
 import './checkin.css'
 
 
@@ -16,8 +17,7 @@ class Checkin extends React.Component {
   }
 
   componentDidMount() {
-    var title = { title: { name: '打卡', }, left: { type: "close" }, }
-    window.webTitleBar.getTitleBar(JSON.stringify(title))
+    ChangeTitle('打卡', 'close')
     this.store.clearPageInfo()
     this.store.getRegisteredClubs()
   }
@@ -50,7 +50,6 @@ class Checkin extends React.Component {
 
     return (
       <div className='checkin__container'>
-        {/* <Header titleName='打卡'/> */}
         <div className='checkin__container--content'>
           <ClubSelect handleSelectClub={handleSelectClub} clubName={clubsToShow}/>
           <ClubRule onChange={onCheckinContentChange}/>

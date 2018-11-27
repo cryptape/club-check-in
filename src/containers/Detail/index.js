@@ -1,10 +1,10 @@
 import React from 'react'
 import { inject, observer } from 'mobx-react'
-import { Header } from '../../components'
 import ClubMember from './ClubMember'
 import ClubDetail from './ClubDetail'
 import BottomButton from './BottomButton'
 import './detail.css'
+import { ChangeTitle } from '../../utils/ChangeTitle'
 
 @inject('detailStore', 'clubMemberStore', 'manageStore') @observer
 class Detail extends React.Component {
@@ -18,8 +18,7 @@ class Detail extends React.Component {
   }
 
   componentDidMount() {
-    var title = { title: { name: '社团详情', }, left: { type: "back" }, }
-    window.webTitleBar.getTitleBar(JSON.stringify(title))
+    ChangeTitle('社团详情', 'back')
     this.store.checkIfLeader(this.store.clubID)
     console.log(this.store.isLeader)
   }
@@ -34,7 +33,6 @@ class Detail extends React.Component {
 
     return (
       <div className='detail__container'>
-        {/* <Header titleName='社团详情' backRoute='/user'/> */}
         <div className='detail__container--content'>
           <div className='detail__container--club-info'>
             <ClubDetail/>

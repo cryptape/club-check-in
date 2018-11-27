@@ -18,7 +18,7 @@ class Modify extends React.Component {
   }
 
   componentDidMount() {
-    var title = { title: { name: '社团信息修改', }, left: { type: "back" }, }
+    const title = { title: { name: '社团信息修改', }, left: { type: "back" }, }
     window.webTitleBar.getTitleBar(JSON.stringify(title))
     this.store.clearPageInfo()
   }

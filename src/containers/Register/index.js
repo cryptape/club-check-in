@@ -1,11 +1,11 @@
 import React from 'react'
 import { inject, observer } from 'mobx-react'
 import { Button, } from 'antd-mobile'
-import { Header } from '../../components'
 import RegisterAddress from './RegisterAddress'
 import RegisterAvatar from './RegisterAvatar'
 import RegisterName from './RegisterName'
 import ClubLogo from './ClubLogo'
+import { ChangeTitle } from '../../utils'
 import './register.css'
 
 @inject('registerStore') @observer
@@ -17,8 +17,7 @@ class Register extends React.Component {
   }
 
   componentDidMount() {
-    var title = { title: { name: '用户设置', }, left: { type: "back" }, }
-    window.webTitleBar.getTitleBar(JSON.stringify(title))
+    ChangeTitle('用户设置', 'back')
     this.store.checkIfRegistered()
   }
 
@@ -32,7 +31,6 @@ class Register extends React.Component {
       registerAddress,
       registerName,
       onRegisterAvatarChange,
-      onRegisterAddressChange,
       isInfoCompleted,
       ifRegistered,
       handleInput,
@@ -40,7 +38,6 @@ class Register extends React.Component {
 
     return (
       <div className='register__container'>
-        {/* <Header titleName='用户设置' backRoute='/user'/> */}
         <div className='register__container--content'>
           <RegisterAddress registerAddress={registerAddress}/>
           <RegisterName onInput={handleInput} registerName={registerName}/>

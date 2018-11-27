@@ -1,10 +1,10 @@
 import React from 'react'
 import { inject, observer } from 'mobx-react'
 import { Button } from 'antd-mobile'
-import { Header } from '../../components'
 import ManageClubDetail from './ManageClubDetail'
 import IncreaseFunding from './IncreaseFunding'
 import './manage.css'
+import { ChangeTitle } from '../../utils'
 
 @inject('manageStore') @observer
 class Manage extends React.Component {
@@ -16,8 +16,7 @@ class Manage extends React.Component {
   }
 
   componentDidMount() {
-    var title = { title: { name: '社团管理', }, left: { type: "back" }, }
-    window.webTitleBar.getTitleBar(JSON.stringify(title))
+    ChangeTitle('社团管理', 'back')
     this.store.clearPageInfo()
   }
 
@@ -32,7 +31,6 @@ class Manage extends React.Component {
 
     return (
       <div className='manageClubDetail__container'>
-        {/* <Header titleName='社团管理' backRoute={`/detail/${clubID}`}/> */}
         <div className='manageClubDetail__container--content'>
           <ManageClubDetail clubID={clubID}/>
           <IncreaseFunding
