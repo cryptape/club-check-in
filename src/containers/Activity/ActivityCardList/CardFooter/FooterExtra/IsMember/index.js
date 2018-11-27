@@ -6,7 +6,6 @@ const IsMember = ({
                     thumbUpTimes, hasReported,
                     hasThumbUp, hasforbiddened,
                     handleReport, handleThumbUp,
-                    ifSelf,
                   }) => {
   return (
     <div className='activityCard__container--extra-info'>

@@ -7,7 +7,7 @@ const FooterExtra = ({
                        thumbUpTimes, hasReported,
                        hasThumbUp, hasforbiddened,
                        handleReport, handleThumbUp,
-                       isMember, ifSelf,
+                       isMember,
                      }) => {
   return (
     isMember ?
@@ -18,7 +18,6 @@ const FooterExtra = ({
         hasThumbUp={hasThumbUp}
         handleReport={handleReport}
         handleThumbUp={handleThumbUp}
-        ifSelf={ifSelf}
       /> :
       <NotMember
         thumbUpTimes={thumbUpTimes}

@@ -48,7 +48,6 @@ class ActivityCardList extends React.Component {
               handleReport={() => handleReport(card)}
               handleThumbUp={() => handleThumbUp(card)}
               isMember={card.isMember}
-              ifSelf={card.ifSelf}
             />
           </Card>
         </Flex>
