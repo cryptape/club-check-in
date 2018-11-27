@@ -1,7 +1,8 @@
 import React from 'react'
 import { inject, observer } from 'mobx-react'
-import { BottomNav, Header } from '../../components'
+import { BottomNav } from '../../components'
 import ActivityCardList from './ActivityCardList'
+import { ChangeTitle } from '../../utils'
 import './activity.css'
 
 @inject('activityStore') @observer
@@ -13,8 +14,7 @@ class Activity extends React.Component {
   }
 
   componentDidMount() {
-    var title = { title: { name: '社团圈', }, left: { type: "close" }, }
-    window.webTitleBar.getTitleBar(JSON.stringify(title))
+    ChangeTitle('社团圈', 'close')
     this.store.getActivities()
     console.log('checkInEventsToShow', this.store.checkInEventsToShow)
   }
@@ -25,7 +25,6 @@ class Activity extends React.Component {
 
     return (
       <div className='activity__container'>
-        {/* <Header titleName='社团圈'/> */}
         <div className='activity__container--content'>
           <ActivityCardList/>
           <BottomNav active={'activity'}/>

@@ -1,9 +1,10 @@
 import React from 'react'
 import { inject, observer } from 'mobx-react'
-import { BottomNav, Header } from '../../components'
+import { BottomNav } from '../../components'
 import UserPanel from './UserPanel'
 import ClubListItem from './ClubListItem'
 import './user.css'
+import { ChangeTitle } from '../../utils'
 
 @inject('userStore') @observer
 class User extends React.Component {
@@ -14,15 +15,13 @@ class User extends React.Component {
   }
 
   componentDidMount() {
-    var title = { title: { name: '个人', }, left: { type: "close" }, }
-    window.webTitleBar.getTitleBar(JSON.stringify(title))
+    ChangeTitle('个人', 'close')
     this.store.getUserInfo()
   }
 
   render() {
     return (
       <div className='user__container'>
-        {/* <Header titleName='个人'/> */}
         <div className='user__container--content'>
           <UserPanel/>
           <ClubListItem/>

@@ -28,8 +28,17 @@ class RegisterStore {
     this.files = files
   }
 
-  @action onRegisterAddressChange = value => {
-    this.registerName = value
+  @action handleInput = (e) => {
+    let inputValue = e.target.value
+
+    // trim space
+    inputValue = inputValue.replace(/\s+/g,"")
+
+    // set InputValue
+    if (inputValue.length > 0 || inputValue === '') {
+      e.target.value = inputValue
+      this.registerName = e.target.value
+    }
   }
 
   //check if the current address is signed up
