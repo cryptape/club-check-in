@@ -1,8 +1,9 @@
 import { action, observable } from 'mobx'
 import { Modal } from 'antd-mobile'
-import { clubAbi, dataAbi } from '../../contract/compiled'
+import { clubAbi, dataAbi, controlAbi } from '../../contract/compiled'
 import { config } from '../../config'
 import { appchain } from '../../appchain'
+import transaction from '../../contract/transaction'
 
 const { alert } = Modal
 
@@ -20,18 +21,49 @@ class DetailStore {
     log('manage club member')
   }
 
-  confirmQuit = () => {
+  confirmQuit = (clubId) => {
     log('quit the club')
+    const clubContract = new appchain.base.Contract(clubAbi, config.clubContract)
+
+    const defaultAccount = appchain.base.getDefaultAccount()
+    const currentBlockNumber = appchain.base.getBlockNumber()
+
+    Promise.all([defaultAccount, currentBlockNumber]).then(([currentAddr, blockNum]) => {
+
+      clubContract.methods.clubsInfo(clubId).call().then((dataAddr) => {
+        const dataContract = new appchain.base.Contract(dataAbi, dataAddr)
+        return dataContract.methods.controlAddress().call()
+      }).then((controlAddr) => {
+        const controlContract = new appchain.base.Contract(controlAbi, controlAddr)
+        const tx = {
+          ...transaction,
+          from: currentAddr,
+          validUntilBlock: blockNum + 88,
+        }
+        return controlContract.methods.exit().send(tx)
+      }).then((txHash) => {
+        return appchain.listeners.listenToTransactionReceipt(txHash.hash)
+      }).then((receipt) => {
+        if (receipt.errorMessage === null) {
+          log('exit successfully')
+        } else {
+          log('exit failed')
+          throw Error(receipt.errorMessage)
+        }
+      })
+    }).catch(error => {
+      log('error happens when exit club', error)
+    })
   }
 
   notQuit = () => {
     log('im just kidding')
   }
 
-  @action handleQuitClub = () => {
+  @action handleQuitClub = (clubId) => {
     alert('提示', '退出社团您的积分将无法找回。', [
       { text: '否', onPress: this.notQuit },
-      { text: '是', onPress: this.confirmQuit },
+      { text: '是', onPress: () => this.confirmQuit(clubId) },
     ])
   }
 

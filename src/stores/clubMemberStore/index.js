@@ -40,20 +40,31 @@ class ClubMemberStore {
 
     const members = await dataContract.methods.getMembers().call()
     const round = await dataContract.methods.round().call()
-    const currentTotalBonus = await dataContract.methods.bonusHistory(round).call()
 
-    let userData = []
+    let totalBonus = 0
+    for (let i = 0; i < members.length; i++) {
+      const playerBonus = await dataContract.methods.memberBonus(round, members[i]).call()
+      totalBonus += parseInt(playerBonus)
+    }
+    
     this.memberDataList = []
     for (let i = 0; i < members.length; i++) {
       const playerAddr = members[i]
+
+      //continue if the player exited
+      const isPlayerSignUp = await dataContract.methods.signUps(playerAddr).call()
+      if (!isPlayerSignUp) {
+        continue
+      }
+
       const playerInfo = await userContract.methods.players(playerAddr).call()
       const playerName = playerInfo['name']
       const avatar = constructPicUrl(playerInfo['icon'])
       const points = await dataContract.methods.memberBonus(round, playerAddr).call()
       
       const bonus = 
-      parseInt(currentTotalBonus) === 0 || parseInt(points) === 0 ?
-      0 : (points / currentTotalBonus) * clubTotal 
+      totalBonus === 0 || parseInt(points) === 0 ?
+      0 : (points / totalBonus) * clubTotal 
 
       this.memberDataList.push({
         name: playerName,
