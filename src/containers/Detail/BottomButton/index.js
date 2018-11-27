@@ -11,7 +11,7 @@ const BottomButton = ({ isLeader, handleManageMember, handleQuitClub, clubID }) 
         管理
       </Button>
       :
-      <Button className='detail__button--club-manage' onClick={handleQuitClub}>
+      <Button className='detail__button--club-manage' onClick={() => handleQuitClub(clubID)}>
         退出
       </Button>
   )
