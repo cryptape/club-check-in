@@ -67,7 +67,7 @@ class ClubListStore {
       const dataContract = new appchain.base.Contract(dataAbi, clubJoined[i])
       
       //club users is an array of arrays, I have to check if the user exited
-      //because use only marked as exited for every club but not deleted
+      //because user only marked as exited for every club but not deleted
       //the performance is lowered for the reason
       let signedUserForSingleClub = []
       for (let j = 0; j < this.clubUsers[i].length; j++) {
