@@ -45,9 +45,11 @@ class ActivityStore {
       return acc.concat(events.map(event => ({ addr, round, event: event })))
     }, []).sort((a, b) => b.event - a.event)
 
+    const sender = await appchain.base.getDefaultAccount()
     let checkinEvents = []
     for (let i = 0; i < sortedClubEvents.length; i++) {
       const dataContract = new appchain.base.Contract(dataAbi, sortedClubEvents[i]['addr'])
+      const isSignUp = await dataContract.methods.signUps(sender).call()
       const eventInfo = await dataContract.methods.checkinEvents(sortedClubEvents[i]['round'], sortedClubEvents[i]['event']).call()
       const player = await userContract.methods.players(eventInfo['author']).call()
       const authorAvatar = constructPicUrl(player['icon'])
@@ -56,8 +58,12 @@ class ActivityStore {
 
       const eventSupports = await dataContract.methods.getEventSupports(sortedClubEvents[i]['round'], sortedClubEvents[i]['event']).call()
       let supportersAvatar = []
+      let ifThumbup = false
       for (let j = 0; j < eventSupports.length; j++) {
         const singlePlayer = await userContract.methods.players(eventSupports[j]).call()
+        if (singlePlayer.playerAddress === sender) {
+          ifThumbup = true
+        }
         supportersAvatar.push(constructPicUrl(singlePlayer['icon']))
       }
 
@@ -77,9 +83,10 @@ class ActivityStore {
         postPic: constructPicUrl(eventInfo['imgUrl']),
         thumbUpMembers: supportersAvatar,
         thumbUpTimes: eventSupports.length,
-        hasThumbUp: false,
+        hasThumbUp: ifThumbup,
         hasReported: reported,
-        isMember: true,
+        isMember: isSignUp,
+        ifSelf: player === sender,
         hasforbiddened: forbidden,
       })
     }
