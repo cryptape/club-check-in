@@ -90,11 +90,18 @@ class NewStore {
   }
 
   @action onInfoChange = (value, infoType) => {
-    this[infoType] = value
+    if(infoType == 'reportThreshold' && value === '0') {
+      alert('通知', '举报阈值不能设置为0!', [
+        { text: '确定', onPress: () => log("reportThreshold can't be zero") },
+      ])
+      this.reportThreshold = ''
+    } else {
+      this[infoType] = value
+    }
   }
 
   @computed get isInfoCompleted() {
-    return this.clubName && this.clubRule && this.reportThreshold
+    return this.clubName && this.clubRule && this.reportThreshold && this.reportThreshold !== '0'
   }
 }
 
