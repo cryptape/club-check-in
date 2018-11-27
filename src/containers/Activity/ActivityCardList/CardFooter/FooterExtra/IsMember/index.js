@@ -3,12 +3,10 @@ import { Flex } from 'antd-mobile'
 import { reportIcon, thumbUpIcon } from '../svg'
 
 const IsMember = ({
-                    thumbUpTimes,
-                    hasReported,
-                    hasThumbUp,
-                    hasforbiddened,
-                    handleReport,
-                    handleThumbUp,
+                    thumbUpTimes, hasReported,
+                    hasThumbUp, hasforbiddened,
+                    handleReport, handleThumbUp,
+                    ifSelf,
                   }) => {
   return (
     <div className='activityCard__container--extra-info'>
@@ -22,7 +20,7 @@ const IsMember = ({
         <Flex justify='center'>
           <div
             className={`activityCard__container-thumb-up ${hasThumbUp ? 'thumbUpActive' : ''}`}
-            onClick={hasThumbUp ? () => console.log('already thumb up') : handleThumbUp}
+            onClick={ifSelf || hasThumbUp ? () => console.log('already thumb up') : handleThumbUp}
           >
             {thumbUpIcon} {thumbUpTimes}
           </div>

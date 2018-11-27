@@ -4,13 +4,10 @@ import NotMember from './NotMember'
 import './footerExtra.css'
 
 const FooterExtra = ({
-                       thumbUpTimes,
-                       hasReported,
-                       hasThumbUp,
-                       hasforbiddened,
-                       handleReport,
-                       handleThumbUp,
-                       isMember
+                       thumbUpTimes, hasReported,
+                       hasThumbUp, hasforbiddened,
+                       handleReport, handleThumbUp,
+                       isMember, ifSelf,
                      }) => {
   return (
     isMember ?
@@ -21,6 +18,7 @@ const FooterExtra = ({
         hasThumbUp={hasThumbUp}
         handleReport={handleReport}
         handleThumbUp={handleThumbUp}
+        ifSelf={ifSelf}
       /> :
       <NotMember
         thumbUpTimes={thumbUpTimes}
