@@ -1,9 +1,12 @@
 import { action, computed, observable } from 'mobx'
+import { Modal } from 'antd-mobile'
 import { playerAbi } from '../../contract/compiled'
 import { appchain } from '../../appchain'
 import { config } from '../../config'
 import transaction from '../../contract/transaction'
 import { handleUploadImage } from '../../utils'
+
+const { alert } = Modal
 
 const log = console.log.bind(console, '### registerStore ')
 
@@ -11,6 +14,7 @@ class RegisterStore {
   @observable files
   @observable registerName
   @observable registerAddress
+  @observable ifRegistered
 
   constructor() {
     this.files = []
@@ -20,11 +24,11 @@ class RegisterStore {
     this.fetchedName = undefined
   }
 
-  @action onRegisterAvatarChange = (files) => {
+  @action onRegisterAvatarChange = files => {
     this.files = files
   }
 
-  @action onRegisterAddressChange = (value) => {
+  @action onRegisterAddressChange = value => {
     this.registerName = value
   }
 
@@ -33,37 +37,35 @@ class RegisterStore {
   @action checkIfRegistered = () => {
     const userContract = new appchain.base.Contract(playerAbi, config.userContract)
 
-
     this.registerAddress = window.neuron.getAccount()
 
     userContract.methods.players(this.registerAddress).call()
       .then(res => {
-        console.log('res', res)
+        log('res', res)
         this.fetchedName = res.name
         this.registerName = res.name
         this.files = [{
           file: {
             name: res.icon,
           },
-          url: config.prefixUrl + res.icon + config.imgSlim,
+          url: `${config.prefixUrl}${res.icon}${config.imgSlim}`,
         }]
       })
-      .then(() => {this.ifRegistered = (this.fetchedName !== undefined && this.fetchedName !== '')})
-      .then(() => {console.log()})
+      .then(() => this.ifRegistered = !!this.fetchedName)
+      .catch(err => log(err))
   }
 
-  @action handleSubmit = () => {
-    if (this.ifRegistered) {
-      console.log('account update')
-      this.accountUpdate()
-    } else {
-      console.log('account sign up')
-      this.accountSignUp()
-    }
+  @action handleSubmit = (history) => {
+    this.ifRegistered ? this.accountUpdate(history) : this.accountSignUp(history)
+  }
+
+  handleJumpPage = (history) => {
+    log('handleJumpPage')
+    history.push('./user')
   }
 
   //sign up the current address
-  accountSignUp = () => {
+  accountSignUp = (history) => {
     const currentAddr = window.neuron.getAccount()
     const currentBlockNumber = appchain.base.getBlockNumber()
 
@@ -76,33 +78,43 @@ class RegisterStore {
           if (res.hash) {
             log('res key', res.key)
             appchain.base.getBlockNumber().then(blockNum => {
-              console.log('blockNumber', blockNum)
+              log('blockNumber', blockNum)
               const tx = {
                 ...transaction,
                 from: this.registerAddress,
                 validUntilBlock: blockNum + 88
               }
-              console.log(tx)
+              log(tx)
               return userContract.methods.signIn(this.registerName, res.key).send(tx)
-            }).then((setIconTx) => {
+            }).then(setIconTx => {
               log('waiting for signup tx ' + setIconTx.hash)
+              // TODO got bug here, can't get receipt correctly
               return appchain.listeners.listenToTransactionReceipt(setIconTx.hash)
-            }).then((receipt) => {
+            }).then(receipt => {
               if (receipt.errorMessage === null) {
-                log('user sign up success')
+                alert('通知', '注册成功', [
+                  {
+                    text: '确定', onPress: () => {
+                      log('user sign up success')
+                      this.handleJumpPage(history)
+                    }
+                  },
+                ])
               } else {
-                log('user sign up failed', receipt.errorMessage)
+                alert('通知', '注册失败', [
+                  { text: '确定', onPress: () => log('user sign up failed') },
+                ])
               }
             })
           }
         })
-        .catch((err) => {
+        .catch(err => {
           log('err', err)
         })
     })
   }
 
-  accountUpdate = () => {
+  accountUpdate = (history) => {
     const userContract = new appchain.base.Contract(playerAbi, config.userContract)
     if (this.files.length) {
       log('pic detected')
@@ -119,21 +131,28 @@ class RegisterStore {
                 validUntilBlock: blockNum + 88
               }
               return userContract.methods.setNameIcon(this.registerName, res.key).send(tx)
-            }).then((setIconTx) => {
+            }).then(setIconTx => {
               log('waiting for set icon tx')
               return appchain.listeners.listenToTransactionReceipt(setIconTx.hash)
-            }).then((receipt) => {
+            }).then(receipt => {
               if (receipt.errorMessage === null) {
-                log('user info update success')
+                alert('通知', '更新成功', [
+                  {
+                    text: '确定', onPress: () => {
+                      log('user info update success')
+                      this.handleJumpPage(history)
+                    }
+                  },
+                ])
               } else {
-                log('user info update failed', receipt.errorMessage)
+                alert('通知', '更新失败', [
+                  { text: '确定', onPress: () => log('user info update failed', receipt.errorMessage) },
+                ])
               }
-            }).catch(err => {
-              log('error', err)
             })
           }
         })
-        .catch((err) => {
+        .catch(err => {
           log('err', err)
         })
     } else {
