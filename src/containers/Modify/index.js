@@ -18,6 +18,8 @@ class Modify extends React.Component {
   }
 
   componentDidMount() {
+    var title = { title: { name: '社团信息修改', }, left: { type: "back" }, }
+    window.webTitleBar.getTitleBar(JSON.stringify(title))
     this.store.clearPageInfo()
   }
 
@@ -33,7 +35,7 @@ class Modify extends React.Component {
 
     return (
       <div className='modifyClub__container'>
-        <Header titleName='社团信息修改' backRoute={`/detail/${clubID}`}/>
+        {/* <Header titleName='社团信息修改' backRoute={`/detail/${clubID}`}/> */}
         <div className='modifyClub__container--content'>
           <ClubName clubName={clubInfo.clubName}/>
           <ClubID clubID={clubInfo.clubID}/>

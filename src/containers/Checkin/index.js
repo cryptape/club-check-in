@@ -16,6 +16,8 @@ class Checkin extends React.Component {
   }
 
   componentDidMount() {
+    var title = { title: { name: '打卡', }, left: { type: "close" }, }
+    window.webTitleBar.getTitleBar(JSON.stringify(title))
     this.store.clearPageInfo()
     this.store.getRegisteredClubs()
   }
@@ -48,7 +50,7 @@ class Checkin extends React.Component {
 
     return (
       <div className='checkin__container'>
-        <Header titleName='打卡'/>
+        {/* <Header titleName='打卡'/> */}
         <div className='checkin__container--content'>
           <ClubSelect handleSelectClub={handleSelectClub} clubName={clubsToShow}/>
           <ClubRule onChange={onCheckinContentChange}/>

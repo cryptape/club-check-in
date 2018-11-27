@@ -18,6 +18,8 @@ class Detail extends React.Component {
   }
 
   componentDidMount() {
+    var title = { title: { name: '社团详情', }, left: { type: "back" }, }
+    window.webTitleBar.getTitleBar(JSON.stringify(title))
     this.store.checkIfLeader(this.store.clubID)
     console.log(this.store.isLeader)
   }
@@ -32,7 +34,7 @@ class Detail extends React.Component {
 
     return (
       <div className='detail__container'>
-        <Header titleName='社团详情' backRoute='/user'/>
+        {/* <Header titleName='社团详情' backRoute='/user'/> */}
         <div className='detail__container--content'>
           <div className='detail__container--club-info'>
             <ClubDetail/>

@@ -17,6 +17,8 @@ class Register extends React.Component {
   }
 
   componentDidMount() {
+    var title = { title: { name: '用户设置', }, left: { type: "back" }, }
+    window.webTitleBar.getTitleBar(JSON.stringify(title))
     this.store.checkIfRegistered()
   }
 
@@ -33,7 +35,7 @@ class Register extends React.Component {
 
     return (
       <div className='register__container'>
-        <Header titleName='用户设置' backRoute='/user'/>
+        {/* <Header titleName='用户设置' backRoute='/user'/> */}
         <div className='register__container--content'>
           <RegisterAddress registerAddress={registerAddress}/>
           <RegisterName onChange={onRegisterAddressChange} registerName={registerName}/>
