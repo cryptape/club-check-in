@@ -11,8 +11,7 @@
 
 .manageClubDetail__content--name {
   width: 100vw;
-  /*text-align: center;*/
-  margin-left: 28vw;
+  margin: 0 auto;
   font-family: var(--font-family);
   font-size: 15px;
   font-weight: 500;
@@ -22,6 +21,7 @@
 
 .manageClubDetail__container--funding {
   margin-top: 2.47vh;
+  /*margin: 0 auto;*/
 }
 
 .manageClubDetail__content--funding {
