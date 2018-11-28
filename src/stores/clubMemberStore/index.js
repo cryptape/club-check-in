@@ -72,7 +72,7 @@ class ClubMemberStore {
         avatar: avatar,	   
         address: playerAddr,
         points: points,
-        bonus: bonus,	      
+        bonus: bonus / 100,
       })
     }
   }
