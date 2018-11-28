@@ -16,7 +16,7 @@ class HomeStore {
     // interact with chain to decide isUser value
     this.isUser = true
     const userContract = new appchain.base.Contract(playerAbi, config.userContract)
-    const sender = await appchain.base.getDefaultAccount()
+    const sender = window.neuron.getAccount()
     const player = await userContract.methods.players(sender).call()
     this.isUser = !!player.name
   }
