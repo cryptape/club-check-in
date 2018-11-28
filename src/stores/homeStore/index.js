@@ -1,6 +1,7 @@
 import { action, observable } from 'mobx'
 import { playerAbi } from '../../contract/compiled'
 import { appchain } from '../../appchain'
+import { config } from '../../config'
 
 const log = console.log.bind(console, '### homeStore')
 
@@ -17,7 +18,7 @@ class HomeStore {
     const userContract = new appchain.base.Contract(playerAbi, config.userContract)
     const sender = await appchain.base.getDefaultAccount()
     const player = await userContract.methods.players(sender).call()
-    this.user = this.fetchedName !== undefined
+    this.isUser = !!player.name
   }
 }
 
