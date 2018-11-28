@@ -22,9 +22,9 @@ class ClubDetail extends React.Component {
         <div className='clubDetail__content--name'>
           {detailPageClubInfo.clubName}
         </div>
-        <div className='clubDetail__container--deposit'>
-          <div className='clubDetail__container--deposit-info'>
-            <span className='clubDetail__content--deposit'>社团经费：{detailPageClubInfo.clubFunding}</span>
+        <div className='clubDetail__container--funding'>
+          <div className='clubDetail__container--funding-info'>
+            <span className='clubDetail__content--funding'>社团经费：{detailPageClubInfo.clubFunding}</span>
             <div className='clubDetail__content--separate-line'></div>
             <span className='clubDetail__content--id'>ID: {detailPageClubInfo.clubID}</span>
           </div>

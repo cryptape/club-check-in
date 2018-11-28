@@ -12,20 +12,18 @@
   padding-top: 0.75vh;
 }
 
-.clubDetail__container--deposit {
+.clubDetail__container--funding {
   margin-top: 2.47vh;
 }
 
-.clubDetail__content--deposit {
+.clubDetail__content--funding {
   font-family: var(--font-family);
   color: #28d890;
-  margin-left: 20vw;
 }
 
 .clubDetail__content--id {
   font-family: var(--font-family);
   color: #898fa3;
-  margin-left: 5.3vw;
 }
 
 .clubDetail__content--separate-line {
@@ -34,10 +32,12 @@
   height: 15px;
   background-color: #898fa3;
   margin-left: 5.3vw;
+  margin-right: 5.3vw;
 }
 
-.clubDetail__container--deposit-info {
+.clubDetail__container--funding-info {
   margin-bottom: 2.25vh;
+  text-align: center;
 }
 
 .clubDetail__content--rule {
