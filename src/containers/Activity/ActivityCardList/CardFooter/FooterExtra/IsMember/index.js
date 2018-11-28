@@ -3,12 +3,9 @@ import { Flex } from 'antd-mobile'
 import { reportIcon, thumbUpIcon } from '../svg'
 
 const IsMember = ({
-                    thumbUpTimes,
-                    hasReported,
-                    hasThumbUp,
-                    hasforbiddened,
-                    handleReport,
-                    handleThumbUp,
+                    thumbUpTimes, hasReported,
+                    hasThumbUp, hasforbiddened,
+                    handleReport, handleThumbUp,
                   }) => {
   return (
     <div className='activityCard__container--extra-info'>

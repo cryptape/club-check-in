@@ -1,16 +1,16 @@
 .manageClubDetail__input--increase-funding {
   /*border: 1px solid red;*/
   margin-top: 2.24vh;
+  width: 20vw;
 }
 
 .manageClubDetail__button--increase-funding {
   color: #28d890;
-  margin-left: 3vw;
-  border-radius: 50px;
+  border-radius: 20px;
   font-size: 13px;
-  width: 32vw;
-  height: 5.99vh;
-  line-height: 5.99vh;
+  width: 84px;
+  height: 29px;
+  line-height: 29px;
   border: solid 1px #28d890 !important;
 }
 

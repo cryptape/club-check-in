@@ -22,13 +22,13 @@ class ManageClubDetail extends React.Component {
         <Link to={`/modify/${this.props.clubID}`}>
           <div className='manageClubDetail__content--container'>
             <div className='manageClubDetail__content--name'>
-              {detailPageClubInfo.clubName}
+                {detailPageClubInfo.clubName}
             </div>
             <div className='manageClubDetail__container--funding'>
               <div className='manageClubDetail__container--funding-info'>
-                <span className='manageClubDetail__content--funding'>社团经费：{detailPageClubInfo.clubFunding}</span>
-                <div className='manageClubDetail__content--separate-line'></div>
-                <span className='manageClubDetail__content--id'>ID: {detailPageClubInfo.clubID}</span>
+                  <span className='manageClubDetail__content--funding'>社团经费：{detailPageClubInfo.clubFunding}</span>
+                  <div className='manageClubDetail__content--separate-line'></div>
+                  <span className='manageClubDetail__content--id'>ID: {detailPageClubInfo.clubID}</span>
               </div>
               <div className='manageClubDetail__content--rule'>{detailPageClubInfo.clubRule}</div>
             </div>

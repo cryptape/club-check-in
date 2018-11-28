@@ -4,13 +4,10 @@ import NotMember from './NotMember'
 import './footerExtra.css'
 
 const FooterExtra = ({
-                       thumbUpTimes,
-                       hasReported,
-                       hasThumbUp,
-                       hasforbiddened,
-                       handleReport,
-                       handleThumbUp,
-                       isMember
+                       thumbUpTimes, hasReported,
+                       hasThumbUp, hasforbiddened,
+                       handleReport, handleThumbUp,
+                       isMember,
                      }) => {
   return (
     isMember ?

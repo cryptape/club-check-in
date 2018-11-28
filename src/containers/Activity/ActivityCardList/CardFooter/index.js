@@ -8,7 +8,7 @@ const CardFooter = ({
                       thumbUpTimes, hasReported,
                       hasThumbUp, hasforbiddened,
                       handleReport, handleThumbUp,
-                      isMember, }) => {
+                      isMember,}) => {
 
   return (
     <Card.Footer
