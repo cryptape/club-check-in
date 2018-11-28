@@ -67,8 +67,6 @@ class ManageStore {
 
   handleIncrease = () => {
     const fundingToIncrease = this.increaseFunding * 100
-    let defaultAddr = ''
-    let dataAddr = ''
     let controlAddr = ''
     const currentAccount = window.neuron.getAccount()
 
@@ -76,7 +74,7 @@ class ManageStore {
       log('number of tokens', tokens)
       if (tokens < fundingToIncrease) {
         alert('通知', `余额不足，请充值？`, [
-          { text: '确定', onPress: () => {log('余额不足')} },
+          { text: '确定', onPress: () => log('余额不足') },
         ])
         throw Error('not enough balance.')
       }
@@ -88,12 +86,9 @@ class ManageStore {
       controlAddr = controlContractAddr
       return appchain.base.getBlockNumber()
     }).then((blockNum) => {
-      log('funding', fundingToIncrease)
-      log('defaultAddr', defaultAddr)
-      log('datacontract', dataAddr)
       const tx = {
         ...transaction,
-        from: defaultAddr,
+        from: currentAccount,
         validUntilBlock: blockNum + 88,
       }
       return this.tokenContract.methods.transfer(controlAddr, fundingToIncrease).send(tx)
@@ -101,9 +96,13 @@ class ManageStore {
       return appchain.listeners.listenToTransactionReceipt(txHash.hash)
     }).then((receipt) => {
       if (receipt.errorMessage === null) {
-        log('Funding increased successfully')
+        alert('通知', `充值成功`, [
+          { text: '确定', onPress: () => log('Funding increased successfully') },
+        ])
       } else {
-        log('failed to increase funding')
+        alert('通知', `充值失败`, [
+          { text: '确定', onPress: () => log('Funding increased failed') },
+        ])
         throw Error(receipt.errorMessage)
       }
     }).catch((err) => {

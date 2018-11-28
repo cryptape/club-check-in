@@ -95,38 +95,44 @@ class ActivityStore {
   }
 
   @action handleThumbUp = (card) => {
-    log('click thumb up', toJS(card))
+    if(card.ifSelf) {
+      alert('通知', '不能给自己点赞。', [
+        { text: '好的', onPress: () => log('thumb up self') },
+      ])
+    } else {
+      log('click thumb up', toJS(card))
 
-    const eventId = parseInt(card['eventId'])
-    const clubDataAddr = card['clubAddr']
-    const defaultAddr = window.neuron.getAccount()
-    const blockNum = appchain.base.getBlockNumber()
-    log('hello 104')
-    Promise.all([defaultAddr, blockNum]).then(([currentAddr, blockNumber]) => {
-      const clubDataContract = new appchain.base.Contract(dataAbi, clubDataAddr)
-      clubDataContract.methods.controlAddress().call().then((controlAddr) => {
-        const contorlContract = new appchain.base.Contract(controlAbi, controlAddr)
-        const tx = {
-          ...transaction,
-          from: currentAddr,
-          validUntilBlock: blockNumber + 88,
-        }
-        return contorlContract.methods.support(eventId).send(tx)
-      }).then(txHash => {
-        return appchain.listeners.listenToTransactionReceipt(txHash.hash)
-      }).then(receipt => {
-        if (receipt.errorMessage === null) {
-          alert('通知', '点赞成功！快去告诉Ta吧！', [
-            { text: '好的', onPress: () => log('Support successfully') },
-          ])
-        } else {
-          alert('通知', '点赞失败！', [
-            { text: '好的', onPress: () => log('Support failed') },
-          ])
-          throw Error(receipt.errorMessage)
-        }
-      })
-    }).catch(err => log(err))
+      const eventId = parseInt(card['eventId'])
+      const clubDataAddr = card['clubAddr']
+      const defaultAddr = window.neuron.getAccount()
+      const blockNum = appchain.base.getBlockNumber()
+
+      Promise.all([defaultAddr, blockNum]).then(([currentAddr, blockNumber]) => {
+        const clubDataContract = new appchain.base.Contract(dataAbi, clubDataAddr)
+        clubDataContract.methods.controlAddress().call().then((controlAddr) => {
+          const contorlContract = new appchain.base.Contract(controlAbi, controlAddr)
+          const tx = {
+            ...transaction,
+            from: currentAddr,
+            validUntilBlock: blockNumber + 88,
+          }
+          return contorlContract.methods.support(eventId).send(tx)
+        }).then(txHash => {
+          return appchain.listeners.listenToTransactionReceipt(txHash.hash)
+        }).then(receipt => {
+          if (receipt.errorMessage === null) {
+            alert('通知', '点赞成功！快去告诉Ta吧！', [
+              { text: '好的', onPress: () => log('Support successfully') },
+            ])
+          } else {
+            alert('通知', '点赞失败！', [
+              { text: '好的', onPress: () => log('Support failed') },
+            ])
+            throw Error(receipt.errorMessage)
+          }
+        })
+      }).catch(err => log(err))
+    }
   }
 
   handleConfirmReport = (card) => {
