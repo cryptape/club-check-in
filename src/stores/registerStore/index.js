@@ -65,7 +65,7 @@ class RegisterStore {
   }
 
   @action handleSubmit = (history) => {
-    this.ifRegistered ? this.accountUpdate(history) : this.accountSignUp(history)
+    this.ifRegistered ? this.accountUpdate(history) : this.accountSignUp()
   }
 
   handleJumpPage = (history) => {
@@ -74,7 +74,7 @@ class RegisterStore {
   }
 
   //sign up the current address
-  accountSignUp = (history) => {
+  accountSignUp = () => {
     const currentAddr = window.neuron.getAccount()
     const currentBlockNumber = appchain.base.getBlockNumber()
 
@@ -97,7 +97,6 @@ class RegisterStore {
               return userContract.methods.signIn(this.registerName, res.key).send(tx)
             }).then(setIconTx => {
               log('waiting for signup tx ' + setIconTx.hash)
-              // TODO got bug here, can't get receipt correctly
               return appchain.listeners.listenToTransactionReceipt(setIconTx.hash)
             }).then(receipt => {
               if (receipt.errorMessage === null) {

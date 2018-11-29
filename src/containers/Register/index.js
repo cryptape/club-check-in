@@ -22,6 +22,7 @@ class Register extends React.Component {
   }
 
   handleConfirmSubmit = () => {
+    console.log('register container:', this.props.history)
     this.store.handleSubmit(this.props.history)
   }
 
