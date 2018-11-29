@@ -14,16 +14,17 @@ class Register extends React.Component {
   constructor(props) {
     super(props)
     this.store = this.props.registerStore
+    this.store.history = this.props.history
   }
 
   componentDidMount() {
-    console.log('this.store.history in register111', this.props.history)
+    console.log('this.store.history in register111', this.store.history)
     this.store.checkIfRegistered()
   }
 
   handleSubmitConfirm = () => {
-    console.log('this.store.history in register', this.props.history)
-    this.store.handleSubmit(this.props.history)
+    console.log('this.store.history in register', this.store.history)
+    this.store.handleSubmit(this.store.history)
   }
 
   render() {

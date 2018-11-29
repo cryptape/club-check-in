@@ -42,7 +42,7 @@ class RegisterStore {
   }
 
   handleJumpPage = (history) => {
-    log('handleJumpPage')
+    log('handleJumpPage', history)
     history.push('./user')
   }
 
@@ -73,6 +73,7 @@ class RegisterStore {
   }
 
   @action handleSubmit = (history) => {
+    log('handleSubmit history', history)
     if (this.ifRegistered) {
       console.log('account update')
       this.accountUpdate(history)
@@ -84,6 +85,7 @@ class RegisterStore {
 
   //sign up the current address
   accountSignUp = (history) => {
+    log('accountSignUp history', history)
     const userContract = new appchain.base.Contract(playerAbi, config.userContract)
     const currentAddr = appchain.base.getDefaultAccount()
     const currentBlockNumber = appchain.base.getBlockNumber()
@@ -116,7 +118,7 @@ class RegisterStore {
                 alert('通知', '注册成功', [
                   {
                     text: '确定', onPress: () => {
-                      log('user sign up success')
+                      log('user sign up success', history)
                       this.handleJumpPage(history)
                     }
                   },

@@ -9,16 +9,18 @@ class Home extends React.Component {
   constructor(props) {
     super(props)
     this.store = props.homeStore
+    this.store.history = this.props.history
   }
 
   componentDidMount() {
+    console.log('homeStore history', this.props.history)
     this.store.hasRegister()
   }
 
   render() {
-    const { isUser } = this.store
+    const { isUser, history } = this.store
     return (
-      isUser ? <Activity/> : <Register/>
+      isUser ? <Activity/> : <Register history={history}/>
     )
   }
 }
