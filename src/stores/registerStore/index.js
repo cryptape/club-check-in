@@ -125,6 +125,9 @@ class RegisterStore {
                 ])
               } else {
                 log('user sign up failed', receipt.errorMessage)
+                alert('通知', '注册失败', [
+                  { text: '确定', onPress: () => log('user sign up failed') },
+                ])
               }
             })
           }
@@ -168,6 +171,9 @@ class RegisterStore {
                 ])
               } else {
                 log('user info update failed', receipt.errorMessage)
+                alert('通知', '更新失败', [
+                  { text: '确定', onPress: () => log('user info update failed', receipt.errorMessage) },
+                ])
               }
             }).catch(err => {
               log('error', err)

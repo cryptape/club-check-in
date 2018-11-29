@@ -103,8 +103,14 @@ class ManageStore {
     }).then((receipt) => {
       if (receipt.errorMessage === null) {
         log('Funding increased successfully')
+        alert('通知', `充值成功`, [
+          { text: '确定', onPress: () => log('Funding increased successfully') },
+        ])
       } else {
         log('failed to increase funding')
+        alert('通知', `充值失败`, [
+          { text: '确定', onPress: () => log('Funding increased failed') },
+        ])
         throw Error(receipt.errorMessage)
       }
     }).catch((err) => {
@@ -158,7 +164,8 @@ class ManageStore {
 
   @action handleFunding = () => {
     alert('通知', `是否充值？`, [
-      { text: '充还是要充的', onPress: this.handleIncrease },
+      { text: '放弃', onPress: () => log('放弃增加经费') },
+      { text: '确定', onPress: this.handleIncrease },
     ])
   }
 
