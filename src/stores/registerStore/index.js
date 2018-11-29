@@ -1,9 +1,12 @@
 import { action, computed, observable } from 'mobx'
+import { Modal } from 'antd-mobile'
 import { playerAbi } from '../../contract/compiled'
 import { appchain } from '../../appchain'
 import { config } from '../../config'
 import transaction from '../../contract/transaction'
 import { handleUploadImage } from '../../utils'
+
+const { alert } = Modal
 
 const log = console.log.bind(console, '### registerStore ')
 
@@ -38,6 +41,11 @@ class RegisterStore {
     }
   }
 
+  handleJumpPage = (history) => {
+    log('handleJumpPage', history)
+    history.push('./user')
+  }
+
   //check if the current address is signed up
   //get the registerName and avatarName
   @action checkIfRegistered = () => {
@@ -64,18 +72,20 @@ class RegisterStore {
     })
   }
 
-  @action handleSubmit = () => {
+  @action handleSubmit = (history) => {
+    log('handleSubmit history', history)
     if (this.ifRegistered) {
       console.log('account update')
-      this.accountUpdate()
+      this.accountUpdate(history)
     } else {
       console.log('account sign up')
-      this.accountSignUp()
+      this.accountSignUp(history)
     }
   }
 
   //sign up the current address
-  accountSignUp = () => {
+  accountSignUp = (history) => {
+    log('accountSignUp history', history)
     const userContract = new appchain.base.Contract(playerAbi, config.userContract)
     const currentAddr = appchain.base.getDefaultAccount()
     const currentBlockNumber = appchain.base.getBlockNumber()
@@ -86,7 +96,6 @@ class RegisterStore {
         from: currentAddress,
         validUntilBlock: blockNumber + 88,
       }
-      const userContract = new appchain.base.Contract(playerAbi, config.userContract)
 
       handleUploadImage(this.files)
         .then(res => {
@@ -106,6 +115,14 @@ class RegisterStore {
             }).then((receipt) => {
               if (receipt.errorMessage === null) {
                 log('user sign up success')
+                alert('通知', '注册成功', [
+                  {
+                    text: '确定', onPress: () => {
+                      log('user sign up success', history)
+                      this.handleJumpPage(history)
+                    }
+                  },
+                ])
               } else {
                 log('user sign up failed', receipt.errorMessage)
               }
@@ -118,7 +135,7 @@ class RegisterStore {
     })
   }
 
-  accountUpdate = () => {
+  accountUpdate = (history) => {
     const userContract = new appchain.base.Contract(playerAbi, config.userContract)
     if (this.files.length) {
       log('pic detected')
@@ -141,6 +158,14 @@ class RegisterStore {
             }).then((receipt) => {
               if (receipt.errorMessage === null) {
                 log('user info update success')
+                alert('通知', '注册成功', [
+                  {
+                    text: '确定', onPress: () => {
+                      log('user sign up success')
+                      this.handleJumpPage(history)
+                    }
+                  },
+                ])
               } else {
                 log('user info update failed', receipt.errorMessage)
               }

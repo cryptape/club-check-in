@@ -14,10 +14,17 @@ class Register extends React.Component {
   constructor(props) {
     super(props)
     this.store = this.props.registerStore
+    this.store.history = this.props.history
   }
 
   componentDidMount() {
+    console.log('this.store.history in register111', this.store.history)
     this.store.checkIfRegistered()
+  }
+
+  handleSubmitConfirm = () => {
+    console.log('this.store.history in register', this.store.history)
+    this.store.handleSubmit(this.store.history)
   }
 
   render() {
@@ -28,7 +35,6 @@ class Register extends React.Component {
       onRegisterAvatarChange,
       isInfoCompleted,
       handleInput,
-      handleSubmit,
     } = this.store
 
     return (
@@ -44,7 +50,7 @@ class Register extends React.Component {
           <ClubLogo/>
           <Button
             disabled={!isInfoCompleted}
-            className={`register__button--finish ${!isInfoCompleted ? 'inactive' : ''}`} onClick={handleSubmit}>
+            className={`register__button--finish ${!isInfoCompleted ? 'inactive' : ''}`} onClick={this.handleSubmitConfirm}>
             完成
           </Button>
         </div>
