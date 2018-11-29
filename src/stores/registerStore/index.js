@@ -65,19 +65,20 @@ class RegisterStore {
   }
 
   @action handleSubmit = (history) => {
-    this.ifRegistered ? this.accountUpdate(history) : this.accountSignUp()
+    log('history in handleSubmit', history)
+    this.ifRegistered ? this.accountUpdate(history) : this.accountSignUp(history)
   }
 
   handleJumpPage = (history) => {
-    log('handleJumpPage')
+    log('history in handleJumpPage', history)
     history.push('./user')
   }
 
   //sign up the current address
-  accountSignUp = () => {
+  accountSignUp = (history) => {
     const currentAddr = window.neuron.getAccount()
     const currentBlockNumber = appchain.base.getBlockNumber()
-
+    log('history in accountSignUp', history)
     Promise.all([currentAddr, currentBlockNumber]).then(([currentAddress, blockNumber]) => {
       const userContract = new appchain.base.Contract(playerAbi, config.userContract)
 
