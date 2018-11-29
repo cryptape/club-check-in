@@ -19,12 +19,10 @@ class Register extends React.Component {
 
   componentDidMount() {
     ChangeTitle('用户设置', 'back')
-    console.log('history in Register/index.js', this.store.history)
     this.store.checkIfRegistered()
   }
 
   handleConfirmSubmit = () => {
-    console.log('history in handleConfirmSubmit', this.store.history)
     this.store.handleSubmit(this.store.history)
   }
 

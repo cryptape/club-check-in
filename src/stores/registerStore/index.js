@@ -65,12 +65,10 @@ class RegisterStore {
   }
 
   @action handleSubmit = (history) => {
-    log('history in handleSubmit', history)
     this.ifRegistered ? this.accountUpdate(history) : this.accountSignUp(history)
   }
 
   handleJumpPage = (history) => {
-    log('history in handleJumpPage', history)
     history.push('./user')
   }
 
@@ -78,17 +76,13 @@ class RegisterStore {
   accountSignUp = (history) => {
     const currentAddr = window.neuron.getAccount()
     const currentBlockNumber = appchain.base.getBlockNumber()
-    log('history in accountSignUp', history)
     Promise.all([currentAddr, currentBlockNumber]).then(([currentAddress, blockNumber]) => {
       const userContract = new appchain.base.Contract(playerAbi, config.userContract)
 
       handleUploadImage(this.files)
         .then(res => {
-          log('ok, ', res)
           if (res.hash) {
-            log('res key', res.key)
             appchain.base.getBlockNumber().then(blockNum => {
-              log('blockNumber', blockNum)
               const tx = {
                 ...transaction,
                 from: this.registerAddress,
@@ -104,7 +98,6 @@ class RegisterStore {
                 alert('通知', '注册成功', [
                   {
                     text: '确定', onPress: () => {
-                      log('user sign up success')
                       this.handleJumpPage(history)
                     }
                   },

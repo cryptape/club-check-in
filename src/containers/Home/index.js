@@ -14,7 +14,6 @@ class Home extends React.Component {
 
   componentDidMount() {
     this.store.hasRegister()
-    console.log('history in Home/index.js', this.props.history)
   }
 
   render() {
