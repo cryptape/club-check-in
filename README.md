@@ -70,7 +70,7 @@ const config = {
 - `prefixUrl` - `String`: qiniu bucket url
 - `imgSlim`- `String`: qiniu image slim url
 
-In `manifest.json`, you can set your own api address to get all transactions info.
+In `manifest.json`
 
 ```javascript
 {
@@ -105,7 +105,7 @@ Server is running on `http://localhost:3000/` when info below display in your sh
 ```shell
 Compiled successfully!
 
-You can now view ether-bridge in the browser.
+You can now view club-check-in in the browser.
 
   Local:            http://localhost:3000/
   On Your Network:  http://xxx.xxx.xx.xx:3000/
