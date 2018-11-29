@@ -10,6 +10,9 @@ contract Erc20 {
 }
 
 contract ClubCPlayer {
+
+    function checkIfRegistered(address _address) view public returns (bool);
+
     function getPlayerAddress(address _address) view public returns (address);
 
     function joinClub(address player, address clubAddress) public;
@@ -139,10 +142,14 @@ contract ClubCheckInControl {
     //suppot a checkin event
     function support(uint256 id)
     public
-    isSignUp()
     checkinEventExist(ClubData.round(), id)
     {
+        //cannot support if the user does not registered
+        require(ClubPlayer.checkIfRegistered(msg.sender));
+        //cannot support if the event is already reported
         require(!ClubData.getEventPunishState(ClubData.round(), id));
+        //cannot support event that is created by the sender
+        require(ClubData.getEventAuthor(ClubData.round(), id) != msg.sender);
 
         //the same person cannot support the same event repeatedly
         for (uint256 i = 0; i < ClubData.getEventSupports(ClubData.round(), id).length; i++) {
