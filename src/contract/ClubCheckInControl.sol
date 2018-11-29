@@ -158,9 +158,6 @@ contract ClubCheckInControl {
             }
         }
 
-        //the event author cannot support himself
-        require(ClubData.getEventAuthor(ClubData.round(), id) != msg.sender);
-
         ClubData.supportEvent(id, msg.sender);
 
         address eventAuthor = ClubData.getEventAuthor(ClubData.round(), id);
