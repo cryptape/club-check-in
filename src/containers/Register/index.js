@@ -14,6 +14,7 @@ class Register extends React.Component {
   constructor(props) {
     super(props)
     this.store = this.props.registerStore
+    this.store.history = this.props.history
   }
 
   componentDidMount() {
@@ -22,7 +23,7 @@ class Register extends React.Component {
   }
 
   handleConfirmSubmit = () => {
-    this.store.handleSubmit(this.props.history)
+    this.store.handleSubmit(this.store.history)
   }
 
   render() {

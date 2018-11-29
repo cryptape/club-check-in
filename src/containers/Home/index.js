@@ -9,6 +9,7 @@ class Home extends React.Component {
   constructor(props) {
     super(props)
     this.store = props.homeStore
+    this.store.history = this.props.history
   }
 
   componentDidMount() {
@@ -16,9 +17,9 @@ class Home extends React.Component {
   }
 
   render() {
-    const { isUser } = this.store
+    const { isUser, history } = this.store
     return (
-      isUser ? <Activity/> : <Register/>
+      isUser ? <Activity/> : <Register history={history}/>
     )
   }
 }
