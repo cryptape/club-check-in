@@ -78,10 +78,13 @@ class NewStore {
         })
         .then(receipt => {
           if (receipt.errorMessage === null) {
-            alert('社团创建成功', '优秀', [
-              { text: '是', onPress: () => this.handleConfirmCreateClub(history) },
+            alert('通知', '社团创建成功', [
+              { text: '好的', onPress: () => this.handleConfirmCreateClub(history) },
             ])
           } else {
+            alert('通知', '社团创建失败', [
+              { text: '好的', onPress: () => log('社团创建失败') },
+            ])
             throw new Error(receipt.errroMessage)
           }
         })

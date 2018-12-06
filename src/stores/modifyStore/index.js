@@ -43,7 +43,7 @@ class ModifyStore {
     this.newReportThreshold = fetchedClubReportLimit
   }
 
-  handleOK = () => {
+  @action handleConfirmModify = () => {
     log('点击了确定')
     log('club Id', this.clubID)
     const defaultAccount = appchain.base.getDefaultAccount()
@@ -67,23 +67,38 @@ class ModifyStore {
 
         // return controlContract.methods.setClubDescribe(this.newClubRule).send(tx)
         return controlContract.methods.setClubDescAndReportLimit(this.newClubRule, reportLlimitToUpdate).send(tx)
-      }).then((txHash) => {
-        console.log(txHash)
+      }).then(modifyTx => {
+        log('waiting for set icon tx')
+        return appchain.listeners.listenToTransactionReceipt(modifyTx.hash)
+      }).then(receipt => {
+        if (receipt.errorMessage === null) {
+          alert('通知', '修改社团信息成功', [
+            {
+              text: '确定', onPress: () => log('club info update success')
+            },
+          ])
+        } else {
+          alert('通知', '修改社团信息失败', [
+            { text: '确定', onPress: () => log('user info update failed', receipt.errorMessage) },
+          ])
+        }
       })
-    }).catch((err) => {
-      console.log('err', err)
+    }).catch(err => {
+      log('err', err)
     })
   }
 
   @action onInfoChange = (value, infoType) => {
-    this[infoType] = value
+    if(infoType === 'newReportThreshold' && value === '0') {
+      alert('通知', '举报阈值不能为0', [
+        { text: '确定', onPress: () => log("newReportThreshold can't be zero") },
+      ])
+      this.newReportThreshold =  this.clubInfo.reportThreshold
+    } else {
+      this[infoType] = value
+    }
   }
 
-  @action handleConfirmModify = () => {
-    alert('通知', '修改成功', [
-      { text: '确定', onPress: this.handleOK },
-    ])
-  }
 
   @computed get hasContentChange() {
     return this.newClubRule && this.newReportThreshold &&
