@@ -28,7 +28,7 @@ contract ClubToken is ERC20Interface, Owned {
     constructor() public {
         symbol = "CCC";
         name = "Cryptape Club Coin";
-        decimals = 18;
+        decimals = 2;
         _totalSupply = 0;
         balances[owner] = _totalSupply;
     }

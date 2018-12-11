@@ -4,6 +4,10 @@ contract ClubData {
     function clubName() public pure returns (string) {}
 }
 
+/**
+* The contract is to store all user information.
+**/
+
 contract ClubCheckInPlayer {
 
     struct Player {
@@ -30,7 +34,10 @@ contract ClubCheckInPlayer {
         }
     }
 
-    function setNameIcon(string name, string icon) public {
+    //Update both of name and icon to allow user only sign once.
+    function setNameIcon(string name, string icon) 
+        public 
+    {
         require(players[msg.sender].playerAddress == msg.sender);
         players[msg.sender].name = name;
         players[msg.sender].icon = icon;

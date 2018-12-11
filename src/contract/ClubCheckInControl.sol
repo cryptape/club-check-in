@@ -30,8 +30,8 @@ contract ClubCheckInControl {
 
     address public myDataAddress;
 
-    constructor (address clubsAddress, address dataAddress, address playAddress)
-    public
+    constructor(address clubsAddress, address dataAddress, address playAddress)
+        public
     {
         myDataAddress = dataAddress;
 
@@ -59,31 +59,31 @@ contract ClubCheckInControl {
     }
 
     function setOwner(address _address)
-    public
-    onlyOwner()
+        public
+        onlyOwner()
     {
         ClubData.setOwner(_address);
     }
 
     function setClubName(string name)
-    public
-    onlyOwner()
+        public
+        onlyOwner()
     {
         require(bytes(name).length > 0 && bytes(name).length <= 30);
         ClubData.setClubName(name);
     }
 
     function setClubDescribe(string desc)
-    public
-    onlyOwner()
+        public
+        onlyOwner()
     {
         require(bytes(desc).length > 0 && bytes(desc).length <= 540);
         ClubData.setClubDescribe(desc);
     }
 
     function setClubDescAndReportLimit(string desc, uint256 reportLimit) 
-    public 
-    onlyOwner() 
+        public 
+        onlyOwner() 
     {
         require(bytes(desc).length > 0 && bytes(desc).length <= 540);
         ClubData.setClubDescribe(desc);
@@ -91,7 +91,7 @@ contract ClubCheckInControl {
     }
 
     function join()
-    public
+        public
     {
         require(ClubPlayer.getPlayerAddress(msg.sender) == msg.sender);
         require(!ClubData.signUps(msg.sender));
@@ -100,8 +100,8 @@ contract ClubCheckInControl {
     }
 
     function exit()
-    isSignUp()
-    public
+        isSignUp()
+        public
     {
         require(msg.sender != ClubData.owner());
         ClubData.removeMember(msg.sender);
@@ -109,16 +109,16 @@ contract ClubCheckInControl {
     }
 
     function getMembersLength()
-    public
-    view
-    returns (uint256)
+        public
+        view
+        returns (uint256)
     {
         return ClubData.getMemberLength();
     }
 
     function checkin(string imgUrl, string info)
-    public
-    isSignUp()
+        public
+        isSignUp()
     {
         require(bytes(imgUrl).length != 0 || bytes(info).length != 0);
         uint256 time = now;
@@ -132,17 +132,17 @@ contract ClubCheckInControl {
 
     //get number of checkin events
     function getCheckinEventSize()
-    public
-    view
-    returns (uint256)
+        public
+        view
+        returns (uint256)
     {
         return ClubData.getCheckinEventIdsLength();
     }
 
     //suppot a checkin event
     function support(uint256 id)
-    public
-    checkinEventExist(ClubData.round(), id)
+        public
+        checkinEventExist(ClubData.round(), id)
     {
         //cannot support if the user does not registered
         require(ClubPlayer.checkIfRegistered(msg.sender));
@@ -165,18 +165,18 @@ contract ClubCheckInControl {
     }
 
     function getSupport(uint256 id)
-    public
-    view
-    checkinEventExist(ClubData.round(), id)
-    returns (address[])
+        public
+        view
+        checkinEventExist(ClubData.round(), id)
+        returns (address[])
     {
         return ClubData.getEventSupports(ClubData.round(), id);
     }
 
     function report(uint256 id)
-    public
-    isSignUp()
-    checkinEventExist(ClubData.round(), id)
+        public
+        isSignUp()
+        checkinEventExist(ClubData.round(), id)
     {
         require(!ClubData.getEventPunishState(ClubData.round(), id));
         ClubData.reportEvent(id, msg.sender);
@@ -193,18 +193,18 @@ contract ClubCheckInControl {
     }
 
     function getReportSize(uint256 id)
-    public
-    view
-    checkinEventExist(ClubData.round(), id)
-    returns (uint256)
+        public
+        view
+        checkinEventExist(ClubData.round(), id)
+        returns (uint256)
     {
         return ClubData.getEventReports(ClubData.round(), id).length;
     }
 
     //round-related manipulations
     function clear()
-    public
-    onlyOwner()
+        public
+        onlyOwner()
     {
         //instantiate ERC tokens with address
         Erc20 ClubToken = Erc20(ClubData.tokenAddress());
@@ -256,9 +256,9 @@ contract ClubCheckInControl {
     }
 
     function returnContractAddress()
-    private
-    view
-    returns (address)
+        private
+        view
+        returns (address)
     {
         return this;
     }
