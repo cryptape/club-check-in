@@ -4,6 +4,10 @@ contract ClubData {
     function clubName() public pure returns (string) {}
 }
 
+/**
+* The contract is to store all user information.
+**/
+
 contract ClubCheckInPlayer {
 
     struct Player {
@@ -30,7 +34,10 @@ contract ClubCheckInPlayer {
         }
     }
 
-    function setNameIcon(string name, string icon) public {
+    //Update both of name and icon to allow user only sign once.
+    function setNameIcon(string name, string icon) 
+        public 
+    {
         require(players[msg.sender].playerAddress == msg.sender);
         players[msg.sender].name = name;
         players[msg.sender].icon = icon;
@@ -83,7 +90,8 @@ contract ClubCheckInPlayer {
     {
         ClubData data = ClubData(clubAddress);
         require(bytes(data.clubName()).length > 0);
-        require(!players[player].isJoin[clubAddress]);
+        //to fix the issue that exited user cannot join again.
+        // require(!players[player].isJoin[clubAddress]);
 
         bool isAdded = false;
         for (uint256 i = 0; i < players[player].clubs.length; i++) {
@@ -109,7 +117,7 @@ contract ClubCheckInPlayer {
     function getPlayerAddress(address _address)
         view
         public
-    returns (address)
+        returns (address)
     {
         return players[_address].playerAddress;
     }
