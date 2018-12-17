@@ -13,6 +13,7 @@ class Manage extends React.Component {
     this.store = props.manageStore
     const { clubID } = this.props.match.params
     this.store.clubID = clubID
+    this.store.history = this.props.history
   }
 
   componentDidMount() {
@@ -26,7 +27,9 @@ class Manage extends React.Component {
       hasInputFunding,
       handleInput,
       handleFunding,
-      clubID
+      clubID,
+      enableClear,
+      history,
     } = this.store
 
     return (
@@ -37,8 +40,11 @@ class Manage extends React.Component {
             hasInputFunding={hasInputFunding}
             handleFunding={handleFunding}
             onInput={handleInput}
+            history={history}
           />
-          <Button className='manageClubDetail__button--settle' onClick={handleSettle}>
+          <Button 
+            disabled={!enableClear}
+            className='manageClubDetail__button--settle' onClick={handleSettle}>
             活动结算
           </Button>
         </div>

@@ -52,7 +52,6 @@ class UserStore {
     log(`输入的内容:${value}`)
     const clubContract = new appchain.base.Contract(clubAbi, config.clubContract)
     clubContract.methods.clubsInfo(value).call().then((clubDataAddr) => {
-      log('addr', clubDataAddr)
       const clubDataContract = new appchain.base.Contract(dataAbi, clubDataAddr)
       clubDataContract.methods.controlAddress().call().then((controlAddr) => {
         console.log('control addr', controlAddr)
@@ -82,10 +81,15 @@ class UserStore {
               ])
               throw new Error(receipt.errorMessage)
             }
+          }).catch(err => {
+            log('Failed to join the club.', err)
           })
         })
       }).catch(err => {
-        log(err)
+        alert('通知', '社团不存在', [
+          { text: '好的', onPress: () => log('join failed!') },
+        ])
+        log('Club does not exist.', err)
       })
     })
   }

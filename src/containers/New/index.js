@@ -28,6 +28,7 @@ class New extends React.Component {
     const {
       isInfoCompleted,
       onInfoChange,
+      reportThreshold,
     } = this.store
 
     return (
@@ -35,7 +36,7 @@ class New extends React.Component {
         <div className='newClub__container--content'>
           <ClubName onChange={onInfoChange}/>
           <ClubRule onChange={onInfoChange}/>
-          <ReportThreshold onChange={onInfoChange}/>
+          <ReportThreshold onChange={onInfoChange} reportThreshold={reportThreshold}/>
           <Button
             disabled={!isInfoCompleted}
             className={`newClub__button--create-club ${!isInfoCompleted ? 'inactive' : ''}`}

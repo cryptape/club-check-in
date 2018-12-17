@@ -1,7 +1,7 @@
 import React from 'react'
 import { Button } from 'antd-mobile'
 
-const BottomButton = ({ isLeader, handleManageMember, handleQuitClub, clubID }) => {
+const BottomButton = ({ isLeader, handleManageMember, handleQuitClub, clubID, history }) => {
   return (
     isLeader ?
       <Button href={`#/manage/${clubID}`}
@@ -11,7 +11,7 @@ const BottomButton = ({ isLeader, handleManageMember, handleQuitClub, clubID }) 
         管理
       </Button>
       :
-      <Button className='detail__button--club-manage' onClick={() => handleQuitClub(clubID)}>
+      <Button className='detail__button--club-manage' onClick={() => handleQuitClub(clubID, history)}>
         退出
       </Button>
   )

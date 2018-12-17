@@ -2,7 +2,7 @@ import React from 'react'
 import { Button, Flex, InputItem } from 'antd-mobile'
 import './increaseFunding.css'
 
-const IncreaseFunding = ({ hasInputFunding, handleFunding, onInput }) => {
+const IncreaseFunding = ({ hasInputFunding, handleFunding, onInput, history }) => {
   return (
     <Flex className='manageClubDetail__container--increase-funding' justify='center'>
       <InputItem
@@ -14,7 +14,7 @@ const IncreaseFunding = ({ hasInputFunding, handleFunding, onInput }) => {
       <Button
         disabled={!hasInputFunding}
         className={`manageClubDetail__button--increase-funding ${!hasInputFunding ? 'inactive' : ''}`}
-        onClick={handleFunding}
+        onClick={() => handleFunding(history)}
       >
         增加经费
       </Button>

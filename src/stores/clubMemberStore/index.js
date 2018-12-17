@@ -65,7 +65,7 @@ class ClubMemberStore {
       
       const bonus = 
       totalBonus === 0 || parseInt(points) === 0 ?
-      0 : (points / totalBonus) * clubTotal 
+      0 : Math.round((points / totalBonus) * clubTotal)
 
       this.memberDataList.push({
         name: playerName,	 
@@ -75,6 +75,9 @@ class ClubMemberStore {
         bonus: bonus / 100,
       })
     }
+
+    this.memberDataList = this.memberDataList
+      .sort((a,b) =>  a.points < b.points )
   }
 
   // check leader according to member address

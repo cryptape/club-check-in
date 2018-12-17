@@ -59,6 +59,9 @@ class RegisterStore {
           },
           url: `${config.prefixUrl}${res.icon}${config.imgSlim}`,
         }]
+        if (res.name === '') {
+          this.files = []
+        }
       })
       .then(() => this.ifRegistered = !!this.fetchedName)
       .catch(err => log(err))
@@ -76,43 +79,53 @@ class RegisterStore {
   accountSignUp = (history) => {
     const currentAddr = window.neuron.getAccount()
     const currentBlockNumber = appchain.base.getBlockNumber()
+
     Promise.all([currentAddr, currentBlockNumber]).then(([currentAddress, blockNumber]) => {
       const userContract = new appchain.base.Contract(playerAbi, config.userContract)
 
-      handleUploadImage(this.files)
-        .then(res => {
-          if (res.hash) {
-            appchain.base.getBlockNumber().then(blockNum => {
-              const tx = {
-                ...transaction,
-                from: this.registerAddress,
-                validUntilBlock: blockNum + 88
-              }
-              log(tx)
-              return userContract.methods.signIn(this.registerName, res.key).send(tx)
-            }).then(setIconTx => {
-              log('waiting for signup tx ' + setIconTx.hash)
-              return appchain.listeners.listenToTransactionReceipt(setIconTx.hash)
-            }).then(receipt => {
-              if (receipt.errorMessage === null) {
-                alert('通知', '注册成功', [
-                  {
-                    text: '确定', onPress: () => {
-                      this.handleJumpPage(history)
-                    }
-                  },
-                ])
-              } else {
-                alert('通知', '注册失败', [
-                  { text: '确定', onPress: () => log('user sign up failed') },
-                ])
-              }
-            })
-          }
-        })
-        .catch(err => {
-          log('err', err)
-        })
+      appchain.base.getBalance(currentAddress).then(balance => {
+        if (balance < 1000000) {
+          alert('通知', 'NATT 余额不足', [
+            { text: '确定', onPress: () => log('user\'s balance ' + balance + '. To low to send transaction.') },
+          ])
+          return
+        } else {
+          handleUploadImage(this.files)
+          .then(res => {
+            if (res.hash) {
+              appchain.base.getBlockNumber().then(blockNum => {
+                const tx = {
+                  ...transaction,
+                  from: this.registerAddress,
+                  validUntilBlock: blockNum + 88
+                }
+                log(tx)
+                return userContract.methods.signIn(this.registerName, res.key).send(tx)
+              }).then(setIconTx => {
+                log('waiting for signup tx ' + setIconTx.hash)
+                return appchain.listeners.listenToTransactionReceipt(setIconTx.hash)
+              }).then(receipt => {
+                if (receipt.errorMessage === null) {
+                  alert('通知', '注册成功', [
+                    {
+                      text: '确定', onPress: () => {
+                        this.handleJumpPage(history)
+                      }
+                    },
+                  ])
+                } else {
+                  alert('通知', '注册失败', [
+                    { text: '确定', onPress: () => log('user sign up failed') },
+                  ])
+                }
+              })
+            }
+          })
+          .catch(err => {
+            log('err', err)
+          })          
+        }
+      })
     })
   }
 

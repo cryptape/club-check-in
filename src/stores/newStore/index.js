@@ -43,6 +43,22 @@ class NewStore {
     const currentAddr = window.neuron.getAccount()
     const currentBlockNumber = appchain.base.getBlockNumber()
 
+    //check validity of input parameters
+    if (this.clubName.replace(/\s+/g, '') === '') {
+      alert('通知', '社团名称不能为空!', [
+        { text: '确定', onPress: () => log("club name can't be empty.") },
+      ])
+      return
+    } else if (this.clubRule.replace(/\s+/g, '') === '') {
+      alert('通知', '社团规则不能为空!', [
+        { text: '确定', onPress: () => log("club rule can't be empty.") },
+      ])
+      return 
+    } else if (this.reportThreshold === '0') {
+      alert('通知', '举报阈值不能为0！')
+      return
+    }
+
     Promise.all([currentAddr, currentBlockNumber]).then(([currentAddress, blockNumber]) => {
 
       const tx = {
@@ -93,10 +109,10 @@ class NewStore {
   }
 
   @action onInfoChange = (value, infoType) => {
-    if(infoType === 'reportThreshold' && value === '0') {
-      alert('通知', '举报阈值不能设置为0!', [
-        { text: '确定', onPress: () => log("reportThreshold can't be zero") },
-      ])
+    if (infoType === 'reportThreshold' && Number(value) === 0) {
+      // alert('通知', '举报阈值不能设置为0!', [
+      //   { text: '确定', onPress: () => log("reportThreshold can't be zero") },
+      // ])
       this.reportThreshold = ''
     } else {
       this[infoType] = value

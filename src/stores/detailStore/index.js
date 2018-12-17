@@ -21,7 +21,7 @@ class DetailStore {
     log('manage club member')
   }
 
-  confirmQuit = (clubId) => {
+  confirmQuit = (clubId, history) => {
     log('quit the club')
     const clubContract = new appchain.base.Contract(clubAbi, config.clubContract)
     const defaultAccount = window.neuron.getAccount()
@@ -43,6 +43,7 @@ class DetailStore {
      }).then((receipt) => {
        if (receipt.errorMessage === null) {
          log('exit successfully')
+         this.handleJumpPage(history)
        } else {
          log('exit failed')
          throw Error(receipt.errorMessage)
@@ -57,16 +58,21 @@ class DetailStore {
     log('im just kidding')
   }
 
-  @action handleQuitClub = (clubId) => {
+  handleJumpPage = (history) => {
+    log(history)
+    history.push('../user')
+  }
+
+  @action handleQuitClub = (clubId, history) => {
     alert('提示', '退出社团您的积分将无法找回。', [
       { text: '否', onPress: this.notQuit },
-      { text: '是', onPress: () => this.confirmQuit(clubId) },
+      { text: '是', onPress: () => this.confirmQuit(clubId, history) },
     ])
   }
 
   @action async checkIfLeader(clubId) {
     const clubContract = new appchain.base.Contract(clubAbi, config.clubContract)
-    const clubAddr = await clubContract.methods.clubsInfo(clubId).call();
+    const clubAddr = await clubContract.methods.clubsInfo(clubId).call()
     const dataContract = new appchain.base.Contract(dataAbi, clubAddr)
     const owner = await dataContract.methods.owner().call()
     const currentAddr = await window.neuron.getAccount()

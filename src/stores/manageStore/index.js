@@ -12,9 +12,13 @@ const { alert } = Modal
 class ManageStore {
   @observable increaseFunding
   @observable currentClubId
+  @observable enableClear
+  @observable clubID
+
 
   constructor() {
     this.increaseFunding = ''
+    this.enableClear = false
     this.tokenContract = new appchain.base.Contract(tokenAbi, config.tokenContract)
     this.clubContract = new appchain.base.Contract(clubAbi, config.clubContract)
   }
@@ -22,7 +26,6 @@ class ManageStore {
   handleOK = () => {
     log('点击了是')
 
-    log('clubId', this.currentClubId)
     const userAddress = window.neuron.getAccount()
     const blockNumber = appchain.base.getBlockNumber()
     const clubContract = new appchain.base.Contract(clubAbi, config.clubContract)
@@ -33,13 +36,11 @@ class ManageStore {
     Promise.all([userAddress, blockNumber]).then(([fetchedUserAddr, fetchedBlockNum]) => {
       currentAddr = fetchedUserAddr
       blockNum = fetchedBlockNum
-      return clubContract.methods.clubsInfo(this.currentClubId).call()
+      return clubContract.methods.clubsInfo(this.clubID).call()
     }).then((clubDataAddr) => {
-      log('clubDataAddr', clubDataAddr)
       const dataContract = new appchain.base.Contract(dataAbi, clubDataAddr)
       return dataContract.methods.controlAddress().call()
     }).then((controlAddr) => {
-      log('controlAddr', controlAddr)
       const controlContract = new appchain.base.Contract(controlAbi, controlAddr)
       const tx = {
         ...transaction,
@@ -65,7 +66,7 @@ class ManageStore {
     log('点击了否')
   }
 
-  handleIncrease = () => {
+  handleIncrease = (history) => {
     const fundingToIncrease = this.increaseFunding * 100
     let controlAddr = ''
     const currentAccount = window.neuron.getAccount()
@@ -78,7 +79,7 @@ class ManageStore {
         ])
         throw Error('not enough balance.')
       }
-      return this.clubContract.methods.clubsInfo(this.currentClubId).call()
+      return this.clubContract.methods.clubsInfo(this.clubID).call()
     }).then((dataContractAddr) => {
       const dataConrtact = new appchain.base.Contract(dataAbi, dataContractAddr)
       return dataConrtact.methods.controlAddress().call()
@@ -97,7 +98,7 @@ class ManageStore {
     }).then((receipt) => {
       if (receipt.errorMessage === null) {
         alert('通知', `充值成功`, [
-          { text: '确定', onPress: () => log('Funding increased successfully') },
+          { text: '确定', onPress: () => history.push('../detail/' + this.clubID) },
         ])
       } else {
         alert('通知', `充值失败`, [
@@ -110,8 +111,17 @@ class ManageStore {
     })
   }
 
-  @action clearPageInfo = () => {
+  @action async clearPageInfo(){
+    this.enableClear = false
     this.increaseFunding = ''
+  
+    const clubDataAddr = await this.clubContract.methods.clubsInfo(this.clubID).call()
+    const dataContract = new appchain.base.Contract(dataAbi, clubDataAddr)
+    const controlAddr = await  dataContract.methods.controlAddress().call()
+    const totalBalance = await this.tokenContract.methods.balanceOf(controlAddr).call()
+    console.log("totalBalance:   " + totalBalance)
+    this.enableClear = Number(totalBalance) === 0 ? false : true
+    console.log("enable clear: " + this.enableClear)
   }
 
   @action handleInput = (e) => {
@@ -142,7 +152,6 @@ class ManageStore {
     if (inputValue.length > 0 || inputValue === '') {
       e.target.value = inputValue
       this.increaseFunding = e.target.value
-      // log('increaseFunding', this.increaseFunding)
     }
   }
 
@@ -155,15 +164,16 @@ class ManageStore {
     ])
   }
 
-  @action handleFunding = () => {
+  @action handleFunding = (history) => {
     alert('通知', `是否确定增加经费？`, [
       { text: '放弃', onPress: () => log('放弃增加经费') },
-      { text: '确定', onPress: this.handleIncrease },
+      { text: '确定', onPress: () => this.handleIncrease(history) },
     ])
   }
 
   @computed get hasInputFunding() {
-    return this.increaseFunding
+    log('increase funding', this.increaseFunding)
+    return this.increaseFunding && this.increaseFunding !== '0'
   }
 
 }

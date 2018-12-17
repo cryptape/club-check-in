@@ -55,6 +55,7 @@ class ActivityStore {
       const authorAvatar = constructPicUrl(player['icon'])
       const authorName = player['name']
       const clubName = await dataContract.methods.clubName().call()
+      const isForbidden = eventInfo['punished']
 
       const eventSupports = await dataContract.methods.getEventSupports(sortedClubEvents[i]['round'], sortedClubEvents[i]['event']).call()
       let supportersAvatar = []
@@ -67,10 +68,13 @@ class ActivityStore {
         supportersAvatar.push(constructPicUrl(singlePlayer['icon']))
       }
 
+      if (supportersAvatar.length > 5) {
+        supportersAvatar = supportersAvatar.slice(0, 5)
+      }
+
       const reportLimit = await dataContract.methods.reportLimit().call()
       const reports = await dataContract.methods.getEventReports(sortedClubEvents[i]['round'], sortedClubEvents[i]['event']).call()
       const reported = reports.length > 0
-      const forbidden = reports.length >= parseInt(reportLimit)
 
       checkinEvents.push({
         eventId: eventInfo['id'],
@@ -87,7 +91,7 @@ class ActivityStore {
         hasReported: reported,
         isMember: isSignUp,
         ifSelf: player.playerAddress === sender,
-        hasforbiddened: forbidden,
+        hasforbiddened: isForbidden,
       })
     }
 
