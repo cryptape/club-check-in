@@ -49,14 +49,19 @@ class CheckinStore {
       return userContract.methods.getUserClubs(sender, index).call()
     }))
 
+
+    const isSignUps = this.clubAddrList.map(addr => 
+      new appchain.base.Contract(dataAbi, addr).methods.signUps(sender).call()
+    )
+
     let clubJoined = []
-    for (let i = 0; i < this.clubAddrList.length; i++) {
-      const dataContract = new appchain.base.Contract(dataAbi, this.clubAddrList[i])
-      const isSignup = await dataContract.methods.signUps(sender).call()
-      if (isSignup) {
-        clubJoined.push(this.clubAddrList[i])
+    await Promise.all(isSignUps).then(signUps => {
+      for (let i = 0; i < signUps.length; i++) {
+        if(signUps[i]) {
+          clubJoined.push(this.clubAddrList[i])
+        }
       }
-    }
+    })
 
     this.clubAddrList = clubJoined
 

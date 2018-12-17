@@ -48,16 +48,16 @@ class ActivityStore {
     const sender = window.neuron.getAccount()
     let checkinEvents = []
     for (let i = 0; i < sortedClubEvents.length; i++) {
-      const dataContract = new appchain.base.Contract(dataAbi, sortedClubEvents[i]['addr'])
+      const dataContract = new appchain.base.Contract(dataAbi, sortedClubEvents[i].addr)
       const isSignUp = await dataContract.methods.signUps(sender).call()
-      const eventInfo = await dataContract.methods.checkinEvents(sortedClubEvents[i]['round'], sortedClubEvents[i]['event']).call()
-      const player = await userContract.methods.players(eventInfo['author']).call()
-      const authorAvatar = constructPicUrl(player['icon'])
-      const authorName = player['name']
+      const eventInfo = await dataContract.methods.checkinEvents(sortedClubEvents[i].round, sortedClubEvents[i].event).call()
+      const player = await userContract.methods.players(eventInfo.author).call()
+      const authorAvatar = constructPicUrl(player.icon)
+      const authorName = player.name
       const clubName = await dataContract.methods.clubName().call()
-      const isForbidden = eventInfo['punished']
+      const isForbidden = eventInfo.punished
 
-      const eventSupports = await dataContract.methods.getEventSupports(sortedClubEvents[i]['round'], sortedClubEvents[i]['event']).call()
+      const eventSupports = await dataContract.methods.getEventSupports(sortedClubEvents[i].round, sortedClubEvents[i].event).call()
       let supportersAvatar = []
       let ifThumbup = false
       for (let j = 0; j < eventSupports.length; j++) {
@@ -65,26 +65,25 @@ class ActivityStore {
         if (singlePlayer.playerAddress === sender) {
           ifThumbup = true
         }
-        supportersAvatar.push(constructPicUrl(singlePlayer['icon']))
+        supportersAvatar.push(constructPicUrl(singlePlayer.icon))
       }
 
-      if (supportersAvatar.length > 5) {
-        supportersAvatar = supportersAvatar.slice(0, 5)
-      }
+      supportersAvatar = supportersAvatar.slice(0, 5)
+      
 
       const reportLimit = await dataContract.methods.reportLimit().call()
-      const reports = await dataContract.methods.getEventReports(sortedClubEvents[i]['round'], sortedClubEvents[i]['event']).call()
+      const reports = await dataContract.methods.getEventReports(sortedClubEvents[i].round, sortedClubEvents[i].event).call()
       const reported = reports.length > 0
 
       checkinEvents.push({
-        eventId: eventInfo['id'],
-        clubAddr: sortedClubEvents[i]['addr'],
+        eventId: eventInfo.id,
+        clubAddr: sortedClubEvents[i].addr,
         name: authorName,
         avatar: authorAvatar,
         clubName: clubName,
-        checkinTime: convertTsToDate(parseInt(eventInfo['id'])),
-        checkinContent: eventInfo['text'],
-        postPic: constructPicUrl(eventInfo['imgUrl']),
+        checkinTime: convertTsToDate(parseInt(eventInfo.id)),
+        checkinContent: eventInfo.text,
+        postPic: constructPicUrl(eventInfo.imgUrl),
         thumbUpMembers: supportersAvatar,
         thumbUpTimes: eventSupports.length,
         hasThumbUp: ifThumbup,
