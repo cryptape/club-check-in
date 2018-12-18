@@ -11,6 +11,7 @@ class Detail extends React.Component {
   constructor(props) {
     super(props)
     this.store = props.detailStore
+    this.store.history = this.props.history
     const { clubID } = this.props.match.params
     this.store.clubID = clubID
     this.props.clubMemberStore.currentClubId = clubID
@@ -29,6 +30,7 @@ class Detail extends React.Component {
       handleManageMember,
       handleQuitClub,
       clubID,
+      history,
     } = this.store
 
     return (
@@ -42,6 +44,7 @@ class Detail extends React.Component {
               handleManageMember={handleManageMember}
               handleQuitClub={handleQuitClub}
               clubID={clubID}
+              history={history}
             />
           </div>
         </div>

@@ -61,7 +61,12 @@ class ModifyStore {
           validUntilBlock: blockNum + 88,
         }
         const reportLlimitToUpdate = parseInt(this.newReportThreshold)
-        // return controlContract.methods.setClubDescribe(this.newClubRule).send(tx)
+        if (this.newClubRule.replace(/\s+/g, '') === '') {
+          alert('通知', '社团规则不能为空。', [
+            { text: '好的', onPress: () => log('club rule is empty.') },
+          ])
+          throw Error('club rule is empty.')
+        } 
         return controlContract.methods.setClubDescAndReportLimit(this.newClubRule, reportLlimitToUpdate).send(tx)
       }).then(modifyTx => {
         log('waiting for set icon tx')
@@ -78,9 +83,9 @@ class ModifyStore {
             { text: '确定', onPress: () => log('user info update failed', receipt.errorMessage) },
           ])
         }
+      }).catch(err => {
+        log('err', err)
       })
-    }).catch(err => {
-      log('err', err)
     })
   }
 

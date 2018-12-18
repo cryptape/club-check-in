@@ -9,6 +9,11 @@ class ManageClubDetail extends React.Component {
   constructor(props) {
     super(props)
     this.store = props.clubMemberStore
+    this.store.currentClubId = this.props.clubID
+  }
+
+  componentDidMount() {
+    this.store.getMemberDataList()
   }
 
   render() {
